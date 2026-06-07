@@ -89,18 +89,17 @@ export default function AboutPanthera() {
 
           {/* Collage column: 2 founders + 2 renacentista */}
           <div className="grid grid-cols-2 gap-3 auto-rows-fr">
-            {/* Founder 1 — darkened, editorial B&W */}
+            {/* Founder 1 — editorial B&W, lighter overlay */}
             <div className="relative overflow-hidden" style={{ minHeight: '260px' }}>
               <img
                 src={about.founders[0].src}
                 alt={about.founders[0].name}
-                className="collage-img absolute inset-0 w-full h-full object-cover object-top grayscale scale-[1.08]"
-                style={{ filter: 'grayscale(1) brightness(0.55) contrast(1.1)' }}
+                className="collage-img absolute inset-0 w-full h-full object-cover object-top scale-[1.08]"
+                style={{ filter: 'grayscale(1) brightness(0.65) contrast(1.05)' }}
                 loading="lazy"
               />
-              {/* Dark editorial overlay */}
-              <div className="absolute inset-0 bg-panthera-black/50" />
-              <div className="grain-overlay opacity-60" aria-hidden="true" />
+              <div className="absolute inset-0 bg-panthera-black/30" />
+              <div className="grain-overlay opacity-50" aria-hidden="true" />
               <div className="absolute inset-0 border border-[rgba(245,245,245,0.08)]" />
             </div>
 
@@ -111,10 +110,10 @@ export default function AboutPanthera() {
                 alt=""
                 aria-hidden="true"
                 className="collage-img absolute inset-0 w-full h-full object-cover scale-[1.08]"
-                style={{ filter: 'grayscale(1) brightness(0.4)' }}
+                style={{ filter: 'grayscale(1) brightness(0.5)' }}
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-panthera-black/40" />
+              <div className="absolute inset-0 bg-panthera-black/30" />
               <div className="absolute inset-0 border border-[rgba(245,245,245,0.06)]" />
             </div>
 
@@ -125,24 +124,24 @@ export default function AboutPanthera() {
                 alt=""
                 aria-hidden="true"
                 className="collage-img absolute inset-0 w-full h-full object-cover scale-[1.08]"
-                style={{ filter: 'grayscale(1) brightness(0.35)' }}
+                style={{ filter: 'grayscale(1) brightness(0.45)' }}
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-panthera-black/55" />
+              <div className="absolute inset-0 bg-panthera-black/35" />
               <div className="absolute inset-0 border border-[rgba(245,245,245,0.06)]" />
             </div>
 
-            {/* Founder 2 — darkened, editorial B&W */}
+            {/* Founder 2 — editorial B&W, lighter overlay */}
             <div className="relative overflow-hidden" style={{ minHeight: '200px' }}>
               <img
                 src={about.founders[1].src}
                 alt={about.founders[1].name}
-                className="collage-img absolute inset-0 w-full h-full object-cover object-top grayscale scale-[1.08]"
-                style={{ filter: 'grayscale(1) brightness(0.5) contrast(1.1)' }}
+                className="collage-img absolute inset-0 w-full h-full object-cover object-top scale-[1.08]"
+                style={{ filter: 'grayscale(1) brightness(0.65) contrast(1.05)' }}
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-panthera-black/45" />
-              <div className="grain-overlay opacity-60" aria-hidden="true" />
+              <div className="absolute inset-0 bg-panthera-black/30" />
+              <div className="grain-overlay opacity-50" aria-hidden="true" />
               <div className="absolute inset-0 border border-[rgba(245,245,245,0.08)]" />
             </div>
           </div>

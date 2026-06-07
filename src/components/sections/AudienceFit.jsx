@@ -89,18 +89,18 @@ export default function AudienceFit() {
             </ol>
           </div>
 
-          {/* NO */}
-          <div className="no-col bg-panthera-black p-10 md:p-14">
-            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-ash/60 mb-8">
+          {/* NO — more visible, admission filter aesthetic */}
+          <div className="no-col bg-panthera-black p-10 md:p-14 border border-[rgba(245,245,245,0.1)]">
+            <p className="font-sans text-[10px] uppercase tracking-[0.2em] font-semibold text-panthera-ash mb-8">
               {audience.noTitle}
             </p>
             <ol className="space-y-5">
               {audience.noItems.map((item, i) => (
-                <li key={i} className="no-item flex items-start gap-4 opacity-50">
-                  <span className="font-sans text-xs text-panthera-ash/60 tabular-nums shrink-0 pt-0.5">
+                <li key={i} className="no-item flex items-start gap-4">
+                  <span className="font-sans text-xs text-panthera-ash/70 tabular-nums shrink-0 pt-0.5">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <span className="font-sans text-sm text-panthera-ash leading-snug">
+                  <span className="font-sans text-sm text-panthera-ash/85 leading-snug">
                     {item}
                   </span>
                 </li>

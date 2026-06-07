@@ -6,8 +6,96 @@ import Button from '../ui/Button'
 
 const { testimonials } = landingCopy
 
-// Renacentista images mapped per case for card backgrounds
-const CARD_IMAGES = ['/renacentismo/2.png', '/renacentismo/4.png', '/renacentismo/6.png', '/renacentismo/8.png', '/renacentismo/2.png']
+// Per-card state — each card tracks whether it's playing
+function TestimonialCard({ c }) {
+  const [playing, setPlaying] = useState(false)
+  const thumbHD = `https://img.youtube.com/vi/${c.youtubeId}/maxresdefault.jpg`
+  const thumbFallback = `https://img.youtube.com/vi/${c.youtubeId}/hqdefault.jpg`
+
+  return (
+    <div className="relative w-full h-full flex flex-col md:flex-row min-h-screen">
+      {/* Left: custom cover → iframe on click */}
+      <div className="relative md:w-1/2 w-full bg-panthera-black" style={{ minHeight: '45vh' }}>
+        {!playing ? (
+          <button
+            onClick={() => setPlaying(true)}
+            className="absolute inset-0 w-full h-full group cursor-pointer"
+            aria-label={`Reproducir ${c.videoTitle}`}
+          >
+            {/* YouTube thumbnail */}
+            <img
+              src={thumbHD}
+              alt={c.videoTitle}
+              className="absolute inset-0 w-full h-full object-cover"
+              onError={(e) => { e.target.src = thumbFallback }}
+              loading="lazy"
+            />
+            {/* Dark overlay */}
+            <div className="absolute inset-0 bg-panthera-black/65" />
+            {/* Grain texture */}
+            <div className="grain-overlay" aria-hidden="true" />
+            {/* Frame */}
+            <div className="absolute inset-0 border border-[rgba(245,245,245,0.07)] pointer-events-none" />
+
+            {/* Cover title */}
+            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-10">
+              <p
+                className="font-serif text-panthera-white leading-tight mb-1"
+                style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.9rem)' }}
+              >
+                {c.coverTitle}
+              </p>
+              <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green">
+                {c.name}
+              </p>
+            </div>
+
+            {/* Play button */}
+            <div className="absolute inset-0 flex items-center justify-center z-10">
+              <div
+                className="flex items-center justify-center rounded-full border border-white/25 bg-white/10 backdrop-blur-sm group-hover:bg-white/20 group-hover:scale-105 transition-all duration-300"
+                style={{ width: '68px', height: '68px' }}
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-white ml-1">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+          </button>
+        ) : (
+          <iframe
+            src={`${c.youtubeEmbedUrl}?autoplay=1&rel=0&modestbranding=1`}
+            title={c.videoTitle}
+            className="absolute inset-0 w-full h-full"
+            style={{ border: 'none' }}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+        )}
+      </div>
+
+      {/* Right: case info */}
+      <div className="md:w-1/2 w-full flex flex-col justify-center px-10 md:px-16 lg:px-20 py-16 bg-panthera-black border-t md:border-t-0 md:border-l border-[rgba(245,245,245,0.06)]">
+        <span
+          className="font-serif text-[120px] md:text-[160px] text-[rgba(245,245,245,0.03)] leading-none select-none -ml-2 -mt-6"
+          aria-hidden="true"
+        >
+          &#8220;
+        </span>
+        <p
+          className="font-sans text-panthera-white/80 leading-relaxed mb-8 -mt-10"
+          style={{ fontSize: 'clamp(0.9rem, 1.3vw, 1.1rem)' }}
+        >
+          {c.description}
+        </p>
+        <div className="border-t border-[rgba(245,245,245,0.08)] pt-6">
+          <p className="font-sans font-medium text-sm text-panthera-white">{c.name}</p>
+          <p className="font-sans text-xs text-panthera-green mt-1">{c.role}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default function Testimonials() {
   const containerRef = useRef(null)
@@ -15,7 +103,6 @@ export default function Testimonials() {
   const [currentCard, setCurrentCard] = useState(0)
   const prefersReduced = usePrefersReducedMotion()
 
-  // Total panels = cases + 1 CTA panel
   const totalPanels = testimonials.cases.length + 1
 
   useGSAP(
@@ -65,16 +152,22 @@ export default function Testimonials() {
 
   return (
     <section ref={containerRef} className="relative bg-panthera-black overflow-hidden">
-      {/* Section header — overlays the track */}
-      <div className="absolute top-0 left-0 right-0 z-20 pointer-events-none md:block hidden">
-        <div className="container-panthera pt-10 pb-0 flex items-center justify-between">
+      {/* Section header — overlays the track, desktop only */}
+      <div className="absolute top-0 left-0 right-0 z-20 pointer-events-none hidden md:block">
+        <div className="container-panthera pt-10 flex items-end justify-between">
           <div>
-            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green">
+            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-2">
               {testimonials.eyebrow}
             </p>
+            <h2
+              className="font-serif text-panthera-white leading-tight"
+              style={{ fontSize: 'clamp(1.4rem, 2.5vw, 2.2rem)' }}
+            >
+              {testimonials.headline}
+            </h2>
           </div>
           {/* Counter */}
-          <div className="flex items-center gap-2 text-panthera-ash">
+          <div className="flex items-center gap-2 text-panthera-ash shrink-0 pb-1">
             <span className="font-serif text-3xl text-panthera-white tabular-nums">
               {String(Math.min(currentCard + 1, testimonials.cases.length)).padStart(2, '0')}
             </span>
@@ -101,89 +194,30 @@ export default function Testimonials() {
 
       {/* Horizontal track */}
       <div ref={trackRef} className="flex flex-col md:flex-nowrap md:flex-row" style={{ willChange: 'transform' }}>
-        {testimonials.cases.map((c, i) => (
+        {testimonials.cases.map((c) => (
           <div
             key={c.name}
             className="flex-shrink-0 w-full md:w-screen"
             style={{ minHeight: '100vh' }}
           >
-            <div className="relative w-full h-full flex flex-col md:flex-row min-h-screen">
-              {/* Left: image / video */}
-              <div className="relative md:w-1/2 w-full" style={{ minHeight: '45vh' }}>
-                {c.youtubeEmbedUrl ? (
-                  <iframe
-                    src={`${c.youtubeEmbedUrl}?rel=0&modestbranding=1`}
-                    title={c.videoTitle}
-                    className="absolute inset-0 w-full h-full"
-                    style={{ border: 'none' }}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  />
-                ) : (
-                  <>
-                    <img
-                      src={CARD_IMAGES[i % CARD_IMAGES.length]}
-                      alt=""
-                      aria-hidden="true"
-                      className="absolute inset-0 w-full h-full object-cover grayscale contrast-110"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-panthera-black/60" />
-                    {/* Placeholder label */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                      <div className="w-14 h-14 rounded-full border border-panthera-white/30 flex items-center justify-center">
-                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-panthera-white/50 ml-0.5">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      </div>
-                      <p className="font-sans text-[10px] uppercase tracking-widest text-panthera-white/30">
-                        Video próximamente
-                      </p>
-                    </div>
-                  </>
-                )}
-              </div>
-
-              {/* Right: case info */}
-              <div className="md:w-1/2 w-full flex flex-col justify-center px-10 md:px-16 lg:px-20 py-16 bg-panthera-black border-t md:border-t-0 md:border-l border-[rgba(245,245,245,0.06)]">
-                <span
-                  className="font-serif text-[120px] md:text-[160px] text-[rgba(245,245,245,0.03)] leading-none select-none -ml-2 -mt-6"
-                  aria-hidden="true"
-                >
-                  &#8220;
-                </span>
-                <p
-                  className="font-sans text-panthera-white/80 leading-relaxed mb-8 -mt-10"
-                  style={{ fontSize: 'clamp(0.9rem, 1.3vw, 1.1rem)' }}
-                >
-                  {c.description}
-                </p>
-                <div className="border-t border-[rgba(245,245,245,0.08)] pt-6">
-                  <p className="font-sans font-medium text-sm text-panthera-white">{c.name}</p>
-                  <p className="font-sans text-xs text-panthera-green mt-1">{c.role}</p>
-                </div>
-              </div>
-            </div>
+            <TestimonialCard c={c} />
           </div>
         ))}
 
-        {/* Last panel: CTA fullscreen — part of the same horizontal track */}
+        {/* Last panel: CTA — inside horizontal track */}
         <div
           className="flex-shrink-0 w-full md:w-screen flex flex-col items-center justify-center relative bg-panthera-black px-6 text-center py-24 md:py-0"
           style={{ minHeight: '100vh' }}
         >
-          {/* mask_filter_application.webp background — fallback to renacentismo */}
-          <picture>
-            <source srcSet="/images/mask_filter_application.webp" type="image/webp" />
-            <img
-              src="/renacentismo/6.png"
-              alt=""
-              aria-hidden="true"
-              className="absolute inset-0 w-full h-full object-cover opacity-[0.18]"
-              loading="lazy"
-            />
-          </picture>
-          <div className="absolute inset-0 bg-panthera-black/75" aria-hidden="true" />
+          <img
+            src="/images/mask_filter_application.webp"
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ filter: 'brightness(0.25)' }}
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-panthera-black/70" aria-hidden="true" />
           <div className="grain-overlay" aria-hidden="true" />
           <div className="relative z-10 max-w-3xl mx-auto">
             <p

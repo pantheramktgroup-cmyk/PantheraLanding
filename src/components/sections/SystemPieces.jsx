@@ -66,30 +66,37 @@ export default function SystemPieces() {
         </div>
 
         {/* Mural grid — 4×2, each card is one fragment of the same image */}
-        <div className="grid grid-cols-2 md:grid-cols-4 border-t border-l border-[rgba(245,245,245,0.08)]">
+        <div className="grid grid-cols-2 md:grid-cols-4 border-t border-l border-[rgba(245,245,245,0.06)]">
           {systemPieces.pieces.map((piece, i) => (
             <div
               key={piece.title}
-              className="piece-card group relative border-r border-b border-[rgba(245,245,245,0.08)] overflow-hidden cursor-default"
+              className="piece-card group relative border-r border-b border-[rgba(245,245,245,0.06)] overflow-hidden cursor-default"
               style={{ minHeight: '240px' }}
             >
-              {/* Mural fragment as background */}
+              {/* Mural fragment — zooms in on hover */}
               <div
-                className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-105"
+                className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-110"
                 style={{
                   backgroundImage: `url('${muralBg}')`,
                   backgroundSize: '400% 200%',
                   backgroundPosition: MURAL_POSITIONS[i],
-                  filter: 'grayscale(60%) brightness(0.5)',
+                  filter: 'grayscale(40%) brightness(0.6)',
                 }}
               />
-              {/* Overlay: dimmer at rest, slightly lighter on hover */}
-              <div className="absolute inset-0 bg-panthera-black/70 group-hover:bg-panthera-black/50 transition-colors duration-500" />
-              <div className="grain-overlay opacity-50" aria-hidden="true" />
+              {/* Overlay: nearly black at rest → clears on hover to reveal image */}
+              <div
+                className="absolute inset-0 transition-colors duration-500"
+                style={{
+                  backgroundColor: 'rgba(0,0,0,0.88)',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.38)' }}
+                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.88)' }}
+              />
+              <div className="grain-overlay opacity-40" aria-hidden="true" />
 
               {/* Content */}
               <div className="relative z-10 p-6 md:p-8 flex flex-col justify-between h-full" style={{ minHeight: '240px' }}>
-                <span className="font-sans text-[10px] text-panthera-green/60 tabular-nums">
+                <span className="font-sans text-[10px] text-panthera-green/50 tabular-nums">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <div className="mt-auto">
@@ -97,7 +104,7 @@ export default function SystemPieces() {
                   <h3 className="font-serif text-xl md:text-2xl text-panthera-white group-hover:text-panthera-cream transition-colors duration-300 mb-2">
                     {piece.title}
                   </h3>
-                  <p className="font-sans text-xs text-panthera-ash/80 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75">
+                  <p className="font-sans text-xs text-panthera-ash/80 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-400 delay-100">
                     {piece.description}
                   </p>
                 </div>

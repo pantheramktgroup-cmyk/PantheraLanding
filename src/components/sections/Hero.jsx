@@ -44,7 +44,14 @@ export default function Hero() {
         .from(subRef.current, { opacity: 0, y: 16, duration: 0.8, ease: 'power2.out' }, '-=0.6')
         .from(ctaRef.current, { opacity: 0, y: 12, duration: 0.7, ease: 'power2.out' }, '-=0.5')
 
-      // Subtle parallax on scroll
+      // Slow zoom on bg image: scale from 1.03 to 1.09 over 8s
+      gsap.to(imageRef.current, {
+        scale: 1.09,
+        duration: 8,
+        ease: 'power1.inOut',
+      })
+
+      // Parallax on scroll (vertical displacement)
       gsap.to(imageRef.current, {
         yPercent: 14,
         ease: 'none',
@@ -74,7 +81,8 @@ export default function Hero() {
           src={heroBg}
           alt=""
           aria-hidden="true"
-          className="w-full h-full object-cover object-center scale-[1.08]"
+          className="w-full h-full object-cover object-center"
+          style={{ scale: '1.03', transformOrigin: 'center center' }}
           loading="eager"
           fetchpriority="high"
         />
