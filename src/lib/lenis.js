@@ -24,6 +24,20 @@ export function initLenis() {
   gsap.ticker.add(rafCallback)
   gsap.ticker.lagSmoothing(0)
 
+  // scrollerProxy: makes GSAP snap go through Lenis instead of native scrollTo
+  // This prevents Lenis from fighting GSAP snap and causing oscillation
+  ScrollTrigger.scrollerProxy(document.body, {
+    scrollTop(value) {
+      if (arguments.length) {
+        lenisInstance.scrollTo(value, { immediate: true, force: true })
+      }
+      return lenisInstance.scroll
+    },
+    getBoundingClientRect() {
+      return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight }
+    },
+  })
+
   return lenisInstance
 }
 

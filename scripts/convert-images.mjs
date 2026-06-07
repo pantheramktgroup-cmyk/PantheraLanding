@@ -38,6 +38,8 @@ const conversions = [
   ['testimonial_lucas_cover.png',         'testimonial_lucas_cover.webp'],
   ['testimonial_jose_cover.png',          'testimonial_jose_cover.webp'],
   ['testimonial_hilda_cover.png',         'testimonial_hilda_cover.webp'],
+    // CTA final testimonios
+  ['testimonial_cta_case_table.png',      'testimonial_cta_case_table.webp'],
 ]
 
 let ok = 0

@@ -1,13 +1,12 @@
-import { useRef, useState, useCallback } from 'react'
-import { gsap, ScrollTrigger, useGSAP } from '../../lib/gsap'
+ï»¿import { useRef, useState, useCallback } from 'react'
+import { gsap, useGSAP } from '../../lib/gsap'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { landingCopy } from '../../content/landingCopy'
 import Button from '../ui/Button'
 
 const { testimonials } = landingCopy
 
-// --- Card ---------------------------------------------------------------------
-function TestimonialCard({ c, onPlay, onStop }) {
+function TestimonialCard({ c, onPlay }) {
   const [playing, setPlaying] = useState(false)
 
   const handlePlay = useCallback((e) => {
@@ -18,7 +17,6 @@ function TestimonialCard({ c, onPlay, onStop }) {
 
   return (
     <div className="relative w-full h-full flex flex-col md:flex-row">
-      {/* Left: cover / iframe */}
       <div className="relative md:w-1/2 w-full bg-panthera-black" style={{ minHeight: '50vh' }}>
         <div className="absolute inset-0">
           {!playing ? (
@@ -27,12 +25,7 @@ function TestimonialCard({ c, onPlay, onStop }) {
               className="absolute inset-0 w-full h-full group cursor-pointer"
               aria-label={`Reproducir ${c.videoTitle}`}
             >
-              <img
-                src={c.coverImage}
-                alt={c.videoTitle}
-                className="absolute inset-0 w-full h-full object-cover"
-                loading="lazy"
-              />
+              <img src={c.coverImage} alt={c.videoTitle} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
               <div className="absolute inset-0 bg-panthera-black/60" />
               <div className="grain-overlay" aria-hidden="true" />
               <div className="absolute inset-0 border border-[rgba(245,245,245,0.07)] pointer-events-none" />
@@ -60,8 +53,6 @@ function TestimonialCard({ c, onPlay, onStop }) {
           )}
         </div>
       </div>
-
-      {/* Right: quote */}
       <div className="md:w-1/2 w-full flex flex-col justify-center px-10 md:px-14 lg:px-20 py-14 bg-panthera-black border-t md:border-t-0 md:border-l border-[rgba(245,245,245,0.06)]">
         <span className="font-serif text-[100px] md:text-[140px] text-[rgba(245,245,245,0.03)] leading-none select-none -ml-2 -mt-4 block" aria-hidden="true">&#8220;</span>
         <p className="font-sans text-panthera-white/80 leading-relaxed mb-8 -mt-8" style={{ fontSize: 'clamp(0.9rem, 1.3vw, 1.05rem)' }}>
@@ -76,19 +67,14 @@ function TestimonialCard({ c, onPlay, onStop }) {
   )
 }
 
-// --- Section ------------------------------------------------------------------
 export default function Testimonials() {
   const pinRef = useRef(null)
   const trackRef = useRef(null)
-  const snapSTRef = useRef(null)   // reference to pin+snap ST so we can disable it
   const [currentCard, setCurrentCard] = useState(0)
   const prefersReduced = usePrefersReducedMotion()
   const totalPanels = testimonials.cases.length + 1
 
-  // When a video plays, disable snap so the iframe loading doesn't trigger snapping
-  const handlePlay = useCallback(() => {
-    if (snapSTRef.current) snapSTRef.current.disable()
-  }, [])
+  const handlePlay = useCallback(() => {}, [])
 
   useGSAP(
     () => {
@@ -98,28 +84,8 @@ export default function Testimonials() {
         const pin = pinRef.current
         const track = trackRef.current
         if (!pin || !track) return
-
         const ctx = gsap.context(() => {
           const totalWidth = (totalPanels - 1) * window.innerWidth
-
-          // -- ST1: Pin + Snap — NO scrub, NO animation
-          snapSTRef.current = ScrollTrigger.create({
-            trigger: pin,
-            start: 'top top',
-            end: () => `+=${totalWidth}`,
-            pin: true,
-            pinSpacing: true,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-            snap: {
-              snapTo: 1 / (totalPanels - 1),
-              duration: { min: 0.4, max: 0.8 },
-              delay: 0.2,
-              ease: 'power2.inOut',
-            },
-          })
-
-          // -- ST2: Animation — scrub, NO pin, NO snap
           gsap.to(track, {
             x: () => -totalWidth,
             ease: 'none',
@@ -127,8 +93,17 @@ export default function Testimonials() {
               trigger: pin,
               start: 'top top',
               end: () => `+=${totalWidth}`,
-              scrub: true,
+              scrub: 0.3,
+              pin: true,
+              pinSpacing: true,
+              anticipatePin: 1,
               invalidateOnRefresh: true,
+              snap: {
+                snapTo: 1 / (totalPanels - 1),
+                duration: { min: 0.3, max: 0.6 },
+                delay: 0.1,
+                ease: 'power2.out',
+              },
               onUpdate: (self) => {
                 const idx = Math.min(Math.floor(self.progress * totalPanels), totalPanels - 1)
                 setCurrentCard(idx)
@@ -136,7 +111,6 @@ export default function Testimonials() {
             },
           })
         })
-
         return () => ctx.revert()
       })
       return () => mm.revert()
@@ -146,7 +120,6 @@ export default function Testimonials() {
 
   return (
     <section className="bg-panthera-black">
-      {/* INTRO */}
       <div className="container-panthera pt-28 md:pt-36 pb-20 md:pb-28">
         <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-5">{testimonials.eyebrow}</p>
         <h2 className="font-serif text-panthera-white leading-tight mb-6 max-w-2xl" style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)' }}>
@@ -155,9 +128,7 @@ export default function Testimonials() {
         <p className="font-sans text-sm text-panthera-ash leading-relaxed max-w-xl">{testimonials.subheadline}</p>
       </div>
 
-      {/* PINNED HORIZONTAL SCROLL — desktop */}
-      <div ref={pinRef} className="relative hidden md:block" style={{ height: '100vh', overflow: 'clip' }}>
-        {/* Counter */}
+      <div ref={pinRef} className="relative hidden md:block" style={{ height: '100vh' }}>
         <div className="absolute top-8 right-0 z-20 pointer-events-none w-full flex justify-end" style={{ paddingRight: 'clamp(24px, 5vw, 80px)' }}>
           <div className="flex items-center gap-2">
             <span className="font-serif text-3xl text-panthera-white tabular-nums leading-none">
@@ -169,15 +140,12 @@ export default function Testimonials() {
             </span>
           </div>
         </div>
-
-        {/* Track */}
         <div ref={trackRef} className="flex flex-nowrap h-full" style={{ willChange: 'transform' }}>
           {testimonials.cases.map((c) => (
             <div key={c.name} className="flex-shrink-0 w-screen h-full">
               <TestimonialCard c={c} onPlay={handlePlay} />
             </div>
           ))}
-          {/* CTA panel */}
           <div className="flex-shrink-0 w-screen h-full flex flex-col items-center justify-center relative bg-panthera-black px-6 text-center">
             <img src="/images/mask_filter_application.webp" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'brightness(0.25)' }} loading="lazy" />
             <div className="absolute inset-0 bg-panthera-black/70" aria-hidden="true" />
@@ -192,7 +160,6 @@ export default function Testimonials() {
         </div>
       </div>
 
-      {/* MOBILE — stacked */}
       <div className="md:hidden">
         {testimonials.cases.map((c) => (
           <div key={`mob-${c.name}`} className="border-t border-[rgba(245,245,245,0.06)]" style={{ minHeight: '100svh' }}>

@@ -1,5 +1,5 @@
-import { useRef, useState } from 'react'
-import { gsap, ScrollTrigger, useGSAP } from '../../lib/gsap'
+ï»¿import { useRef, useState } from 'react'
+import { gsap, useGSAP } from '../../lib/gsap'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { landingCopy } from '../../content/landingCopy'
 import Button from '../ui/Button'
@@ -35,25 +35,6 @@ export default function ApexSystem() {
         if (!pin || !track) return
         const ctx = gsap.context(() => {
           const totalWidth = (TOTAL_PANELS - 1) * window.innerWidth
-
-          // -- ST1: Pin + Snap — NO scrub, NO animation
-          ScrollTrigger.create({
-            trigger: pin,
-            start: 'top top',
-            end: () => `+=${totalWidth}`,
-            pin: true,
-            pinSpacing: true,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-            snap: {
-              snapTo: 1 / (TOTAL_PANELS - 1),
-              duration: { min: 0.4, max: 0.8 },
-              delay: 0.2,
-              ease: 'power2.inOut',
-            },
-          })
-
-          // -- ST2: Animation — scrub, NO pin, NO snap
           gsap.to(track, {
             x: () => -totalWidth,
             ease: 'none',
@@ -61,8 +42,17 @@ export default function ApexSystem() {
               trigger: pin,
               start: 'top top',
               end: () => `+=${totalWidth}`,
-              scrub: true,
+              scrub: 0.3,
+              pin: true,
+              pinSpacing: true,
+              anticipatePin: 1,
               invalidateOnRefresh: true,
+              snap: {
+                snapTo: 1 / (TOTAL_PANELS - 1),
+                duration: { min: 0.3, max: 0.6 },
+                delay: 0.1,
+                ease: 'power2.out',
+              },
               onUpdate: (self) => {
                 const idx = Math.min(Math.floor(self.progress * TOTAL_PANELS), TOTAL_PANELS - 1)
                 setCurrentPhase(idx)
@@ -82,7 +72,6 @@ export default function ApexSystem() {
 
   return (
     <section className="bg-panthera-deep">
-      {/* INTRO */}
       <div className="container-panthera pt-28 md:pt-36 pb-20 md:pb-28">
         <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-5">{apexSystem.eyebrow}</p>
         <h2 className="font-serif text-panthera-white leading-tight mb-6 max-w-3xl" style={{ fontSize: 'clamp(2.2rem, 4.5vw, 4rem)' }}>
@@ -91,22 +80,16 @@ export default function ApexSystem() {
         <p className="font-sans text-sm text-panthera-ash leading-relaxed max-w-xl">{apexSystem.subheadline}</p>
       </div>
 
-      {/* PINNED HORIZONTAL SCROLL — desktop */}
-      <div ref={pinRef} className="relative hidden md:block" style={{ height: '100vh', overflow: 'clip' }}>
-        {/* Counter + progress bar — sits inside pinned area, below navbar */}
+      <div ref={pinRef} className="relative hidden md:block" style={{ height: '100vh' }}>
         <div className="absolute left-0 right-0 z-30 pointer-events-none" style={{ top: 'calc(88px + 1.5rem)' }}>
           <div className="container-panthera flex items-center justify-between">
-            <div className="text-panthera-ash/40 font-sans text-[11px] uppercase tracking-[0.15em]">
-              {apexSystem.eyebrow}
-            </div>
+            <div className="text-panthera-ash/40 font-sans text-[11px] uppercase tracking-[0.15em]">{apexSystem.eyebrow}</div>
             <div className="flex items-center gap-3">
               <span className="font-serif text-4xl text-panthera-white tabular-nums leading-none">
                 {String(Math.min(currentPhase + 1, apexSystem.phases.length)).padStart(2, '0')}
               </span>
               <span className="text-panthera-ash/40">/</span>
-              <span className="font-sans text-xs text-panthera-ash/40">
-                {String(apexSystem.phases.length).padStart(2, '0')}
-              </span>
+              <span className="font-sans text-xs text-panthera-ash/40">{String(apexSystem.phases.length).padStart(2, '0')}</span>
             </div>
           </div>
           <div className="mt-3 h-px bg-[rgba(245,245,245,0.06)] overflow-hidden">
@@ -114,7 +97,6 @@ export default function ApexSystem() {
           </div>
         </div>
 
-        {/* Track */}
         <div ref={trackRef} className="flex flex-nowrap h-full" style={{ willChange: 'transform' }}>
           {apexSystem.phases.map((phase, i) => (
             <div key={phase.number} className="flex-shrink-0 w-screen h-full relative">
@@ -124,7 +106,6 @@ export default function ApexSystem() {
                 <div className="absolute inset-0 bg-gradient-to-t from-panthera-deep via-panthera-deep/40 to-transparent" />
                 <div className="grain-overlay" />
               </div>
-              {/* Phase content — lower third */}
               <div className="absolute bottom-0 left-0 right-0 container-panthera pb-16 md:pb-20">
                 <p className="font-serif text-[18vw] text-panthera-white/[0.04] leading-none select-none -mb-6 pointer-events-none" aria-hidden="true">
                   {phase.number}
@@ -139,8 +120,6 @@ export default function ApexSystem() {
               </div>
             </div>
           ))}
-
-          {/* CTA panel */}
           <div className="flex-shrink-0 w-screen h-full relative flex items-center justify-center text-center px-6">
             <img src="/images/creation_panthera_hand.webp" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'grayscale(40%) brightness(0.35)' }} />
             <div className="absolute inset-0 bg-panthera-black/70" aria-hidden="true" />
@@ -155,7 +134,6 @@ export default function ApexSystem() {
         </div>
       </div>
 
-      {/* MOBILE */}
       <div className="md:hidden">
         {apexSystem.phases.map((phase, i) => (
           <div key={`mob-${phase.number}`} className="relative border-t border-[rgba(245,245,245,0.08)] py-16 px-6" style={{ minHeight: '70vh' }}>
