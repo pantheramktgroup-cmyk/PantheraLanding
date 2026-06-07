@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { gsap, useGSAP } from '../../lib/gsap'
+import { gsap, ScrollTrigger, useGSAP } from '../../lib/gsap'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { landingCopy } from '../../content/landingCopy'
 import Button from '../ui/Button'
@@ -35,6 +35,25 @@ export default function ApexSystem() {
         if (!pin || !track) return
         const ctx = gsap.context(() => {
           const totalWidth = (TOTAL_PANELS - 1) * window.innerWidth
+
+          // -- ST1: Pin + Snap — NO scrub, NO animation
+          ScrollTrigger.create({
+            trigger: pin,
+            start: 'top top',
+            end: () => `+=${totalWidth}`,
+            pin: true,
+            pinSpacing: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            snap: {
+              snapTo: 1 / (TOTAL_PANELS - 1),
+              duration: { min: 0.4, max: 0.8 },
+              delay: 0.2,
+              ease: 'power2.inOut',
+            },
+          })
+
+          // -- ST2: Animation — scrub, NO pin, NO snap
           gsap.to(track, {
             x: () => -totalWidth,
             ease: 'none',
@@ -43,16 +62,7 @@ export default function ApexSystem() {
               start: 'top top',
               end: () => `+=${totalWidth}`,
               scrub: true,
-              pin: true,
-              pinSpacing: true,
-              anticipatePin: 1,
               invalidateOnRefresh: true,
-              snap: {
-                snapTo: 1 / (TOTAL_PANELS - 1),
-                duration: { min: 0.5, max: 0.9 },
-                delay: 0.15,
-                ease: 'power2.inOut',
-              },
               onUpdate: (self) => {
                 const idx = Math.min(Math.floor(self.progress * TOTAL_PANELS), TOTAL_PANELS - 1)
                 setCurrentPhase(idx)
@@ -72,27 +82,20 @@ export default function ApexSystem() {
 
   return (
     <section className="bg-panthera-deep">
-      {/* INTRO ï¿½ vertical, NOT pinned, buen espacio del navbar */}
+      {/* INTRO */}
       <div className="container-panthera pt-28 md:pt-36 pb-20 md:pb-28">
-        <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-5">
-          {apexSystem.eyebrow}
-        </p>
-        <h2
-          className="font-serif text-panthera-white leading-tight mb-6 max-w-3xl"
-          style={{ fontSize: 'clamp(2.2rem, 4.5vw, 4rem)' }}
-        >
+        <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-5">{apexSystem.eyebrow}</p>
+        <h2 className="font-serif text-panthera-white leading-tight mb-6 max-w-3xl" style={{ fontSize: 'clamp(2.2rem, 4.5vw, 4rem)' }}>
           {apexSystem.headline}
         </h2>
-        <p className="font-sans text-sm text-panthera-ash leading-relaxed max-w-xl">
-          {apexSystem.subheadline}
-        </p>
+        <p className="font-sans text-sm text-panthera-ash leading-relaxed max-w-xl">{apexSystem.subheadline}</p>
       </div>
 
-      {/* PINNED HORIZONTAL SCROLL â€” desktop */}
-      <div ref={pinRef} className="relative hidden md:block" style={{ height: '100vh', overflow: 'visible' }}>
-        {/* Counter + progress â€” clears sticky navbar (88px) + breathing room */}
+      {/* PINNED HORIZONTAL SCROLL — desktop */}
+      <div ref={pinRef} className="relative hidden md:block" style={{ height: '100vh', overflow: 'clip' }}>
+        {/* Counter + progress bar — sits inside pinned area, below navbar */}
         <div className="absolute left-0 right-0 z-30 pointer-events-none" style={{ top: 'calc(88px + 1.5rem)' }}>
-          <div className="container-panthera pt-10 flex items-center justify-between">
+          <div className="container-panthera flex items-center justify-between">
             <div className="text-panthera-ash/40 font-sans text-[11px] uppercase tracking-[0.15em]">
               {apexSystem.eyebrow}
             </div>
@@ -106,151 +109,75 @@ export default function ApexSystem() {
               </span>
             </div>
           </div>
-          {/* Progress bar */}
-          <div className="mt-4 mx-0 h-px bg-[rgba(245,245,245,0.06)] overflow-hidden">
-            <div
-              ref={progressRef}
-              className="h-full bg-panthera-green origin-left"
-              style={{ transform: 'scaleX(0)', transition: 'none' }}
-            />
+          <div className="mt-3 h-px bg-[rgba(245,245,245,0.06)] overflow-hidden">
+            <div ref={progressRef} className="h-full bg-panthera-green origin-left" style={{ transform: 'scaleX(0)', transition: 'none' }} />
           </div>
         </div>
 
-        {/* Horizontal track */}
-        <div
-          ref={trackRef}
-          className="flex flex-nowrap h-full"
-          style={{ willChange: 'transform' }}
-        >
+        {/* Track */}
+        <div ref={trackRef} className="flex flex-nowrap h-full" style={{ willChange: 'transform' }}>
           {apexSystem.phases.map((phase, i) => (
-            <div
-              key={phase.number}
-              className="flex-shrink-0 w-screen h-full relative"
-            >
-              {/* Full-panel renacentista background */}
+            <div key={phase.number} className="flex-shrink-0 w-screen h-full relative">
               <div className="absolute inset-0" aria-hidden="true">
-                <img
-                  src={PANEL_IMAGES[i % PANEL_IMAGES.length]}
-                  alt=""
-                  className="w-full h-full object-cover object-center"
-                  loading="lazy"
-                />
+                <img src={PANEL_IMAGES[i % PANEL_IMAGES.length]} alt="" className="w-full h-full object-cover object-center" loading="lazy" />
                 <div className="absolute inset-0 bg-panthera-deep/80" />
                 <div className="absolute inset-0 bg-gradient-to-t from-panthera-deep via-panthera-deep/40 to-transparent" />
                 <div className="grain-overlay" />
               </div>
-
-              {/* Phase content ï¿½ lower third, well clear of counter */}
+              {/* Phase content — lower third */}
               <div className="absolute bottom-0 left-0 right-0 container-panthera pb-16 md:pb-20">
-                {/* Ghost number */}
-                <p
-                  className="font-serif text-[18vw] text-panthera-white/[0.04] leading-none select-none -mb-6 pointer-events-none"
-                  aria-hidden="true"
-                >
+                <p className="font-serif text-[18vw] text-panthera-white/[0.04] leading-none select-none -mb-6 pointer-events-none" aria-hidden="true">
                   {phase.number}
                 </p>
-
                 <div className="border-t border-[rgba(245,245,245,0.12)] pt-7 max-w-2xl">
-                  <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-4">
-                    Fase {phase.number}
-                  </p>
-                  <h3
-                    className="font-serif text-panthera-white leading-tight mb-5"
-                    style={{ fontSize: 'clamp(1.6rem, 2.8vw, 2.6rem)' }}
-                  >
+                  <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-4">Fase {phase.number}</p>
+                  <h3 className="font-serif text-panthera-white leading-tight mb-5" style={{ fontSize: 'clamp(1.6rem, 2.8vw, 2.6rem)' }}>
                     {phase.title}
                   </h3>
-                  <p className="font-sans text-sm text-panthera-white/60 leading-relaxed max-w-lg">
-                    {phase.description}
-                  </p>
+                  <p className="font-sans text-sm text-panthera-white/60 leading-relaxed max-w-lg">{phase.description}</p>
                 </div>
               </div>
             </div>
           ))}
 
-          {/* Closing CTA panel */}
-          <div
-            className="flex-shrink-0 w-screen h-full relative flex items-center justify-center text-center px-6"
-          >
-            <img
-              src="/images/creation_panthera_hand.webp"
-              alt=""
-              aria-hidden="true"
-              className="absolute inset-0 w-full h-full object-cover"
-              style={{ filter: 'grayscale(40%) brightness(0.35)' }}
-            />
+          {/* CTA panel */}
+          <div className="flex-shrink-0 w-screen h-full relative flex items-center justify-center text-center px-6">
+            <img src="/images/creation_panthera_hand.webp" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'grayscale(40%) brightness(0.35)' }} />
             <div className="absolute inset-0 bg-panthera-black/70" aria-hidden="true" />
             <div className="grain-overlay" aria-hidden="true" />
             <div className="relative z-10 max-w-3xl mx-auto">
-              <p
-                className="font-serif text-panthera-white leading-tight mb-12"
-                style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3.5rem)' }}
-              >
+              <p className="font-serif text-panthera-white leading-tight mb-12" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3.5rem)' }}>
                 {apexSystem.closingSlide.text}
               </p>
-              <Button variant="fullScreen" href="#booking">
-                {apexSystem.closingSlide.cta}
-              </Button>
+              <Button variant="fullScreen" href="#booking">{apexSystem.closingSlide.cta}</Button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* MOBILE ï¿½ stacked phases */}
+      {/* MOBILE */}
       <div className="md:hidden">
         {apexSystem.phases.map((phase, i) => (
-          <div
-            key={`mob-${phase.number}`}
-            className="relative border-t border-[rgba(245,245,245,0.08)] py-16 px-6"
-            style={{ minHeight: '70vh' }}
-          >
+          <div key={`mob-${phase.number}`} className="relative border-t border-[rgba(245,245,245,0.08)] py-16 px-6" style={{ minHeight: '70vh' }}>
             <div className="absolute inset-0" aria-hidden="true">
-              <img
-                src={PANEL_IMAGES[i % PANEL_IMAGES.length]}
-                alt=""
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
+              <img src={PANEL_IMAGES[i % PANEL_IMAGES.length]} alt="" className="w-full h-full object-cover" loading="lazy" />
               <div className="absolute inset-0 bg-panthera-deep/85" />
               <div className="grain-overlay" />
             </div>
             <div className="relative z-10 max-w-lg">
-              <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-4">
-                Fase {phase.number}
-              </p>
-              <h3
-                className="font-serif text-panthera-white leading-tight mb-4"
-                style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
-              >
-                {phase.title}
-              </h3>
-              <p className="font-sans text-sm text-panthera-white/60 leading-relaxed">
-                {phase.description}
-              </p>
+              <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-4">Fase {phase.number}</p>
+              <h3 className="font-serif text-panthera-white leading-tight mb-4" style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}>{phase.title}</h3>
+              <p className="font-sans text-sm text-panthera-white/60 leading-relaxed">{phase.description}</p>
             </div>
           </div>
         ))}
-        {/* Mobile CTA */}
         <div className="relative flex flex-col items-center justify-center px-6 py-24 text-center">
-          <img
-            src="/images/creation_panthera_hand.webp"
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ filter: 'grayscale(40%) brightness(0.35)' }}
-          />
+          <img src="/images/creation_panthera_hand.webp" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'grayscale(40%) brightness(0.35)' }} />
           <div className="absolute inset-0 bg-panthera-black/70" aria-hidden="true" />
           <div className="grain-overlay" aria-hidden="true" />
           <div className="relative z-10 max-w-2xl mx-auto">
-            <p
-              className="font-serif text-panthera-white leading-tight mb-10"
-              style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)' }}
-            >
-              {apexSystem.closingSlide.text}
-            </p>
-            <Button variant="fullScreen" href="#booking">
-              {apexSystem.closingSlide.cta}
-            </Button>
+            <p className="font-serif text-panthera-white leading-tight mb-10" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)' }}>{apexSystem.closingSlide.text}</p>
+            <Button variant="fullScreen" href="#booking">{apexSystem.closingSlide.cta}</Button>
           </div>
         </div>
       </div>
