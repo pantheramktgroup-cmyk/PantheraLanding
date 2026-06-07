@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Let Lenis control scroll behavior */
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    @apply bg-panthera-deep text-panthera-white;
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* Semantic headings use the serif font */
+  h1,
+  h2,
+  h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.08;
+  }
+
+  /* Focused ring for accessibility */
+  *:focus-visible {
+    @apply outline outline-2 outline-panthera-green outline-offset-2;
+  }
+}
+
+@layer components {
+  /* Overflow hidden wrapper for SplitType line animations */
+  .split-line-wrapper {
+    overflow: hidden;
+  }
+
+  /* Panthera border utility */
+  .border-panthera {
+    border-color: rgba(245, 245, 245, 0.14);
+  }
+
+  /* Subtle divider line */
+  .divider {
+    @apply w-full border-t border-panthera-border;
+  }
+
+  /* Section padding standard */
+  .section-pad {
+    @apply py-24 md:py-32 lg:py-40;
+  }
+
+  /* Container standard */
+  .container-panthera {
+    @apply mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20;
+  }
+
+  /* Grain overlay */
+  .grain-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 128px 128px;
+    z-index: 1;
+  }
+
+  /* Horizontal scroll track */
+  .h-track {
+    display: flex;
+    flex-wrap: nowrap;
+    will-change: transform;
+  }
+
+  /* Panel — full viewport wide in horizontal scroll */
+  .h-panel {
+    flex-shrink: 0;
+    width: 100vw;
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  /* Gold text gradient for subtle accents */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #B9A46A 0%, #EDE7D8 50%, #B9A46A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Clip path for reveal animations */
+  .clip-inset-top {
+    clip-path: inset(0 0 100% 0);
+  }
+
+  .clip-inset-none {
+    clip-path: inset(0 0 0% 0);
+  }
+}
+
+/* Horizontal scroll hide scrollbar */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* CTA button glow hover */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(227, 247, 141, 0.08);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-primary:hover::after {
+  opacity: 1;
+}

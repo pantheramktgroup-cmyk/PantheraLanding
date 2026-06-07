@@ -1,0 +1,225 @@
+# ESTRUCTURA DE LA LANDING — ORDEN FINAL
+
+La landing debe mantener una estructura parecida a la actual, pero con copy más preciso, estética premium y más interacción.
+
+## 1. Hero
+
+Objetivo:
+Decir en 5 segundos qué ofrece Panthera, para quién y qué resultado busca.
+
+Contenido:
+- Logo.
+- Headline fuerte.
+- Subheadline claro.
+- CTA al calendario.
+- CTA secundario también al calendario o scroll al video, pero la prioridad siempre es booking.
+- Badges de confianza.
+
+Animación:
+- Reveal cinematográfico del headline por líneas.
+- Parallax lento de imagen renacentista.
+- CTA visible y con microinteracción elegante.
+
+CTA:
+Agendar diagnóstico.
+
+## 2. Video / Manifiesto de Manuel
+
+Objetivo:
+Dar autoridad y profundidad humana desde la voz del fundador.
+
+Ubicación:
+Después del hero.
+
+Contenido:
+- Video grande de Manuel.
+- Título breve.
+- Subtítulo que contextualice el problema.
+- Frase destacada lateral.
+- CTA debajo.
+
+No poner el video como único foco del hero. El hero debe convertir incluso si la persona no reproduce el video.
+
+CTA:
+Agendar llamada de diagnóstico.
+
+## 3. Statement de transformación
+
+Objetivo:
+Mantener la esencia de la sección actual, porque se entiende bien.
+
+Contenido:
+- Texto grande, editorial, con frases fragmentadas.
+- Explicar que Panthera convierte un buen negocio en un sistema comercial más predecible.
+
+CTA:
+Agendar diagnóstico.
+
+## 4. Para quién es / no es
+
+Objetivo:
+Filtrar fuerte al avatar correcto.
+
+Debe ser más específico que la versión actual.
+
+Formato sugerido:
+- Dos columnas: “Esto es para vos si” y “Esto NO es para vos si”.
+- En desktop puede tener animación tipo reveal escalonado.
+- En mobile debe ser simple, claro y rápido.
+
+CTA:
+Quiero saber si aplico.
+
+## 5. Problema central
+
+Objetivo:
+Agitar el problema sin exagerar.
+
+Idea central:
+El problema no es que el servicio no funcione. El problema es que el crecimiento todavía depende demasiado del fundador.
+
+Formato:
+- Sección oscura, sobria.
+- Texto editorial con bullets de síntomas.
+- Visual renacentista sutil.
+
+CTA:
+Agendar diagnóstico.
+
+## 6. Panthera APEX System
+
+Objetivo:
+Mostrar el método sin convertirlo en una lista aburrida.
+
+Formato:
+- Scroll horizontal con GSAP ScrollTrigger.
+- Cada fase ocupa una card grande.
+- Línea de progreso.
+- Pinning de sección.
+
+Fases:
+1. Diagnóstico del modelo comercial.
+2. Auditoría del proceso actual.
+3. Arquitectura de captación y filtrado.
+4. Construcción de activos y automatizaciones.
+5. Activación y medición.
+6. Optimización comercial.
+7. Escalabilidad.
+
+Al final del scroll horizontal:
+- Pantalla negra full screen.
+- Frase grande.
+- CTA muy visible.
+
+CTA:
+Agendar diagnóstico.
+
+## 7. Lo que se ordena dentro del sistema
+
+Objetivo:
+Mostrar amplitud sin sonar a checklist de entregables.
+
+No decir “incluye todo esto” como una lista de tareas.
+
+Enfoque:
+Cada pieza cumple una función comercial.
+
+Piezas:
+- Captación.
+- Filtrado.
+- Agenda.
+- Seguimiento.
+- CRM.
+- Automatizaciones.
+- Métricas.
+- Optimización.
+
+Formato:
+- Cards premium.
+- Puede tener scroll horizontal corto o grid con hover.
+
+CTA:
+Ver si mi negocio está listo.
+
+## 8. Panthera vs agencias tradicionales
+
+Objetivo:
+Diferenciar claramente sin sonar agresivo.
+
+Formato:
+- Comparativa elegante.
+- Izquierda: agencia tradicional.
+- Derecha: Panthera.
+- Evitar estética de tabla fría; usar cards editoriales.
+
+CTA:
+Quiero construir mi sistema.
+
+## 9. Testimonios / casos
+
+Objetivo:
+Prueba social.
+
+Formato:
+- Galería horizontal estilo museo.
+- Cards grandes, elegantes.
+- Idealmente con fotos o frames si existen.
+- No saturar con texto.
+
+Al final del carrusel:
+- Pantalla negra full screen.
+- Frase de transición.
+- CTA grande.
+
+CTA:
+Agendar diagnóstico.
+
+## 10. Sobre Panthera
+
+Objetivo:
+Humanizar y posicionar autoridad.
+
+Formato:
+- Fundadores con fotos editoriales.
+- Copy breve.
+- Estética sobria.
+
+CTA:
+Hablar con Panthera.
+
+## 11. FAQ
+
+Objetivo:
+Resolver objeciones.
+
+Usar las FAQ actuales, pero suavizar claims específicos de reducción de CAC, aumento de conversión y resultados en semana 2.
+
+Formato:
+- Accordion elegante.
+- CTA después de algunas preguntas o al final.
+
+CTA:
+Agendar llamada de diagnóstico.
+
+## 12. Calendario / cierre
+
+Objetivo:
+Conversión final.
+
+Texto:
+No mencionar nombres propios. Usar “agendá una llamada con nosotros”.
+
+Debe estar el iframe de GHL.
+
+CTA:
+El propio calendario.
+
+## 13. Footer
+
+Contenido:
+- Logo.
+- Links básicos.
+- Disclaimer Meta/Facebook.
+- Copyright.
+
+Debe ser mínimo, oscuro y elegante.
