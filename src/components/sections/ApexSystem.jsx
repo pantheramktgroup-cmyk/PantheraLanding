@@ -42,15 +42,15 @@ export default function ApexSystem() {
               trigger: pin,
               start: 'top top',
               end: () => `+=${totalWidth}`,
-              scrub: 1,
+              scrub: true,
               pin: true,
               pinSpacing: true,
               anticipatePin: 1,
               invalidateOnRefresh: true,
               snap: {
                 snapTo: 1 / (TOTAL_PANELS - 1),
-                duration: { min: 0.3, max: 0.7 },
-                delay: 0.05,
+                duration: { min: 0.5, max: 0.9 },
+                delay: 0.15,
                 ease: 'power2.inOut',
               },
               onUpdate: (self) => {
