@@ -147,7 +147,7 @@ export default function Testimonials() {
             </div>
           ))}
           <div className="flex-shrink-0 w-screen h-full flex flex-col items-center justify-center relative bg-panthera-black px-6 text-center">
-            <img src="/images/mask_filter_application.webp" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'brightness(0.25)' }} loading="lazy" />
+            <img src="/images/testimonial_cta_case_table.webp" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'brightness(0.25)' }} loading="lazy" />
             <div className="absolute inset-0 bg-panthera-black/70" aria-hidden="true" />
             <div className="grain-overlay" aria-hidden="true" />
             <div className="relative z-10 max-w-3xl mx-auto">
@@ -167,7 +167,7 @@ export default function Testimonials() {
           </div>
         ))}
         <div className="relative flex flex-col items-center justify-center px-6 py-24 text-center bg-panthera-black border-t border-[rgba(245,245,245,0.06)]">
-          <img src="/images/mask_filter_application.webp" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'brightness(0.25)' }} loading="lazy" />
+          <img src="/images/testimonial_cta_case_table.webp" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'brightness(0.25)' }} loading="lazy" />
           <div className="absolute inset-0 bg-panthera-black/70" aria-hidden="true" />
           <div className="grain-overlay" aria-hidden="true" />
           <div className="relative z-10 max-w-3xl mx-auto">
