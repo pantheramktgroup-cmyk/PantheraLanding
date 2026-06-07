@@ -7,15 +7,20 @@
  */
 
 import sharp from 'sharp'
-import { existsSync, mkdirSync } from 'fs'
+import { existsSync, mkdirSync, copyFileSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = resolve(__dirname, '..')
 
+// Primary output: src/assets/images (for imports)
 const OUT_DIR = resolve(root, 'src/assets/images')
 if (!existsSync(OUT_DIR)) mkdirSync(OUT_DIR, { recursive: true })
+
+// Public output: assets/images (served at /images/* in dev + prod)
+const PUBLIC_DIR = resolve(root, 'assets/images')
+if (!existsSync(PUBLIC_DIR)) mkdirSync(PUBLIC_DIR, { recursive: true })
 
 const conversions = [
   ['01_hero_panthera_strategy_room.png',  'hero_panthera_strategy_room.webp'],
@@ -27,6 +32,12 @@ const conversions = [
   ['07_renaissance_hands_mirror.png',     'renaissance_hands_mirror.webp'],
   ['08_renaissance_watch.png',            'renaissance_watch.webp'],
   ['09_vsl_thumbnail_manu.png',           'vsl_thumbnail_manu.webp'],
+  // Testimonial custom covers
+  ['testimonial_gaston_cover.png',        'testimonial_gaston_cover.webp'],
+  ['testimonial_laura_cover.png',         'testimonial_laura_cover.webp'],
+  ['testimonial_lucas_cover.png',         'testimonial_lucas_cover.webp'],
+  ['testimonial_jose_cover.png',          'testimonial_jose_cover.webp'],
+  ['testimonial_hilda_cover.png',         'testimonial_hilda_cover.webp'],
 ]
 
 let ok = 0
@@ -35,6 +46,7 @@ let skipped = 0
 for (const [src, dest] of conversions) {
   const srcPath = resolve(root, 'src/assets/raw-images', src)
   const destPath = resolve(OUT_DIR, dest)
+  const publicPath = resolve(PUBLIC_DIR, dest)
 
   if (!existsSync(srcPath)) {
     console.warn(`⚠️  SKIP (not found): ${src}`)
@@ -46,7 +58,9 @@ for (const [src, dest] of conversions) {
     await sharp(srcPath)
       .webp({ quality: 85 })
       .toFile(destPath)
-    console.log(`✓  ${src} → ${dest}`)
+    // Also copy to public dir so it's served at /images/
+    copyFileSync(destPath, publicPath)
+    console.log(`✓  ${src} → ${dest} (src + public)`)
     ok++
   } catch (err) {
     console.error(`✗  Error converting ${src}: ${err.message}`)

@@ -9,8 +9,6 @@ const { testimonials } = landingCopy
 // Per-card state — each card tracks whether it's playing
 function TestimonialCard({ c }) {
   const [playing, setPlaying] = useState(false)
-  const thumbHD = `https://img.youtube.com/vi/${c.youtubeId}/maxresdefault.jpg`
-  const thumbFallback = `https://img.youtube.com/vi/${c.youtubeId}/hqdefault.jpg`
 
   return (
     <div className="relative w-full h-full flex flex-col md:flex-row min-h-screen">
@@ -22,16 +20,15 @@ function TestimonialCard({ c }) {
             className="absolute inset-0 w-full h-full group cursor-pointer"
             aria-label={`Reproducir ${c.videoTitle}`}
           >
-            {/* YouTube thumbnail */}
+            {/* Custom cover image */}
             <img
-              src={thumbHD}
+              src={c.coverImage}
               alt={c.videoTitle}
               className="absolute inset-0 w-full h-full object-cover"
-              onError={(e) => { e.target.src = thumbFallback }}
               loading="lazy"
             />
-            {/* Dark overlay */}
-            <div className="absolute inset-0 bg-panthera-black/65" />
+            {/* Dark overlay — premium, oscuro */}
+            <div className="absolute inset-0 bg-panthera-black/60" />
             {/* Grain texture */}
             <div className="grain-overlay" aria-hidden="true" />
             {/* Frame */}

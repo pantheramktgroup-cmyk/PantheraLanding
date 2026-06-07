@@ -262,6 +262,7 @@ export const landingCopy = {
         youtubeUrl: 'https://youtu.be/tkq3PO2-yU4',
         youtubeEmbedUrl: 'https://www.youtube.com/embed/tkq3PO2-yU4',
         videoTitle: 'Testimonio de Gastón Hendlin',
+        coverImage: '/images/testimonial_gaston_cover.webp',
       },
       {
         name: 'Laura Sánchez',
@@ -271,6 +272,7 @@ export const landingCopy = {
         youtubeUrl: 'https://youtu.be/iMTN4h5Gr4E',
         youtubeEmbedUrl: 'https://www.youtube.com/embed/iMTN4h5Gr4E',
         videoTitle: 'Testimonio de Laura',
+        coverImage: '/images/testimonial_laura_cover.webp',
       },
       {
         name: 'Lucas Casalins',
@@ -280,6 +282,7 @@ export const landingCopy = {
         youtubeUrl: 'https://youtu.be/A34a5JF5iPQ',
         youtubeEmbedUrl: 'https://www.youtube.com/embed/A34a5JF5iPQ',
         videoTitle: 'Testimonio de Lucas',
+        coverImage: '/images/testimonial_lucas_cover.webp',
       },
       {
         name: 'José Navas',
@@ -289,6 +292,7 @@ export const landingCopy = {
         youtubeUrl: 'https://youtu.be/HKRIU34pW5g',
         youtubeEmbedUrl: 'https://www.youtube.com/embed/HKRIU34pW5g',
         videoTitle: 'Testimonio de José Navas',
+        coverImage: '/images/testimonial_jose_cover.webp',
       },
       {
         name: 'Hilda Arjona',
@@ -298,6 +302,7 @@ export const landingCopy = {
         youtubeUrl: 'https://youtu.be/XqDvbuOqQ7Q',
         youtubeEmbedUrl: 'https://www.youtube.com/embed/XqDvbuOqQ7Q',
         videoTitle: 'Testimonio de Hilda Arjona',
+        coverImage: '/images/testimonial_hilda_cover.webp',
       },
     ],
     closingPanel: {
