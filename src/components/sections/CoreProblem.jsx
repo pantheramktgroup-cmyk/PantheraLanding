@@ -77,7 +77,7 @@ export default function CoreProblem() {
       {/* Renacentista image — subtle background */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <img
-          src="/renacentismo/4.png"
+          src="/images/renaissance_watch.webp"
           alt=""
           className="absolute right-0 top-0 w-1/2 h-full object-cover object-left opacity-[0.06]"
           loading="lazy"

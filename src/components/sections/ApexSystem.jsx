@@ -8,13 +8,13 @@ const { apexSystem } = landingCopy
 
 // Renacentista images for panel backgrounds (cycle through available ones)
 const PANEL_IMAGES = [
-  '/renacentismo/2.png',
-  '/renacentismo/4.png',
-  '/renacentismo/6.png',
+  '/images/renaissance_hands_mirror.webp',
+  '/images/renaissance_watch.webp',
+  '/images/apex_system_renaissance_mural.webp',
   '/renacentismo/8.png',
-  '/renacentismo/2.png',
-  '/renacentismo/4.png',
-  '/renacentismo/6.png',
+  '/images/system_table_top_view.webp',
+  '/images/renaissance_hands_mirror.webp',
+  '/images/renaissance_watch.webp',
 ]
 
 // Total panels = phases + 1 closing CTA panel
@@ -188,17 +188,14 @@ export default function ApexSystem() {
           className="flex-shrink-0 w-full md:w-screen relative flex items-center justify-center text-center px-6"
           style={{ minHeight: '100vh' }}
         >
-          {/* creation_panthera_hand.webp background — fallback to renacentismo */}
-          <picture>
-            <source srcSet="/images/creation_panthera_hand.webp" type="image/webp" />
-            <img
-              src="/renacentismo/2.png"
-              alt=""
-              aria-hidden="true"
-              className="absolute inset-0 w-full h-full object-cover"
-              style={{ filter: 'grayscale(40%) brightness(0.35)' }}
-            />
-          </picture>
+          {/* creation_panthera_hand.webp background */}
+          <img
+            src="/images/creation_panthera_hand.webp"
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ filter: 'grayscale(40%) brightness(0.35)' }}
+          />
           <div className="absolute inset-0 bg-panthera-black/70" aria-hidden="true" />
           <div className="grain-overlay" aria-hidden="true" />
           <div className="relative z-10 max-w-3xl mx-auto">

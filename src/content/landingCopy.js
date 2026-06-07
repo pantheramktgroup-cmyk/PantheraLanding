@@ -261,9 +261,7 @@ export const landingCopy = {
           'Tras pasar por varias agencias y frustrado de hacer el trabajo operativo, necesitaba un sistema que filtrara mejor y le quitara peso comercial. Reestructuramos su ecosistema digital para ordenar captación, seguimiento y calidad de oportunidades.',
         youtubeUrl: 'https://youtu.be/tkq3PO2-yU4',
         youtubeEmbedUrl: 'https://www.youtube.com/embed/tkq3PO2-yU4',
-        youtubeId: 'tkq3PO2-yU4',
         videoTitle: 'Testimonio de Gastón Hendlin',
-        coverTitle: 'De referidos a sistema comercial',
       },
       {
         name: 'Laura Sánchez',
@@ -272,9 +270,7 @@ export const landingCopy = {
           'Venía de depender de referidos y de sentirse poco visible para el mercado correcto. Construimos una estructura para mejorar posicionamiento, autoridad y llegada a prospectos fuera de su círculo cercano.',
         youtubeUrl: 'https://youtu.be/iMTN4h5Gr4E',
         youtubeEmbedUrl: 'https://www.youtube.com/embed/iMTN4h5Gr4E',
-        youtubeId: 'iMTN4h5Gr4E',
         videoTitle: 'Testimonio de Laura',
-        coverTitle: 'Visibilidad con estructura',
       },
       {
         name: 'Lucas Casalins',
@@ -283,9 +279,7 @@ export const landingCopy = {
           'Llegó con caos organizativo y experiencias previas muy malas con agencias. El sistema le permitió ordenar su operación comercial, recuperar tranquilidad y tener mayor claridad para reinvertir.',
         youtubeUrl: 'https://youtu.be/A34a5JF5iPQ',
         youtubeEmbedUrl: 'https://www.youtube.com/embed/A34a5JF5iPQ',
-        youtubeId: 'A34a5JF5iPQ',
         videoTitle: 'Testimonio de Lucas',
-        coverTitle: 'Proceso comercial más claro',
       },
       {
         name: 'José Navas',
@@ -294,9 +288,7 @@ export const landingCopy = {
           'Después de años intentando escalar en digital, el problema era la carga operativa de prospección y seguimiento. Panthera ordenó la captación y el seguimiento comercial para liberar tiempo y mejorar oportunidades.',
         youtubeUrl: 'https://youtu.be/HKRIU34pW5g',
         youtubeEmbedUrl: 'https://www.youtube.com/embed/HKRIU34pW5g',
-        youtubeId: 'HKRIU34pW5g',
         videoTitle: 'Testimonio de José Navas',
-        coverTitle: 'Menos operación, más sistema',
       },
       {
         name: 'Hilda Arjona',
@@ -305,9 +297,7 @@ export const landingCopy = {
           'Estaba agotada de sostener copy, edición, estrategia y ejecución sin resultados consistentes. El trabajo se enfocó en corregir oferta, mensaje y estructura para atraer mejor al perfil correcto.',
         youtubeUrl: 'https://youtu.be/XqDvbuOqQ7Q',
         youtubeEmbedUrl: 'https://www.youtube.com/embed/XqDvbuOqQ7Q',
-        youtubeId: 'XqDvbuOqQ7Q',
         videoTitle: 'Testimonio de Hilda Arjona',
-        coverTitle: 'Oferta, mensaje y captación',
       },
     ],
     closingPanel: {

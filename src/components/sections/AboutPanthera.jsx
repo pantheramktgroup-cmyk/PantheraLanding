@@ -106,7 +106,7 @@ export default function AboutPanthera() {
             {/* Renacentismo 1 — offset top */}
             <div className="relative overflow-hidden mt-8" style={{ minHeight: '260px' }}>
               <img
-                src="/renacentismo/4.png"
+                src="/images/renaissance_watch.webp"
                 alt=""
                 aria-hidden="true"
                 className="collage-img absolute inset-0 w-full h-full object-cover scale-[1.08]"
@@ -120,7 +120,7 @@ export default function AboutPanthera() {
             {/* Renacentismo 2 */}
             <div className="relative overflow-hidden -mt-4" style={{ minHeight: '200px' }}>
               <img
-                src="/renacentismo/6.png"
+                src="/images/renaissance_hands_mirror.webp"
                 alt=""
                 aria-hidden="true"
                 className="collage-img absolute inset-0 w-full h-full object-cover scale-[1.08]"

@@ -68,7 +68,7 @@ export default function TransformationStatement() {
       <div className="absolute inset-y-0 right-0 w-[45%] overflow-hidden pointer-events-none hidden lg:block" aria-hidden="true">
         <img
           ref={imgRef}
-          src="/renacentismo/4.png"
+          src="/images/renaissance_watch.webp"
           alt=""
           className="w-full h-full object-cover object-left grayscale opacity-20 scale-[1.1]"
           loading="lazy"
