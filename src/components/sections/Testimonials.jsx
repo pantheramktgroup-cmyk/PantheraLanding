@@ -113,6 +113,12 @@ export default function Testimonials() {
               pinSpacing: true,
               anticipatePin: 1,
               invalidateOnRefresh: true,
+              snap: {
+                snapTo: 1 / (totalPanels - 1),
+                duration: { min: 0.3, max: 0.7 },
+                delay: 0.05,
+                ease: 'power2.inOut',
+              },
               onUpdate: (self) => {
                 const idx = Math.min(Math.floor(self.progress * totalPanels), totalPanels - 1)
                 setCurrentCard(idx)
@@ -129,7 +135,7 @@ export default function Testimonials() {
 
   return (
     <section className="bg-panthera-black">
-      {/* INTRO — vertical, NOT pinned, NO overlap con navbar */}
+      {/* INTRO ï¿½ vertical, NOT pinned, NO overlap con navbar */}
       <div className="container-panthera pt-28 md:pt-36 pb-20 md:pb-28">
         <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-5">
           {testimonials.eyebrow}
@@ -145,8 +151,8 @@ export default function Testimonials() {
         </p>
       </div>
 
-      {/* PINNED HORIZONTAL SCROLL — desktop only */}
-      <div ref={pinRef} className="relative overflow-hidden hidden md:block" style={{ height: '100vh' }}>
+      {/* PINNED HORIZONTAL SCROLL ï¿½ desktop only */}
+      <div ref={pinRef} className="relative hidden md:block" style={{ height: '100vh', overflow: 'clip' }}>
         {/* Counter top-right */}
         <div className="absolute top-8 right-0 z-20 pointer-events-none w-full flex justify-end">
           <div style={{ paddingRight: 'clamp(24px, 5vw, 80px)' }}>
@@ -200,7 +206,7 @@ export default function Testimonials() {
         </div>
       </div>
 
-      {/* MOBILE — stacked cards */}
+      {/* MOBILE ï¿½ stacked cards */}
       <div className="md:hidden">
         {testimonials.cases.map((c) => (
           <div key={`mob-${c.name}`} className="border-t border-[rgba(245,245,245,0.06)]" style={{ minHeight: '100svh' }}>

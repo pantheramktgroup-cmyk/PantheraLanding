@@ -47,6 +47,12 @@ export default function ApexSystem() {
               pinSpacing: true,
               anticipatePin: 1,
               invalidateOnRefresh: true,
+              snap: {
+                snapTo: 1 / (TOTAL_PANELS - 1),
+                duration: { min: 0.3, max: 0.7 },
+                delay: 0.05,
+                ease: 'power2.inOut',
+              },
               onUpdate: (self) => {
                 const idx = Math.min(Math.floor(self.progress * TOTAL_PANELS), TOTAL_PANELS - 1)
                 setCurrentPhase(idx)
@@ -66,7 +72,7 @@ export default function ApexSystem() {
 
   return (
     <section className="bg-panthera-deep">
-      {/* INTRO — vertical, NOT pinned, buen espacio del navbar */}
+      {/* INTRO ï¿½ vertical, NOT pinned, buen espacio del navbar */}
       <div className="container-panthera pt-28 md:pt-36 pb-20 md:pb-28">
         <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-5">
           {apexSystem.eyebrow}
@@ -82,10 +88,10 @@ export default function ApexSystem() {
         </p>
       </div>
 
-      {/* PINNED HORIZONTAL SCROLL — desktop */}
-      <div ref={pinRef} className="relative overflow-hidden hidden md:block" style={{ height: '100vh' }}>
-        {/* Counter + progress — top of pinned area, well-spaced */}
-        <div className="absolute top-0 left-0 right-0 z-30 pointer-events-none">
+      {/* PINNED HORIZONTAL SCROLL â€” desktop */}
+      <div ref={pinRef} className="relative hidden md:block" style={{ height: '100vh', overflow: 'visible' }}>
+        {/* Counter + progress â€” clears sticky navbar (88px) + breathing room */}
+        <div className="absolute left-0 right-0 z-30 pointer-events-none" style={{ top: 'calc(88px + 1.5rem)' }}>
           <div className="container-panthera pt-10 flex items-center justify-between">
             <div className="text-panthera-ash/40 font-sans text-[11px] uppercase tracking-[0.15em]">
               {apexSystem.eyebrow}
@@ -134,7 +140,7 @@ export default function ApexSystem() {
                 <div className="grain-overlay" />
               </div>
 
-              {/* Phase content — lower third, well clear of counter */}
+              {/* Phase content ï¿½ lower third, well clear of counter */}
               <div className="absolute bottom-0 left-0 right-0 container-panthera pb-16 md:pb-20">
                 {/* Ghost number */}
                 <p
@@ -190,7 +196,7 @@ export default function ApexSystem() {
         </div>
       </div>
 
-      {/* MOBILE — stacked phases */}
+      {/* MOBILE ï¿½ stacked phases */}
       <div className="md:hidden">
         {apexSystem.phases.map((phase, i) => (
           <div
