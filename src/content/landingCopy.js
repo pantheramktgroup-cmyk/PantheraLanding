@@ -253,6 +253,8 @@ export const landingCopy = {
   testimonials: {
     eyebrow: 'Casos reales',
     headline: 'Negocios expertos que dejaron de operar desde la improvisación.',
+    subheadline:
+      'Historias de negocios que ya tenían valor, experiencia y mercado, pero necesitaban ordenar su captación, filtrado, seguimiento y conversión para crecer con más claridad.',
     cases: [
       {
         name: 'Gastón Hendlin',
