@@ -6,15 +6,19 @@ import Button from '../ui/Button'
 
 const { systemPieces } = landingCopy
 
-const PIECE_IMAGES = [
-  '/renacentismo/2.png',
-  '/renacentismo/4.png',
-  '/renacentismo/6.png',
-  '/renacentismo/8.png',
-  '/renacentismo/2.png',
-  '/renacentismo/4.png',
-  '/renacentismo/6.png',
-  '/renacentismo/8.png',
+const muralBg = '/images/apex_system_renaissance_mural.webp'
+
+// 4-column × 2-row grid: each card shows a different region of the mural
+// background-size: 400% wide × 200% tall (4 cols × 2 rows)
+const MURAL_POSITIONS = [
+  '0% 0%',     // row 1, col 1
+  '33.33% 0%', // row 1, col 2
+  '66.66% 0%', // row 1, col 3
+  '100% 0%',   // row 1, col 4
+  '0% 100%',   // row 2, col 1
+  '33.33% 100%',
+  '66.66% 100%',
+  '100% 100%',
 ]
 
 export default function SystemPieces() {
@@ -43,7 +47,7 @@ export default function SystemPieces() {
   )
 
   return (
-    <section className="bg-panthera-deep section-pad overflow-hidden">
+    <section className="bg-panthera-black section-pad overflow-hidden">
       <div ref={containerRef} className="container-panthera">
         {/* Header */}
         <div className="max-w-xl mb-14">
@@ -61,40 +65,39 @@ export default function SystemPieces() {
           </p>
         </div>
 
-        {/* Editorial 4×2 grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 border-t border-l border-[rgba(245,245,245,0.06)]">
+        {/* Mural grid — 4×2, each card is one fragment of the same image */}
+        <div className="grid grid-cols-2 md:grid-cols-4 border-t border-l border-[rgba(245,245,245,0.08)]">
           {systemPieces.pieces.map((piece, i) => (
             <div
               key={piece.title}
-              className="piece-card group relative border-r border-b border-[rgba(245,245,245,0.06)] overflow-hidden cursor-default"
-              style={{ minHeight: '220px' }}
+              className="piece-card group relative border-r border-b border-[rgba(245,245,245,0.08)] overflow-hidden cursor-default"
+              style={{ minHeight: '240px' }}
             >
-              {/* Renacentista hover background */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <img
-                  src={PIECE_IMAGES[i]}
-                  alt=""
-                  aria-hidden="true"
-                  className="w-full h-full object-cover grayscale contrast-110"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-panthera-black/80" />
-              </div>
+              {/* Mural fragment as background */}
+              <div
+                className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-105"
+                style={{
+                  backgroundImage: `url('${muralBg}')`,
+                  backgroundSize: '400% 200%',
+                  backgroundPosition: MURAL_POSITIONS[i],
+                  filter: 'grayscale(60%) brightness(0.5)',
+                }}
+              />
+              {/* Overlay: dimmer at rest, slightly lighter on hover */}
+              <div className="absolute inset-0 bg-panthera-black/70 group-hover:bg-panthera-black/50 transition-colors duration-500" />
+              <div className="grain-overlay opacity-50" aria-hidden="true" />
 
               {/* Content */}
-              <div className="relative z-10 p-6 md:p-8 flex flex-col justify-between h-full">
-                <span className="font-sans text-[10px] text-panthera-ash/40 tabular-nums">
+              <div className="relative z-10 p-6 md:p-8 flex flex-col justify-between h-full" style={{ minHeight: '240px' }}>
+                <span className="font-sans text-[10px] text-panthera-green/60 tabular-nums">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <div className="mt-auto">
-                  {/* Accent line on hover */}
                   <div className="w-5 h-px bg-panthera-green mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <h3
-                    className="font-serif text-xl md:text-2xl text-panthera-white group-hover:text-panthera-cream transition-colors duration-300 mb-2"
-                  >
+                  <h3 className="font-serif text-xl md:text-2xl text-panthera-white group-hover:text-panthera-cream transition-colors duration-300 mb-2">
                     {piece.title}
                   </h3>
-                  <p className="font-sans text-xs text-panthera-ash leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75">
+                  <p className="font-sans text-xs text-panthera-ash/80 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75">
                     {piece.description}
                   </p>
                 </div>

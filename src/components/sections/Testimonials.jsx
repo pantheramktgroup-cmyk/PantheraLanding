@@ -115,8 +115,8 @@ export default function Testimonials() {
                     src={`${c.youtubeEmbedUrl}?rel=0&modestbranding=1`}
                     title={c.videoTitle}
                     className="absolute inset-0 w-full h-full"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    style={{ border: 'none' }}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
                   />
                 ) : (
@@ -169,17 +169,21 @@ export default function Testimonials() {
 
         {/* Last panel: CTA fullscreen — part of the same horizontal track */}
         <div
-          className="flex-shrink-0 w-full md:w-screen flex flex-col items-center justify-center relative bg-panthera-deep px-6 text-center py-24 md:py-0"
+          className="flex-shrink-0 w-full md:w-screen flex flex-col items-center justify-center relative bg-panthera-black px-6 text-center py-24 md:py-0"
           style={{ minHeight: '100vh' }}
         >
-          <img
-            src="/renacentismo/6.png"
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover opacity-[0.07]"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-panthera-deep/80" aria-hidden="true" />
+          {/* mask_filter_application.webp background — fallback to renacentismo */}
+          <picture>
+            <source srcSet="/images/mask_filter_application.webp" type="image/webp" />
+            <img
+              src="/renacentismo/6.png"
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 w-full h-full object-cover opacity-[0.18]"
+              loading="lazy"
+            />
+          </picture>
+          <div className="absolute inset-0 bg-panthera-black/75" aria-hidden="true" />
           <div className="grain-overlay" aria-hidden="true" />
           <div className="relative z-10 max-w-3xl mx-auto">
             <p

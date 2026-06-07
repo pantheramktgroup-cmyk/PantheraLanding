@@ -5,6 +5,8 @@ import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { landingCopy } from '../../content/landingCopy'
 import Button from '../ui/Button'
 
+const heroBg = '/images/hero_panthera_strategy_room.webp'
+
 const { hero } = landingCopy
 
 export default function Hero() {
@@ -69,7 +71,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-0">
         <img
           ref={imageRef}
-          src="/renacentismo/2.png"
+          src={heroBg}
           alt=""
           aria-hidden="true"
           className="w-full h-full object-cover object-center scale-[1.08]"
@@ -120,12 +122,9 @@ export default function Hero() {
             {hero.subheadline}
           </p>
 
-          <div ref={ctaRef} className="flex flex-wrap items-center gap-4">
+          <div ref={ctaRef}>
             <Button variant="primary" href="#booking">
               {hero.ctaPrimary}
-            </Button>
-            <Button variant="ghost" href="#booking">
-              {hero.ctaSecondary}
             </Button>
           </div>
         </div>

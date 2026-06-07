@@ -82,6 +82,23 @@
     width: 100vw;
     min-height: 100vh;
   }
+
+  /* GHL calendar iframe — responsive height */
+  .booking-iframe {
+    width: 100%;
+    border: none;
+    display: block;
+    overflow: visible;
+    height: 1100px;
+    min-height: 1100px;
+  }
+
+  @media (min-width: 768px) {
+    .booking-iframe {
+      height: 950px;
+      min-height: 950px;
+    }
+  }
 }
 
 @layer utilities {

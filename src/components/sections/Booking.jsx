@@ -32,7 +32,7 @@ export default function Booking() {
   return (
     <section
       id="booking"
-      className="bg-panthera-deep overflow-hidden"
+      className="bg-panthera-black"
     >
       <div ref={containerRef} className="container-panthera pt-20 md:pt-28 pb-20">
         {/* Eyebrow + headline above calendar — minimal */}
@@ -48,22 +48,21 @@ export default function Booking() {
           </h2>
         </div>
 
-        {/* Calendar — full width, integrated look */}
+        {/* Calendar — full width, no overflow hidden, no fixed heights that clip */}
         <div
           ref={calendarRef}
-          className="mx-auto overflow-hidden"
           style={{
-            maxWidth: '960px',
-            border: '1px solid rgba(245,245,245,0.08)',
-            background: 'rgba(8,8,7,0.6)',
+            width: '100%',
+            maxWidth: '1200px',
+            margin: '0 auto',
+            overflow: 'visible',
           }}
         >
           <iframe
             src={booking.calendarSrc}
-            style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '720px', display: 'block' }}
-            scrolling="no"
-            id={`${booking.calendarId}_1780714273916`}
             title="Calendario de diagnóstico Panthera"
+            id={`${booking.calendarId}_booking`}
+            className="booking-iframe"
             loading="lazy"
           />
         </div>

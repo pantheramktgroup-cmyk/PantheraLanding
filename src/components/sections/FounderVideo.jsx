@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { gsap, useGSAP } from '../../lib/gsap'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { landingCopy } from '../../content/landingCopy'
@@ -6,8 +6,11 @@ import Button from '../ui/Button'
 
 const { video } = landingCopy
 
+const vslThumbnail = '/images/vsl_thumbnail_manu.webp'
+
 export default function FounderVideo() {
   const containerRef = useRef(null)
+  const [playing, setPlaying] = useState(false)
   const prefersReduced = usePrefersReducedMotion()
 
   useGSAP(
@@ -32,18 +35,8 @@ export default function FounderVideo() {
   )
 
   return (
-    <section className="relative bg-panthera-deep section-pad overflow-hidden">
-      {/* Subtle renacentista bg */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <img
-          src="/renacentismo/8.png"
-          alt=""
-          className="w-full h-full object-cover opacity-[0.05]"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-panthera-deep/80" />
-        <div className="grain-overlay" />
-      </div>
+    <section className="relative bg-panthera-black section-pad overflow-hidden">
+      <div className="grain-overlay" aria-hidden="true" />
 
       <div ref={containerRef} className="relative z-10 container-panthera">
         {/* Centered header */}
@@ -59,22 +52,59 @@ export default function FounderVideo() {
           </h2>
         </div>
 
-        {/* Video — centered, large, premium frame */}
+        {/* Video player — centered, large, premium frame */}
         <div className="reveal-el max-w-[980px] mx-auto">
           <div
             className="relative w-full overflow-hidden"
-            style={{ border: '1px solid rgba(245,245,245,0.1)', borderRadius: '2px' }}
+            style={{
+              aspectRatio: '16/9',
+              border: '1px solid rgba(245,245,245,0.1)',
+              borderRadius: '2px',
+              background: '#000',
+            }}
           >
-            <video
-              controls
-              playsInline
-              poster={video.videoPoster}
-              className="w-full block bg-panthera-black"
-              style={{ aspectRatio: '16/9' }}
-            >
-              <source src={video.videoSrc} type="video/mp4" />
-              Tu navegador no soporta la reproducción de video.
-            </video>
+            {!playing ? (
+              /* Thumbnail overlay with play button */
+              <button
+                onClick={() => setPlaying(true)}
+                className="absolute inset-0 w-full h-full group cursor-pointer"
+                aria-label="Reproducir video"
+              >
+                {/* Thumbnail image */}
+                <img
+                  src={vslThumbnail}
+                  alt="Miniatura del video Manifiesto Panthera"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-panthera-black/50 group-hover:bg-panthera-black/40 transition-colors duration-300" />
+                {/* Play button */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div
+                    className="flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20 group-hover:bg-white/20 transition-all duration-300"
+                    style={{ width: '80px', height: '80px' }}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-white ml-1">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+                {/* Label */}
+                <p className="absolute bottom-6 left-0 right-0 text-center font-sans text-[10px] uppercase tracking-[0.2em] text-white/40">
+                  Ver manifiesto
+                </p>
+              </button>
+            ) : (
+              /* Google Drive iframe */
+              <iframe
+                src={video.videoEmbedUrl}
+                title="Manifiesto Panthera"
+                allow="autoplay; fullscreen"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full"
+                style={{ border: 'none' }}
+              />
+            )}
           </div>
         </div>
 

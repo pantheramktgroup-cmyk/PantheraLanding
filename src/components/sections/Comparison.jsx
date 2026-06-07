@@ -39,15 +39,20 @@ export default function Comparison() {
   )
 
   return (
-    <section className="relative overflow-hidden bg-panthera-deep section-pad">
-      {/* Renacentista center background */}
+    <section className="relative overflow-hidden bg-panthera-black section-pad">
+      {/* panthera_vs_agency_contrast.webp background — fallback to renacentismo */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <img
-          src="/renacentismo/6.png"
-          alt=""
-          className="absolute left-1/2 top-0 -translate-x-1/2 h-full w-auto object-cover opacity-[0.06]"
-          loading="lazy"
-        />
+        <picture>
+          <source srcSet="/images/panthera_vs_agency_contrast.webp" type="image/webp" />
+          <img
+            src="/renacentismo/6.png"
+            alt=""
+            className="w-full h-full object-cover"
+            style={{ filter: 'grayscale(50%) brightness(0.25)' }}
+            loading="lazy"
+          />
+        </picture>
+        <div className="absolute inset-0 bg-panthera-black/70" />
       </div>
 
       <div ref={containerRef} className="relative z-10 container-panthera">
@@ -67,20 +72,20 @@ export default function Comparison() {
           </p>
         </div>
 
-        {/* Manifesto two-panel */}
-        <div className="grid md:grid-cols-2 gap-px bg-[rgba(245,245,245,0.06)] mb-16">
-          {/* Traditional — dimmed */}
-          <div className="bg-panthera-deep p-10 md:p-14">
-            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-ash/50 mb-8">
+        {/* Manifesto two-panel — better contrast on both sides */}
+        <div className="grid md:grid-cols-2 gap-px bg-[rgba(245,245,245,0.08)] mb-16">
+          {/* Traditional — visible but dimmed / secondary hierarchy */}
+          <div className="bg-[rgba(18,18,17,0.85)] p-10 md:p-14 backdrop-blur-sm">
+            <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-ash/70 mb-8">
               {comparison.traditional.title}
             </p>
             <ul className="space-y-5">
               {comparison.traditional.items.map((item, i) => (
                 <li key={i} className="traditional-item flex items-start gap-4">
-                  <span className="font-sans text-xs text-panthera-ash/30 tabular-nums shrink-0 pt-0.5">
+                  <span className="font-sans text-xs text-panthera-ash/50 tabular-nums shrink-0 pt-0.5">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <span className="font-sans text-sm text-panthera-ash/50 leading-snug">
+                  <span className="font-sans text-sm text-panthera-ash/70 leading-snug">
                     {item}
                   </span>
                 </li>
@@ -88,8 +93,8 @@ export default function Comparison() {
             </ul>
           </div>
 
-          {/* Panthera — illuminated */}
-          <div className="bg-[rgba(227,247,141,0.03)] p-10 md:p-14 border-l border-[rgba(227,247,141,0.08)]">
+          {/* Panthera — illuminated, higher hierarchy */}
+          <div className="bg-[rgba(227,247,141,0.04)] p-10 md:p-14 backdrop-blur-sm border-l border-[rgba(227,247,141,0.12)]">
             <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-8">
               {comparison.panthera.title}
             </p>

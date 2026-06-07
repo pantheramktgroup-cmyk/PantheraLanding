@@ -188,10 +188,19 @@ export default function ApexSystem() {
           className="flex-shrink-0 w-full md:w-screen relative flex items-center justify-center text-center px-6"
           style={{ minHeight: '100vh' }}
         >
-          <div className="absolute inset-0" aria-hidden="true">
-            <div className="absolute inset-0 bg-panthera-deep" />
-            <div className="grain-overlay" />
-          </div>
+          {/* creation_panthera_hand.webp background — fallback to renacentismo */}
+          <picture>
+            <source srcSet="/images/creation_panthera_hand.webp" type="image/webp" />
+            <img
+              src="/renacentismo/2.png"
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ filter: 'grayscale(40%) brightness(0.35)' }}
+            />
+          </picture>
+          <div className="absolute inset-0 bg-panthera-black/70" aria-hidden="true" />
+          <div className="grain-overlay" aria-hidden="true" />
           <div className="relative z-10 max-w-3xl mx-auto">
             <p
               className="font-serif text-panthera-white leading-tight mb-12"

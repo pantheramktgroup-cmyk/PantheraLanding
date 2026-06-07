@@ -40,9 +40,9 @@ export const landingCopy = {
     headline: 'Si ya vendés, pero cada mes volvés a empezar de cero, esto es para vos.',
     pullQuote: 'Escalar no debería exigirte más esfuerzo. Debería exigirte mejor infraestructura.',
     cta: 'Agendar llamada de diagnóstico',
-    // VSL local: served from /videos/VSL.mp4 (assets/videos/VSL.mp4)
-    videoSrc: '/videos/VSL.mp4',
-    videoPoster: '/renacentismo/2.png',
+    // VSL via Google Drive embed (file too large for git)
+    videoEmbedUrl: 'https://drive.google.com/file/d/1wpinQCvZpFmy0r0u6fiGtdZEWKhaXctM/preview',
+    // Thumbnail shown before play — import handled in component
   },
 
   // ─── STATEMENT DE TRANSFORMACIÓN ──────────────────────────────────────────
@@ -259,50 +259,45 @@ export const landingCopy = {
         role: 'Coach Financiero y Ejecutivo',
         description:
           'Tras pasar por varias agencias y frustrado de hacer el trabajo operativo, necesitaba un sistema que filtrara mejor y le quitara peso comercial. Reestructuramos su ecosistema digital para ordenar captación, seguimiento y calidad de oportunidades.',
-        // TODO: agregar URL real de YouTube
-        youtubeUrl: null,
-        youtubeEmbedUrl: null,
-        videoTitle: 'Testimonio Gastón Hendlin — Panthera Group',
+        youtubeUrl: 'https://youtu.be/tkq3PO2-yU4',
+        youtubeEmbedUrl: 'https://www.youtube.com/embed/tkq3PO2-yU4',
+        videoTitle: 'Testimonio de Gastón Hendlin',
       },
       {
         name: 'Laura Sánchez',
         role: 'Coach Organizacional y Ejecutiva',
         description:
           'Venía de depender de referidos y de sentirse poco visible para el mercado correcto. Construimos una estructura para mejorar posicionamiento, autoridad y llegada a prospectos fuera de su círculo cercano.',
-        // TODO: agregar URL real de YouTube
-        youtubeUrl: null,
-        youtubeEmbedUrl: null,
-        videoTitle: 'Testimonio Laura Sánchez — Panthera Group',
+        youtubeUrl: 'https://youtu.be/iMTN4h5Gr4E',
+        youtubeEmbedUrl: 'https://www.youtube.com/embed/iMTN4h5Gr4E',
+        videoTitle: 'Testimonio de Laura',
       },
       {
         name: 'Lucas Casalins',
         role: 'Coach Fitness y Alto Rendimiento',
         description:
           'Llegó con caos organizativo y experiencias previas muy malas con agencias. El sistema le permitió ordenar su operación comercial, recuperar tranquilidad y tener mayor claridad para reinvertir.',
-        // TODO: agregar URL real de YouTube
-        youtubeUrl: null,
-        youtubeEmbedUrl: null,
-        videoTitle: 'Testimonio Lucas Casalins — Panthera Group',
+        youtubeUrl: 'https://youtu.be/A34a5JF5iPQ',
+        youtubeEmbedUrl: 'https://www.youtube.com/embed/A34a5JF5iPQ',
+        videoTitle: 'Testimonio de Lucas',
       },
       {
         name: 'José Navas',
         role: 'Mentor de negocios',
         description:
           'Después de años intentando escalar en digital, el problema era la carga operativa de prospección y seguimiento. Panthera ordenó la captación y el seguimiento comercial para liberar tiempo y mejorar oportunidades.',
-        // TODO: agregar URL real de YouTube
-        youtubeUrl: null,
-        youtubeEmbedUrl: null,
-        videoTitle: 'Testimonio José Navas — Panthera Group',
+        youtubeUrl: 'https://youtu.be/HKRIU34pW5g',
+        youtubeEmbedUrl: 'https://www.youtube.com/embed/HKRIU34pW5g',
+        videoTitle: 'Testimonio de José Navas',
       },
       {
         name: 'Hilda Arjona',
         role: 'Coach Espiritual',
         description:
           'Estaba agotada de sostener copy, edición, estrategia y ejecución sin resultados consistentes. El trabajo se enfocó en corregir oferta, mensaje y estructura para atraer mejor al perfil correcto.',
-        // TODO: agregar URL real de YouTube
-        youtubeUrl: null,
-        youtubeEmbedUrl: null,
-        videoTitle: 'Testimonio Hilda Arjona — Panthera Group',
+        youtubeUrl: 'https://youtu.be/XqDvbuOqQ7Q',
+        youtubeEmbedUrl: 'https://www.youtube.com/embed/XqDvbuOqQ7Q',
+        videoTitle: 'Testimonio de Hilda Arjona',
       },
     ],
     closingPanel: {
