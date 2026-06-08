@@ -4,9 +4,9 @@ import { gsap, useGSAP } from '../../lib/gsap'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { landingCopy } from '../../content/landingCopy'
 import Button from '../ui/Button'
-import heroPoster from '../../assets/images/hero_panthera_strategy_room.webp'
 
 const HERO_VIDEO_ID = '1nO3ZRhccb1Aou5oHgqy4TBJGF6pTt55e'
+const heroPoster = '/images/hero_panthera_strategy_room.webp'
 const heroVideoSources = [
   '/videos/hero-panthera-loop.mp4',
   `https://drive.google.com/uc?export=download&id=${HERO_VIDEO_ID}`,
