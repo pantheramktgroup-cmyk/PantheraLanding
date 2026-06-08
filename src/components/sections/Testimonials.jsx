@@ -3,8 +3,8 @@ import { gsap, ScrollTrigger, useGSAP } from '../../lib/gsap'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { landingCopy } from '../../content/landingCopy'
 import Button from '../ui/Button'
-import testimonialCtaCaseTable from '../../assets/images/testimonial_cta_case_table.webp'
 
+const testimonialCtaCaseTable = '/images/testimonial_cta_case_table.webp'
 const { testimonials } = landingCopy
 
 function TestimonialCard({ c, onPlay }) {

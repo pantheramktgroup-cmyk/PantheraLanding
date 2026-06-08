@@ -4,8 +4,8 @@ import { gsap, useGSAP } from '../../lib/gsap'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { landingCopy } from '../../content/landingCopy'
 import Button from '../ui/Button'
-import cuelloBotella from '../../assets/images/cuello_botella.png'
 
+const cuelloBotella = '/images/cuello_botella.png'
 const { problem } = landingCopy
 
 export default function CoreProblem() {

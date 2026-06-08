@@ -4,8 +4,8 @@ import { gsap, useGSAP } from '../../lib/gsap'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { landingCopy } from '../../content/landingCopy'
 import Button from '../ui/Button'
-import renaissanceWatch from '../../assets/images/renaissance_watch.webp'
 
+const renaissanceWatch = '/images/renaissance_watch.webp'
 const { transformation } = landingCopy
 
 export default function TransformationStatement() {

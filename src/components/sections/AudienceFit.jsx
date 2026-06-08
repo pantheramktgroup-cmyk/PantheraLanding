@@ -3,8 +3,8 @@ import { gsap, useGSAP } from '../../lib/gsap'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { landingCopy } from '../../content/landingCopy'
 import Button from '../ui/Button'
-import filtroAplicacionBg from '../../assets/images/filtro_aplicacion.webp'
 
+const filtroAplicacionBg = '/images/filtro_aplicacion.webp'
 const { audience } = landingCopy
 
 export default function AudienceFit() {
