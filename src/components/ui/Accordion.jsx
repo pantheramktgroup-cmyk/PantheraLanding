@@ -53,26 +53,26 @@ export default function Accordion({ items }) {
   )
 
   return (
-    <div className="divide-y divide-[rgba(245,245,245,0.1)]">
+    <div className="divide-y divide-[rgba(245,245,245,0.08)] border-y border-[rgba(245,245,245,0.04)]">
       {items.map((item, i) => (
         <div key={i} className="group">
           <button
             type="button"
             onClick={() => toggle(i)}
             aria-expanded={openIndex === i}
-            className="w-full flex items-start justify-between gap-6 py-7 text-left focus-visible:outline-none group"
+            className="w-full flex items-start justify-between gap-6 py-5 md:py-6 text-left focus-visible:outline-none group"
           >
-            <span className="font-sans text-base md:text-lg text-panthera-white leading-snug pr-4 group-hover:text-panthera-cream transition-colors duration-200">
+            <span className="font-sans text-[0.95rem] md:text-base text-panthera-white/92 leading-snug pr-4 group-hover:text-panthera-cream transition-colors duration-200">
               {item.question}
             </span>
             <span
-              className={`shrink-0 mt-0.5 w-5 h-5 flex items-center justify-center text-panthera-green transition-transform duration-300 ${
+              className={`shrink-0 mt-0.5 w-4 h-4 flex items-center justify-center text-panthera-green/90 transition-transform duration-300 ${
                 openIndex === i ? 'rotate-45' : 'rotate-0'
               }`}
               aria-hidden="true"
             >
-              <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4">
-                <path d="M8 1v14M1 8h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5">
+                <path d="M8 1.5v13M1.5 8h13" stroke="currentColor" strokeWidth="1.15" strokeLinecap="round" />
               </svg>
             </span>
           </button>
@@ -83,7 +83,7 @@ export default function Accordion({ items }) {
             style={{ display: 'none', height: 0, overflow: 'hidden' }}
             aria-hidden={openIndex !== i}
           >
-            <div className="pb-7">
+            <div className="pb-6 md:pb-7">
               {item.answer.split('\n\n').map((para, j) => (
                 <p
                   key={j}

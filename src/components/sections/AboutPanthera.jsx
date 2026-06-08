@@ -89,59 +89,61 @@ export default function AboutPanthera() {
 
           {/* Collage column: 2 founders + 2 renacentista */}
           <div className="grid grid-cols-2 gap-3 auto-rows-fr">
-            {/* Founder 1 — editorial B&W, lighter overlay */}
-            <div className="relative overflow-hidden" style={{ minHeight: '260px' }}>
+            {/* Founder 1 — unified tone with collage */}
+            <div className="relative overflow-hidden" style={{ minHeight: '244px' }}>
               <img
                 src={about.founders[0].src}
                 alt={about.founders[0].name}
                 className="collage-img absolute inset-0 w-full h-full object-cover object-top scale-[1.08]"
-                style={{ filter: 'grayscale(1) brightness(0.65) contrast(1.05)' }}
+                style={{ filter: 'grayscale(1) brightness(0.49) contrast(1.18)' }}
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-panthera-black/30" />
-              <div className="grain-overlay opacity-50" aria-hidden="true" />
+              <div className="absolute inset-0 bg-panthera-black/34" />
+              <div className="grain-overlay opacity-[0.04]" aria-hidden="true" />
               <div className="absolute inset-0 border border-[rgba(245,245,245,0.08)]" />
             </div>
 
-            {/* Renacentismo 1 — offset top */}
-            <div className="relative overflow-hidden mt-8" style={{ minHeight: '260px' }}>
+            {/* Renacentismo 1 */}
+            <div className="relative overflow-hidden" style={{ minHeight: '216px' }}>
               <img
                 src="/images/renaissance_watch.webp"
                 alt=""
                 aria-hidden="true"
-                className="collage-img absolute inset-0 w-full h-full object-cover scale-[1.08]"
-                style={{ filter: 'grayscale(1) brightness(0.5)' }}
+                className="collage-img absolute inset-0 w-full h-full object-cover"
+                style={{ transform: 'scale(1.12) translateY(-4%)', filter: 'brightness(0.56) contrast(1.04) saturate(0.92)' }}
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-panthera-black/30" />
+              <div className="absolute inset-0 bg-panthera-black/28" />
+              <div className="grain-overlay opacity-[0.04]" aria-hidden="true" />
               <div className="absolute inset-0 border border-[rgba(245,245,245,0.06)]" />
             </div>
 
             {/* Renacentismo 2 */}
-            <div className="relative overflow-hidden -mt-4" style={{ minHeight: '200px' }}>
+            <div className="relative overflow-hidden" style={{ minHeight: '216px' }}>
               <img
                 src="/images/renaissance_hands_mirror.webp"
                 alt=""
                 aria-hidden="true"
-                className="collage-img absolute inset-0 w-full h-full object-cover scale-[1.08]"
-                style={{ filter: 'grayscale(1) brightness(0.45)' }}
+                className="collage-img absolute inset-0 w-full h-full object-cover"
+                style={{ transform: 'scale(1.12) translateY(-4%)', filter: 'brightness(0.56) contrast(1.04) saturate(0.92)' }}
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-panthera-black/35" />
+              <div className="absolute inset-0 bg-panthera-black/28" />
+              <div className="grain-overlay opacity-[0.04]" aria-hidden="true" />
               <div className="absolute inset-0 border border-[rgba(245,245,245,0.06)]" />
             </div>
 
-            {/* Founder 2 — editorial B&W, lighter overlay */}
-            <div className="relative overflow-hidden" style={{ minHeight: '200px' }}>
+            {/* Founder 2 — unified tone with collage */}
+            <div className="relative overflow-hidden" style={{ minHeight: '188px' }}>
               <img
                 src={about.founders[1].src}
                 alt={about.founders[1].name}
                 className="collage-img absolute inset-0 w-full h-full object-cover object-top scale-[1.08]"
-                style={{ filter: 'grayscale(1) brightness(0.65) contrast(1.05)' }}
+                style={{ filter: 'grayscale(1) brightness(0.49) contrast(1.18)' }}
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-panthera-black/30" />
-              <div className="grain-overlay opacity-50" aria-hidden="true" />
+              <div className="absolute inset-0 bg-panthera-black/34" />
+              <div className="grain-overlay opacity-[0.04]" aria-hidden="true" />
               <div className="absolute inset-0 border border-[rgba(245,245,245,0.08)]" />
             </div>
           </div>

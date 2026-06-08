@@ -33,8 +33,25 @@ export default function FAQ() {
   )
 
   return (
-    <section className="bg-panthera-black section-pad overflow-hidden">
-      <div ref={containerRef} className="container-panthera">
+    <section className="relative bg-panthera-black section-pad overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <img
+          src="/images/last_night.webp"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{
+            transform: 'scale(1.16) rotate(-0.4deg) translate3d(1%, -0.4%, 0)',
+            transformOrigin: 'center',
+            filter: 'grayscale(1) saturate(0.42) brightness(0.3) contrast(1.1) blur(7px)',
+          }}
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-panthera-black/94 via-panthera-black/86 to-panthera-black/74" />
+        <div className="absolute inset-0 bg-gradient-to-t from-panthera-black/82 via-panthera-black/46 to-panthera-black/24" />
+        <div className="absolute inset-0 bg-[radial-gradient(130%_90%_at_50%_6%,rgba(240,240,240,0.08)_0%,rgba(185,164,106,0.04)_36%,rgba(10,10,10,0)_70%)]" />
+        <div className="grain-overlay opacity-[0.12]" aria-hidden="true" />
+      </div>
+      <div ref={containerRef} className="relative z-10 container-panthera">
         <div className="max-w-3xl mx-auto">
           {/* Header */}
           <div className="mb-12">

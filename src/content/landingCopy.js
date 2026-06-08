@@ -254,7 +254,7 @@ export const landingCopy = {
     eyebrow: 'Casos reales',
     headline: 'Negocios expertos que dejaron de operar desde la improvisación.',
     subheadline:
-      'Historias de negocios que ya tenían valor, experiencia y mercado, pero necesitaban ordenar su captación, filtrado, seguimiento y conversión para crecer con más claridad.',
+      'Historias de clientes que ordenaron su captación, seguimiento y proceso comercial con Panthera.',
     cases: [
       {
         name: 'Gastón Hendlin',

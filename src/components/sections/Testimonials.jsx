@@ -1,8 +1,9 @@
 ﻿import { useRef, useState, useCallback } from 'react'
-import { gsap, useGSAP } from '../../lib/gsap'
+import { gsap, ScrollTrigger, useGSAP } from '../../lib/gsap'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { landingCopy } from '../../content/landingCopy'
 import Button from '../ui/Button'
+import testimonialCtaCaseTable from '../../assets/images/testimonial_cta_case_table.webp'
 
 const { testimonials } = landingCopy
 
@@ -17,15 +18,15 @@ function TestimonialCard({ c, onPlay }) {
 
   return (
     <div className="relative w-full h-full flex flex-col md:flex-row">
-      <div className="relative md:w-1/2 w-full bg-panthera-black" style={{ minHeight: '50vh' }}>
-        <div className="absolute inset-0">
+      <div className="relative md:w-1/2 w-full bg-[#121312] overflow-hidden" style={{ minHeight: '50vh' }}>
+        <div className="absolute inset-0 overflow-hidden">
           {!playing ? (
             <button
               onClick={handlePlay}
               className="absolute inset-0 w-full h-full group cursor-pointer"
               aria-label={`Reproducir ${c.videoTitle}`}
             >
-              <img src={c.coverImage} alt={c.videoTitle} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+              <img src={c.coverImage} alt={c.videoTitle} className="absolute inset-0 w-full h-full object-cover transition-[filter] duration-500 ease-out group-hover:brightness-110" loading="lazy" />
               <div className="absolute inset-0 bg-panthera-black/60" />
               <div className="grain-overlay" aria-hidden="true" />
               <div className="absolute inset-0 border border-[rgba(245,245,245,0.07)] pointer-events-none" />
@@ -53,7 +54,7 @@ function TestimonialCard({ c, onPlay }) {
           )}
         </div>
       </div>
-      <div className="md:w-1/2 w-full flex flex-col justify-center px-10 md:px-14 lg:px-20 py-14 bg-panthera-black border-t md:border-t-0 md:border-l border-[rgba(245,245,245,0.06)]">
+      <div className="md:w-1/2 w-full flex flex-col justify-center px-10 md:px-14 lg:px-20 py-14 bg-[#121312] border-t md:border-t-0 md:border-l border-[rgba(245,245,245,0.06)]">
         <span className="font-serif text-[100px] md:text-[140px] text-[rgba(245,245,245,0.03)] leading-none select-none -ml-2 -mt-4 block" aria-hidden="true">&#8220;</span>
         <p className="font-sans text-panthera-white/80 leading-relaxed mb-8 -mt-8" style={{ fontSize: 'clamp(0.9rem, 1.3vw, 1.05rem)' }}>
           {c.description}
@@ -85,29 +86,60 @@ export default function Testimonials() {
         const track = trackRef.current
         if (!pin || !track) return
         const ctx = gsap.context(() => {
-          const totalWidth = (totalPanels - 1) * window.innerWidth
-          gsap.to(track, {
-            x: () => -totalWidth,
+          const vw = () => window.innerWidth
+          const totalDist = () => vw() * (totalPanels - 1)
+          // Use actual DOM offsetLeft so vw/scrollbar mismatch never causes grey strip
+          const lastPanel = track.children[totalPanels - 1]
+          const tl = gsap.timeline()
+          tl.to(track, { x: () => -lastPanel.offsetLeft, ease: 'none', duration: totalPanels - 1 })
+          tl.to({}, { duration: 1 }) // hold at last panel
+
+          ScrollTrigger.create({
+            animation: tl,
+            trigger: pin,
+            start: 'top top',
+            end: () => `+=${totalDist() * totalPanels / (totalPanels - 1)}`,
+            scrub: 1,
+            pin: true,
+            pinSpacing: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            snap: {
+              snapTo: (value) => {
+                const step = 1 / totalPanels
+                return Math.round(value / step) * step
+              },
+              duration: { min: 0.2, max: 0.5 },
+              ease: 'power2.inOut',
+            },
+            onUpdate: (self) => {
+              const idx = Math.min(Math.floor(self.progress * totalPanels), totalPanels - 1)
+              setCurrentCard(idx)
+            },
+          })
+
+          gsap.from('.testimonial-panel', {
+            opacity: 0,
+            scale: 0.985,
+            stagger: 0.07,
+            duration: 0.8,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: pin,
+              start: 'top 78%',
+              once: true,
+            },
+          })
+
+          gsap.to('.testimonial-cta-bg', {
+            scale: 1.08,
+            yPercent: 8,
             ease: 'none',
             scrollTrigger: {
               trigger: pin,
               start: 'top top',
-              end: () => `+=${totalWidth}`,
-              scrub: 0.3,
-              pin: true,
-              pinSpacing: true,
-              anticipatePin: 1,
-              invalidateOnRefresh: true,
-              snap: {
-                snapTo: 1 / (totalPanels - 1),
-                duration: { min: 0.3, max: 0.6 },
-                delay: 0.1,
-                ease: 'power2.out',
-              },
-              onUpdate: (self) => {
-                const idx = Math.min(Math.floor(self.progress * totalPanels), totalPanels - 1)
-                setCurrentCard(idx)
-              },
+              end: () => `+=${totalDist() * totalPanels / (totalPanels - 1)}`,
+              scrub: true,
             },
           })
         })
@@ -119,8 +151,8 @@ export default function Testimonials() {
   )
 
   return (
-    <section className="bg-panthera-black">
-      <div className="container-panthera pt-28 md:pt-36 pb-20 md:pb-28">
+    <section className="relative overflow-hidden bg-[#141514]">
+      <div className="relative z-10 container-panthera pt-28 md:pt-36 pb-20 md:pb-28">
         <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-5">{testimonials.eyebrow}</p>
         <h2 className="font-serif text-panthera-white leading-tight mb-6 max-w-2xl" style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)' }}>
           {testimonials.headline}
@@ -128,8 +160,8 @@ export default function Testimonials() {
         <p className="font-sans text-sm text-panthera-ash leading-relaxed max-w-xl">{testimonials.subheadline}</p>
       </div>
 
-      <div ref={pinRef} className="relative hidden md:block" style={{ height: '100vh' }}>
-        <div className="absolute top-8 right-0 z-20 pointer-events-none w-full flex justify-end" style={{ paddingRight: 'clamp(24px, 5vw, 80px)' }}>
+      <div ref={pinRef} className="relative z-10 hidden md:block" style={{ height: '100vh', overflow: 'hidden' }}>
+        <div className="absolute right-0 z-20 pointer-events-none w-full flex justify-end" style={{ top: 'calc(88px + 12px)', paddingRight: 'clamp(24px, 5vw, 80px)' }}>
           <div className="flex items-center gap-2">
             <span className="font-serif text-3xl text-panthera-white tabular-nums leading-none">
               {String(Math.min(currentCard + 1, testimonials.cases.length)).padStart(2, '0')}
@@ -140,17 +172,19 @@ export default function Testimonials() {
             </span>
           </div>
         </div>
-        <div ref={trackRef} className="flex flex-nowrap h-full" style={{ willChange: 'transform' }}>
+        <div ref={trackRef} className="flex flex-nowrap h-full bg-[#141514]" style={{ willChange: 'transform' }}>
           {testimonials.cases.map((c) => (
-            <div key={c.name} className="flex-shrink-0 w-screen h-full">
+            <div key={c.name} className="testimonial-panel h-full" style={{ flex: '0 0 100vw', width: '100vw', minWidth: '100vw', maxWidth: 'none', overflow: 'hidden' }}>
               <TestimonialCard c={c} onPlay={handlePlay} />
             </div>
           ))}
-          <div className="flex-shrink-0 w-screen h-full flex flex-col items-center justify-center relative bg-panthera-black px-6 text-center">
-            <img src="/images/testimonial_cta_case_table.webp" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'brightness(0.25)' }} loading="lazy" />
-            <div className="absolute inset-0 bg-panthera-black/70" aria-hidden="true" />
+          <div className="testimonial-panel flex flex-col items-center justify-center relative bg-black text-center" style={{ flex: '0 0 100vw', width: '100vw', minWidth: '100vw', maxWidth: 'none', overflow: 'hidden' }}>
+            <img src={testimonialCtaCaseTable} alt="" aria-hidden="true" className="testimonial-cta-bg absolute inset-0 w-full h-full object-cover" style={{ filter: 'brightness(0.14) saturate(0.58) contrast(1)' }} loading="lazy" />
+            <div className="absolute inset-0 bg-panthera-black/84" aria-hidden="true" />
+            <div className="absolute inset-0 bg-gradient-to-t from-panthera-black via-panthera-black/86 to-panthera-black/76" aria-hidden="true" />
+            <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-b from-transparent via-black/78 to-black" aria-hidden="true" />
             <div className="grain-overlay" aria-hidden="true" />
-            <div className="relative z-10 max-w-3xl mx-auto">
+            <div className="relative z-10 w-full max-w-3xl mx-auto px-6">
               <p className="font-serif text-panthera-white leading-tight mb-12" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3.5rem)' }}>
                 {testimonials.closingPanel.text}
               </p>
@@ -160,15 +194,17 @@ export default function Testimonials() {
         </div>
       </div>
 
-      <div className="md:hidden">
+      <div className="relative z-10 md:hidden">
         {testimonials.cases.map((c) => (
           <div key={`mob-${c.name}`} className="border-t border-[rgba(245,245,245,0.06)]" style={{ minHeight: '100svh' }}>
             <TestimonialCard c={c} />
           </div>
         ))}
-        <div className="relative flex flex-col items-center justify-center px-6 py-24 text-center bg-panthera-black border-t border-[rgba(245,245,245,0.06)]">
-          <img src="/images/testimonial_cta_case_table.webp" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'brightness(0.25)' }} loading="lazy" />
-          <div className="absolute inset-0 bg-panthera-black/70" aria-hidden="true" />
+        <div className="relative flex flex-col items-center justify-center px-6 py-24 text-center bg-black border-t border-[rgba(245,245,245,0.06)]">
+          <img src="/images/testimonial_cta_case_table.webp" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'brightness(0.14) saturate(0.58) contrast(1)' }} loading="lazy" />
+          <div className="absolute inset-0 bg-panthera-black/84" aria-hidden="true" />
+          <div className="absolute inset-0 bg-gradient-to-t from-panthera-black via-panthera-black/86 to-panthera-black/76" aria-hidden="true" />
+          <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-b from-transparent via-black/78 to-black" aria-hidden="true" />
           <div className="grain-overlay" aria-hidden="true" />
           <div className="relative z-10 max-w-3xl mx-auto">
             <p className="font-serif text-panthera-white leading-tight mb-12" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3.5rem)' }}>

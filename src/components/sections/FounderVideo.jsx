@@ -30,13 +30,42 @@ export default function FounderVideo() {
           once: true,
         },
       })
+
+      gsap.fromTo(
+        '.video-shell',
+        { scale: 0.96, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 1,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.video-shell',
+            start: 'top 80%',
+            once: true,
+          },
+        }
+      )
     },
     { scope: containerRef, dependencies: [prefersReduced] }
   )
 
   return (
-    <section className="relative bg-panthera-black section-pad overflow-hidden">
-      <div className="grain-overlay" aria-hidden="true" />
+    <section className="relative bg-black section-pad overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, #000000 0%, #050505 28%, #0b0c0b 70%, #141514 100%)' }} />
+      </div>
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div
+          className="absolute inset-0 bg-[radial-gradient(circle_at_22%_24%,rgba(185,164,106,0.08),transparent_56%)]"
+          style={{ maskImage: 'linear-gradient(to bottom, transparent 0%, transparent 14%, black 34%, black 100%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, transparent 14%, black 34%, black 100%)' }}
+        />
+        <div
+          className="absolute inset-0 bg-[radial-gradient(circle_at_78%_76%,rgba(227,247,141,0.05),transparent_52%)]"
+          style={{ maskImage: 'linear-gradient(to bottom, transparent 0%, transparent 14%, black 34%, black 100%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, transparent 14%, black 34%, black 100%)' }}
+        />
+      </div>
+      <div className="grain-overlay" style={{ maskImage: 'linear-gradient(to bottom, transparent 0%, transparent 16%, black 38%, black 100%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, transparent 16%, black 38%, black 100%)' }} aria-hidden="true" />
 
       <div ref={containerRef} className="relative z-10 container-panthera">
         {/* Centered header */}
@@ -53,14 +82,15 @@ export default function FounderVideo() {
         </div>
 
         {/* Video player — centered, large, premium frame */}
-        <div className="reveal-el max-w-[980px] mx-auto">
+        <div className="reveal-el video-shell max-w-[980px] mx-auto">
           <div
-            className="relative w-full overflow-hidden"
+            className="relative w-full overflow-hidden transition-all duration-400 hover:brightness-110 hover:contrast-105"
             style={{
               aspectRatio: '16/9',
-              border: '1px solid rgba(245,245,245,0.1)',
+              border: '1px solid rgba(245,245,245,0.14)',
               borderRadius: '2px',
               background: '#000',
+              boxShadow: '0 0 0 1px rgba(245,245,245,0.06), 0 14px 42px rgba(0,0,0,0.42)',
             }}
           >
             {!playing ? (
@@ -115,7 +145,8 @@ export default function FounderVideo() {
               className="font-serif italic text-panthera-cream leading-snug"
               style={{ fontSize: 'clamp(1.1rem, 2vw, 1.5rem)' }}
             >
-              &#8220;{video.pullQuote}&#8221;
+              <span className="block">&#8220;Escalar no deber&#237;a exigirte m&#225;s esfuerzo.</span>
+              <span className="block ml-5 md:ml-10">Deber&#237;a exigirte mejor infraestructura.&#8221;</span>
             </p>
           </blockquote>
 

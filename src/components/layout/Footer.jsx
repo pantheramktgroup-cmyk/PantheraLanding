@@ -50,9 +50,6 @@ export default function Footer() {
 
         {/* Legal */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <p className="text-xs font-sans text-panthera-ash/50 leading-relaxed max-w-xl">
-            {footer.legal}
-          </p>
           <p className="text-xs font-sans text-panthera-ash/40 shrink-0">
             {footer.copyright}
           </p>

@@ -1,22 +1,47 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import SplitType from 'split-type'
 import { gsap, useGSAP } from '../../lib/gsap'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { landingCopy } from '../../content/landingCopy'
 import Button from '../ui/Button'
+import heroPoster from '../../assets/images/hero_panthera_strategy_room.webp'
 
-const heroBg = '/images/hero_panthera_strategy_room.webp'
+const HERO_VIDEO_ID = '1nO3ZRhccb1Aou5oHgqy4TBJGF6pTt55e'
+const heroVideoSources = [
+  '/videos/hero-panthera-loop.mp4',
+  `https://drive.google.com/uc?export=download&id=${HERO_VIDEO_ID}`,
+  `https://drive.usercontent.google.com/download?id=${HERO_VIDEO_ID}&export=download`,
+]
 
 const { hero } = landingCopy
 
 export default function Hero() {
   const containerRef = useRef(null)
-  const imageRef = useRef(null)
+  const videoRef = useRef(null)
   const eyebrowRef = useRef(null)
   const headlineRef = useRef(null)
   const subRef = useRef(null)
   const ctaRef = useRef(null)
   const prefersReduced = usePrefersReducedMotion()
+  const [videoSourceIndex, setVideoSourceIndex] = useState(0)
+  const videoFailed = videoSourceIndex >= heroVideoSources.length
+
+  useEffect(() => {
+    if (prefersReduced || videoFailed || !videoRef.current) return
+
+    // Some browsers need an explicit play() call even with autoplay+muted
+    const attemptPlay = () => {
+      const playPromise = videoRef.current.play()
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(() => {})
+      }
+    }
+
+    attemptPlay()
+    const node = videoRef.current
+    node.addEventListener('loadeddata', attemptPlay)
+    return () => node.removeEventListener('loadeddata', attemptPlay)
+  }, [prefersReduced, videoFailed, videoSourceIndex])
 
   useGSAP(
     () => {
@@ -37,23 +62,22 @@ export default function Hero() {
 
       tl.from(eyebrowRef.current, { opacity: 0, y: 10, duration: 0.7, ease: 'power2.out' })
         .from(
+          videoRef.current,
+          { scale: 1.08, duration: 1.6, ease: 'power3.out' },
+          0
+        )
+        .from(
           split.lines,
           { yPercent: 110, opacity: 0, stagger: 0.1, duration: 1, ease: 'power2.out' },
           '-=0.3'
         )
         .from(subRef.current, { opacity: 0, y: 16, duration: 0.8, ease: 'power2.out' }, '-=0.6')
-        .from(ctaRef.current, { opacity: 0, y: 12, duration: 0.7, ease: 'power2.out' }, '-=0.5')
+        .from(ctaRef.current, { opacity: 0, y: 20, duration: 0.7, ease: 'power2.out' }, '-=0.45')
 
-      // Slow zoom on bg image: scale from 1.03 to 1.09 over 8s
-      gsap.to(imageRef.current, {
-        scale: 1.09,
-        duration: 8,
-        ease: 'power1.inOut',
-      })
-
-      // Parallax on scroll (vertical displacement)
-      gsap.to(imageRef.current, {
-        yPercent: 14,
+      // Premium subtle parallax on scroll
+      gsap.to(videoRef.current, {
+        yPercent: 10,
+        xPercent: 2.2,
         ease: 'none',
         scrollTrigger: {
           trigger: containerRef.current,
@@ -71,24 +95,40 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full overflow-hidden bg-panthera-deep"
+      className="relative w-full overflow-hidden bg-black"
       style={{ height: '100svh', minHeight: '620px' }}
     >
       {/* Full-bleed background */}
       <div className="absolute inset-0 z-0">
-        <img
-          ref={imageRef}
-          src={heroBg}
-          alt=""
-          aria-hidden="true"
-          className="w-full h-full object-cover object-center"
-          style={{ scale: '1.03', transformOrigin: 'center center' }}
-          loading="eager"
-          fetchpriority="high"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-panthera-deep via-panthera-deep/55 to-panthera-deep/10" />
-        <div className="absolute inset-0 bg-panthera-deep/25" />
-        <div className="grain-overlay" aria-hidden="true" />
+        <div
+          className="absolute inset-0 overflow-hidden bg-panthera-deep"
+          style={{ backgroundImage: `url(${heroPoster})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+        >
+          {!videoFailed && (
+            <video
+              key={heroVideoSources[videoSourceIndex]}
+              ref={videoRef}
+              className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+              style={{ filter: 'brightness(0.95) saturate(1.02) contrast(1)' }}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              poster={heroPoster}
+              aria-hidden="true"
+              onError={() => setVideoSourceIndex((idx) => idx + 1)}
+            >
+              <source src={heroVideoSources[videoSourceIndex]} type="video/mp4" />
+              {/* Alternative local source if Drive is blocked:
+                  <source src="/videos/hero-panthera-loop.mp4" type="video/mp4" /> */}
+            </video>
+          )}
+        </div>
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,0,0,0.42)' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 34%, rgba(0,0,0,0) 52%)' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0) 45%, rgba(0,0,0,0.75) 72%, #000000 100%)' }} />
+        <div className="grain-overlay" style={{ maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.42) 64%, rgba(0,0,0,0) 100%)', WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.42) 64%, rgba(0,0,0,0) 100%)' }} aria-hidden="true" />
       </div>
 
       {/* Top bar: logo + eyebrow */}

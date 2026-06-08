@@ -32,9 +32,9 @@ export default function Booking() {
   return (
     <section
       id="booking"
-      className="bg-panthera-black"
+      className="bg-[#000000]"
     >
-      <div ref={containerRef} className="container-panthera pt-20 md:pt-28 pb-20">
+      <div ref={containerRef} className="container-panthera pt-20 md:pt-28 pb-12 md:pb-14">
         {/* Eyebrow + headline above calendar — minimal */}
         <div className="text-center mb-10">
           <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-4">
@@ -68,8 +68,8 @@ export default function Booking() {
         </div>
 
         {/* Closing text below calendar */}
-        <div className="max-w-xl mx-auto text-center mt-10">
-          <p className="font-sans text-sm text-panthera-ash/60 leading-relaxed">
+        <div className="max-w-2xl mx-auto text-center mt-3 md:mt-4">
+          <p className="font-sans text-base md:text-[1.05rem] text-panthera-cream/88 leading-relaxed md:leading-[1.75]">
             {booking.closingText}
           </p>
         </div>

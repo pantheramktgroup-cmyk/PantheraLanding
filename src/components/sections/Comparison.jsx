@@ -40,16 +40,18 @@ export default function Comparison() {
 
   return (
     <section className="relative overflow-hidden bg-panthera-black section-pad">
-      {/* Subtle texture background — object-cover, no stretching, very dim */}
+      {/* Same visual treatment as TransformationStatement: dark gradient, subtle texture, seamless integration. */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <img
-          src="/images/panthera_vs_agency_contrast.webp"
+          src="/images/panthera_vs_agency_transition.webp"
           alt=""
           className="w-full h-full object-cover object-center"
-          style={{ filter: 'grayscale(60%) brightness(0.18)' }}
+          style={{ filter: 'grayscale(62%) brightness(0.22)' }}
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-panthera-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-panthera-black via-panthera-black/90 to-panthera-black/36" />
+        <div className="absolute inset-0 bg-gradient-to-t from-panthera-black/86 via-transparent to-panthera-black/44" />
+        <div className="grain-overlay opacity-20" aria-hidden="true" />
       </div>
 
       <div ref={containerRef} className="relative z-10 container-panthera">
@@ -70,9 +72,9 @@ export default function Comparison() {
         </div>
 
         {/* Two-panel comparison */}
-        <div className="grid md:grid-cols-2 gap-px bg-[rgba(245,245,245,0.06)] mb-16">
+        <div className="grid md:grid-cols-2 gap-3 md:gap-4 mb-16">
           {/* Traditional — opaca pero legible */}
-          <div className="bg-[rgba(14,14,12,0.9)] p-10 md:p-14">
+          <div className="bg-[rgba(12,12,11,0.84)] p-10 md:p-14 border border-[rgba(245,245,245,0.06)]">
             <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-ash/80 mb-8 font-medium">
               {comparison.traditional.title}
             </p>
@@ -91,7 +93,7 @@ export default function Comparison() {
           </div>
 
           {/* Panthera — más luz, acento verde, jerarquía */}
-          <div className="bg-[rgba(227,247,141,0.04)] p-10 md:p-14 border-l-2 border-panthera-green/20">
+          <div className="bg-[linear-gradient(160deg,rgba(227,247,141,0.08)_0%,rgba(227,247,141,0.04)_56%,rgba(10,10,10,0.52)_100%)] p-10 md:p-14 border border-panthera-green/20 shadow-[inset_0_0_0_1px_rgba(227,247,141,0.08)]">
             <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-8 font-medium">
               {comparison.panthera.title}
             </p>

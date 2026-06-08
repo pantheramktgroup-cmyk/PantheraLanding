@@ -4,6 +4,7 @@ import { gsap, useGSAP } from '../../lib/gsap'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { landingCopy } from '../../content/landingCopy'
 import Button from '../ui/Button'
+import cuelloBotella from '../../assets/images/cuello_botella.png'
 
 const { problem } = landingCopy
 
@@ -16,7 +17,6 @@ export default function CoreProblem() {
     () => {
       if (prefersReduced) return
 
-      // Headline split animation
       const split = new SplitType(headlineRef.current, { types: 'lines' })
       split.lines.forEach((line) => {
         const wrap = document.createElement('div')
@@ -38,7 +38,6 @@ export default function CoreProblem() {
         },
       })
 
-      // Symptoms stagger in
       const symptoms = containerRef.current.querySelectorAll('.symptom-item')
       gsap.from(symptoms, {
         opacity: 0,
@@ -53,7 +52,6 @@ export default function CoreProblem() {
         },
       })
 
-      // Closing text
       const closing = containerRef.current.querySelector('.closing-text')
       gsap.from(closing, {
         opacity: 0,
@@ -73,19 +71,68 @@ export default function CoreProblem() {
   )
 
   return (
-    <section className="relative bg-panthera-deep section-pad overflow-hidden">
-      {/* Renacentista image — subtle background */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <img
-          src="/images/renaissance_watch.webp"
-          alt=""
-          className="absolute right-0 top-0 w-1/2 h-full object-cover object-left opacity-[0.06]"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-panthera-deep via-panthera-deep/90 to-panthera-deep/60" />
-      </div>
+    <section className="relative bg-[#050505] section-pad overflow-hidden">
+      <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+  <img
+    src={cuelloBotella}
+    alt=""
+    className="absolute right-0 top-0 h-full w-[54%] object-cover object-left opacity-[0.42]"
+    style={{
+      filter: 'brightness(0.78) contrast(1.08) saturate(0.82)',
+    }}
+    loading="lazy"
+  />
 
-      <div ref={containerRef} className="relative z-10 container-panthera">
+  {/* Base: mantiene el inicio negro y termina en #050505 */}
+  <div
+    className="absolute inset-0"
+    style={{
+      background:
+        'linear-gradient(to bottom, #000000 0%, #000000 7%, rgba(3,3,3,0.94) 18%, rgba(10,8,6,0.72) 34%, rgba(20,15,11,0.54) 52%, rgba(9,7,6,0.76) 78%, #050505 100%)',
+    }}
+  />
+
+  {/* Fusión izquierda: mantiene el copy sobre negro sin cortar la imagen */}
+  <div
+    className="absolute inset-y-0 left-0 w-[76%]"
+    style={{
+      background:
+        'linear-gradient(to right, #000000 0%, rgba(0,0,0,0.98) 30%, rgba(6,5,4,0.9) 52%, rgba(18,13,10,0.54) 74%, rgba(18,13,10,0) 100%)',
+    }}
+  />
+
+  {/* Puente cálido sutil hacia la imagen, sin ocupar toda la pantalla */}
+  <div
+    className="absolute inset-y-0 right-0 w-[58%]"
+    style={{
+      background:
+        'radial-gradient(circle at 54% 52%, rgba(42,32,23,0.28) 0%, rgba(25,18,13,0.18) 34%, rgba(0,0,0,0) 72%)',
+    }}
+  />
+
+  {/* Top suave: no generar franja dura */}
+  <div
+    className="absolute top-0 left-0 right-0 h-[260px]"
+    style={{
+      background:
+        'linear-gradient(to bottom, #050505 0%, rgba(5,5,5,0.88) 32%, rgba(5,5,5,0.46) 66%, rgba(5,5,5,0) 100%)',
+    }}
+  />
+
+  {/* Bottom limpio hacia #050505 */}
+  <div
+    className="absolute bottom-0 left-0 right-0 h-[340px]"
+    style={{
+      background:
+        'linear-gradient(to bottom, rgba(5,5,5,0) 0%, rgba(5,5,5,0.72) 58%, #050505 100%)',
+    }}
+  />
+
+  <div className="grain-overlay opacity-[0.05]" aria-hidden="true" />
+
+</div>
+
+      <div ref={containerRef} className="relative z-20 container-panthera">
         <div className="max-w-4xl">
           <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-4">
             {problem.eyebrow}
@@ -98,7 +145,6 @@ export default function CoreProblem() {
             {problem.headline}
           </h2>
 
-          {/* Body */}
           <div className="space-y-5 mb-12 max-w-2xl">
             <p className="font-sans text-base md:text-lg text-panthera-ash leading-relaxed">
               {problem.body}
@@ -108,7 +154,6 @@ export default function CoreProblem() {
             </p>
           </div>
 
-          {/* Symptom list */}
           <ul className="space-y-3 mb-12">
             {problem.symptoms.map((s, i) => (
               <li key={i} className="symptom-item flex items-start gap-4">
@@ -120,7 +165,6 @@ export default function CoreProblem() {
             ))}
           </ul>
 
-          {/* Closing statement */}
           <p className="closing-text font-serif italic text-xl md:text-2xl text-panthera-cream mb-10">
             {problem.closing}
           </p>

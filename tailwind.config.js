@@ -8,10 +8,10 @@ export default {
     extend: {
       colors: {
         panthera: {
-          black: '#1D1D1B',
-          deep: '#080807',
-          charcoal: '#2B2B2B',
-          ash: '#777777',
+          black: '#070707',
+          deep: '#050505',
+          charcoal: '#121210',
+          ash: '#8A8A85',
           white: '#F5F5F5',
           cream: '#EDE7D8',
           green: '#E3F78D',

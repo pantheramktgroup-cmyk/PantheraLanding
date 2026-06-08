@@ -6,19 +6,19 @@ import Button from '../ui/Button'
 
 const { systemPieces } = landingCopy
 
-const muralBg = '/images/apex_system_renaissance_mural.webp'
+const muralBg = '/images/panthera.webp'
 
 // 4-column × 2-row grid: each card shows a different region of the mural
 // background-size: 400% wide × 200% tall (4 cols × 2 rows)
 const MURAL_POSITIONS = [
-  '0% 0%',     // row 1, col 1
-  '33.33% 0%', // row 1, col 2
-  '66.66% 0%', // row 1, col 3
-  '100% 0%',   // row 1, col 4
-  '0% 100%',   // row 2, col 1
-  '33.33% 100%',
-  '66.66% 100%',
-  '100% 100%',
+  '8% 6%',
+  '38% 6%',
+  '68% 6%',
+  '98% 6%',
+  '8% 98%',
+  '38% 98%',
+  '68% 98%',
+  '98% 98%',
 ]
 
 export default function SystemPieces() {
@@ -47,8 +47,27 @@ export default function SystemPieces() {
   )
 
   return (
-    <section className="bg-panthera-black section-pad overflow-hidden">
-      <div ref={containerRef} className="container-panthera">
+    <section className="relative bg-black section-pad overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black to-black" />
+        <div
+          className="absolute inset-x-0 top-0 h-[280px]"
+          style={{
+            background:
+              'linear-gradient(to bottom, #000000 0%, rgba(0,0,0,0.99) 46%, rgba(0,0,0,0.34) 84%, rgba(0,0,0,0) 100%)',
+          }}
+        />
+        <div
+          className="absolute inset-x-0 bottom-0 h-[320px]"
+          style={{
+            background:
+              'linear-gradient(to bottom, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.95) 72%, #000000 100%)',
+          }}
+        />
+        <div className="grain-overlay opacity-[0.12]" aria-hidden="true" />
+      </div>
+
+      <div ref={containerRef} className="relative z-10 container-panthera">
         {/* Header */}
         <div className="max-w-xl mb-14">
           <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-4">
@@ -66,37 +85,32 @@ export default function SystemPieces() {
         </div>
 
         {/* Mural grid — 4×2, each card is one fragment of the same image */}
-        <div className="grid grid-cols-2 md:grid-cols-4 border-t border-l border-[rgba(245,245,245,0.06)]">
+        <div className="grid grid-cols-2 md:grid-cols-4 border-t border-l border-[rgba(245,245,245,0.04)]">
           {systemPieces.pieces.map((piece, i) => (
             <div
               key={piece.title}
-              className="piece-card group relative border-r border-b border-[rgba(245,245,245,0.06)] overflow-hidden cursor-default"
+              className="piece-card group relative border-r border-b border-[rgba(245,245,245,0.04)] overflow-hidden cursor-default"
               style={{ minHeight: '240px' }}
             >
-              {/* Mural fragment — zooms in on hover */}
+              {/* Mural fragment — no zoom to avoid distortion */}
               <div
-                className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-110"
+                className="absolute inset-0 transition-[filter] duration-700 ease-out group-hover:[filter:brightness(1.08)_contrast(1.12)_saturate(1.04)]"
                 style={{
                   backgroundImage: `url('${muralBg}')`,
                   backgroundSize: '400% 200%',
                   backgroundPosition: MURAL_POSITIONS[i],
-                  filter: 'grayscale(40%) brightness(0.6)',
+                  filter: 'brightness(0.3) contrast(1.04) saturate(0.66)',
                 }}
               />
-              {/* Overlay: nearly black at rest → clears on hover to reveal image */}
-              <div
-                className="absolute inset-0 transition-colors duration-500"
-                style={{
-                  backgroundColor: 'rgba(0,0,0,0.88)',
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.38)' }}
-                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.88)' }}
-              />
-              <div className="grain-overlay opacity-40" aria-hidden="true" />
+              {/* Overlay: very dark at rest, almost removed on hover */}
+              <div className="absolute inset-0 bg-[rgba(0,0,0,0.93)] group-hover:bg-[rgba(0,0,0,0.03)] transition-colors duration-700" />
+              {/* Local text backdrop to preserve readability without covering the whole tile */}
+              <div className="absolute inset-x-0 bottom-0 h-[46%] bg-gradient-to-t from-black/70 via-black/34 to-transparent z-10" aria-hidden="true" />
+              <div className="grain-overlay opacity-[0.04]" aria-hidden="true" />
 
               {/* Content */}
-              <div className="relative z-10 p-6 md:p-8 flex flex-col justify-between h-full" style={{ minHeight: '240px' }}>
-                <span className="font-sans text-[10px] text-panthera-green/50 tabular-nums">
+              <div className="relative z-20 p-6 md:p-8 flex flex-col justify-between h-full" style={{ minHeight: '240px' }}>
+                <span className="font-sans text-[10px] text-panthera-green/55 tabular-nums">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <div className="mt-auto">
@@ -104,7 +118,7 @@ export default function SystemPieces() {
                   <h3 className="font-serif text-xl md:text-2xl text-panthera-white group-hover:text-panthera-cream transition-colors duration-300 mb-2">
                     {piece.title}
                   </h3>
-                  <p className="font-sans text-xs text-panthera-ash/80 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-400 delay-100">
+                  <p className="font-sans text-xs text-panthera-ash/70 group-hover:text-panthera-ash/88 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-400 delay-100">
                     {piece.description}
                   </p>
                 </div>
