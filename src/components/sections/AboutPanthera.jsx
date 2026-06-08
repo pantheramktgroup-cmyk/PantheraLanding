@@ -21,22 +21,11 @@ export default function AboutPanthera() {
         stagger: 0.1,
         duration: 0.9,
         ease: 'power2.out',
-        scrollTrigger: { trigger: containerRef.current, start: 'top 75%', once: true },
-      })
-
-      // Parallax on collage images
-      const imgs = containerRef.current.querySelectorAll('.collage-img')
-      imgs.forEach((img, i) => {
-        gsap.to(img, {
-          yPercent: i % 2 === 0 ? -6 : 6,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true,
-          },
-        })
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 75%',
+          once: true,
+        },
       })
     },
     { scope: containerRef, dependencies: [prefersReduced] }
@@ -45,12 +34,13 @@ export default function AboutPanthera() {
   return (
     <section className="bg-panthera-black section-pad overflow-hidden">
       <div ref={containerRef} className="container-panthera">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(320px,440px)] gap-14 lg:gap-20 items-center">
           {/* Copy column */}
           <div>
             <p className="about-reveal font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-4">
               {about.eyebrow}
             </p>
+
             <h2
               className="about-reveal font-serif text-panthera-white leading-tight mb-8"
               style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3.2rem)' }}
@@ -87,66 +77,75 @@ export default function AboutPanthera() {
             </div>
           </div>
 
-          {/* Collage column: 2 founders + 2 renacentista */}
-          <div className="grid grid-cols-2 gap-3 auto-rows-fr">
-            {/* Founder 1 — unified tone with collage */}
-            <div className="relative overflow-hidden" style={{ minHeight: '244px' }}>
-              <img
-                src={about.founders[0].src}
-                alt={about.founders[0].name}
-                className="collage-img absolute inset-0 w-full h-full object-cover object-top scale-[1.08]"
-                style={{ filter: 'grayscale(1) brightness(0.49) contrast(1.18)' }}
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-panthera-black/34" />
-              <div className="grain-overlay opacity-[0.04]" aria-hidden="true" />
-              <div className="absolute inset-0 border border-[rgba(245,245,245,0.08)]" />
-            </div>
+         {/* Collage column */}
+<div className="relative max-w-[440px] mx-auto lg:mx-0 lg:self-center">
+  <div className="grid grid-cols-2 gap-x-4 md:gap-x-5">
+    {/* Columna izquierda */}
+    <div className="flex flex-col gap-4 md:gap-5 pt-8 md:pt-10">
+      {/* Founder 1 */}
+      <div className="relative aspect-[3/4] overflow-hidden bg-black/40">
+        <img
+          src={about.founders[0].src}
+          alt={about.founders[0].name}
+          className="absolute inset-0 w-full h-full object-cover object-top scale-[1.08]"
+          style={{ filter: 'grayscale(1) brightness(0.5) contrast(1.18)' }}
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-panthera-black/34" />
+        <div className="grain-overlay opacity-[0.04]" aria-hidden="true" />
+        <div className="absolute inset-0 border border-[rgba(245,245,245,0.08)]" />
+      </div>
 
-            {/* Renacentismo 1 */}
-            <div className="relative overflow-hidden" style={{ minHeight: '216px' }}>
-              <img
-                src="/images/renaissance_watch.webp"
-                alt=""
-                aria-hidden="true"
-                className="collage-img absolute inset-0 w-full h-full object-cover"
-                style={{ transform: 'scale(1.12) translateY(-4%)', filter: 'brightness(0.56) contrast(1.04) saturate(0.92)' }}
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-panthera-black/28" />
-              <div className="grain-overlay opacity-[0.04]" aria-hidden="true" />
-              <div className="absolute inset-0 border border-[rgba(245,245,245,0.06)]" />
-            </div>
+      {/* Renacentismo 2 */}
+      <div className="relative aspect-[3/4] overflow-hidden -ml-3 md:-ml-5 z-20 bg-black/40">
+        <img
+          src="/images/renaissance_hands_mirror.webp"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover object-center scale-[1.08]"
+          style={{ filter: 'brightness(0.58) contrast(1.06) saturate(0.95)' }}
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-panthera-black/24" />
+        <div className="grain-overlay opacity-[0.04]" aria-hidden="true" />
+        <div className="absolute inset-0 border border-[rgba(245,245,245,0.07)]" />
+      </div>
+    </div>
 
-            {/* Renacentismo 2 */}
-            <div className="relative overflow-hidden" style={{ minHeight: '216px' }}>
-              <img
-                src="/images/renaissance_hands_mirror.webp"
-                alt=""
-                aria-hidden="true"
-                className="collage-img absolute inset-0 w-full h-full object-cover"
-                style={{ transform: 'scale(1.12) translateY(-4%)', filter: 'brightness(0.56) contrast(1.04) saturate(0.92)' }}
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-panthera-black/28" />
-              <div className="grain-overlay opacity-[0.04]" aria-hidden="true" />
-              <div className="absolute inset-0 border border-[rgba(245,245,245,0.06)]" />
-            </div>
+    {/* Columna derecha: se mueve completa, manteniendo la misma separación interna */}
+    <div className="flex flex-col gap-4 md:gap-5 -translate-y-4 md:-translate-y-7">
+      {/* Renacentismo 1 */}
+      <div className="relative aspect-[3/4] overflow-hidden -mr-3 md:-mr-5 z-20 bg-black/40">
+        <img
+          src="/images/renaissance_watch.webp"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover object-center scale-[1.08]"
+          style={{ filter: 'brightness(0.58) contrast(1.06) saturate(0.95)' }}
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-panthera-black/24" />
+        <div className="grain-overlay opacity-[0.04]" aria-hidden="true" />
+        <div className="absolute inset-0 border border-[rgba(245,245,245,0.07)]" />
+      </div>
 
-            {/* Founder 2 — unified tone with collage */}
-            <div className="relative overflow-hidden" style={{ minHeight: '188px' }}>
-              <img
-                src={about.founders[1].src}
-                alt={about.founders[1].name}
-                className="collage-img absolute inset-0 w-full h-full object-cover object-top scale-[1.08]"
-                style={{ filter: 'grayscale(1) brightness(0.49) contrast(1.18)' }}
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-panthera-black/34" />
-              <div className="grain-overlay opacity-[0.04]" aria-hidden="true" />
-              <div className="absolute inset-0 border border-[rgba(245,245,245,0.08)]" />
-            </div>
-          </div>
+      {/* Founder 2 */}
+      <div className="relative aspect-[3/4] overflow-hidden bg-black/40 z-10">
+        <img
+          src={about.founders[1].src}
+          alt={about.founders[1].name}
+          className="absolute inset-0 w-full h-full object-cover object-top scale-[1.08]"
+          style={{ filter: 'grayscale(1) brightness(0.5) contrast(1.18)' }}
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-panthera-black/34" />
+        <div className="grain-overlay opacity-[0.04]" aria-hidden="true" />
+        <div className="absolute inset-0 border border-[rgba(245,245,245,0.08)]" />
+      </div>
+    </div>
+  </div>
+</div>
+
         </div>
       </div>
     </section>

@@ -35,22 +35,39 @@ export default function FAQ() {
   return (
     <section className="relative bg-panthera-black section-pad overflow-hidden">
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        {/* Fondo único difuminado */}
         <img
-          src="/images/last_night.webp"
+          src="/images/faqs.webp"
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
           style={{
-            transform: 'scale(1.16) rotate(-0.4deg) translate3d(1%, -0.4%, 0)',
+            objectPosition: 'center center',
+            transform: 'scale(1.01)',
             transformOrigin: 'center',
-            filter: 'grayscale(1) saturate(0.42) brightness(0.3) contrast(1.1) blur(7px)',
+            filter: 'brightness(0.52) contrast(1.08) saturate(0.72) blur(3px)',
           }}
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-panthera-black/94 via-panthera-black/86 to-panthera-black/74" />
-        <div className="absolute inset-0 bg-gradient-to-t from-panthera-black/82 via-panthera-black/46 to-panthera-black/24" />
-        <div className="absolute inset-0 bg-[radial-gradient(130%_90%_at_50%_6%,rgba(240,240,240,0.08)_0%,rgba(185,164,106,0.04)_36%,rgba(10,10,10,0)_70%)]" />
-        <div className="grain-overlay opacity-[0.12]" aria-hidden="true" />
+
+        {/* Overlay lateral para lectura */}
+        <div className="absolute inset-0 bg-gradient-to-r from-panthera-black/84 via-panthera-black/66 to-panthera-black/48" />
+
+        {/* Overlay vertical */}
+        <div className="absolute inset-0 bg-gradient-to-t from-panthera-black/76 via-panthera-black/36 to-panthera-black/18" />
+
+        {/* Viñeta suave */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(120% 90% at 55% 42%, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.18) 48%, rgba(0,0,0,0.64) 100%)',
+          }}
+        />
+
+        {/* Grano */}
+        <div className="grain-overlay opacity-[0.18]" aria-hidden="true" />
       </div>
+
       <div ref={containerRef} className="relative z-10 container-panthera">
         <div className="max-w-3xl mx-auto">
           {/* Header */}
@@ -58,6 +75,7 @@ export default function FAQ() {
             <p className="faq-reveal font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-4">
               {faq.eyebrow}
             </p>
+
             <h2
               className="faq-reveal font-serif text-panthera-white leading-tight"
               style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3rem)' }}
@@ -67,7 +85,7 @@ export default function FAQ() {
           </div>
 
           {/* Accordion */}
-          <div className="faq-reveal">
+          <div className="faq-reveal faq-question-layer">
             <Accordion items={faq.items} />
           </div>
 
@@ -79,6 +97,35 @@ export default function FAQ() {
           </div>
         </div>
       </div>
+
+      <style>{`
+        .faq-question-layer > * > * {
+  position: relative;
+  background: transparent;
+  border: none;
+}
+
+.faq-question-layer > * > *::before {
+  content: '';
+  position: absolute;
+  inset: 0 -32px;
+  background: rgba(5, 5, 5, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.045);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: -1;
+  transition: background-color 300ms ease, border-color 300ms ease;
+}
+
+        .faq-question-layer > * > *:hover::before {
+  background: rgba(5, 5, 5, 0.34);
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+        .faq-question-layer > * > * + * {
+          margin-top: 8px;
+        }
+      `}</style>
     </section>
   )
 }
