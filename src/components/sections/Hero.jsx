@@ -1,17 +1,12 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import SplitType from 'split-type'
 import { gsap, useGSAP } from '../../lib/gsap'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { landingCopy } from '../../content/landingCopy'
 import Button from '../ui/Button'
 
-const HERO_VIDEO_ID = '1nO3ZRhccb1Aou5oHgqy4TBJGF6pTt55e'
 const heroPoster = '/images/hero_panthera_strategy_room.webp'
-const heroVideoSources = [
-  '/videos/hero-panthera-loop.mp4',
-  `https://drive.google.com/uc?export=download&id=${HERO_VIDEO_ID}`,
-  `https://drive.usercontent.google.com/download?id=${HERO_VIDEO_ID}&export=download`,
-]
+const heroVideoSrc = '/videos/hero-panthera-loop.mp4'
 
 const { hero } = landingCopy
 
@@ -23,11 +18,9 @@ export default function Hero() {
   const subRef = useRef(null)
   const ctaRef = useRef(null)
   const prefersReduced = usePrefersReducedMotion()
-  const [videoSourceIndex, setVideoSourceIndex] = useState(0)
-  const videoFailed = videoSourceIndex >= heroVideoSources.length
 
   useEffect(() => {
-    if (prefersReduced || videoFailed || !videoRef.current) return
+    if (prefersReduced || !videoRef.current) return
 
     // Some browsers need an explicit play() call even with autoplay+muted
     const attemptPlay = () => {
@@ -41,7 +34,7 @@ export default function Hero() {
     const node = videoRef.current
     node.addEventListener('loadeddata', attemptPlay)
     return () => node.removeEventListener('loadeddata', attemptPlay)
-  }, [prefersReduced, videoFailed, videoSourceIndex])
+  }, [prefersReduced])
 
   useGSAP(
     () => {
@@ -104,26 +97,19 @@ export default function Hero() {
           className="absolute inset-0 overflow-hidden bg-panthera-deep"
           style={{ backgroundImage: `url(${heroPoster})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
         >
-          {!videoFailed && (
-            <video
-              key={heroVideoSources[videoSourceIndex]}
-              ref={videoRef}
-              className="absolute inset-0 h-full w-full object-cover pointer-events-none"
-              style={{ filter: 'brightness(0.95) saturate(1.02) contrast(1)' }}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              poster={heroPoster}
-              aria-hidden="true"
-              onError={() => setVideoSourceIndex((idx) => idx + 1)}
-            >
-              <source src={heroVideoSources[videoSourceIndex]} type="video/mp4" />
-              {/* Alternative local source if Drive is blocked:
-                  <source src="/videos/hero-panthera-loop.mp4" type="video/mp4" /> */}
-            </video>
-          )}
+          <video
+            ref={videoRef}
+            src={heroVideoSrc}
+            className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+            style={{ filter: 'brightness(0.95) saturate(1.02) contrast(1)' }}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster={heroPoster}
+            aria-hidden="true"
+          />
         </div>
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,0,0,0.42)' }} />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 34%, rgba(0,0,0,0) 52%)' }} />

@@ -5,7 +5,7 @@ import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { landingCopy } from '../../content/landingCopy'
 import Button from '../ui/Button'
 
-const cuelloBotella = '/images/cuello_botella.png'
+const cuelloBotella = '/images/cuello_botella.webp'
 const { problem } = landingCopy
 
 export default function CoreProblem() {

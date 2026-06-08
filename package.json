@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/sync-hero-video.mjs",
     "build": "vite build",
     "preview": "vite preview",
     "convert:images": "node scripts/convert-images.mjs"

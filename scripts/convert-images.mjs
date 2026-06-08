@@ -1,7 +1,7 @@
 /**
  * convert-images.mjs
- * Converts PNG images from src/assets/raw-images/ to WebP (quality 85)
- * and saves them in src/assets/images/
+ * Converts source images to WebP (quality 85)
+ * and saves them in src/assets/images/ and assets/images/
  *
  * Run with: npm run convert:images
  */
@@ -13,6 +13,12 @@ import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = resolve(__dirname, '..')
+
+const SOURCE_DIRS = [
+    resolve(root, 'assets/raw-images'),
+    resolve(root, 'src/assets/raw-images'),
+    resolve(root, 'src/assets/images'),
+]
 
 // Primary output: src/assets/images (for imports)
 const OUT_DIR = resolve(root, 'src/assets/images')
@@ -49,6 +55,7 @@ const conversions = [
     ['apex_phase_06_medicion.png', 'apex_phase_06_medicion.webp'],
     ['apex_phase_07_optimizacion.png', 'apex_phase_07_optimizacion.webp'],
     ['filtro_aplicacion.png', 'filtro_aplicacion.webp'],
+    ['cuello_botella.png', 'cuello_botella.webp'],
 
     // CTA final testimonios
     ['testimonial_cta_case_table.png', 'testimonial_cta_case_table.webp'],
@@ -58,11 +65,13 @@ let ok = 0
 let skipped = 0
 
 for (const [src, dest] of conversions) {
-    const srcPath = resolve(root, 'src/assets/raw-images', src)
+    const srcPath = SOURCE_DIRS
+        .map((dir) => resolve(dir, src))
+        .find((candidate) => existsSync(candidate))
     const destPath = resolve(OUT_DIR, dest)
     const publicPath = resolve(PUBLIC_DIR, dest)
 
-    if (!existsSync(srcPath)) {
+    if (!srcPath) {
         console.warn(`⚠️  SKIP (not found): ${src}`)
         skipped++
         continue
