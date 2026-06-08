@@ -57,6 +57,8 @@ const conversions = [
     ['filtro_aplicacion.png', 'filtro_aplicacion.webp'],
     ['cuello_botella.png', 'cuello_botella.webp'],
     ['faqs.png', 'faqs.webp'],
+    ['fundador_2.jpg', 'fundador_2.webp'],
+    ['fundador_1.jpg', 'fundador_1.webp'],
 
     // CTA final testimonios
     ['testimonial_cta_case_table.png', 'testimonial_cta_case_table.webp'],

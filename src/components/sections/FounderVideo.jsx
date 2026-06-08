@@ -138,18 +138,8 @@ export default function FounderVideo() {
           </div>
         </div>
 
-        {/* Pull quote + CTA below */}
-        <div className="text-center mt-12 space-y-8 reveal-el">
-          <blockquote className="max-w-2xl mx-auto">
-            <p
-              className="font-serif italic text-panthera-cream leading-snug"
-              style={{ fontSize: 'clamp(1.1rem, 2vw, 1.5rem)' }}
-            >
-              <span className="block">&#8220;Escalar no deber&#237;a exigirte m&#225;s esfuerzo.</span>
-              <span className="block ml-5 md:ml-10">Deber&#237;a exigirte mejor infraestructura.&#8221;</span>
-            </p>
-          </blockquote>
-
+        {/* CTA below */}
+        <div className="text-center mt-12 reveal-el">
           <Button variant="primary" href="#booking">
             {video.cta}
           </Button>

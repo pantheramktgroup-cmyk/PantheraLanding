@@ -99,11 +99,11 @@ export default function AboutPanthera() {
       {/* Renacentismo 2 */}
       <div className="relative aspect-[3/4] overflow-hidden -ml-3 md:-ml-5 z-20 bg-black/40">
         <img
-          src="/images/renaissance_hands_mirror.webp"
+          src="/images/fundador_1.webp"
           alt=""
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover object-center scale-[1.08]"
-          style={{ filter: 'brightness(0.58) contrast(1.06) saturate(0.95)' }}
+          style={{ filter: 'grayscale(1) brightness(0.5) contrast(1.18)' }}
           loading="lazy"
         />
         <div className="absolute inset-0 bg-panthera-black/24" />
@@ -117,11 +117,11 @@ export default function AboutPanthera() {
       {/* Renacentismo 1 */}
       <div className="relative aspect-[3/4] overflow-hidden -mr-3 md:-mr-5 z-20 bg-black/40">
         <img
-          src="/images/renaissance_watch.webp"
+          src="/images/fundador_2.webp"
           alt=""
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover object-center scale-[1.08]"
-          style={{ filter: 'brightness(0.58) contrast(1.06) saturate(0.95)' }}
+          style={{ filter: 'grayscale(1) brightness(0.5) contrast(1.18)' }}
           loading="lazy"
         />
         <div className="absolute inset-0 bg-panthera-black/24" />

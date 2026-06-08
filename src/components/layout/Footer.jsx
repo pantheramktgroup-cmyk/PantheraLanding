@@ -3,12 +3,20 @@ import { scrollToBooking } from '../../lib/scrollToBooking'
 
 const { footer } = landingCopy
 
+const iconStyle = {
+  fill: 'none',
+  stroke: 'currentColor',
+}
+
 const socialLinks = [
   {
     label: 'Facebook',
     href: 'https://www.facebook.com/people/Panthera-Marketing-Group/61554106953726/',
     icon: (
-      <path d="M15.5 8.5h-2.1c-.7 0-1 .34-1 1.08V11h3l-.38 3h-2.62v7h-3.1v-7H7v-3h2.3V9.22C9.3 6.68 10.82 5 13.1 5c1.1 0 2.05.08 2.4.12v3.38Z" />
+      <path
+        d="M14.2 8.3h-1.4c-.72 0-1.08.42-1.08 1.16V11h2.34l-.32 2.28h-2.02V19H9.18v-5.72H7.4V11h1.78V9.18C9.18 7.1 10.42 6 12.34 6c.84 0 1.48.06 1.86.12v2.18Z"
+        style={iconStyle}
+      />
     ),
   },
   {
@@ -16,9 +24,9 @@ const socialLinks = [
     href: 'https://www.instagram.com/pantheramktgroup/',
     icon: (
       <>
-        <rect x="5" y="5" width="14" height="14" rx="4" />
-        <circle cx="12" cy="12" r="3.2" />
-        <circle cx="16.2" cy="7.8" r="0.8" />
+        <rect x="6" y="6" width="12" height="12" rx="3.2" style={iconStyle} />
+        <circle cx="12" cy="12" r="2.7" style={iconStyle} />
+        <circle cx="15.7" cy="8.3" r="0.55" style={iconStyle} />
       </>
     ),
   },
@@ -27,8 +35,8 @@ const socialLinks = [
     href: 'https://www.youtube.com/@PantheraMktGroup',
     icon: (
       <>
-        <rect x="4" y="7" width="16" height="10" rx="3" />
-        <path d="M10.5 9.8v4.4L14.5 12l-4-2.2Z" />
+        <rect x="5" y="8" width="14" height="8" rx="2.4" style={iconStyle} />
+        <path d="M11 10.3v3.4L14.1 12 11 10.3Z" style={iconStyle} />
       </>
     ),
   },
@@ -37,9 +45,10 @@ const socialLinks = [
     href: 'https://www.linkedin.com/company/pantheramktgroup/?viewAsMember=true',
     icon: (
       <>
-        <path d="M6.5 10h3v8h-3v-8Z" />
-        <path d="M8 6.2a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2Z" />
-        <path d="M11 10h2.9v1.08c.4-.64 1.28-1.28 2.62-1.28 2.08 0 3.48 1.36 3.48 4.28V18h-3v-3.58c0-1.12-.42-1.84-1.38-1.84-.78 0-1.22.52-1.42 1.02-.08.18-.1.44-.1.68V18H11v-8Z" />
+        <path d="M7 10.2V18" style={iconStyle} />
+        <path d="M7 7v.1" style={iconStyle} />
+        <path d="M11 18v-7.8" style={iconStyle} />
+        <path d="M11 13.4c0-2.05 1.18-3.35 2.95-3.35 1.78 0 3.05 1.18 3.05 3.55V18" style={iconStyle} />
       </>
     ),
   },
@@ -104,16 +113,20 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={social.label}
-                className="group flex h-8 w-8 items-center justify-center rounded-full border border-white/[0.055] text-panthera-ash/35 hover:text-panthera-white/70 hover:border-white/[0.12] hover:bg-white/[0.025] transition-all duration-300"
+                className="footer-social-link group flex h-9 w-9 items-center justify-center rounded-full border border-[#E3F78D]/12 bg-transparent text-[#E3F78D]/70 hover:text-[#E3F78D] hover:border-[#E3F78D]/34 hover:bg-[#E3F78D]/[0.025] transition-all duration-300"
               >
                 <svg
                   viewBox="0 0 24 24"
-                  className="h-3.5 w-3.5"
+                  className="footer-social-icon h-4 w-4"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="1.7"
+                  strokeWidth="1.45"
                   strokeLinecap="round"
                   strokeLinejoin="round"
+                  style={{
+                    fill: 'none',
+                    stroke: 'currentColor',
+                  }}
                   aria-hidden="true"
                 >
                   {social.icon}

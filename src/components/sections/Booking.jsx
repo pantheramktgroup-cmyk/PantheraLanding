@@ -67,12 +67,6 @@ export default function Booking() {
           />
         </div>
 
-        {/* Closing text below calendar */}
-        <div className="max-w-2xl mx-auto text-center mt-3 md:mt-4">
-          <p className="font-sans text-base md:text-[1.05rem] text-panthera-cream/88 leading-relaxed md:leading-[1.75]">
-            {booking.closingText}
-          </p>
-        </div>
       </div>
     </section>
   )

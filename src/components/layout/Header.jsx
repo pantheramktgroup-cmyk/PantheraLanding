@@ -49,7 +49,7 @@ export default function Header() {
           </a>
 
           {/* Sticky CTA */}
-          <Button variant="secondary" href="#booking" className="text-[9px] tracking-[0.18em] py-1.5 px-4 md:py-2 md:px-5">
+          <Button variant="secondary" href="#booking" className="header-cta text-[9px] tracking-[0.18em] py-1.5 px-4 md:py-2 md:px-5">
             {nav.cta}
           </Button>
         </div>

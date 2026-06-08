@@ -17,7 +17,8 @@ const PANEL_IMAGES = [
 ]
 
 const TOTAL_PANELS = apexSystem.phases.length + 1
-const METHOD_IMAGE_FILTER = 'brightness(0.69) contrast(1.08) saturate(0.86) blur(0.75px)'
+
+const METHOD_IMAGE_FILTER = 'brightness(0.46) contrast(1.08) saturate(0.64) blur(0.9px)'
 
 const CLOSING_IMAGE_CLASS =
   'absolute inset-[-6%] w-[112%] h-[112%] max-w-none object-cover'
@@ -27,6 +28,39 @@ const CLOSING_IMAGE_STYLE = {
   transform: 'scale(0.9) translateY(9%)',
   transformOrigin: 'center',
   filter: METHOD_IMAGE_FILTER,
+}
+
+function MethodAtmosphereOverlay() {
+  return (
+    <>
+      {/* Oscurecimiento general, apenas más liviano */}
+      <div className="absolute inset-0 bg-panthera-deep/84" />
+
+      {/* Menos oscuridad en el centro */}
+      <div className="absolute inset-0 bg-black/16" />
+
+      {/* Profundidad inferior */}
+      <div className="absolute inset-0 bg-gradient-to-t from-panthera-deep via-panthera-deep/58 to-black/12" />
+
+      {/* Viñeta atmosférica: mantiene bordes oscuros, pero libera un poco el centro */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 70% 54% at 50% 46%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.08) 30%, rgba(0,0,0,0.38) 66%, rgba(0,0,0,0.88) 100%)',
+        }}
+      />
+
+      {/* Refuerzo lateral, un poco más suave */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/38 via-transparent to-black/38" />
+
+      {/* Refuerzo superior/inferior, más suave */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/26 via-transparent to-black/28" />
+
+      {/* Grano más sutil */}
+      <div className="grain-overlay opacity-[0.11]" />
+    </>
+  )
 }
 
 export default function ApexSystem() {
@@ -55,18 +89,20 @@ export default function ApexSystem() {
           const lastPanel = track.children[TOTAL_PANELS - 1]
 
           const tl = gsap.timeline()
+
           tl.to(track, {
             x: () => -lastPanel.offsetLeft,
             ease: 'none',
             duration: TOTAL_PANELS - 1,
           })
+
           tl.to({}, { duration: 1 })
 
           ScrollTrigger.create({
             animation: tl,
             trigger: pin,
             start: 'top top',
-            end: () => `+=${totalDist() * TOTAL_PANELS / (TOTAL_PANELS - 1)}`,
+            end: () => `+=${(totalDist() * TOTAL_PANELS) / (TOTAL_PANELS - 1)}`,
             scrub: 1,
             pin: true,
             pinSpacing: true,
@@ -85,6 +121,7 @@ export default function ApexSystem() {
                 Math.floor(self.progress * TOTAL_PANELS),
                 TOTAL_PANELS - 1
               )
+
               setCurrentPhase(idx)
 
               if (progressRef.current) {
@@ -112,7 +149,7 @@ export default function ApexSystem() {
             scrollTrigger: {
               trigger: pin,
               start: 'top top',
-              end: () => `+=${totalDist() * TOTAL_PANELS / (TOTAL_PANELS - 1)}`,
+              end: () => `+=${(totalDist() * TOTAL_PANELS) / (TOTAL_PANELS - 1)}`,
               scrub: true,
             },
           })
@@ -159,12 +196,14 @@ export default function ApexSystem() {
               {apexSystem.eyebrow}
             </div>
 
-            <div className="flex items-center gap-3">
-              <span className="font-serif text-4xl text-panthera-white tabular-nums leading-none">
+            <div className="flex items-center gap-2">
+              <span className="font-serif text-3xl text-panthera-white/90 tabular-nums leading-none">
                 {String(Math.min(currentPhase + 1, apexSystem.phases.length)).padStart(2, '0')}
               </span>
-              <span className="text-panthera-ash/40">/</span>
-              <span className="font-sans text-xs text-panthera-ash/40">
+
+              <span className="text-sm text-panthera-ash/45">/</span>
+
+              <span className="font-sans text-xs text-panthera-ash/45">
                 {String(apexSystem.phases.length).padStart(2, '0')}
               </span>
             </div>
@@ -204,35 +243,36 @@ export default function ApexSystem() {
                   loading="lazy"
                 />
 
-                <div className="absolute inset-0 bg-panthera-deep/78" />
-                <div className="absolute inset-0 bg-gradient-to-t from-panthera-deep via-panthera-deep/40 to-transparent" />
-                <div className="grain-overlay opacity-[0.08]" />
+                <MethodAtmosphereOverlay />
               </div>
 
-              <div className="phase-content absolute z-10 bottom-0 left-0 right-0 container-panthera pb-16 md:pb-20">
-                <p
-                  className="font-serif text-[18vw] text-panthera-white/[0.12] leading-none select-none -mb-6 pointer-events-none"
-                  style={{ textShadow: '0 0 18px rgba(245,245,245,0.08)' }}
-                  aria-hidden="true"
-                >
-                  {phase.number}
-                </p>
-
-                <div className="border-t border-[rgba(245,245,245,0.12)] pt-7 max-w-2xl">
-                  <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-4">
+              <div className="phase-content absolute z-10 bottom-0 left-0 right-0 container-panthera pb-10 md:pb-14">
+                <div className="max-w-2xl">
+                  <p
+                    className="mb-5 tabular-nums tracking-[0.08em] text-[#E3F78D]/55"
+                    style={{
+                      fontFamily: "'Helvetica Now Display', Helvetica, Arial, sans-serif",
+                      fontWeight: 200,
+                      fontStyle: 'italic',
+                      fontSize: 'clamp(1.25rem, 1.7vw, 1.65rem)',
+                      lineHeight: 1,
+                    }}
+                  >
                     Fase {phase.number}
                   </p>
 
-                  <h3
-                    className="font-serif text-panthera-white leading-tight mb-5"
-                    style={{ fontSize: 'clamp(1.6rem, 2.8vw, 2.6rem)' }}
-                  >
-                    {phase.title}
-                  </h3>
+                  <div className="border-t border-[rgba(245,245,245,0.10)] pt-7">
+                    <h3
+                      className="font-serif text-panthera-white leading-tight mb-5"
+                      style={{ fontSize: 'clamp(1.6rem, 2.8vw, 2.6rem)' }}
+                    >
+                      {phase.title}
+                    </h3>
 
-                  <p className="font-sans text-sm text-panthera-white/60 leading-relaxed max-w-lg">
-                    {phase.description}
-                  </p>
+                    <p className="font-sans text-sm text-panthera-white/60 leading-relaxed max-w-lg">
+                      {phase.description}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -256,16 +296,7 @@ export default function ApexSystem() {
               loading="lazy"
             />
 
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  'linear-gradient(90deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.48) 45%, rgba(0,0,0,0.38) 100%)',
-              }}
-              aria-hidden="true"
-            />
-
-            <div className="grain-overlay opacity-[0.08]" aria-hidden="true" />
+            <MethodAtmosphereOverlay />
 
             <div
               className="relative z-10 w-full max-w-2xl mx-auto px-6"
@@ -302,25 +333,35 @@ export default function ApexSystem() {
                 loading="lazy"
               />
 
-              <div className="absolute inset-0 bg-panthera-deep/79" />
-              <div className="grain-overlay opacity-[0.08]" />
+              <MethodAtmosphereOverlay />
             </div>
 
             <div className="relative z-10 max-w-lg">
-              <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-4">
+              <p
+                className="mb-5 tabular-nums tracking-[0.08em] text-[#E3F78D]/55"
+                style={{
+                  fontFamily: "'Helvetica Now Display', Helvetica, Arial, sans-serif",
+                  fontWeight: 200,
+                  fontStyle: 'italic',
+                  fontSize: '1rem',
+                  lineHeight: 1,
+                }}
+              >
                 Fase {phase.number}
               </p>
 
-              <h3
-                className="font-serif text-panthera-white leading-tight mb-4"
-                style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
-              >
-                {phase.title}
-              </h3>
+              <div className="border-t border-[rgba(245,245,245,0.10)] pt-6">
+                <h3
+                  className="font-serif text-panthera-white leading-tight mb-4"
+                  style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
+                >
+                  {phase.title}
+                </h3>
 
-              <p className="font-sans text-sm text-panthera-white/60 leading-relaxed">
-                {phase.description}
-              </p>
+                <p className="font-sans text-sm text-panthera-white/60 leading-relaxed">
+                  {phase.description}
+                </p>
+              </div>
             </div>
           </div>
         ))}
@@ -335,16 +376,7 @@ export default function ApexSystem() {
             loading="lazy"
           />
 
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                'linear-gradient(90deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.48) 45%, rgba(0,0,0,0.38) 100%)',
-            }}
-            aria-hidden="true"
-          />
-
-          <div className="grain-overlay opacity-[0.08]" aria-hidden="true" />
+          <MethodAtmosphereOverlay />
 
           <div className="relative z-10 max-w-2xl mx-auto">
             <p

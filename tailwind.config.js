@@ -20,9 +20,9 @@ export default {
         },
       },
       fontFamily: {
-        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
-        sans: ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
-      },
+  sans: ['Helvetica Now Display', 'Helvetica', 'Helvetica Neue', 'Arial', 'sans-serif'],
+  serif: ['Helvetica Now Display', 'Helvetica', 'Helvetica Neue', 'Arial', 'sans-serif'],
+},
       fontSize: {
         '8xl': ['6rem', { lineHeight: '1.05' }],
         '9xl': ['8rem', { lineHeight: '1' }],

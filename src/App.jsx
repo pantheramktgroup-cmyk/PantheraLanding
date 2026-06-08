@@ -35,9 +35,6 @@ export default function App() {
         {/* 3. Casos reales / Testimonios */}
         <Testimonials />
 
-        {/* 4. Statement de transformación */}
-        <TransformationStatement />
-
         {/* 5. Filtro de aplicación */}
         <AudienceFit />
 

@@ -4,7 +4,7 @@ import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { landingCopy } from '../../content/landingCopy'
 import Button from '../ui/Button'
 
-const filtroAplicacionBg = '/images/filtro_aplicacion.webp'
+const filtroAplicacionBg = '/images/renaissance_watch.webp'
 const { audience } = landingCopy
 
 export default function AudienceFit() {
@@ -42,31 +42,50 @@ export default function AudienceFit() {
   return (
     <section className="relative bg-[#070707] section-pad overflow-hidden">
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+  <img
+    src={filtroAplicacionBg}
+    alt=""
+    className="absolute inset-0 h-full w-full object-cover object-center"
+    style={{
+      opacity: 0.1,
+      filter: 'grayscale(1) brightness(0.5) contrast(1.5) saturate(0.08)',
+    }}
+    loading="lazy"
+  />
 
-        <img
-          src={filtroAplicacionBg}
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover object-center"
-          style={{ opacity: 0.22, filter: 'brightness(0.78) contrast(1.08) saturate(0.9)' }}
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-black/52 to-black/88" />
-        <div
-          className="absolute inset-x-0 top-0 h-[280px]"
-          style={{
-            background: 'linear-gradient(to bottom, #0A0909 0%, rgba(10,9,9,0.9) 28%, rgba(7,7,7,0.52) 64%, rgba(0,0,0,0) 100%)',
-          }}
-        />
-        <div
-          className="absolute inset-x-0 bottom-0 h-[240px]"
-          style={{
-            background:
-              'linear-gradient(to bottom, rgba(5,5,5,0) 0%, rgba(5,5,5,0.2) 34%, rgba(5,5,5,0.42) 56%, rgba(5,5,5,0.72) 78%, #050505 100%)',
-          }}
-        />
-        <div className="absolute inset-0 bg-black/14" />
-        <div className="grain-overlay opacity-[0.06]" aria-hidden="true" />
-      </div>
+  {/* Oscurecimiento lateral general */}
+  <div className="absolute inset-0 bg-gradient-to-l from-black/18 via-black/46 to-black/82" />
+
+  {/* Top oscuro, pero no mata toda la sección */}
+  <div
+    className="absolute inset-x-0 top-0 h-[340px]"
+    style={{
+      background:
+        'linear-gradient(to bottom, #000000 0%, #000000 24%, rgba(0,0,0,0.82) 48%, rgba(0,0,0,0.36) 76%, rgba(0,0,0,0) 100%)',
+    }}
+  />
+
+  {/* Oscuridad suave en el medio, mucho más leve */}
+  <div
+    className="absolute inset-0"
+    style={{
+      background:
+        'radial-gradient(ellipse 82% 64% at 50% 42%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.12) 46%, rgba(0,0,0,0.34) 100%)',
+    }}
+  />
+
+  {/* Gradiente inferior — NO TOCAR */}
+  <div
+    className="absolute inset-x-0 bottom-0 h-[240px]"
+    style={{
+      background:
+        'linear-gradient(to bottom, rgba(5,5,5,0) 0%, rgba(5,5,5,0.2) 34%, rgba(5,5,5,0.42) 56%, rgba(5,5,5,0.72) 78%, #050505 100%)',
+    }}
+  />
+
+  <div className="absolute inset-0 bg-black/4" />
+  <div className="grain-overlay opacity-[0.06]" aria-hidden="true" />
+</div>
 
       <div ref={containerRef} className="relative z-10 container-panthera">
         <div className="max-w-2xl mb-14">
@@ -105,17 +124,17 @@ export default function AudienceFit() {
             </ol>
           </div>
 
-          <div className="no-col bg-[rgba(20,20,20,0.35)] p-10 md:p-14 border border-[rgba(245,245,245,0.08)]">
-            <p className="font-sans text-[10px] uppercase tracking-[0.2em] font-semibold text-panthera-ash/70 mb-8">
+          <div className="no-col bg-[rgba(10,10,10,0.58)] p-10 md:p-14 border border-[rgba(245,245,245,0.08)]">
+            <p className="font-sans text-[10px] uppercase tracking-[0.2em] font-semibold text-[#FF4A4ACC] mb-8">
               {audience.noTitle}
             </p>
-            <ol className="space-y-5 opacity-60">
+            <ol className="space-y-5 opacity-100">
               {audience.noItems.map((item, i) => (
                 <li key={i} className="no-item flex items-start gap-4">
-                  <span className="font-sans text-xs text-panthera-ash/60 tabular-nums shrink-0 pt-0.5">
+                  <span className="font-sans text-xs text-[#FF4A4ACC] tabular-nums shrink-0 pt-0.5">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <span className="font-sans text-sm text-panthera-ash/75 leading-snug line-through decoration-panthera-ash/30 decoration-[0.5px]">
+                  <span className="font-sans text-sm text-[#FF7171CC] leading-snug line-through decoration-[#FF4A4A]/45 decoration-[0.5px]">
                     {item}
                   </span>
                 </li>

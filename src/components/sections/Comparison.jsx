@@ -46,12 +46,34 @@ export default function Comparison() {
           src="/images/panthera_vs_agency_transition.webp"
           alt=""
           className="w-full h-full object-cover object-center"
-          style={{ filter: 'grayscale(62%) brightness(0.22)' }}
+          style={{ filter: 'grayscale(1) brightness(0.06) contrast(1.03) saturate(0.08) blur(1.2px)' }}
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-panthera-black via-panthera-black/90 to-panthera-black/36" />
-        <div className="absolute inset-0 bg-gradient-to-t from-panthera-black/86 via-transparent to-panthera-black/44" />
-        <div className="grain-overlay opacity-20" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/98 to-black/96" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/98 via-transparent to-black/96" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_0%,rgba(0,0,0,0.28)_55%,rgba(0,0,0,0.76)_100%)]" />
+        
+{/* Grano muy sutil, no debe aclarar ni teñir toda la sección */}
+<div
+  className="grain-overlay opacity-[0.06]"
+  style={{
+    mixBlendMode: 'soft-light',
+  }}
+  aria-hidden="true"
+/>
+
+{/* Mancha negra inferior derecha, por encima del grano */}
+<div
+  className="absolute inset-0 z-[2]"
+  style={{
+    background:
+      'radial-gradient(ellipse 60% 90% at 100% 90%, #000000 0%, #000000 26%, rgba(0,0,0,0.98) 40%, rgba(0,0,0,0.82) 58%, rgba(0,0,0,0.48) 74%, rgba(0,0,0,0.16) 88%, rgba(0,0,0,0) 100%)',
+  }}
+/>
+
+
+        
+        <div className="grain-overlay opacity-[0.2]" aria-hidden="true" />
       </div>
 
       <div ref={containerRef} className="relative z-10 container-panthera">
