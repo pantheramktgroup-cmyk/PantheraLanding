@@ -33,7 +33,7 @@ export default function FAQ() {
   )
 
   return (
-    <section className="relative bg-panthera-black section-pad overflow-hidden">
+    <section className="relative bg-black section-pad overflow-hidden">
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         {/* Fondo único difuminado */}
         <img
@@ -44,28 +44,46 @@ export default function FAQ() {
             objectPosition: 'center center',
             transform: 'scale(1.01)',
             transformOrigin: 'center',
-            filter: 'brightness(0.52) contrast(1.08) saturate(0.72) blur(3px)',
+            filter: 'brightness(0.62) contrast(1.08) saturate(1.25) blur(3px)'
           }}
           loading="lazy"
         />
 
         {/* Overlay lateral para lectura */}
-        <div className="absolute inset-0 bg-gradient-to-r from-panthera-black/84 via-panthera-black/66 to-panthera-black/48" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/88 via-black/68 to-black/50" />
 
-        {/* Overlay vertical */}
-        <div className="absolute inset-0 bg-gradient-to-t from-panthera-black/76 via-panthera-black/36 to-panthera-black/18" />
+        {/* Overlay vertical general */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/34 to-black/22" />
 
-        {/* Viñeta suave */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'radial-gradient(120% 90% at 55% 42%, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.18) 48%, rgba(0,0,0,0.64) 100%)',
-          }}
-        />
+       {/* Viñeta más redonda: oscurece bordes y costados sin tapar tanto el centro */}
+<div
+  className="absolute inset-0"
+  style={{
+    background:
+      'radial-gradient(ellipse 68% 52% at 50% 45%, rgba(255,255,255,0.035) 0%, rgba(0,0,0,0.08) 36%, rgba(0,0,0,0.42) 72%, rgba(0,0,0,0.88) 100%)',
+  }}
+/>
+
+{/* Fade superior más bajo */}
+<div
+  className="absolute inset-x-0 top-0 h-[180px]"
+  style={{
+    background:
+      'linear-gradient(to bottom, #000000 0%, rgba(0,0,0,0.86) 30%, rgba(0,0,0,0.38) 68%, rgba(0,0,0,0) 100%)',
+  }}
+/>
+
+{/* Fade inferior más bajo */}
+<div
+  className="absolute inset-x-0 bottom-0 h-[210px]"
+  style={{
+    background:
+      'linear-gradient(to top, #000000 0%, rgba(0,0,0,0.86) 32%, rgba(0,0,0,0.38) 70%, rgba(0,0,0,0) 100%)',
+  }}
+/>
 
         {/* Grano */}
-        <div className="grain-overlay opacity-[0.18]" aria-hidden="true" />
+        <div className="grain-overlay opacity-[0.2]" aria-hidden="true" />
       </div>
 
       <div ref={containerRef} className="relative z-10 container-panthera">
@@ -100,27 +118,27 @@ export default function FAQ() {
 
       <style>{`
         .faq-question-layer > * > * {
-  position: relative;
-  background: transparent;
-  border: none;
-}
+          position: relative;
+          background: transparent;
+          border: none;
+        }
 
-.faq-question-layer > * > *::before {
-  content: '';
-  position: absolute;
-  inset: 0 -32px;
-  background: rgba(5, 5, 5, 0.24);
-  border: 1px solid rgba(255, 255, 255, 0.045);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-  z-index: -1;
-  transition: background-color 300ms ease, border-color 300ms ease;
-}
+        .faq-question-layer > * > *::before {
+          content: '';
+          position: absolute;
+          inset: 0 -32px;
+          background: rgba(5, 5, 5, 0.24);
+          border: 1px solid rgba(255, 255, 255, 0.045);
+          backdrop-filter: blur(2px);
+          -webkit-backdrop-filter: blur(2px);
+          z-index: -1;
+          transition: background-color 300ms ease, border-color 300ms ease;
+        }
 
         .faq-question-layer > * > *:hover::before {
-  background: rgba(5, 5, 5, 0.34);
-  border-color: rgba(255, 255, 255, 0.07);
-}
+          background: rgba(5, 5, 5, 0.34);
+          border-color: rgba(255, 255, 255, 0.07);
+        }
 
         .faq-question-layer > * > * + * {
           margin-top: 8px;
