@@ -19,7 +19,7 @@ export const landingCopy = {
   // ─── HERO ─────────────────────────────────────────────────────────────────
   hero: {
     eyebrow: 'Panthera APEX System',
-    headline: 'Convertimos tu reputación en una infraestructura de venta Automatizada.',
+    headline: 'Convertimos tu reputación en una infraestructura de venta automatizada.',
     subheadline:
       'Para coaches, consultores, mentores e infoproductores que ya venden, pero todavía dependen de referidos, rachas de suerte o esfuerzo manual para generar reuniones calificadas.',
     body: 'Construimos el sistema que capta, filtra, agenda y ordena tu proceso comercial para que puedas crecer con más previsibilidad y menos caos operativo.',
