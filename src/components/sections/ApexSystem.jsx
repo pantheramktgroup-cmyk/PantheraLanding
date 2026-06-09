@@ -338,15 +338,11 @@ export default function ApexSystem() {
     </div>
 
     <div className="relative z-10 px-6 py-8">
-      <div className="mb-5 flex items-center justify-between">
-        <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green">
-          Deslizá el método
-        </p>
-
-        <span className="font-sans text-[10px] text-panthera-white/35">
-          01 / 07
-        </span>
-      </div>
+     <div className="mb-5">
+  <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green">
+    Deslizá para conocer el método
+  </p>
+</div>
 
       <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory pb-4 apex-mobile-scroll">
         {apexSystem.phases.map((phase, i) => (
