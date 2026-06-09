@@ -317,88 +317,147 @@ export default function ApexSystem() {
         </div>
       </div>
 
-      <div className="md:hidden">
+     <div className="md:hidden">
+  <div className="relative overflow-hidden border-t border-[rgba(245,245,245,0.07)]">
+    {/* Fondo general mobile */}
+    <div className="absolute inset-0" aria-hidden="true">
+      <img
+        src="/images/apex_phase_01_diagnostico.webp"
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover object-center"
+        style={{
+          filter: 'brightness(0.26) contrast(1.08) saturate(0.55) blur(1.4px)',
+          transform: 'scale(1.05)',
+        }}
+        loading="lazy"
+      />
+
+      <div className="absolute inset-0 bg-black/72" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/28 to-black/78" />
+      <div className="grain-overlay opacity-[0.1]" aria-hidden="true" />
+    </div>
+
+    <div className="relative z-10 px-6 py-8">
+      <div className="mb-5 flex items-center justify-between">
+        <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green">
+          Deslizá el método
+        </p>
+
+        <span className="font-sans text-[10px] text-panthera-white/35">
+          01 / 07
+        </span>
+      </div>
+
+      <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory pb-4 apex-mobile-scroll">
         {apexSystem.phases.map((phase, i) => (
-          <div
+          <article
             key={`mob-${phase.number}`}
-            className="relative overflow-hidden border-t border-[rgba(245,245,245,0.07)] px-6 py-7"
+            className="relative shrink-0 snap-start w-[82%] min-h-[250px] border border-[rgba(245,245,245,0.08)] bg-black/46 p-5 overflow-hidden"
           >
             <div className="absolute inset-0" aria-hidden="true">
               <img
                 src={PANEL_IMAGES[i % PANEL_IMAGES.length]}
                 alt=""
-                className="w-full h-full object-cover"
-                style={{ filter: METHOD_IMAGE_FILTER }}
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{
+                  filter: 'brightness(0.34) contrast(1.08) saturate(0.55) blur(0.8px)',
+                }}
                 loading="lazy"
               />
 
-              <MethodAtmosphereOverlay />
-
-              {/* Oscurecimiento extra mobile para que la imagen sea solo textura */}
-              <div className="absolute inset-0 bg-black/28" />
+              <div className="absolute inset-0 bg-black/66" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/82 via-black/34 to-black/36" />
+              <div className="grain-overlay opacity-[0.07]" aria-hidden="true" />
             </div>
 
-            <div className="relative z-10 max-w-lg">
-              <p
-                className="mb-3 tabular-nums tracking-[0.08em] text-[#E3F78D]/50"
-                style={{
-                  fontFamily: "'Helvetica Now Display', Helvetica, Arial, sans-serif",
-                  fontWeight: 200,
-                  fontStyle: 'italic',
-                  fontSize: '0.95rem',
-                  lineHeight: 1,
-                }}
-              >
-                Fase {phase.number}
-              </p>
+            <div className="relative z-10 h-full flex flex-col">
+              <div className="flex items-center justify-between mb-8">
+                <p
+                  className="tabular-nums tracking-[0.08em] text-[#E3F78D]/60"
+                  style={{
+                    fontFamily: "'Helvetica Now Display', Helvetica, Arial, sans-serif",
+                    fontWeight: 200,
+                    fontStyle: 'italic',
+                    fontSize: '0.95rem',
+                    lineHeight: 1,
+                  }}
+                >
+                  Fase {phase.number}
+                </p>
 
-              <div className="border-t border-[rgba(245,245,245,0.10)] pt-4">
+                <span className="w-6 h-px bg-panthera-green/55" />
+              </div>
+
+              <div className="mt-auto">
                 <h3
                   className="font-serif text-panthera-white leading-tight mb-3"
-                  style={{ fontSize: 'clamp(1.15rem, 5.2vw, 1.45rem)' }}
+                  style={{ fontSize: 'clamp(1.25rem, 5.8vw, 1.65rem)' }}
                 >
                   {phase.title}
                 </h3>
 
-                <p className="font-sans text-[12.5px] text-panthera-white/58 leading-relaxed">
+                <p className="font-sans text-[12.5px] text-panthera-white/66 leading-relaxed">
                   {phase.description}
                 </p>
               </div>
             </div>
-          </div>
+          </article>
         ))}
-
-        <div className="relative flex flex-col items-center justify-center px-6 py-14 text-center overflow-hidden border-t border-[rgba(245,245,245,0.07)]">
-          <img
-            src="/images/creation_panthera_hand.webp"
-            alt=""
-            aria-hidden="true"
-            className={CLOSING_IMAGE_CLASS}
-            style={CLOSING_IMAGE_STYLE}
-            loading="lazy"
-          />
-
-          <MethodAtmosphereOverlay />
-          <div className="absolute inset-0 bg-black/34" aria-hidden="true" />
-
-          <div className="relative z-10 max-w-2xl mx-auto">
-            <p
-              className="font-serif text-panthera-white leading-tight mb-8"
-              style={{ fontSize: 'clamp(1.3rem, 6.6vw, 1.9rem)' }}
-            >
-              {apexSystem.closingSlide.text}
-            </p>
-
-            <Button
-              variant="fullScreen"
-              href="#booking"
-              className="w-full text-[11px] px-6 py-4"
-            >
-              {apexSystem.closingSlide.cta}
-            </Button>
-          </div>
-        </div>
       </div>
+
+      <div className="mt-2 flex justify-center gap-1.5" aria-hidden="true">
+        {apexSystem.phases.map((phase) => (
+          <span
+            key={`dot-${phase.number}`}
+            className="h-1 w-6 bg-panthera-green/25"
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div className="relative flex flex-col items-center justify-center px-6 py-14 text-center overflow-hidden border-t border-[rgba(245,245,245,0.07)]">
+    <img
+      src="/images/creation_panthera_hand.webp"
+      alt=""
+      aria-hidden="true"
+      className={CLOSING_IMAGE_CLASS}
+      style={CLOSING_IMAGE_STYLE}
+      loading="lazy"
+    />
+
+    <MethodAtmosphereOverlay />
+    <div className="absolute inset-0 bg-black/34" aria-hidden="true" />
+
+    <div className="relative z-10 max-w-2xl mx-auto">
+      <p
+        className="font-serif text-panthera-white leading-tight mb-8"
+        style={{ fontSize: 'clamp(1.3rem, 6.6vw, 1.9rem)' }}
+      >
+        {apexSystem.closingSlide.text}
+      </p>
+
+      <Button
+        variant="fullScreen"
+        href="#booking"
+        className="w-full text-[11px] px-6 py-4"
+      >
+        {apexSystem.closingSlide.cta}
+      </Button>
+    </div>
+  </div>
+
+  <style>{`
+    .apex-mobile-scroll {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .apex-mobile-scroll::-webkit-scrollbar {
+      display: none;
+    }
+  `}</style>
+</div>
     </section>
   )
 }
