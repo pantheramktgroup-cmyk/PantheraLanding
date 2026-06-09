@@ -12,7 +12,6 @@ export default function Header() {
     const onScroll = () => {
       const y = window.scrollY
       setScrolled(y > 20)
-      // Appear after scrolling past roughly the hero fold
       setVisible(y > 120)
     }
 
@@ -33,7 +32,7 @@ export default function Header() {
       ].join(' ')}
     >
       <div className="container-panthera">
-        <div className="flex items-center justify-between h-14">
+        <div className="flex items-center justify-between h-12 md:h-14 gap-4">
           {/* Logo */}
           <a
             href="/"
@@ -43,13 +42,26 @@ export default function Header() {
             <img
               src={nav.logo.src}
               alt={nav.logo.alt}
-              className="h-[18px] w-auto brightness-0 invert"
+              className="h-[16px] md:h-[18px] w-auto brightness-0 invert"
               loading="eager"
             />
           </a>
 
-          {/* Sticky CTA */}
-          <Button variant="secondary" href="#booking" className="header-cta text-[9px] tracking-[0.18em] py-1.5 px-4 md:py-2 md:px-5">
+          {/* Sticky CTA — mobile */}
+          <Button
+            variant="secondary"
+            href="#booking"
+            className="header-cta md:hidden shrink-0 whitespace-nowrap text-[8px] tracking-[0.08em] leading-none py-2 px-3 max-w-fit"
+          >
+            {nav.cta}
+          </Button>
+
+          {/* Sticky CTA — desktop original */}
+          <Button
+            variant="secondary"
+            href="#booking"
+            className="header-cta hidden md:inline-flex text-[9px] tracking-[0.18em] py-2 px-5"
+          >
             {nav.cta}
           </Button>
         </div>

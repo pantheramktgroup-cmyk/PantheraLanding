@@ -8,13 +8,9 @@ const { systemPieces } = landingCopy
 
 const muralBg = '/images/panthera.webp'
 
-// Ajustes globales de la imagen completa.
-// Subí estos valores para mover la pantera más arriba / más a la izquierda.
-// Bajalos si se pasa.
-const SHIFT_X = 0.28 // mueve la imagen hacia la izquierda
-const SHIFT_Y = 0.28 // mueve la imagen hacia arriba
-
-// Usamos un poco más de zoom para poder mover la imagen sin que aparezcan bordes vacíos.
+// Desktop: mural dividido en 4 columnas × 2 filas
+const SHIFT_X = 0.28
+const SHIFT_Y = 0.28
 const BG_SCALE_X = 4.3
 const BG_SCALE_Y = 2.2
 
@@ -44,6 +40,7 @@ export default function SystemPieces() {
       if (prefersReduced) return
 
       const cards = containerRef.current.querySelectorAll('.piece-card')
+
       gsap.from(cards, {
         opacity: 0,
         y: 30,
@@ -103,15 +100,67 @@ export default function SystemPieces() {
           </p>
         </div>
 
-        {/* Mural grid — 4×2, cada card muestra un fragmento alineado del mismo mural */}
-        <div className="grid grid-cols-2 md:grid-cols-4 border-t border-l border-[rgba(245,245,245,0.04)]">
+        {/* Mobile */}
+        <div className="md:hidden relative overflow-hidden">
+          <div className="absolute inset-0" aria-hidden="true">
+            <img
+              src={muralBg}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{
+                objectPosition: '78% center',
+                filter: 'brightness(0.48) contrast(1.04) saturate(0.78) blur(0.6px)',
+                transform: 'scale(1.03)',
+              }}
+              loading="lazy"
+            />
+
+            <div className="absolute inset-0 bg-black/54" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/42 via-black/18 to-black/62" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/28 via-transparent to-black/44" />
+            <div className="grain-overlay opacity-[0.06]" aria-hidden="true" />
+          </div>
+
+          <div className="relative z-10 grid grid-cols-2 gap-3">
+            {systemPieces.pieces.map((piece, i) => (
+              <div
+                key={`mobile-${piece.title}`}
+                className="piece-card relative overflow-hidden border border-[rgba(245,245,245,0.075)] bg-black/42 backdrop-blur-[1px]"
+                style={{ minHeight: '220px' }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-t from-black/42 via-transparent to-white/[0.015]" />
+                <div className="grain-overlay opacity-[0.035]" aria-hidden="true" />
+
+                <div className="relative z-10 h-full p-4 flex flex-col">
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="font-sans text-[10px] text-panthera-green/85 tabular-nums">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+
+                    <span className="w-5 h-px bg-panthera-green/65" />
+                  </div>
+
+                  <h3 className="font-serif text-[1.05rem] leading-tight text-panthera-white mb-3">
+                    {piece.title}
+                  </h3>
+
+                  <p className="font-sans text-[12px] leading-[1.5] text-panthera-white/86">
+                    {piece.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop */}
+        <div className="hidden md:grid grid-cols-2 md:grid-cols-4 border-t border-l border-[rgba(245,245,245,0.04)]">
           {systemPieces.pieces.map((piece, i) => (
             <div
               key={piece.title}
               className="piece-card group relative border-r border-b border-[rgba(245,245,245,0.04)] overflow-hidden cursor-default"
               style={{ minHeight: '240px' }}
             >
-              {/* Fragmento del mural: posiciones calculadas para que nunca se desfasen */}
               <div
                 className="absolute inset-0 transition-[filter] duration-700 ease-out group-hover:[filter:brightness(1.08)_contrast(1.12)_saturate(1.04)]"
                 style={{
@@ -123,10 +172,8 @@ export default function SystemPieces() {
                 }}
               />
 
-              {/* Overlay original: mantiene el hover limpio, sin bordes raros */}
               <div className="absolute inset-0 bg-[rgba(0,0,0,0.93)] group-hover:bg-[rgba(0,0,0,0.03)] transition-colors duration-700" />
 
-              {/* Local text backdrop */}
               <div
                 className="absolute inset-x-0 bottom-0 h-[46%] bg-gradient-to-t from-black/70 via-black/34 to-transparent z-10"
                 aria-hidden="true"
@@ -134,7 +181,6 @@ export default function SystemPieces() {
 
               <div className="grain-overlay opacity-[0.04]" aria-hidden="true" />
 
-              {/* Content */}
               <div
                 className="relative z-20 p-6 md:p-8 flex flex-col justify-between h-full"
                 style={{ minHeight: '240px' }}

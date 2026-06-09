@@ -165,7 +165,7 @@ export default function ApexSystem() {
 
   return (
     <section className="bg-[#080808] overflow-hidden">
-      <div className="container-panthera pt-28 md:pt-36 pb-20 md:pb-28">
+      <div className="container-panthera pt-16 md:pt-36 pb-8 md:pb-28">
         <p className="font-sans text-[10px] uppercase tracking-[0.2em] font-semibold text-panthera-white/88 mb-5">
           {apexSystem.eyebrow}
         </p>
@@ -321,8 +321,7 @@ export default function ApexSystem() {
         {apexSystem.phases.map((phase, i) => (
           <div
             key={`mob-${phase.number}`}
-            className="relative border-t border-[rgba(245,245,245,0.08)] py-16 px-6"
-            style={{ minHeight: '70vh' }}
+            className="relative overflow-hidden border-t border-[rgba(245,245,245,0.07)] px-6 py-7"
           >
             <div className="absolute inset-0" aria-hidden="true">
               <img
@@ -334,31 +333,34 @@ export default function ApexSystem() {
               />
 
               <MethodAtmosphereOverlay />
+
+              {/* Oscurecimiento extra mobile para que la imagen sea solo textura */}
+              <div className="absolute inset-0 bg-black/28" />
             </div>
 
             <div className="relative z-10 max-w-lg">
               <p
-                className="mb-5 tabular-nums tracking-[0.08em] text-[#E3F78D]/55"
+                className="mb-3 tabular-nums tracking-[0.08em] text-[#E3F78D]/50"
                 style={{
                   fontFamily: "'Helvetica Now Display', Helvetica, Arial, sans-serif",
                   fontWeight: 200,
                   fontStyle: 'italic',
-                  fontSize: '1rem',
+                  fontSize: '0.95rem',
                   lineHeight: 1,
                 }}
               >
                 Fase {phase.number}
               </p>
 
-              <div className="border-t border-[rgba(245,245,245,0.10)] pt-6">
+              <div className="border-t border-[rgba(245,245,245,0.10)] pt-4">
                 <h3
-                  className="font-serif text-panthera-white leading-tight mb-4"
-                  style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}
+                  className="font-serif text-panthera-white leading-tight mb-3"
+                  style={{ fontSize: 'clamp(1.15rem, 5.2vw, 1.45rem)' }}
                 >
                   {phase.title}
                 </h3>
 
-                <p className="font-sans text-sm text-panthera-white/60 leading-relaxed">
+                <p className="font-sans text-[12.5px] text-panthera-white/58 leading-relaxed">
                   {phase.description}
                 </p>
               </div>
@@ -366,7 +368,7 @@ export default function ApexSystem() {
           </div>
         ))}
 
-        <div className="relative flex flex-col items-center justify-center px-6 py-24 text-center overflow-hidden">
+        <div className="relative flex flex-col items-center justify-center px-6 py-14 text-center overflow-hidden border-t border-[rgba(245,245,245,0.07)]">
           <img
             src="/images/creation_panthera_hand.webp"
             alt=""
@@ -377,16 +379,21 @@ export default function ApexSystem() {
           />
 
           <MethodAtmosphereOverlay />
+          <div className="absolute inset-0 bg-black/34" aria-hidden="true" />
 
           <div className="relative z-10 max-w-2xl mx-auto">
             <p
-              className="font-serif text-panthera-white leading-tight mb-10"
-              style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)' }}
+              className="font-serif text-panthera-white leading-tight mb-8"
+              style={{ fontSize: 'clamp(1.3rem, 6.6vw, 1.9rem)' }}
             >
               {apexSystem.closingSlide.text}
             </p>
 
-            <Button variant="fullScreen" href="#booking">
+            <Button
+              variant="fullScreen"
+              href="#booking"
+              className="w-full text-[11px] px-6 py-4"
+            >
               {apexSystem.closingSlide.cta}
             </Button>
           </div>

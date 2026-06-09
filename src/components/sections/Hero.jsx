@@ -22,7 +22,6 @@ export default function Hero() {
   useEffect(() => {
     if (prefersReduced || !videoRef.current) return
 
-    // Some browsers need an explicit play() call even with autoplay+muted
     const attemptPlay = () => {
       const playPromise = videoRef.current.play()
       if (playPromise && typeof playPromise.catch === 'function') {
@@ -40,10 +39,8 @@ export default function Hero() {
     () => {
       if (prefersReduced) return
 
-      // Hero entry timeline
       const split = new SplitType(headlineRef.current, { types: 'lines' })
 
-      // Wrap lines to clip overflow
       split.lines.forEach((line) => {
         const wrap = document.createElement('div')
         wrap.style.overflow = 'hidden'
@@ -67,7 +64,6 @@ export default function Hero() {
         .from(subRef.current, { opacity: 0, y: 16, duration: 0.8, ease: 'power2.out' }, '-=0.6')
         .from(ctaRef.current, { opacity: 0, y: 20, duration: 0.7, ease: 'power2.out' }, '-=0.45')
 
-      // Premium subtle parallax on scroll
       gsap.to(videoRef.current, {
         yPercent: 10,
         xPercent: 2.2,
@@ -111,10 +107,44 @@ export default function Hero() {
             aria-hidden="true"
           />
         </div>
+
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,0,0,0.42)' }} />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 34%, rgba(0,0,0,0) 52%)' }} />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0) 45%, rgba(0,0,0,0.75) 72%, #000000 100%)' }} />
-        <div className="grain-overlay" style={{ maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.42) 64%, rgba(0,0,0,0) 100%)', WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.42) 64%, rgba(0,0,0,0) 100%)' }} aria-hidden="true" />
+
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 34%, rgba(0,0,0,0) 52%)',
+          }}
+        />
+
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(to bottom, rgba(0,0,0,0) 45%, rgba(0,0,0,0.75) 72%, #000000 100%)',
+          }}
+        />
+
+        {/* Extra oscuridad solo mobile para que el texto arriba lea bien */}
+        <div
+          className="absolute inset-0 md:hidden"
+          style={{
+            background:
+              'linear-gradient(to bottom, rgba(0,0,0,0.86) 0%, rgba(0,0,0,0.72) 18%, rgba(0,0,0,0.28) 42%, rgba(0,0,0,0) 64%)',
+          }}
+        />
+
+        <div
+          className="grain-overlay"
+          style={{
+            maskImage:
+              'linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.42) 64%, rgba(0,0,0,0) 100%)',
+            WebkitMaskImage:
+              'linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.42) 64%, rgba(0,0,0,0) 100%)',
+          }}
+          aria-hidden="true"
+        />
       </div>
 
       {/* Top bar: logo + eyebrow */}
@@ -132,8 +162,25 @@ export default function Hero() {
         </p>
       </div>
 
-      {/* Content — anchored to bottom-left */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 px-6 md:px-12 lg:px-20 pb-10 md:pb-14">
+      {/* Mobile content only */}
+      <div className="absolute left-0 right-0 z-10 px-6 top-[116px] md:hidden">
+        <div className="max-w-[330px]">
+         
+          <h1
+            className="font-serif text-panthera-white leading-[0.95] mb-5"
+            style={{ fontSize: 'clamp(1.85rem, 8.8vw, 2.75rem)' }}
+          >
+            {hero.headline}
+          </h1>
+
+          <Button variant="primary" href="#booking">
+            {hero.ctaPrimary}
+          </Button>
+        </div>
+      </div>
+
+      {/* Desktop content — original */}
+      <div className="hidden md:block absolute bottom-0 left-0 right-0 z-10 px-6 md:px-12 lg:px-20 pb-10 md:pb-14">
         <div className="max-w-[860px]">
           {/* Eyebrow mobile */}
           <p className="md:hidden font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-white/40 mb-4">
@@ -176,7 +223,6 @@ export default function Hero() {
           ))}
         </div>
       </div>
-
     </section>
   )
 }

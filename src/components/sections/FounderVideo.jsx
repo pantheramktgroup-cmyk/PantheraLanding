@@ -13,6 +13,10 @@ export default function FounderVideo() {
   const [playing, setPlaying] = useState(false)
   const prefersReduced = usePrefersReducedMotion()
 
+  const videoSrc = playing
+    ? `${video.videoEmbedUrl}${video.videoEmbedUrl.includes('?') ? '&' : '?'}autoplay=1`
+    : video.videoEmbedUrl
+
   useGSAP(
     () => {
       if (prefersReduced) return
@@ -53,19 +57,46 @@ export default function FounderVideo() {
   return (
     <section className="relative bg-black section-pad overflow-hidden">
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, #000000 0%, #050505 28%, #0b0c0b 70%, #141514 100%)' }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(to bottom, #000000 0%, #050505 28%, #0b0c0b 70%, #141514 100%)',
+          }}
+        />
       </div>
+
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div
           className="absolute inset-0 bg-[radial-gradient(circle_at_22%_24%,rgba(185,164,106,0.08),transparent_56%)]"
-          style={{ maskImage: 'linear-gradient(to bottom, transparent 0%, transparent 14%, black 34%, black 100%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, transparent 14%, black 34%, black 100%)' }}
+          style={{
+            maskImage:
+              'linear-gradient(to bottom, transparent 0%, transparent 14%, black 34%, black 100%)',
+            WebkitMaskImage:
+              'linear-gradient(to bottom, transparent 0%, transparent 14%, black 34%, black 100%)',
+          }}
         />
         <div
           className="absolute inset-0 bg-[radial-gradient(circle_at_78%_76%,rgba(227,247,141,0.05),transparent_52%)]"
-          style={{ maskImage: 'linear-gradient(to bottom, transparent 0%, transparent 14%, black 34%, black 100%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, transparent 14%, black 34%, black 100%)' }}
+          style={{
+            maskImage:
+              'linear-gradient(to bottom, transparent 0%, transparent 14%, black 34%, black 100%)',
+            WebkitMaskImage:
+              'linear-gradient(to bottom, transparent 0%, transparent 14%, black 34%, black 100%)',
+          }}
         />
       </div>
-      <div className="grain-overlay" style={{ maskImage: 'linear-gradient(to bottom, transparent 0%, transparent 16%, black 38%, black 100%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, transparent 16%, black 38%, black 100%)' }} aria-hidden="true" />
+
+      <div
+        className="grain-overlay"
+        style={{
+          maskImage:
+            'linear-gradient(to bottom, transparent 0%, transparent 16%, black 38%, black 100%)',
+          WebkitMaskImage:
+            'linear-gradient(to bottom, transparent 0%, transparent 16%, black 38%, black 100%)',
+        }}
+        aria-hidden="true"
+      />
 
       <div ref={containerRef} className="relative z-10 container-panthera">
         {/* Centered header */}
@@ -73,6 +104,7 @@ export default function FounderVideo() {
           <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-5">
             {video.eyebrow}
           </p>
+
           <h2
             className="font-serif text-panthera-white leading-tight max-w-2xl mx-auto"
             style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3rem)' }}
@@ -81,7 +113,7 @@ export default function FounderVideo() {
           </h2>
         </div>
 
-        {/* Video player — centered, large, premium frame */}
+        {/* Video player */}
         <div className="reveal-el video-shell max-w-[980px] mx-auto">
           <div
             className="relative w-full overflow-hidden transition-all duration-400 hover:brightness-110 hover:contrast-105"
@@ -90,48 +122,51 @@ export default function FounderVideo() {
               border: '1px solid rgba(245,245,245,0.14)',
               borderRadius: '2px',
               background: '#000',
-              boxShadow: '0 0 0 1px rgba(245,245,245,0.06), 0 14px 42px rgba(0,0,0,0.42)',
+              boxShadow:
+                '0 0 0 1px rgba(245,245,245,0.06), 0 14px 42px rgba(0,0,0,0.42)',
             }}
           >
             {!playing ? (
-              /* Thumbnail overlay with play button */
               <button
+                type="button"
                 onClick={() => setPlaying(true)}
-                className="absolute inset-0 w-full h-full group cursor-pointer"
+                className="absolute inset-0 z-20 block w-full h-full group cursor-pointer appearance-none border-0 bg-transparent p-0"
                 aria-label="Reproducir video"
               >
-                {/* Thumbnail image */}
                 <img
                   src={vslThumbnail}
                   alt="Miniatura del video Manifiesto Panthera"
                   className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
                 />
-                {/* Dark overlay */}
+
                 <div className="absolute inset-0 bg-panthera-black/50 group-hover:bg-panthera-black/40 transition-colors duration-300" />
-                {/* Play button */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div
-                    className="flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20 group-hover:bg-white/20 transition-all duration-300"
-                    style={{ width: '80px', height: '80px' }}
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-white ml-1">
+
+                {/* Play centrado real */}
+                <div className="absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
+                  <div className="flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-full bg-black/55 backdrop-blur-sm border border-white/20 group-hover:bg-black/70 group-hover:scale-105 transition-all duration-300">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="w-7 h-7 md:w-8 md:h-8 text-white translate-x-[2px]"
+                      aria-hidden="true"
+                    >
                       <path d="M8 5v14l11-7z" />
                     </svg>
                   </div>
                 </div>
-                {/* Label */}
-                <p className="absolute bottom-6 left-0 right-0 text-center font-sans text-[10px] uppercase tracking-[0.2em] text-white/40">
+
+                <p className="absolute bottom-5 md:bottom-6 left-0 right-0 z-30 text-center font-sans text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-white/42">
                   Ver manifiesto
                 </p>
               </button>
             ) : (
-              /* Google Drive iframe */
               <iframe
-                src={video.videoEmbedUrl}
+                src={videoSrc}
                 title="Manifiesto Panthera"
-                allow="autoplay; fullscreen"
+                allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
                 allowFullScreen
-                className="absolute inset-0 w-full h-full"
+                className="absolute inset-0 z-20 w-full h-full"
                 style={{ border: 'none' }}
               />
             )}

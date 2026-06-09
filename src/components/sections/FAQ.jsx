@@ -16,6 +16,7 @@ export default function FAQ() {
       if (prefersReduced) return
 
       const els = containerRef.current.querySelectorAll('.faq-reveal')
+
       gsap.from(els, {
         opacity: 0,
         y: 20,
@@ -33,19 +34,13 @@ export default function FAQ() {
   )
 
   return (
-    <section className="relative bg-black section-pad overflow-hidden">
+    <section className="faq-section relative bg-black section-pad overflow-hidden">
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         {/* Fondo único difuminado */}
         <img
           src="/images/faqs.webp"
           alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{
-            objectPosition: 'center center',
-            transform: 'scale(1.01)',
-            transformOrigin: 'center',
-            filter: 'brightness(0.62) contrast(1.08) saturate(1.25) blur(3px)'
-          }}
+          className="faq-bg-img absolute inset-0 w-full h-full object-cover"
           loading="lazy"
         />
 
@@ -55,41 +50,40 @@ export default function FAQ() {
         {/* Overlay vertical general */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/34 to-black/22" />
 
-       {/* Viñeta más redonda: oscurece bordes y costados sin tapar tanto el centro */}
-<div
-  className="absolute inset-0"
-  style={{
-    background:
-      'radial-gradient(ellipse 68% 52% at 50% 45%, rgba(255,255,255,0.035) 0%, rgba(0,0,0,0.08) 36%, rgba(0,0,0,0.42) 72%, rgba(0,0,0,0.88) 100%)',
-  }}
-/>
+        {/* Viñeta redonda */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 68% 52% at 50% 45%, rgba(255,255,255,0.035) 0%, rgba(0,0,0,0.08) 36%, rgba(0,0,0,0.42) 72%, rgba(0,0,0,0.88) 100%)',
+          }}
+        />
 
-{/* Fade superior más bajo */}
-<div
-  className="absolute inset-x-0 top-0 h-[180px]"
-  style={{
-    background:
-      'linear-gradient(to bottom, #000000 0%, rgba(0,0,0,0.86) 30%, rgba(0,0,0,0.38) 68%, rgba(0,0,0,0) 100%)',
-  }}
-/>
+        {/* Fade superior */}
+        <div
+          className="absolute inset-x-0 top-0 h-[180px]"
+          style={{
+            background:
+              'linear-gradient(to bottom, #000000 0%, rgba(0,0,0,0.86) 30%, rgba(0,0,0,0.38) 68%, rgba(0,0,0,0) 100%)',
+          }}
+        />
 
-{/* Fade inferior más bajo */}
-<div
-  className="absolute inset-x-0 bottom-0 h-[210px]"
-  style={{
-    background:
-      'linear-gradient(to top, #000000 0%, rgba(0,0,0,0.86) 32%, rgba(0,0,0,0.38) 70%, rgba(0,0,0,0) 100%)',
-  }}
-/>
+        {/* Fade inferior */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-[210px]"
+          style={{
+            background:
+              'linear-gradient(to top, #000000 0%, rgba(0,0,0,0.86) 32%, rgba(0,0,0,0.38) 70%, rgba(0,0,0,0) 100%)',
+          }}
+        />
 
-        {/* Grano */}
         <div className="grain-overlay opacity-[0.2]" aria-hidden="true" />
       </div>
 
       <div ref={containerRef} className="relative z-10 container-panthera">
         <div className="max-w-3xl mx-auto">
           {/* Header */}
-          <div className="mb-12">
+          <div className="faq-header mb-12">
             <p className="faq-reveal font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-4">
               {faq.eyebrow}
             </p>
@@ -108,8 +102,12 @@ export default function FAQ() {
           </div>
 
           {/* CTA below accordion */}
-          <div className="faq-reveal mt-14">
-            <Button variant="primary" href="#booking">
+          <div className="faq-reveal faq-cta mt-14">
+            <Button
+              variant="primary"
+              href="#booking"
+              className="w-full md:w-auto text-[11px] md:text-sm px-6 md:px-8"
+            >
               {faq.cta}
             </Button>
           </div>
@@ -117,6 +115,13 @@ export default function FAQ() {
       </div>
 
       <style>{`
+        .faq-bg-img {
+          object-position: center center;
+          transform: scale(1.01);
+          transform-origin: center;
+          filter: brightness(0.62) contrast(1.08) saturate(1.25) blur(3px);
+        }
+
         .faq-question-layer > * > * {
           position: relative;
           background: transparent;
@@ -142,6 +147,58 @@ export default function FAQ() {
 
         .faq-question-layer > * > * + * {
           margin-top: 8px;
+        }
+
+        @media (max-width: 767px) {
+          .faq-section {
+            padding-top: 4.75rem;
+            padding-bottom: 4.5rem;
+          }
+
+        .faq-bg-img {
+  object-position: 66% center;
+ transform: translateY(12%) scale(1.1);
+  transform-origin: center;
+  filter: brightness(0.54) contrast(1.08) saturate(1.12) blur(3.5px);
+}
+
+          .faq-header {
+            margin-bottom: 2.25rem;
+          }
+
+          .faq-header h2 {
+            font-size: clamp(1.75rem, 7.2vw, 2.15rem) !important;
+            line-height: 1.12;
+            max-width: 18ch;
+          }
+
+          .faq-question-layer > * > *::before {
+            inset: 0 -18px;
+            background: rgba(5, 5, 5, 0.34);
+            border-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+          }
+
+          .faq-question-layer > * > *:hover::before {
+            background: rgba(5, 5, 5, 0.4);
+          }
+
+          .faq-question-layer > * > * + * {
+            margin-top: 7px;
+          }
+
+          .faq-question-layer button,
+          .faq-question-layer [role='button'] {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            font-size: 13px;
+            line-height: 1.35;
+          }
+
+          .faq-cta {
+            margin-top: 2.5rem;
+          }
         }
       `}</style>
     </section>

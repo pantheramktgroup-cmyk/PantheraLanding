@@ -56,10 +56,7 @@ const conversions = [
     ['apex_phase_07_optimizacion.png', 'apex_phase_07_optimizacion.webp'],
     ['filtro_aplicacion.png', 'filtro_aplicacion.webp'],
     ['cuello_botella.png', 'cuello_botella.webp'],
-    ['faqs.png', 'faqs.webp'],
-    ['fundador_2.jpg', 'fundador_2.webp'],
-    ['fundador_1.jpg', 'fundador_1.webp'],
-
+    ['fundadores.jpg', 'fundadores.webp'],
     // CTA final testimonios
     ['testimonial_cta_case_table.png', 'testimonial_cta_case_table.webp'],
 ]
