@@ -5,8 +5,19 @@ import { getLenis } from './lenis'
  * Uses Lenis if available, falls back to native scrollIntoView.
  */
 export function scrollToBooking() {
+  if (typeof window === 'undefined') return
+
+  const isLandingPath = window.location.pathname === '/' || window.location.pathname === ''
+  if (!isLandingPath) {
+    window.location.href = '/#booking'
+    return
+  }
+
   const booking = document.getElementById('booking')
-  if (!booking) return
+  if (!booking) {
+    window.location.hash = 'booking'
+    return
+  }
 
   const lenis = getLenis()
   if (lenis) {
