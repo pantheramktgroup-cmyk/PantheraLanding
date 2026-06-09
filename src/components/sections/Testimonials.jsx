@@ -20,7 +20,8 @@ function TestimonialCard({ c, onPlay }) {
   )
 
   return (
-    <div className="relative w-full h-full flex flex-col md:flex-row">
+    <div className="relative w-full h-full flex flex-col md:flex-row bg-[#111211] md:bg-transparent">
+      {/* Video / Cover */}
       <div className="relative md:w-1/2 w-full bg-[#121312] overflow-hidden h-[390px] sm:h-[440px] md:h-auto md:min-h-[50vh]">
         <div className="absolute inset-0 overflow-hidden">
           {!playing ? (
@@ -83,7 +84,8 @@ function TestimonialCard({ c, onPlay }) {
         </div>
       </div>
 
-      <div className="md:w-1/2 w-full flex flex-col justify-center px-6 md:px-14 lg:px-20 py-8 md:py-14 bg-[#121312] border-t md:border-t-0 md:border-l border-[rgba(245,245,245,0.06)]">
+      {/* Text / Resultado */}
+      <div className="md:w-1/2 w-full flex flex-col justify-center px-6 md:px-14 lg:px-20 py-7 md:py-14 bg-[#111211] md:bg-[#121312] border-t md:border-t-0 md:border-l border-[rgba(245,245,245,0.06)]">
         <span
           className="hidden md:block font-serif text-[140px] text-[rgba(245,245,245,0.03)] leading-none select-none -ml-2 -mt-4"
           aria-hidden="true"
@@ -91,8 +93,16 @@ function TestimonialCard({ c, onPlay }) {
           &#8220;
         </span>
 
+        <div className="md:hidden mb-4">
+          <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-panthera-green mb-3">
+            Resultado
+          </p>
+
+          <div className="w-6 h-px bg-panthera-green/55" />
+        </div>
+
         <p
-          className="font-sans text-panthera-white/80 leading-relaxed mb-0 md:mb-8 md:-mt-8"
+          className="font-sans text-panthera-white/78 md:text-panthera-white/80 leading-relaxed mb-0 md:mb-8 md:-mt-8"
           style={{ fontSize: 'clamp(0.9rem, 1.3vw, 1.05rem)' }}
         >
           {c.description}
@@ -219,6 +229,7 @@ export default function Testimonials() {
         </p>
       </div>
 
+      {/* Desktop */}
       <div
         ref={pinRef}
         className="relative z-10 hidden md:block"
@@ -274,6 +285,7 @@ export default function Testimonials() {
               style={{ filter: 'brightness(0.14) saturate(0.58) contrast(1)' }}
               loading="lazy"
             />
+
             <div className="absolute inset-0 bg-panthera-black/84" aria-hidden="true" />
             <div className="absolute inset-0 bg-gradient-to-t from-panthera-black via-panthera-black/86 to-panthera-black/76" aria-hidden="true" />
             <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-b from-transparent via-black/78 to-black" aria-hidden="true" />
@@ -295,9 +307,13 @@ export default function Testimonials() {
         </div>
       </div>
 
+      {/* Mobile */}
       <div className="relative z-10 md:hidden">
         {testimonials.cases.map((c) => (
-          <div key={`mob-${c.name}`} className="border-t border-[rgba(245,245,245,0.06)]">
+          <div
+            key={`mob-${c.name}`}
+            className="border-t border-[rgba(245,245,245,0.06)] bg-[#111211]"
+          >
             <TestimonialCard c={c} onPlay={handlePlay} />
           </div>
         ))}
