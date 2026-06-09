@@ -33,7 +33,6 @@ export default function Header() {
     >
       <div className="container-panthera">
         <div className="flex items-center justify-between h-12 md:h-14 gap-4">
-          {/* Logo */}
           <a
             href="/"
             aria-label="Panthera Group"
@@ -47,20 +46,20 @@ export default function Header() {
             />
           </a>
 
-          {/* Sticky CTA — mobile */}
+          {/* Mobile */}
           <Button
             variant="secondary"
             href="#booking"
-            className="header-cta md:hidden shrink-0 whitespace-nowrap text-[8px] tracking-[0.08em] leading-none py-2 px-3 max-w-fit"
+            className="header-cta md:hidden shrink-0 whitespace-nowrap !text-[8px] !tracking-[0.08em] !leading-none !py-2 !px-3 !uppercase"
           >
             {nav.cta}
           </Button>
 
-          {/* Sticky CTA — desktop original */}
+          {/* Desktop */}
           <Button
             variant="secondary"
             href="#booking"
-            className="header-cta hidden md:inline-flex text-[9px] tracking-[0.18em] py-2 px-5"
+            className="header-cta hidden md:inline-flex shrink-0 whitespace-nowrap !text-[9px] !tracking-[0.18em] !leading-none !py-2 !px-5 !uppercase"
           >
             {nav.cta}
           </Button>
