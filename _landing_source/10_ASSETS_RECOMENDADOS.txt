@@ -1,0 +1,137 @@
+# ASSETS RECOMENDADOS Y CÓMO USARLOS
+
+El ZIP de Panthera contiene logos, tipografías, fotos de fundadores e imágenes renacentistas.
+
+## Carpeta recomendada dentro del proyecto
+
+Copiar assets seleccionados a:
+
+public/assets/panthera/
+  logos/
+  renaissance/
+  founders/
+
+O, si preferís importar desde src:
+
+src/assets/panthera/
+  logos/
+  renaissance/
+  founders/
+
+Para Vite/React, public suele ser más simple para una primera versión.
+
+## Imágenes renacentistas
+
+Usar preferentemente las versiones SIN texto incrustado, para que no compitan con el copy.
+
+Desde el ZIP original:
+
+Panthera/Renacentismo/2.png
+Uso recomendado:
+Hero o fondo de statement. Es un rostro renacentista cercano, ideal para imagen principal con overlay oscuro.
+
+Panthera/Renacentismo/4.png
+Uso recomendado:
+Sección video/manifiesto o transición. Tiene manos y composición ceremonial, útil para un bloque más emocional.
+
+Panthera/Renacentismo/6.png
+Uso recomendado:
+Fondo de sección “Lo que se ordena dentro del sistema” o comparativa. Es más abstracta y no compite tanto.
+
+Panthera/Renacentismo/8.png
+Uso recomendado:
+Sobre Panthera o problema central. Tiene figura humana, tono oscuro y presencia premium.
+
+Evitar como fondo principal:
+
+Panthera/Renacentismo/1.png
+Panthera/Renacentismo/3.png
+Panthera/Renacentismo/5.png
+Panthera/Renacentismo/7.png
+
+Motivo:
+Tienen texto Panthera incrustado. Pueden usarse como referencia visual, pero no conviene poner texto encima de texto.
+
+## Fotos de fundadores
+
+Usar fotos editoriales, sobrias y preferentemente grupales o de trabajo.
+
+Recomendadas para “Sobre Panthera”:
+
+Panthera/Fotos fundadores/IMG_7352.jpg
+Foto de ambos fundadores, útil para presentación sobria.
+
+Panthera/Fotos fundadores/IMG_7356.jpg
+Foto de ambos, formato vertical, buena para layout editorial.
+
+Panthera/Fotos fundadores/IMG_7368.jpg
+Foto de ambos con brazos cruzados, presencia fuerte.
+
+Panthera/Fotos fundadores/IMG_7661.jpg
+Ambos trabajando sentados, buena para transmitir construcción/operación.
+
+Panthera/Fotos fundadores/IMG_7671.jpg
+Ambos en mesa, más natural.
+
+Panthera/Fotos fundadores/IMG_7709.jpg
+Ambos en sillón/mesa, buena para sección humana.
+
+Panthera/Fotos fundadores/IMG_7717.jpg
+Ambos revisando trabajo, útil para una composición de proceso.
+
+Panthera/Fotos fundadores/IMG_7722.jpg
+Ambos mirando pantalla, transmite análisis/ejecución.
+
+Tratamiento recomendado:
+
+- Convertir visualmente a grayscale o duotone desde CSS.
+- Agregar overlay oscuro.
+- Usar bordes finos.
+- Evitar mostrar demasiadas fotos. Elegir 2 a 4 máximo.
+
+## Logos
+
+Usar preferentemente SVG si están disponibles:
+
+Panthera/01. LOGOS PANTHERA GROUP/03. SVG/Recurso 11.svg
+Panthera/01. LOGOS PANTHERA GROUP/03. SVG/Recurso 12.svg
+Panthera/01. LOGOS PANTHERA GROUP/03. SVG/Recurso 13.svg
+Panthera/01. LOGOS PANTHERA GROUP/03. SVG/Recurso 14.svg
+
+Si no se visualizan bien, usar PNG/JPG:
+
+Panthera/01. LOGOS PANTHERA GROUP/01. PNG/P.png
+Panthera/01. LOGOS PANTHERA GROUP/02. JPG/Recurso 17-100.jpg
+Panthera/01. LOGOS PANTHERA GROUP/02. JPG/Recurso 18-100.jpg
+
+Recomendación:
+
+- Header: logo horizontal o isotipo simple.
+- Hero: no usar logo gigante si compite con headline.
+- Footer: logo pequeño.
+
+## Tipografías
+
+El ZIP incluye HelveticaNowDisplay.
+
+Usar si el proyecto puede cargar fuentes locales.
+
+No compartir ni redistribuir las fuentes fuera del proyecto.
+
+Si no se configuran localmente en la primera versión, usar fallback:
+
+Inter, Helvetica Neue, Arial, sans-serif.
+
+## Video de Manuel
+
+Cuando exista archivo final, colocarlo en:
+
+public/assets/panthera/videos/manuel-vsl.mp4
+
+Mientras tanto, crear placeholder premium con:
+
+- poster oscuro.
+- botón play.
+- texto “Video de diagnóstico comercial”.
+
+La sección debe poder aceptar un video local o embed sin reescribir diseño.
