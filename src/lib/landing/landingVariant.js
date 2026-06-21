@@ -45,12 +45,12 @@ function randomVariant() {
   return Math.random() < 0.5 ? VARIANT_A : VARIANT_B
 }
 
-export function resolveLandingVariant() {
+export function resolveLandingVariant(search = isBrowser() ? window.location.search : '') {
   if (!isBrowser()) {
     return { variant: VARIANT_A, source: 'server' }
   }
 
-  const fromUrl = getVariantFromUrl(window.location.search)
+  const fromUrl = getVariantFromUrl(search)
   if (fromUrl) {
     setStoredLandingVariant(fromUrl)
     return { variant: fromUrl, source: 'url' }

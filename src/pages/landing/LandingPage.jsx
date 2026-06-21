@@ -14,6 +14,7 @@ import Testimonials from '../../components/landing/sections/Testimonials'
 import AboutPanthera from '../../components/landing/sections/AboutPanthera'
 import FAQ from '../../components/landing/sections/FAQ'
 import Booking from '../../components/landing/sections/Booking'
+import { useLocation } from 'react-router-dom'
 import { useLenis } from '../../hooks/landing/useLenis'
 import { resolveLandingVariant } from '../../lib/landing/landingVariant'
 import { trackEvent } from '../../lib/landing/tracking'
@@ -23,10 +24,15 @@ const GHL_TRACKING_SRC = 'https://links.iqautomated.io/js/external-tracking.js'
 const GHL_FORM_EMBED_SRC = 'https://links.iqautomated.io/js/form_embed.js'
 
 export default function LandingPage() {
-  const [variantState] = useState(() => resolveLandingVariant())
+  const location = useLocation()
+  const [variantState, setVariantState] = useState(() => resolveLandingVariant(location.search))
   const variant = variantState.variant
 
   useLenis()
+
+  useEffect(() => {
+    setVariantState(resolveLandingVariant(location.search))
+  }, [location.search])
 
   useEffect(() => {
     trackEvent('landing_page_view', {
