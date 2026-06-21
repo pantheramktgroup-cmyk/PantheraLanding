@@ -16,7 +16,11 @@ import FAQ from '../../components/landing/sections/FAQ'
 import Booking from '../../components/landing/sections/Booking'
 import { useLocation } from 'react-router-dom'
 import { useLenis } from '../../hooks/landing/useLenis'
-import { resolveLandingVariant } from '../../lib/landing/landingVariant'
+import {
+  getVariantFromUrl,
+  resolveLandingVariant,
+  setStoredLandingVariant,
+} from '../../lib/landing/landingVariant'
 import { trackEvent } from '../../lib/landing/tracking'
 import '../../styles/landing.css'
 
@@ -25,22 +29,38 @@ const GHL_FORM_EMBED_SRC = 'https://links.iqautomated.io/js/form_embed.js'
 
 export default function LandingPage() {
   const location = useLocation()
-  const [variantState, setVariantState] = useState(() => resolveLandingVariant(location.search))
-  const variant = variantState.variant
+  const currentSearch = location.search || window.location.search
+  const variantFromUrl = getVariantFromUrl(currentSearch)
+  const [variantState, setVariantState] = useState(() => resolveLandingVariant(currentSearch))
+  const variant = variantFromUrl || variantState.variant
+  const variantSource = variantFromUrl ? 'url' : variantState.source
 
   useLenis()
 
   useEffect(() => {
-    setVariantState(resolveLandingVariant(location.search))
+    const nextSearch = location.search || window.location.search
+    const fromUrl = getVariantFromUrl(nextSearch)
+
+    if (fromUrl) {
+      setStoredLandingVariant(fromUrl)
+      setVariantState((prev) =>
+        prev.variant === fromUrl && prev.source === 'url'
+          ? prev
+          : { variant: fromUrl, source: 'url' }
+      )
+      return
+    }
+
+    setVariantState(resolveLandingVariant(nextSearch))
   }, [location.search])
 
   useEffect(() => {
     trackEvent('landing_page_view', {
       variant,
-      variant_source: variantState.source,
+      variant_source: variantSource,
       page_path: window.location.pathname,
     })
-  }, [variant, variantState.source])
+  }, [variant, variantSource])
 
   useEffect(() => {
     const loadScript = (src, attrs = {}) =>
