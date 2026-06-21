@@ -383,12 +383,12 @@ export function ServicesSystemsSection() {
             {systems.map((item) => (
               <motion.article
                 key={item.number}
-                className="group relative px-1 pt-10"
+                className="group relative px-1 pt-1 pb-3"
                 onMouseMove={handleSpotlightMove}
                 style={panelSpotlightStyle}
                 variants={cardReveal}
               >
-                <div className="mt-5 border-l border-white/12 pl-5 transition-colors duration-300 group-hover:border-panthera-green/45">
+                <div className="border-l border-white/12 pl-5 transition-colors duration-300 group-hover:border-panthera-green/45">
                   <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-panthera-green">{item.number}</p>
                   <h3 className="mt-3 text-[18px] font-medium tracking-[-0.02em] text-panthera-white">{item.title}</h3>
                   <p className="mt-3 text-[13px] leading-6 text-panthera-white/68">{item.text}</p>
