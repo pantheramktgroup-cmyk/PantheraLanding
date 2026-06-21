@@ -1,0 +1,127 @@
+# SISTEMA DE ANIMACIONES — Panthera Institutional
+
+Usar Framer Motion para animaciones.
+No usar animaciones excesivas ni efectos decorativos sin propósito.
+
+PRINCIPIOS
+
+- Animaciones lentas, suaves, premium.
+- Movimiento vertical corto: 16px a 32px.
+- Opacidad progresiva.
+- Stagger entre elementos.
+- Ease recomendado: [0.16, 1, 0.3, 1] o [0.22, 1, 0.36, 1].
+- Duraciones: 0.7s a 1.2s.
+- No usar bounce exagerado.
+- No usar rotations innecesarias.
+- Respetar `prefers-reduced-motion`.
+
+COMPONENTES COMPARTIDOS
+
+1. `AnimatedWords.tsx`
+
+Inspirado en WordsPullUp del prompt Prisma.
+Debe:
+- dividir texto por palabras
+- animar cada palabra desde y: 20 / opacity 0 a y: 0 / opacity 1
+- stagger 0.045s a 0.08s
+- usar `useInView`
+- permitir className
+- permitir align: left / center
+- permitir renderizar palabras con span inline-block
+- no romper accesibilidad: mantener aria-label con texto completo si hace falta
+
+2. `AnimatedMultiStyleWords.tsx`
+
+Para títulos con segmentos de estilo:
+```ts
+segments={[
+  { text: 'No hacemos campañas sueltas.', className: 'text-white' },
+  { text: 'Construimos sistemas.', className: 'text-panthera-green' }
+]}
+```
+
+Debe preservar estilos por segmento.
+
+3. `AnimatedTextReveal.tsx`
+
+Para párrafos largos.
+Puede hacer:
+- reveal por palabra o por línea
+- opacidad de 0.25 a 1 al hacer scroll
+- no usar carácter por carácter en exceso si afecta performance
+- activar solo en textos cortos/medianos
+
+4. `SectionReveal.tsx`
+
+Wrapper simple:
+- fade + y
+- trigger on view
+- once true
+- margin "-80px"
+
+5. `FeatureCardMotion.tsx`
+
+Para cards:
+- initial scale 0.96, opacity 0, y 24
+- whileInView scale 1, opacity 1, y 0
+- stagger por index
+- hover: y -4, border accent, background slightly lighter
+
+HERO
+
+Animación:
+- video/image scale de 1.06 a 1
+- heading palabras pull-up
+- subtítulo fade up delay 0.35
+- CTA fade up delay 0.5
+- nav fade down
+
+No usar:
+- parallax agresivo
+- texto volando desde lejos
+- glitches
+- partículas innecesarias
+
+SCROLL
+
+Usar animaciones al entrar en viewport.
+Para secciones institucionales:
+- section eyebrow aparece primero
+- headline luego
+- body/cards con stagger
+
+REDUCED MOTION
+
+Crear hook o usar:
+```ts
+const shouldReduceMotion = useReducedMotion()
+```
+
+Si reduce motion:
+- no hacer y/scale
+- solo opacidad simple o render estático
+
+TRANSICIONES DE PÁGINA
+
+Opcional:
+- fade entre páginas
+- scroll top on route change
+- no complicar si retrasa desarrollo
+
+MICROINTERACCIONES
+
+Botones:
+- hover gap + slight scale
+- icon moves 2px right
+- border glow sutil
+- no sweep brillante por dentro salvo muy sutil
+
+Cards:
+- hover border accent
+- image scale 1.03
+- overlay se aclara levemente
+- no sombras coloridas fuertes
+
+Navbar:
+- link underline o opacity
+- CTA compacto con hover blanco
