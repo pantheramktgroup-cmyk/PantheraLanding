@@ -491,9 +491,7 @@ export default function ThankYouPage() {
             </a>
 
             <a
-              href="https://pantheramktgroup.com"
-              target="_blank"
-              rel="noreferrer"
+              href="/"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-[11px] uppercase tracking-widest font-sans font-medium bg-panthera-green text-panthera-black hover:bg-transparent hover:text-panthera-green border border-panthera-green transition-all duration-300 ease-premium"
             >
               Ir a Panthera Group

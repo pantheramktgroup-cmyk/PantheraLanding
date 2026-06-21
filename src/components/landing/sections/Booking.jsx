@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { gsap, useGSAP } from '../../../lib/landing/gsap'
 import { usePrefersReducedMotion } from '../../../hooks/landing/usePrefersReducedMotion'
 import { landingCopy } from '../../../content/landing/landingCopy'
@@ -85,26 +85,43 @@ export default function Booking({ variant }) {
     [landingVariant]
   )
 
+  const iframeId = useMemo(
+    () => `${booking.calendarId}_${Date.now()}`,
+    []
+  )
+
+  // Load GHL's form_embed.js *after* the iframe is in the DOM, mirroring the
+  // original embed where the <script> follows the <iframe>. GHL's script scans
+  // for booking iframes when it runs; in this SPA the iframe is mounted by
+  // React after initial load, so loading the script here lets GHL natively
+  // initialize it (iframe-resizer handshake => correct auto height and proper
+  // embedded rendering, identical to the original embed — no white strip).
+  useEffect(() => {
+    if (typeof document === 'undefined') return
+
+    const src = 'https://links.iqautomated.io/js/form_embed.js'
+    if (document.querySelector(`script[src="${src}"]`)) return
+
+    const script = document.createElement('script')
+    script.src = src
+    script.type = 'text/javascript'
+    document.body.appendChild(script)
+  }, [])
+
   useGSAP(
     () => {
       if (prefersReduced) return
 
-      gsap.fromTo(
-        calendarRef.current,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: 'power2.out',
-          immediateRender: false,
-          scrollTrigger: {
-            trigger: calendarRef.current,
-            start: 'top 82%',
-            once: true,
-          },
-        }
-      )
+      gsap.from(calendarRef.current, {
+        y: 20,
+        duration: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: calendarRef.current,
+          start: 'top 82%',
+          once: true,
+        },
+      })
     },
     { scope: containerRef, dependencies: [prefersReduced] }
   )
@@ -126,14 +143,26 @@ export default function Booking({ variant }) {
           </h2>
         </div>
 
-        {/* Calendar shell with internal scroll to avoid oversized white embed gaps */}
-        <div ref={calendarRef} className="booking-calendar-shell">
+        <div
+          ref={calendarRef}
+          style={{
+            width: '100%',
+            maxWidth: '1200px',
+            margin: '0 auto',
+            overflow: 'visible',
+          }}
+        >
           <iframe
             src={calendarSrcWithTracking}
             title="Calendario de diagnóstico Panthera"
-            id={`${booking.calendarId}_booking`}
+            id={iframeId}
             className="booking-iframe"
-            loading="lazy"
+            scrolling="no"
+            style={{
+              width: '100%',
+              border: 'none',
+              overflow: 'hidden',
+            }}
           />
         </div>
       </div>

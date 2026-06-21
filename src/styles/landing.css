@@ -82,47 +82,17 @@
   min-height: 100vh;
 }
 
-.landing-root .booking-calendar-shell {
-  --booking-shell-height: clamp(620px, calc(100vh - 230px), 780px);
-  --booking-offset-top: clamp(72px, 7vh, 100px);
+.landing-root .booking-iframe,
+.booking-iframe {
   width: 100%;
-  max-width: 1200px;
-  height: var(--booking-shell-height);
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-  background: #000;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.landing-root .booking-iframe {
+  border: none;
   display: block;
-  width: 100%;
-  height: calc(var(--booking-shell-height) + var(--booking-offset-top) + 180px);
-  border: 0;
-  background: #000;
-
-  position: absolute !important;
-  top: calc(var(--booking-offset-top) * -1);
-  left: 0 !important;
-
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-
-  clip-path: none !important;
-  margin: 0 !important;
-}
-
-@media (max-width: 768px) {
-  .landing-root .booking-calendar-shell {
-    --booking-shell-height: 720px;
-    --booking-offset-top: 72px;
-  }
-
-  .landing-root .booking-iframe {
-    height: calc(var(--booking-shell-height) + var(--booking-offset-top) + 220px);
-  }
+  overflow: hidden;
+  /* The real height is set dynamically by GHL's form_embed.js (iframe-resizer)
+     once the widget reports its content height. min-height is only a pre-resize
+     fallback so the section reserves space and avoids a layout jump on load. */
+  min-height: 620px;
+  background: transparent;
 }
 
 .landing-root .hide-scrollbar {

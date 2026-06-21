@@ -24,9 +24,6 @@ import {
 import { trackEvent } from '../../lib/landing/tracking'
 import '../../styles/landing.css'
 
-const GHL_TRACKING_SRC = 'https://links.iqautomated.io/js/external-tracking.js'
-const GHL_FORM_EMBED_SRC = 'https://links.iqautomated.io/js/form_embed.js'
-
 export default function LandingPage() {
   const location = useLocation()
   const currentSearch = location.search || window.location.search
@@ -61,69 +58,6 @@ export default function LandingPage() {
       page_path: window.location.pathname,
     })
   }, [variant, variantSource])
-
-  useEffect(() => {
-    const loadScript = (src, attrs = {}) =>
-      new Promise((resolve, reject) => {
-        const existing = document.querySelector(`script[src="${src}"]`)
-        if (existing) {
-          if (existing.dataset.loaded === 'true') {
-            resolve()
-            return
-          }
-
-          existing.addEventListener('load', () => resolve(), { once: true })
-          existing.addEventListener('error', () => reject(new Error(`Failed to load script: ${src}`)), {
-            once: true,
-          })
-          return
-        }
-
-        const script = document.createElement('script')
-        script.src = src
-        script.async = false
-        Object.entries(attrs).forEach(([key, value]) => {
-          script.setAttribute(key, value)
-        })
-
-        script.addEventListener(
-          'load',
-          () => {
-            script.dataset.loaded = 'true'
-            resolve()
-          },
-          { once: true }
-        )
-        script.addEventListener('error', () => reject(new Error(`Failed to load script: ${src}`)), {
-          once: true,
-        })
-
-        document.body.appendChild(script)
-      })
-
-    let cancelled = false
-
-    const loadGhlScripts = async () => {
-      try {
-        await loadScript(GHL_TRACKING_SRC, {
-          'data-tracking-id': 'tk_cb83dad2568c43b39bebb2c145a9e86e',
-        })
-        if (cancelled) return
-
-        await loadScript(GHL_FORM_EMBED_SRC, {
-          type: 'text/javascript',
-        })
-      } catch (error) {
-        console.error(error)
-      }
-    }
-
-    loadGhlScripts()
-
-    return () => {
-      cancelled = true
-    }
-  }, [])
 
   useEffect(() => {
     if (window.location.hash !== '#booking') return
