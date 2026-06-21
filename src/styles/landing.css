@@ -95,6 +95,46 @@
   background: transparent;
 }
 
+.landing-root .booking-frame-mask,
+.booking-frame-mask {
+  position: relative;
+  isolation: isolate;
+  --booking-strip-mask-size: 10px;
+}
+
+/* Paint over the thin white letterbox strips rendered inside the cross-origin
+   GHL widget. This does not alter iframe sizing logic, only hides edge bands. */
+.landing-root .booking-frame-mask::before,
+.landing-root .booking-frame-mask::after,
+.booking-frame-mask::before,
+.booking-frame-mask::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: var(--booking-strip-mask-size);
+  background: #000;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.landing-root .booking-frame-mask::before,
+.booking-frame-mask::before {
+  top: 0;
+}
+
+.landing-root .booking-frame-mask::after,
+.booking-frame-mask::after {
+  bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .landing-root .booking-frame-mask,
+  .booking-frame-mask {
+    --booking-strip-mask-size: 12px;
+  }
+}
+
 .landing-root .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;

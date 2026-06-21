@@ -145,6 +145,7 @@ export default function Booking({ variant }) {
 
         <div
           ref={calendarRef}
+          className="booking-frame-mask"
           style={{
             width: '100%',
             maxWidth: '1200px',
