@@ -10,14 +10,41 @@ import Results from './pages/Results'
 import Contact from './pages/Contact'
 import LandingPage from './pages/landing/LandingPage.jsx'
 import ThankYouPage from './pages/landing/ThankYouPage.jsx'
-import { useEffect } from 'react'
+import { useEffect, useLayoutEffect } from 'react'
 
 function ScrollToTop() {
   const location = useLocation()
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }, [location.pathname])
+    if (typeof window === 'undefined') return
+
+    // Prevent browser history from restoring a previous scroll position.
+    window.history.scrollRestoration = 'manual'
+  }, [])
+
+  useLayoutEffect(() => {
+    const shouldResetToHero = ['/', '/quienes-somos', '/servicios', '/resultados', '/contacto'].includes(location.pathname)
+    if (!shouldResetToHero) return
+
+    const resetToTop = () => {
+      // Use explicit API + direct properties to defeat smooth-scroll and transition timing.
+      window.scrollTo(0, 0)
+      document.documentElement.scrollTop = 0
+      document.body.scrollTop = 0
+    }
+
+    // Run multiple times because route transitions/media can re-apply previous offset.
+    resetToTop()
+    const rafId = requestAnimationFrame(resetToTop)
+    const t1 = window.setTimeout(resetToTop, 80)
+    const t2 = window.setTimeout(resetToTop, 260)
+
+    return () => {
+      cancelAnimationFrame(rafId)
+      window.clearTimeout(t1)
+      window.clearTimeout(t2)
+    }
+  }, [location.pathname, location.key])
 
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)')

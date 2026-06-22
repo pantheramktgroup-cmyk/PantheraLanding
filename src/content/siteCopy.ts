@@ -5,7 +5,7 @@ import foundersImage from '../assets/images/fundadores.webp'
 import founderOne from '../assets/images/fundador_1.webp'
 import founderTwo from '../assets/images/fundador_2.webp'
 import creationHand from '../assets/images/creation_panthera_hand.webp'
-import aboutHeroImage from '../assets/images/IMG_7352.jpg'
+import aboutHeroImage from '../assets/images/fundadores.webp'
 import aboutFoundersImage from '../assets/images/IMG_7661.jpg'
 
 export const mediaAssets = {
