@@ -7,11 +7,13 @@ import {
 } from '../components/sections/contact/ContactSections'
 
 export default function Contact() {
+  const showConsultSection = false
+
   return (
     <>
       <ContactHeroSection />
       <ContactChannelsSection />
-      <ContactConsultSection />
+      {showConsultSection && <ContactConsultSection />}
       <ContactFaqSection />
       <ContactClosingSection />
     </>

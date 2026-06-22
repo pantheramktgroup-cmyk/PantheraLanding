@@ -4,7 +4,7 @@ import { ArrowUpRight, ChevronDown } from 'lucide-react'
 import { cardReveal, sectionReveal, staggerChildren } from '../../../lib/animations'
 import InteractiveBackground from '../home/InteractiveBackground'
 
-const whatsappUrl = '#whatsapp'
+const whatsappUrl = 'https://wa.me/543813319626?text=Hola!%20Quiero%20aplicar%20al%20programa%20Panthera'
 const diagnosticUrl = '/landing#booking'
 
 const consultItems = [
