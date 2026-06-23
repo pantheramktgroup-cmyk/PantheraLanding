@@ -373,44 +373,208 @@ export const siteCopy = {
       subtitle:
         'Casos, testimonios y aprendizajes de negocios que dejaron de depender solo del esfuerzo manual.',
     },
+    testimonials: {
+      eyebrow: 'Testimonios',
+      title: 'Personas que ya trabajaron con Panthera.',
+      subtitle:
+        'Cada caso muestra como cambia un negocio cuando estrategia, captacion, seguimiento y conversion empiezan a funcionar como sistema.',
+    },
     cases: [
       {
-        name: 'Gastón Hendlin',
+        name: 'Gaston Hendlin',
         role: 'Coach Financiero y Ejecutivo',
-        problem: 'Caso en edición. Reemplazar por copy final validado.',
-        intervention: 'Caso en edición. Reemplazar por copy final validado.',
-        result: 'Caso en edición. Reemplazar por testimonio final.',
+        problem: 'Dependia de agencias sin resultados y seguia cargando con la estrategia y ejecucion.',
+        intervention: 'Reordenamos su ecosistema comercial para filtrar, captar y vender con estructura.',
+        result: 'Dejo de perder tiempo con curiosos y empezo a escalar con oportunidades calificadas.',
+        youtubeId: 'tkq3PO2-yU4',
       },
       {
         name: 'Laura Sanchez',
         role: 'Coach de Alto Rendimiento',
-        problem: 'Caso en edición. Reemplazar por copy final validado.',
-        intervention: 'Caso en edición. Reemplazar por copy final validado.',
-        result: 'Caso en edición. Reemplazar por testimonio final.',
+        problem: 'Dependia de referidos y no tenia una estructura clara para crecer fuera de su circulo.',
+        intervention: 'Construimos una operacion para atraer leads en frio y profesionalizar su proceso comercial.',
+        result: 'Paso de sentirse invisible a posicionarse con un sistema sostenible de captacion.',
+        youtubeId: 'iMTN4h5Gr4E',
       },
       {
         name: 'Lucas Casalins',
         role: 'Coach Fitness',
-        problem: 'Caso en edición. Reemplazar por copy final validado.',
-        intervention: 'Caso en edición. Reemplazar por copy final validado.',
-        result: 'Caso en edición. Reemplazar por testimonio final.',
+        problem: 'Vivia frustrado, haciendo todo solo y sin previsibilidad comercial.',
+        intervention: 'Integramos marketing, seguimiento, ventas y operacion en una misma estructura.',
+        result: 'Recupero orden, previsibilidad y foco en sus alumnos mientras el sistema trabaja detras.',
+        youtubeId: 'A34a5JF5iPQ',
       },
       {
-        name: 'José Navas',
-        role: 'Placeholder pendiente de reemplazo.',
-        problem: 'Caso en edición. Reemplazar por copy final validado.',
-        intervention: 'Caso en edición. Reemplazar por copy final validado.',
-        result: 'Caso en edición. Reemplazar por testimonio final.',
+        name: 'Jose Navas',
+        role: 'Mentor de Negocios',
+        problem: 'Llevaba anos intentando escalar en digital con lanzamientos fallidos y exceso operativo.',
+        intervention: 'Delego atraccion, prospeccion y seguimiento dentro de un sistema comercial ordenado.',
+        result: 'Recupero libertad y empezo a recibir agendamientos calificados sin perseguir leads.',
+        youtubeId: 'HKRIU34pW5g',
       },
       {
         name: 'Hilda Arjona',
-        role: 'Placeholder pendiente de reemplazo.',
-        problem: 'Caso en edición. Reemplazar por copy final validado.',
-        intervention: 'Caso en edición. Reemplazar por copy final validado.',
-        result: 'Caso en edición. Reemplazar por testimonio final.',
+        role: 'Coach Espiritual',
+        problem: 'Estaba agotada de hacerlo todo sola y sin resultados consistentes.',
+        intervention: 'Corregimos oferta, avatar y ejecucion para ordenar su captacion y seguimiento.',
+        result: 'Volvio a enfocarse en entregar valor mientras el sistema atrae alumnas ideales.',
+        youtubeId: 'XqDvbuOqQ7Q',
       },
     ],
+    learnings: {
+      eyebrow: 'Aprendizajes',
+      title: 'Que se repite en los casos que funcionan.',
+      subtitle:
+        'Los resultados no aparecen por una sola pieza. Se producen cuando oferta, captacion, seguimiento, venta y medicion trabajan conectados.',
+      items: [
+        {
+          number: '01',
+          title: 'Claridad de oferta',
+          text: 'Antes de escalar, el negocio necesita saber que vende, a quien se lo vende y por que esa persona deberia avanzar.',
+        },
+        {
+          number: '02',
+          title: 'Sistema antes que volumen',
+          text: 'Mas trafico no resuelve un proceso desordenado. Primero se ordena el recorrido comercial.',
+        },
+        {
+          number: '03',
+          title: 'Seguimiento medible',
+          text: 'Las oportunidades se pierden cuando no hay CRM, tareas, recordatorios y criterios claros de avance.',
+        },
+        {
+          number: '04',
+          title: 'Optimizacion continua',
+          text: 'La mejora aparece cuando se leen datos reales: llamadas, formularios, fuentes, conversiones y objeciones.',
+        },
+      ],
+    },
+    finalCta: {
+      eyebrow: 'Siguiente paso',
+      title: 'Conoce que parte de tu sistema comercial necesita orden primero.',
+      text: 'Podes revisar nuestros servicios o iniciar una conversacion para entender si Panthera tiene sentido para tu negocio.',
+      cta: 'Agendar diagnostico',
+      href: '/landing#booking',
+    },
     note: 'No se incluyen cifras, testimonios ni métricas no verificadas.',
+  },
+  servicesPage: {
+    hero: {
+      eyebrow: 'Servicios',
+      title: 'Servicios disenados para construir infraestructura comercial, no acciones aisladas.',
+      subtitle:
+        'Trabajamos sobre la estructura completa de captacion y ventas: estrategia, activos, CRM, automatizacion, seguimiento, publicidad, contenido y medicion.',
+      cta: 'Ver infraestructura',
+    },
+    infrastructure: {
+      eyebrow: 'Infraestructura',
+      title: 'Cada pieza conectada a la misma estrategia.',
+      subtitle:
+        'Panthera integra estrategia, captacion, activos, CRM, automatizacion, contenido, seguimiento y medicion para que el sistema funcione completo.',
+      items: [
+        { number: '01', title: 'Diagnostico comercial', text: 'Analisis de oferta, ticket, avatar, canales actuales, proceso de venta y puntos criticos.' },
+        { number: '02', title: 'Arquitectura de funnel', text: 'Diseno del recorrido desde la atencion inicial hasta la llamada, propuesta o venta.' },
+        { number: '03', title: 'Landing pages', text: 'Activos de conversion alineados a la oferta, audiencia, mensaje y proceso comercial.' },
+        { number: '04', title: 'CRM y automatizacion', text: 'Pipelines, campos, workflows, calendarios, recordatorios y seguimiento operativo.' },
+        { number: '05', title: 'Captacion', text: 'Estrategia, configuracion, optimizacion y escalado de campanas orientadas a oportunidades calificadas.' },
+        { number: '06', title: 'Contenido y mensajes', text: 'Pilares, guiones, piezas organicas, comunicacion y angulos alineados a la estrategia.' },
+        { number: '07', title: 'Flujo comercial', text: 'Scripts, procesos de calificacion, seguimiento, feedback comercial y mejora de llamadas.' },
+        { number: '08', title: 'Reporting y optimizacion', text: 'Dashboards, KPIs, lectura de datos y decisiones de mejora a partir de evidencia real.' },
+      ],
+    },
+    systems: {
+      eyebrow: 'Sistema operativo comercial',
+      title: 'Lo que construimos es una estructura para atraer, convertir, entregar y medir.',
+      subtitle:
+        'Cada sistema cumple una funcion distinta, pero todos trabajan conectados para que el crecimiento no dependa de piezas aisladas.',
+      items: [
+        { number: '01', title: 'Atraccion', text: 'Oferta, mensaje, contenidos, anuncios, landing pages y activos que generan atencion calificada.' },
+        { number: '02', title: 'Conversion', text: 'CRM, agenda, calificacion, seguimiento, scripts y proceso comercial para transformar interes en oportunidades.' },
+        { number: '03', title: 'Entrega', text: 'Onboarding, procesos, recursos y orden operativo para que la experiencia no dependa de improvisacion.' },
+        { number: '04', title: 'Control', text: 'Dashboards, KPIs, lectura de datos y optimizacion continua para tomar decisiones con evidencia.' },
+      ],
+    },
+    roadmap: {
+      eyebrow: 'Como trabajamos',
+      title: 'Roadmap operativo para construir, activar y escalar el sistema comercial.',
+      subtitle: 'Cada etapa tiene foco, entregables y decisiones concretas. No es una lista de tareas: es una implementacion con direccion.',
+      methodologyLinkLabel: 'Ver metodologia',
+      stageLabel: 'Etapa',
+      whatWeDoLabel: 'Que hacemos',
+      clientReceivesLabel: 'Que recibe el cliente',
+      items: [
+        {
+          number: '01',
+          stage: 'Diagnostico y direccion',
+          work: 'Revisamos oferta, avatar, canales, activos, proceso comercial y objetivos.',
+          outcome: 'Diagnostico inicial, prioridades y direccion estrategica.',
+          mobile: 'Revisamos oferta, avatar, canales y proceso comercial para definir prioridades claras.',
+        },
+        {
+          number: '02',
+          stage: 'Arquitectura del sistema',
+          work: 'Disenamos el recorrido comercial: captacion, filtrado, agenda, seguimiento y medicion.',
+          outcome: 'Mapa del sistema, estructura de funnel, CRM y criterios de implementacion.',
+          mobile: 'Disenamos el recorrido completo: captacion, filtrado, agenda, seguimiento y medicion.',
+        },
+        {
+          number: '03',
+          stage: 'Construccion de activos',
+          work: 'Creamos o ajustamos landing, formularios, calendarios, mensajes, guiones, CRM y automatizaciones.',
+          outcome: 'Infraestructura lista para activar y medir.',
+          mobile: 'Creamos o ajustamos landing, formularios, calendarios, mensajes, CRM y automatizaciones.',
+        },
+        {
+          number: '04',
+          stage: 'Activacion y captacion',
+          work: 'Lanzamos campanas, contenidos, flujos y procesos de seguimiento.',
+          outcome: 'Primeros datos reales del sistema funcionando.',
+          mobile: 'Lanzamos campanas, contenidos, flujos y procesos para obtener datos reales.',
+        },
+        {
+          number: '05',
+          stage: 'Optimizacion',
+          work: 'Leemos metricas, llamadas, formularios, fuentes y conversiones para corregir puntos de fuga.',
+          outcome: 'Mejoras sobre mensajes, anuncios, seguimiento, filtrado y conversion.',
+          mobile: 'Leemos metricas, llamadas, formularios y conversiones para corregir puntos de fuga.',
+        },
+        {
+          number: '06',
+          stage: 'Escalabilidad',
+          work: 'Con el sistema validado, ampliamos inversion, canales, automatizaciones y capacidad comercial.',
+          outcome: 'Una estructura mas predecible, medible y preparada para crecer.',
+          mobile: 'Con el sistema validado, ampliamos inversion, canales y operacion sobre una base medible.',
+        },
+      ],
+    },
+    fit: {
+      eyebrow: 'Para quien es',
+      title: 'Cuando tiene sentido trabajar con Panthera.',
+      subtitle:
+        'Panthera funciona mejor cuando existe una direccion clara y el objetivo es ordenar como se atraen, filtran, convierten y miden oportunidades.',
+      goodTitle: 'Tiene sentido si',
+      badTitle: 'Probablemente no sea el momento si',
+      good: [
+        'Ya existe una oferta o una idea clara que se quiere ordenar.',
+        'El negocio necesita mas previsibilidad comercial.',
+        'Hay intencion real de medir, mejorar y participar del proceso.',
+        'Se busca construir infraestructura, no solo acciones aisladas.',
+      ],
+      bad: [
+        'Se busca una solucion magica o inmediata.',
+        'Solo se quiere publicar anuncios sin ordenar el proceso comercial.',
+        'No hay disposicion a revisar oferta, datos o seguimiento.',
+        'Se busca delegar todo sin involucrarse en decisiones estrategicas.',
+      ],
+    },
+    cta: {
+      eyebrow: 'Siguiente paso',
+      title: 'Entende que parte de tu sistema comercial necesita orden primero.',
+      text:
+        'El primer paso es revisar tu situacion actual y detectar si Panthera puede ayudarte a construir una estructura mas clara, medible y predecible.',
+      button: 'Ir a contacto',
+      href: '/contacto',
+    },
   },
   contact: {
     hero: {
@@ -448,6 +612,99 @@ export const siteCopy = {
         answer: 'Con un diagnóstico para entender el estado actual del negocio y decidir si existe una oportunidad real de construir un sistema mejor.',
       },
     ],
+  },
+  contactPage: {
+    urls: {
+      whatsapp: 'https://wa.me/543813319626?text=Hola!%20Quiero%20aplicar%20al%20programa%20Panthera',
+      diagnostic: '/landing#booking',
+    },
+    hero: {
+      eyebrow: 'Contacto',
+      title: 'Contanos en que etapa esta tu negocio.',
+      subtitle:
+        'Si ya tenes una oferta validada y queres ordenar captacion, seguimiento, ventas y medicion, podemos ayudarte a entender si Panthera tiene sentido para tu caso.',
+    },
+    channels: {
+      eyebrow: 'Canales de contacto',
+      title: 'Elegi el canal segun tu etapa.',
+      subtitle:
+        'Si estas evaluando contexto inicial o ya quieres avanzar con una llamada, puedes usar el canal que mejor se ajuste a tu momento.',
+      whatsapp: {
+        label: 'WhatsApp',
+        text: 'Para consultas, diagnostico inicial o entender si Panthera aplica a tu negocio.',
+        cta: 'Escribir por WhatsApp',
+      },
+      diagnostic: {
+        label: 'Diagnostico',
+        text: 'Si ya sabes que quieres evaluar una implementacion, puedes reservar una llamada directamente.',
+        cta: 'Agendar diagnostico',
+      },
+    },
+    consult: {
+      eyebrow: 'Que podes consultarnos',
+      title: 'Podes escribirnos aunque todavia no tengas todo definido.',
+      subtitle:
+        'La primera conversacion puede servir para entender tu situacion, ordenar prioridades o definir si tiene sentido avanzar hacia un diagnostico.',
+      items: [
+        {
+          number: '01',
+          title: 'Crear un sistema desde cero',
+          text: 'Si tenes una oferta o idea validada y necesitas construir una estructura comercial ordenada.',
+        },
+        {
+          number: '02',
+          title: 'Ordenar un sistema existente',
+          text: 'Si ya vendes, pero dependes de referidos, esfuerzo manual o procesos poco claros.',
+        },
+        {
+          number: '03',
+          title: 'Mejorar captacion y seguimiento',
+          text: 'Si tenes trafico, contenido o consultas, pero pocas oportunidades realmente calificadas.',
+        },
+        {
+          number: '04',
+          title: 'Entender que servicio aplica',
+          text: 'Si quieres saber si necesitas estrategia, CRM, automatizacion, campanas, landing o una infraestructura mas completa.',
+        },
+      ],
+    },
+    faq: {
+      eyebrow: 'FAQ',
+      title: 'Preguntas frecuentes',
+      subtitle: 'Una lectura clara para entender si este proceso es adecuado para tu etapa actual.',
+      items: [
+        {
+          question: 'Que diferencia a Panthera de otras agencias de marketing?',
+          answer:
+            'Muchas agencias trabajan una parte aislada del problema: trafico, contenido o automatizacion parcial. Panthera trabaja la infraestructura comercial completa.\n\nNo nos interesa solo generar formularios. Buscamos conectar captacion, filtrado, CRM, seguimiento, agenda y medicion para que puedas mejorar el proceso con datos reales.',
+        },
+        {
+          question: 'Funciona para mi tipo de negocio?',
+          answer:
+            'Funciona mejor para coaches, consultores, mentores, infoproductores y servicios high-ticket que ya tienen una oferta validada, pero necesitan mejorar captacion, filtrado, seguimiento y previsibilidad comercial.\n\nSi ya vendes y quieres ordenar la forma en la que generas oportunidades, tiene sentido analizarlo en una llamada.',
+        },
+        {
+          question: 'Necesito conocimientos tecnicos?',
+          answer:
+            'No. La parte tecnica la trabajamos nosotros: estructura, CRM, automatizaciones, funnels, formularios, calendario y medicion.\n\nTu rol es aportar informacion estrategica sobre tu negocio, validar decisiones importantes y participar en las reuniones necesarias.',
+        },
+        {
+          question: 'Cuanto tiempo requiere la implementacion del sistema?',
+          answer:
+            'Depende del punto de partida de cada negocio, la oferta, los activos disponibles y el estado del proceso comercial.\n\nEl trabajo se organiza por etapas: diagnostico, arquitectura, construccion, activacion y optimizacion. En la llamada revisamos tu caso y te damos una estimacion de tiempos para tu situacion especifica.',
+        },
+        {
+          question: 'Es una solucion sostenible o solo una solucion rapida?',
+          answer:
+            'El enfoque de Panthera no esta en atajos ni trucos momentaneos. Esta en construir una infraestructura que pueda mejorar con datos y sostener el crecimiento con mas orden.\n\nLa idea no es generar un pico aislado, sino ayudarte a construir una base comercial mas clara, medible y preparada para crecer.',
+        },
+      ],
+    },
+    closing: {
+      title: 'Si quieres entender si Panthera encaja con tu negocio, escribinos.',
+      text: 'Revisamos tu situacion actual y te indicamos si tiene sentido avanzar hacia una llamada de diagnostico.',
+      cta: 'Escribir por WhatsApp',
+    },
   },
   footer: {
     description:

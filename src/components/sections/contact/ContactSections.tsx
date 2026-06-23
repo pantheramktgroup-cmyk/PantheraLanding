@@ -3,60 +3,13 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowUpRight, ChevronDown } from 'lucide-react'
 import { cardReveal, sectionReveal, staggerChildren } from '../../../lib/animations'
 import InteractiveBackground from '../home/InteractiveBackground'
+import { siteCopy } from '../../../content/siteCopy'
 
-const whatsappUrl = 'https://wa.me/543813319626?text=Hola!%20Quiero%20aplicar%20al%20programa%20Panthera'
-const diagnosticUrl = '/landing#booking'
-
-const consultItems = [
-  {
-    number: '01',
-    title: 'Crear un sistema desde cero',
-    text: 'Si tenes una oferta o idea validada y necesitas construir una estructura comercial ordenada.',
-  },
-  {
-    number: '02',
-    title: 'Ordenar un sistema existente',
-    text: 'Si ya vendes, pero dependes de referidos, esfuerzo manual o procesos poco claros.',
-  },
-  {
-    number: '03',
-    title: 'Mejorar captacion y seguimiento',
-    text: 'Si tenes trafico, contenido o consultas, pero pocas oportunidades realmente calificadas.',
-  },
-  {
-    number: '04',
-    title: 'Entender que servicio aplica',
-    text: 'Si quieres saber si necesitas estrategia, CRM, automatizacion, campanas, landing o una infraestructura mas completa.',
-  },
-]
-
-const faqs = [
-  {
-    question: 'Que diferencia a Panthera de otras agencias de marketing?',
-    answer:
-      'Muchas agencias trabajan una parte aislada del problema: trafico, contenido o automatizacion parcial. Panthera trabaja la infraestructura comercial completa.\n\nNo nos interesa solo generar formularios. Buscamos conectar captacion, filtrado, CRM, seguimiento, agenda y medicion para que puedas mejorar el proceso con datos reales.',
-  },
-  {
-    question: 'Funciona para mi tipo de negocio?',
-    answer:
-      'Funciona mejor para coaches, consultores, mentores, infoproductores y servicios high-ticket que ya tienen una oferta validada, pero necesitan mejorar captacion, filtrado, seguimiento y previsibilidad comercial.\n\nSi ya vendes y quieres ordenar la forma en la que generas oportunidades, tiene sentido analizarlo en una llamada.',
-  },
-  {
-    question: 'Necesito conocimientos tecnicos?',
-    answer:
-      'No. La parte tecnica la trabajamos nosotros: estructura, CRM, automatizaciones, funnels, formularios, calendario y medicion.\n\nTu rol es aportar informacion estrategica sobre tu negocio, validar decisiones importantes y participar en las reuniones necesarias.',
-  },
-  {
-    question: 'Cuanto tiempo requiere la implementacion del sistema?',
-    answer:
-      'Depende del punto de partida de cada negocio, la oferta, los activos disponibles y el estado del proceso comercial.\n\nEl trabajo se organiza por etapas: diagnostico, arquitectura, construccion, activacion y optimizacion. En la llamada revisamos tu caso y te damos una estimacion de tiempos para tu situacion especifica.',
-  },
-  {
-    question: 'Es una solucion sostenible o solo una solucion rapida?',
-    answer:
-      'El enfoque de Panthera no esta en atajos ni trucos momentaneos. Esta en construir una infraestructura que pueda mejorar con datos y sostener el crecimiento con mas orden.\n\nLa idea no es generar un pico aislado, sino ayudarte a construir una base comercial mas clara, medible y preparada para crecer.',
-  },
-]
+const contactCopy = siteCopy.contactPage
+const whatsappUrl = contactCopy.urls.whatsapp
+const diagnosticUrl = contactCopy.urls.diagnostic
+const consultItems = contactCopy.consult.items
+const faqs = contactCopy.faq.items
 
 const cardSpotlightStyle = {
   backgroundImage:
@@ -145,9 +98,9 @@ export function ContactHeroSection() {
       </div>
       <div className="container-panthera relative py-16 sm:py-20 lg:py-28">
         <HeadingBlock
-          eyebrow="Contacto"
-          title="Contanos en que etapa esta tu negocio."
-          subtitle="Si ya tenes una oferta validada y queres ordenar captacion, seguimiento, ventas y medicion, podemos ayudarte a entender si Panthera tiene sentido para tu caso."
+          eyebrow={contactCopy.hero.eyebrow}
+          title={contactCopy.hero.title}
+          subtitle={contactCopy.hero.subtitle}
         />
       </div>
     </section>
@@ -160,9 +113,9 @@ export function ContactChannelsSection() {
       <InteractiveBackground intensity={0.064} radius={218} showGrid showNoise followMouse touchDrift touchDriftAmount={0.18} className="opacity-68 sm:opacity-52" />
       <div className="container-panthera relative">
         <HeadingBlock
-          eyebrow="Canales de contacto"
-          title="Elegi el canal segun tu etapa."
-          subtitle="Si estas evaluando contexto inicial o ya quieres avanzar con una llamada, puedes usar el canal que mejor se ajuste a tu momento."
+          eyebrow={contactCopy.channels.eyebrow}
+          title={contactCopy.channels.title}
+          subtitle={contactCopy.channels.subtitle}
         />
 
         <motion.div
@@ -178,12 +131,12 @@ export function ContactChannelsSection() {
             variants={cardReveal}
             onMouseMove={handleSpotlightMove}
           >
-            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-panthera-green">WhatsApp</p>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-panthera-green">{contactCopy.channels.whatsapp.label}</p>
             <p className="mt-3 max-w-[56ch] text-[13.5px] leading-6 text-panthera-ash sm:mt-4 sm:text-[14px] sm:leading-7">
-              Para consultas, diagnostico inicial o entender si Panthera aplica a tu negocio.
+              {contactCopy.channels.whatsapp.text}
             </p>
             <div className="mt-6 flex justify-start sm:mt-7">
-              <PrimaryContactCta href={whatsappUrl} label="Escribir por WhatsApp" />
+              <PrimaryContactCta href={whatsappUrl} label={contactCopy.channels.whatsapp.cta} />
             </div>
             <span className="absolute inset-x-0 bottom-0 h-px scale-x-0 bg-panthera-green transition-transform duration-300 group-hover:scale-x-100" />
           </motion.article>
@@ -194,12 +147,12 @@ export function ContactChannelsSection() {
             variants={cardReveal}
             onMouseMove={handleSpotlightMove}
           >
-            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-panthera-green">Diagnostico</p>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-panthera-green">{contactCopy.channels.diagnostic.label}</p>
             <p className="mt-3 text-[13.5px] leading-6 text-panthera-ash sm:mt-4 sm:text-[14px] sm:leading-7">
-              Si ya sabes que quieres evaluar una implementacion, puedes reservar una llamada directamente.
+              {contactCopy.channels.diagnostic.text}
             </p>
             <div className="mt-6 flex justify-start">
-              <SecondaryContactCta href={diagnosticUrl} label="Agendar diagnostico" />
+              <SecondaryContactCta href={diagnosticUrl} label={contactCopy.channels.diagnostic.cta} />
             </div>
             <span className="absolute inset-x-0 bottom-0 h-px scale-x-0 bg-panthera-green transition-transform duration-300 group-hover:scale-x-100" />
           </motion.article>
@@ -217,9 +170,9 @@ export function ContactConsultSection() {
       <InteractiveBackground intensity={0.068} radius={226} showGrid showNoise followMouse touchDrift touchDriftAmount={0.17} className="opacity-70 sm:opacity-56" />
       <div className="container-panthera relative">
         <HeadingBlock
-          eyebrow="Que podes consultarnos"
-          title="Podes escribirnos aunque todavia no tengas todo definido."
-          subtitle="La primera conversacion puede servir para entender tu situacion, ordenar prioridades o definir si tiene sentido avanzar hacia un diagnostico."
+          eyebrow={contactCopy.consult.eyebrow}
+          title={contactCopy.consult.title}
+          subtitle={contactCopy.consult.subtitle}
         />
 
         <motion.div className="contact-mobile-field mt-10 space-y-2.5 sm:hidden" variants={staggerChildren} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-90px' }}>
@@ -279,7 +232,7 @@ export function ContactFaqSection() {
     <section className="section-with-spotlight relative border-b border-white/10 bg-panthera-deep py-16 sm:py-24 lg:py-32" onMouseMove={handleSpotlightMove}>
       <InteractiveBackground intensity={0.062} radius={218} showGrid showNoise followMouse touchDrift touchDriftAmount={0.17} className="opacity-66 sm:opacity-50" />
       <div className="container-panthera relative grid gap-10 sm:gap-12 lg:grid-cols-[0.86fr_1.14fr]">
-        <HeadingBlock eyebrow="FAQ" title="Preguntas frecuentes" subtitle="Una lectura clara para entender si este proceso es adecuado para tu etapa actual." />
+        <HeadingBlock eyebrow={contactCopy.faq.eyebrow} title={contactCopy.faq.title} subtitle={contactCopy.faq.subtitle} />
 
         <motion.div className="contact-mobile-field border-t border-white/10" variants={staggerChildren} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-80px' }}>
           {faqs.map((faq, index) => {
@@ -334,13 +287,13 @@ export function ContactClosingSection() {
       <div className="container-panthera relative py-16 sm:py-20 lg:py-28">
         <motion.div variants={sectionReveal} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-80px' }}>
           <h2 className="interactive-title max-w-4xl text-balance font-display text-3xl font-medium leading-[1.01] tracking-[-0.05em] sm:text-5xl lg:text-[3.4rem] lg:leading-[0.98]">
-            Si quieres entender si Panthera encaja con tu negocio, escribinos.
+            {contactCopy.closing.title}
           </h2>
           <p className="mt-5 max-w-3xl text-[14px] leading-7 text-panthera-white/68 sm:mt-6 sm:text-[15px]">
-            Revisamos tu situacion actual y te indicamos si tiene sentido avanzar hacia una llamada de diagnostico.
+            {contactCopy.closing.text}
           </p>
           <div className="mt-7 flex justify-start sm:mt-8">
-            <PrimaryContactCta href={whatsappUrl} label="Escribir por WhatsApp" />
+            <PrimaryContactCta href={whatsappUrl} label={contactCopy.closing.cta} />
           </div>
         </motion.div>
       </div>

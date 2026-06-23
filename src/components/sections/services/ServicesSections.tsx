@@ -6,131 +6,14 @@ import gsap from 'gsap'
 import { cardReveal, sectionReveal, staggerChildren } from '../../../lib/animations'
 import Button from '../../ui/Button'
 import InteractiveBackground from '../home/InteractiveBackground'
+import { siteCopy } from '../../../content/siteCopy'
 
-const infrastructureItems = [
-  {
-    number: '01',
-    title: 'Diagnostico comercial',
-    text: 'Analisis de oferta, ticket, avatar, canales actuales, proceso de venta y puntos criticos.',
-  },
-  {
-    number: '02',
-    title: 'Arquitectura de funnel',
-    text: 'Diseno del recorrido desde la atencion inicial hasta la llamada, propuesta o venta.',
-  },
-  {
-    number: '03',
-    title: 'Landing pages',
-    text: 'Activos de conversion alineados a la oferta, audiencia, mensaje y proceso comercial.',
-  },
-  {
-    number: '04',
-    title: 'CRM y automatizacion',
-    text: 'Pipelines, campos, workflows, calendarios, recordatorios y seguimiento operativo.',
-  },
-  {
-    number: '05',
-    title: 'Captacion',
-    text: 'Estrategia, configuracion, optimizacion y escalado de campanas orientadas a oportunidades calificadas.',
-  },
-  {
-    number: '06',
-    title: 'Contenido y mensajes',
-    text: 'Pilares, guiones, piezas organicas, comunicacion y angulos alineados a la estrategia.',
-  },
-  {
-    number: '07',
-    title: 'Flujo comercial',
-    text: 'Scripts, procesos de calificacion, seguimiento, feedback comercial y mejora de llamadas.',
-  },
-  {
-    number: '08',
-    title: 'Reporting y optimizacion',
-    text: 'Dashboards, KPIs, lectura de datos y decisiones de mejora a partir de evidencia real.',
-  },
-]
-
-const systems = [
-  {
-    number: '01',
-    title: 'Atraccion',
-    text: 'Oferta, mensaje, contenidos, anuncios, landing pages y activos que generan atencion calificada.',
-  },
-  {
-    number: '02',
-    title: 'Conversion',
-    text: 'CRM, agenda, calificacion, seguimiento, scripts y proceso comercial para transformar interes en oportunidades.',
-  },
-  {
-    number: '03',
-    title: 'Entrega',
-    text: 'Onboarding, procesos, recursos y orden operativo para que la experiencia no dependa de improvisacion.',
-  },
-  {
-    number: '04',
-    title: 'Control',
-    text: 'Dashboards, KPIs, lectura de datos y optimizacion continua para tomar decisiones con evidencia.',
-  },
-]
-
-const roadmap = [
-  {
-    number: '01',
-    stage: 'Diagnostico y direccion',
-    work: 'Revisamos oferta, avatar, canales, activos, proceso comercial y objetivos.',
-    outcome: 'Diagnostico inicial, prioridades y direccion estrategica.',
-    mobile: 'Revisamos oferta, avatar, canales y proceso comercial para definir prioridades claras.',
-  },
-  {
-    number: '02',
-    stage: 'Arquitectura del sistema',
-    work: 'Disenamos el recorrido comercial: captacion, filtrado, agenda, seguimiento y medicion.',
-    outcome: 'Mapa del sistema, estructura de funnel, CRM y criterios de implementacion.',
-    mobile: 'Disenamos el recorrido completo: captacion, filtrado, agenda, seguimiento y medicion.',
-  },
-  {
-    number: '03',
-    stage: 'Construccion de activos',
-    work: 'Creamos o ajustamos landing, formularios, calendarios, mensajes, guiones, CRM y automatizaciones.',
-    outcome: 'Infraestructura lista para activar y medir.',
-    mobile: 'Creamos o ajustamos landing, formularios, calendarios, mensajes, CRM y automatizaciones.',
-  },
-  {
-    number: '04',
-    stage: 'Activacion y captacion',
-    work: 'Lanzamos campanas, contenidos, flujos y procesos de seguimiento.',
-    outcome: 'Primeros datos reales del sistema funcionando.',
-    mobile: 'Lanzamos campanas, contenidos, flujos y procesos para obtener datos reales.',
-  },
-  {
-    number: '05',
-    stage: 'Optimizacion',
-    work: 'Leemos metricas, llamadas, formularios, fuentes y conversiones para corregir puntos de fuga.',
-    outcome: 'Mejoras sobre mensajes, anuncios, seguimiento, filtrado y conversion.',
-    mobile: 'Leemos metricas, llamadas, formularios y conversiones para corregir puntos de fuga.',
-  },
-  {
-    number: '06',
-    stage: 'Escalabilidad',
-    work: 'Con el sistema validado, ampliamos inversion, canales, automatizaciones y capacidad comercial.',
-    outcome: 'Una estructura mas predecible, medible y preparada para crecer.',
-    mobile: 'Con el sistema validado, ampliamos inversion, canales y operacion sobre una base medible.',
-  },
-]
-
-const fitGood = [
-  'Ya existe una oferta o una idea clara que se quiere ordenar.',
-  'El negocio necesita mas previsibilidad comercial.',
-  'Hay intencion real de medir, mejorar y participar del proceso.',
-  'Se busca construir infraestructura, no solo acciones aisladas.',
-]
-
-const fitBad = [
-  'Se busca una solucion magica o inmediata.',
-  'Solo se quiere publicar anuncios sin ordenar el proceso comercial.',
-  'No hay disposicion a revisar oferta, datos o seguimiento.',
-  'Se busca delegar todo sin involucrarse en decisiones estrategicas.',
-]
+const servicesCopy = siteCopy.servicesPage
+const infrastructureItems = servicesCopy.infrastructure.items
+const systems = servicesCopy.systems.items
+const roadmap = servicesCopy.roadmap.items
+const fitGood = servicesCopy.fit.good
+const fitBad = servicesCopy.fit.bad
 
 const cardSpotlightStyle = {
   backgroundImage:
@@ -209,9 +92,9 @@ export function ServicesHeroSection() {
       </div>
       <div className="container-panthera relative py-16 sm:py-20 lg:py-28">
         <HeadingBlock
-          eyebrow="Servicios"
-          title="Servicios disenados para construir infraestructura comercial, no acciones aisladas."
-          subtitle="Trabajamos sobre la estructura completa de captacion y ventas: estrategia, activos, CRM, automatizacion, seguimiento, publicidad, contenido y medicion."
+          eyebrow={servicesCopy.hero.eyebrow}
+          title={servicesCopy.hero.title}
+          subtitle={servicesCopy.hero.subtitle}
         />
         <div className="mt-8 flex justify-start">
           <Button
@@ -222,7 +105,7 @@ export function ServicesHeroSection() {
             trackingLabel="services_hero_infra"
             trackingPage="services"
           >
-            Ver infraestructura
+            {servicesCopy.hero.cta}
           </Button>
         </div>
       </div>
@@ -280,9 +163,9 @@ export function ServicesInfrastructureSection() {
       <InteractiveBackground intensity={0.056} radius={210} showGrid showNoise followMouse touchDrift touchDriftAmount={0.16} className="opacity-62 sm:opacity-50" />
       <div className="container-panthera relative">
         <HeadingBlock
-          eyebrow="Infraestructura"
-          title="Cada pieza conectada a la misma estrategia."
-          subtitle="Panthera integra estrategia, captacion, activos, CRM, automatizacion, contenido, seguimiento y medicion para que el sistema funcione completo."
+          eyebrow={servicesCopy.infrastructure.eyebrow}
+          title={servicesCopy.infrastructure.title}
+          subtitle={servicesCopy.infrastructure.subtitle}
         />
 
         <motion.div
@@ -372,9 +255,9 @@ export function ServicesSystemsSection() {
       <InteractiveBackground intensity={0.064} radius={220} showGrid showNoise followMouse touchDrift touchDriftAmount={0.16} className="opacity-62 sm:opacity-50" />
       <div className="container-panthera relative">
         <HeadingBlock
-          eyebrow="Sistema operativo comercial"
-          title="Lo que construimos es una estructura para atraer, convertir, entregar y medir."
-          subtitle="Cada sistema cumple una funcion distinta, pero todos trabajan conectados para que el crecimiento no dependa de piezas aisladas."
+          eyebrow={servicesCopy.systems.eyebrow}
+          title={servicesCopy.systems.title}
+          subtitle={servicesCopy.systems.subtitle}
         />
 
         <div className="relative mt-16 hidden md:block">
@@ -431,9 +314,9 @@ export function ServicesRoadmapSection() {
       <InteractiveBackground intensity={0.055} radius={200} showGrid showNoise followMouse touchDrift touchDriftAmount={0.15} className="opacity-60 sm:opacity-48" />
       <div className="container-panthera relative">
         <HeadingBlock
-          eyebrow="Como trabajamos"
-          title="Roadmap operativo para construir, activar y escalar el sistema comercial."
-          subtitle="Cada etapa tiene foco, entregables y decisiones concretas. No es una lista de tareas: es una implementacion con direccion."
+          eyebrow={servicesCopy.roadmap.eyebrow}
+          title={servicesCopy.roadmap.title}
+          subtitle={servicesCopy.roadmap.subtitle}
         />
 
         <div className="mt-8">
@@ -441,16 +324,16 @@ export function ServicesRoadmapSection() {
             to="/quienes-somos"
             className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-panthera-green transition-colors duration-300 ease-out hover:text-panthera-white"
           >
-            Ver metodologia
+            {servicesCopy.roadmap.methodologyLinkLabel}
             <ArrowUpRight className="h-4 w-4" />
           </Link>
         </div>
 
         <div className="services-mobile-field mt-10 overflow-hidden border border-white/12 bg-black/55 sm:mt-12">
           <div className="hidden border-b border-white/10 px-6 py-4 text-[10px] font-semibold uppercase tracking-[0.24em] text-panthera-white/50 lg:grid lg:grid-cols-[0.8fr_1.25fr_1fr] lg:gap-6">
-            <span>Etapa</span>
-            <span>Que hacemos</span>
-            <span>Que recibe el cliente</span>
+            <span>{servicesCopy.roadmap.stageLabel}</span>
+            <span>{servicesCopy.roadmap.whatWeDoLabel}</span>
+            <span>{servicesCopy.roadmap.clientReceivesLabel}</span>
           </div>
 
           {roadmap.map((item, index) => (
@@ -495,16 +378,16 @@ export function ServicesFitSection() {
       <InteractiveBackground intensity={0.055} radius={200} showGrid showNoise followMouse touchDrift touchDriftAmount={0.15} className="opacity-60 sm:opacity-50" />
       <div className="container-panthera relative">
         <HeadingBlock
-          eyebrow="Para quien es"
-          title="Cuando tiene sentido trabajar con Panthera."
-          subtitle="Panthera funciona mejor cuando existe una direccion clara y el objetivo es ordenar como se atraen, filtran, convierten y miden oportunidades."
+          eyebrow={servicesCopy.fit.eyebrow}
+          title={servicesCopy.fit.title}
+          subtitle={servicesCopy.fit.subtitle}
         />
 
         <div className="services-fit-mobile-stack mt-10 grid gap-4 sm:mt-12 lg:grid-cols-2 lg:gap-0 lg:overflow-hidden lg:border lg:border-white/10">
           <motion.div className="services-fit-card services-fit-card-positive services-mobile-field services-mobile-surface border border-white/10 bg-panthera-deep p-6 sm:p-10 lg:border-0" variants={sectionReveal} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-80px' }}>
             <div className="mb-6 flex items-center gap-3">
               <span className="accent-line" aria-hidden="true" />
-              <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-panthera-green">Tiene sentido si</p>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-panthera-green">{servicesCopy.fit.goodTitle}</p>
             </div>
             <ul className="space-y-3">
               {fitGood.map((item) => (
@@ -519,7 +402,7 @@ export function ServicesFitSection() {
           <motion.div className="services-fit-card services-fit-card-negative services-mobile-field services-mobile-surface border border-white/10 bg-black/92 p-6 sm:p-10 lg:border-0 lg:border-l lg:border-white/10" variants={sectionReveal} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-80px' }}>
             <div className="mb-6 flex items-center gap-3">
               <span className="inline-block h-px w-10 shrink-0 bg-white/30" aria-hidden="true" />
-              <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-panthera-white/60">Probablemente no sea el momento si</p>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-panthera-white/60">{servicesCopy.fit.badTitle}</p>
             </div>
             <ul className="space-y-3">
               {fitBad.map((item) => (
@@ -551,29 +434,28 @@ export function ServicesCtaSection() {
           <div>
             <div className="mb-7 flex items-center gap-3">
               <span className="accent-line" aria-hidden="true" />
-              <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-panthera-green">Siguiente paso</p>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-panthera-green">{servicesCopy.cta.eyebrow}</p>
             </div>
             <h2
               className="interactive-title max-w-3xl text-balance font-display text-3xl font-medium leading-[1.01] tracking-[-0.05em] sm:text-5xl lg:text-[3.4rem] lg:leading-[0.98]"
             >
-              Entende que parte de tu sistema comercial necesita orden primero.
+              {servicesCopy.cta.title}
             </h2>
           </div>
 
           <div className="space-y-7 lg:border-l lg:border-white/10 lg:pl-10">
             <p className="text-[14px] leading-7 text-panthera-white/72 sm:text-[15px]">
-              El primer paso es revisar tu situacion actual y detectar si Panthera puede ayudarte a construir una
-              estructura mas clara, medible y predecible.
+              {servicesCopy.cta.text}
             </p>
             <div className="flex justify-start">
               <Button
-                href="/contacto"
+                href={servicesCopy.cta.href}
                 variant="secondary"
                 trackingLabel="services_final_contact"
                 trackingPage="services"
                 className="w-full max-w-[18.5rem] justify-center sm:w-auto sm:max-w-none"
               >
-                Ir a contacto
+                {servicesCopy.cta.button}
               </Button>
             </div>
           </div>

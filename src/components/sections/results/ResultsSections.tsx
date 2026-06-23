@@ -9,6 +9,7 @@ import testimonialLauraCover from '../../../assets/images/testimonial_laura_cove
 import testimonialLucasCover from '../../../assets/images/testimonial_lucas_cover.webp'
 import testimonialJoseCover from '../../../assets/images/testimonial_jose_cover.webp'
 import testimonialHildaCover from '../../../assets/images/testimonial_hilda_cover.webp'
+import { siteCopy } from '../../../content/siteCopy'
 
 type TestimonialItem = {
   name: string
@@ -20,78 +21,28 @@ type TestimonialItem = {
   cover: string
 }
 
-const testimonials: TestimonialItem[] = [
-  {
-    name: 'Gaston Hendlin',
-    role: 'Coach Financiero y Ejecutivo',
-    problem: 'Dependia de agencias sin resultados y seguia cargando con la estrategia y ejecucion.',
-    system: 'Reordenamos su ecosistema comercial para filtrar, captar y vender con estructura.',
-    result: 'Dejo de perder tiempo con curiosos y empezo a escalar con oportunidades calificadas.',
-    youtubeId: 'tkq3PO2-yU4',
-    cover: testimonialGastonCover,
-  },
-  {
-    name: 'Laura Sanchez',
-    role: 'Coach de Alto Rendimiento',
-    problem: 'Dependia de referidos y no tenia una estructura clara para crecer fuera de su circulo.',
-    system: 'Construimos una operacion para atraer leads en frio y profesionalizar su proceso comercial.',
-    result: 'Paso de sentirse invisible a posicionarse con un sistema sostenible de captacion.',
-    youtubeId: 'iMTN4h5Gr4E',
-    cover: testimonialLauraCover,
-  },
-  {
-    name: 'Lucas Casalins',
-    role: 'Coach Fitness',
-    problem: 'Vivia frustrado, haciendo todo solo y sin previsibilidad comercial.',
-    system: 'Integramos marketing, seguimiento, ventas y operacion en una misma estructura.',
-    result: 'Recupero orden, previsibilidad y foco en sus alumnos mientras el sistema trabaja detras.',
-    youtubeId: 'A34a5JF5iPQ',
-    cover: testimonialLucasCover,
-  },
-  {
-    name: 'Jose Navas',
-    role: 'Mentor de Negocios',
-    problem: 'Llevaba anos intentando escalar en digital con lanzamientos fallidos y exceso operativo.',
-    system: 'Delego atraccion, prospeccion y seguimiento dentro de un sistema comercial ordenado.',
-    result: 'Recupero libertad y empezo a recibir agendamientos calificados sin perseguir leads.',
-    youtubeId: 'HKRIU34pW5g',
-    cover: testimonialJoseCover,
-  },
-  {
-    name: 'Hilda Arjona',
-    role: 'Coach Espiritual',
-    problem: 'Estaba agotada de hacerlo todo sola y sin resultados consistentes.',
-    system: 'Corregimos oferta, avatar y ejecucion para ordenar su captacion y seguimiento.',
-    result: 'Volvio a enfocarse en entregar valor mientras el sistema atrae alumnas ideales.',
-    youtubeId: 'XqDvbuOqQ7Q',
-    cover: testimonialHildaCover,
-  },
+const resultsCopy = siteCopy.results
+const testimonialCovers = [
+  testimonialGastonCover,
+  testimonialLauraCover,
+  testimonialLucasCover,
+  testimonialJoseCover,
+  testimonialHildaCover,
 ]
 
-const calendarUrl = '/landing#booking'
+const testimonials: TestimonialItem[] = resultsCopy.cases.map((item, index) => ({
+  name: item.name,
+  role: item.role,
+  problem: item.problem,
+  system: item.intervention,
+  result: item.result,
+  youtubeId: item.youtubeId,
+  cover: testimonialCovers[index] ?? testimonialHildaCover,
+}))
 
-const learnings = [
-  {
-    number: '01',
-    title: 'Claridad de oferta',
-    text: 'Antes de escalar, el negocio necesita saber que vende, a quien se lo vende y por que esa persona deberia avanzar.',
-  },
-  {
-    number: '02',
-    title: 'Sistema antes que volumen',
-    text: 'Mas trafico no resuelve un proceso desordenado. Primero se ordena el recorrido comercial.',
-  },
-  {
-    number: '03',
-    title: 'Seguimiento medible',
-    text: 'Las oportunidades se pierden cuando no hay CRM, tareas, recordatorios y criterios claros de avance.',
-  },
-  {
-    number: '04',
-    title: 'Optimizacion continua',
-    text: 'La mejora aparece cuando se leen datos reales: llamadas, formularios, fuentes, conversiones y objeciones.',
-  },
-]
+const calendarUrl = resultsCopy.finalCta.href
+
+const learnings = resultsCopy.learnings.items
 
 const cardSpotlightStyle = {
   backgroundImage:
@@ -229,9 +180,9 @@ export function ResultsHeroSection() {
       </div>
       <div className="container-panthera relative py-16 sm:py-20 lg:py-28">
         <HeadingBlock
-          eyebrow="Resultados"
-          title="Resultados que nacen de sistemas, no de casualidad."
-          subtitle="Casos, testimonios y aprendizajes de negocios que dejaron de depender solo del esfuerzo manual."
+          eyebrow={resultsCopy.hero.eyebrow}
+          title={resultsCopy.hero.title}
+          subtitle={resultsCopy.hero.subtitle}
         />
       </div>
     </section>
@@ -244,9 +195,9 @@ export function ResultsTestimonialsSection() {
       <InteractiveBackground intensity={0.062} radius={218} showGrid showNoise followMouse touchDrift touchDriftAmount={0.18} className="opacity-66 sm:opacity-50" />
       <div className="container-panthera relative">
         <HeadingBlock
-          eyebrow="Testimonios"
-          title="Personas que ya trabajaron con Panthera."
-          subtitle="Cada caso muestra como cambia un negocio cuando estrategia, captacion, seguimiento y conversion empiezan a funcionar como sistema."
+          eyebrow={resultsCopy.testimonials.eyebrow}
+          title={resultsCopy.testimonials.title}
+          subtitle={resultsCopy.testimonials.subtitle}
         />
 
         <motion.div
@@ -280,9 +231,9 @@ export function ResultsLearningsSection() {
       <InteractiveBackground intensity={0.06} radius={212} showGrid showNoise followMouse touchDrift touchDriftAmount={0.17} className="opacity-66 sm:opacity-48" />
       <div className="container-panthera relative">
         <HeadingBlock
-          eyebrow="Aprendizajes"
-          title="Que se repite en los casos que funcionan."
-          subtitle="Los resultados no aparecen por una sola pieza. Se producen cuando oferta, captacion, seguimiento, venta y medicion trabajan conectados."
+          eyebrow={resultsCopy.learnings.eyebrow}
+          title={resultsCopy.learnings.title}
+          subtitle={resultsCopy.learnings.subtitle}
         />
 
         <motion.div className="results-mobile-field mt-10 space-y-2.5 sm:hidden" variants={staggerChildren} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-90px' }}>
@@ -346,17 +297,17 @@ export function ResultsFinalCtaSection() {
           <div>
             <div className="mb-5 flex items-center gap-3">
               <span className="accent-line" aria-hidden="true" />
-              <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-panthera-green">Siguiente paso</p>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-panthera-green">{resultsCopy.finalCta.eyebrow}</p>
             </div>
             <h2 className="interactive-title max-w-3xl text-balance font-display text-3xl font-medium leading-[1.01] tracking-[-0.05em] sm:text-5xl lg:text-[3.4rem] lg:leading-[0.98]">
-              Conoce que parte de tu sistema comercial necesita orden primero.
+              {resultsCopy.finalCta.title}
             </h2>
             <p className="mt-5 max-w-2xl text-[14px] leading-7 text-panthera-white/68 sm:mt-6 sm:text-[15px]">
-              Podes revisar nuestros servicios o iniciar una conversacion para entender si Panthera tiene sentido para tu negocio.
+              {resultsCopy.finalCta.text}
             </p>
             <div className="mt-7 flex justify-start sm:mt-8">
               <Button href={calendarUrl} trackingLabel="results_calendar_cta" trackingPage="results" className="w-full max-w-[18.5rem] justify-center sm:w-auto sm:max-w-none">
-                Agendar diagnostico
+                {resultsCopy.finalCta.cta}
               </Button>
             </div>
           </div>
