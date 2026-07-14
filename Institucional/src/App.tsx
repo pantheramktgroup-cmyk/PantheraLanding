@@ -8,8 +8,8 @@ import About from './pages/About'
 import Services from './pages/Services'
 import Results from './pages/Results'
 import Contact from './pages/Contact'
-import LandingPage from './pages/landing/LandingPage.jsx'
-import ThankYouPage from './pages/landing/ThankYouPage.jsx'
+import LandingPage from './landing-app/App.jsx'
+import ThankYouPage from './landing-app/pages/ThankYouPage.jsx'
 import { useEffect, useLayoutEffect } from 'react'
 
 function ScrollToTop() {
