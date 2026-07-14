@@ -958,7 +958,7 @@ footer button:hover svg {
   }
 
   .landing-hero-content {
-    gap: clamp(0.4rem, 1.05svh, 0.7rem);
+    gap: clamp(0.18rem, 0.6svh, 0.36rem);
   }
 
   .hero-copy {
@@ -995,7 +995,7 @@ footer button:hover svg {
   }
 
   .hero-media {
-    margin-top: 0;
+    margin-top: -0.90rem;
   }
 
   .landing-hero-vsl {
