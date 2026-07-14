@@ -14,9 +14,9 @@ export function scrollToBooking() {
 
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-  const isLandingPath = window.location.pathname === '/' || window.location.pathname === ''
+  const isLandingPath = window.location.pathname === '/landing' || window.location.pathname === '/landing/'
   if (!isLandingPath) {
-    window.location.href = '/#booking'
+    window.location.href = '/landing/#booking'
     return
   }
 
