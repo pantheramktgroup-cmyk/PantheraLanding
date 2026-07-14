@@ -328,6 +328,9 @@
 
   .booking-widget-col {
     min-width: 0;
+    position: relative;
+    background: #000;
+    overflow: hidden;
   }
 
   .booking-iframe {
@@ -369,6 +372,21 @@
     .booking-iframe {
       min-height: var(--booking-frame-height) !important;
       height: var(--booking-frame-height) !important;
+      position: relative;
+      z-index: 1;
+      background: #000 !important;
+    }
+
+    .booking-widget-col::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 60px;
+      background: #000;
+      pointer-events: none;
+      z-index: 2;
     }
   }
 
