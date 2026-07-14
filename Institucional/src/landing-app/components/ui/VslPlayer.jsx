@@ -7,7 +7,13 @@ const { video } = landingCopy
 export default function VslPlayer({ className = '', title = 'Manifiesto Panthera' }) {
   const [playing, setPlaying] = useState(false)
 
-  const videoSrc = playing
+  const driveMatch = video.videoEmbedUrl.match(/drive\.google\.com\/file\/d\/([^/]+)\/preview/)
+  const driveFileId = driveMatch?.[1] ?? null
+  const nativeVideoSrc = driveFileId
+    ? `https://drive.usercontent.google.com/download?id=${driveFileId}&export=download`
+    : null
+
+  const iframeSrc = playing
     ? `${video.videoEmbedUrl}${video.videoEmbedUrl.includes('?') ? '&' : '?'}autoplay=1`
     : video.videoEmbedUrl
 
@@ -49,9 +55,20 @@ export default function VslPlayer({ className = '', title = 'Manifiesto Panthera
               </span>
             </span>
           </button>
+        ) : nativeVideoSrc ? (
+          <video
+            src={nativeVideoSrc}
+            title={title}
+            controls
+            autoPlay
+            playsInline
+            preload="metadata"
+            className="absolute inset-0 z-20 h-full w-full"
+            style={{ border: 'none', background: '#000' }}
+          />
         ) : (
           <iframe
-            src={videoSrc}
+            src={iframeSrc}
             title={title}
             allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
             allowFullScreen
