@@ -1004,8 +1004,8 @@ footer button:hover svg {
   }
 
   .hero-action {
-    margin-top: clamp(0.75rem, 1.6svh, 1.1rem);
-    gap: clamp(0.34rem, 0.8svh, 0.56rem);
+    margin-top: clamp(2rem, 1.85svh, 1.25rem);
+    gap: clamp(1rem, 1.05svh, 0.78rem);
   }
 
   .landing-hero-question {
