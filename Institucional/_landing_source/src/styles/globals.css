@@ -1,0 +1,602 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Helvetica Now Display — Local fonts from src/fonts */
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fonts/HelveticaNowDisplay-Hairline.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fonts/HelveticaNowDisplay-HairlineI.ttf') format('truetype');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fonts/HelveticaNowDisplay-Thin.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fonts/HelveticaNowDisplay-ThinIta.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fonts/HelveticaNowDisplay-ExtLt.ttf') format('truetype');
+  font-weight: 250;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fonts/HelveticaNowDisplay-ExtLtIta.ttf') format('truetype');
+  font-weight: 250;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fonts/HelveticaNowDisplay-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fonts/HelveticaNowDisplay-LightIta.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fonts/HelveticaNowDisplay-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fonts/HelveticaNowDisplay-RegIta.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fonts/HelveticaNowDisplay-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fonts/HelveticaNowDisplay-MedIta.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fonts/HelveticaNowDisplay-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fonts/HelveticaNowDisplay-BoldIta.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fonts/HelveticaNowDisplay-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fonts/HelveticaNowDisplay-ExtBdIta.ttf') format('truetype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fonts/HelveticaNowDisplay-Black[1].ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fonts/HelveticaNowDisplay-BlackIta.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fonts/HelveticaNowDisplay-ExtBlk.ttf') format('truetype');
+  font-weight: 950;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('../fonts/HelveticaNowDisplay-ExtBlkIta.ttf') format('truetype');
+  font-weight: 950;
+  font-style: italic;
+  font-display: swap;
+}
+
+@layer base {
+  html {
+    scroll-behavior: auto;
+    font-family: 'Helvetica Now Display', Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  body {
+    @apply bg-panthera-deep text-panthera-white;
+    font-family: 'Helvetica Now Display', Helvetica, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  *,
+  *::before,
+  *::after {
+    font-family: 'Helvetica Now Display', Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Helvetica Now Display', Helvetica, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 700;
+    line-height: 1.08;
+  }
+
+  strong,
+  b {
+    font-weight: 700;
+  }
+
+  em,
+  i {
+    font-style: italic;
+  }
+
+  .font-serif,
+  .font-sans {
+    font-family: 'Helvetica Now Display', Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  *:focus-visible {
+    @apply outline outline-2 outline-panthera-green outline-offset-2;
+  }
+}
+
+@layer components {
+  .split-line-wrapper {
+    overflow: hidden;
+  }
+
+  .border-panthera {
+    border-color: rgba(245, 245, 245, 0.14);
+  }
+
+  .divider {
+    @apply w-full border-t border-panthera-border;
+  }
+
+  .section-pad {
+    @apply py-28 md:py-32 lg:py-40;
+  }
+
+  .container-panthera {
+    @apply mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20;
+  }
+
+  .grain-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.028;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 128px 128px;
+    z-index: 1;
+  }
+
+  .h-track {
+    display: flex;
+    flex-wrap: nowrap;
+    will-change: transform;
+  }
+
+  .h-panel {
+    flex-shrink: 0;
+    width: 100vw;
+    min-height: 100vh;
+  }
+
+  .booking-iframe {
+    width: 100%;
+    border: none;
+    display: block;
+    overflow: visible;
+    height: 640px;
+    background: #000;
+  }
+
+  @media (min-width: 768px) {
+    .booking-iframe {
+      height: 620px;
+    }
+  }
+
+  .section-bottleneck::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 40%;
+    pointer-events: none;
+    z-index: 11;
+    background: linear-gradient(to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(10, 8, 6, 0.14) 36%,
+        rgba(28, 22, 17, 0.34) 68%,
+        rgba(5, 5, 5, 0.8) 92%,
+        #050505 100%);
+  }
+}
+
+@layer utilities {
+
+  .font-serif,
+  .font-sans {
+    font-family: 'Helvetica Now Display', Helvetica, 'Helvetica Neue', Arial, sans-serif !important;
+  }
+
+  .font-bold {
+    font-weight: 700 !important;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #B9A46A 0%, #EDE7D8 50%, #B9A46A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .clip-inset-top {
+    clip-path: inset(0 0 100% 0);
+  }
+
+  .clip-inset-none {
+    clip-path: inset(0 0 0% 0);
+  }
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── BTN GLOW BORDER — shared CTA motion system ─────────────────────── */
+
+@property --btn-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes btn-border-spin {
+  to {
+    --btn-angle: 360deg;
+  }
+}
+
+.btn-primary {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+  background: #E3F78D !important;
+  background-size: auto !important;
+  box-shadow:
+    0 0 0 1px rgba(227, 247, 141, 0.34),
+    0 0 22px rgba(227, 247, 141, 0.38),
+    0 8px 26px rgba(0, 0, 0, 0.44);
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: -2.5px;
+  padding: 2.5px;
+  background: conic-gradient(from var(--btn-angle),
+      rgba(255, 255, 255, 0) 0deg,
+      rgba(255, 255, 255, 0.92) 44deg,
+      rgba(255, 255, 255, 1) 72deg,
+      rgba(244, 255, 184, 0.98) 102deg,
+      rgba(227, 247, 141, 0.9) 128deg,
+      rgba(255, 255, 255, 0) 188deg);
+  border-radius: inherit;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(1.05px) saturate(1.34) brightness(1.36);
+  animation: btn-border-spin 2.05s linear infinite;
+}
+
+.btn-primary:hover {
+  background: #F5F5F5 !important;
+  color: #050505 !important;
+  font-weight: 700 !important;
+  text-shadow: none;
+  box-shadow:
+    0 0 0 1px rgba(245, 245, 245, 0.92),
+    0 0 30px rgba(245, 245, 245, 0.18),
+    0 12px 30px rgba(0, 0, 0, 0.52);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary {
+    animation: none !important;
+    background: #E3F78D !important;
+    background-size: auto !important;
+  }
+
+  .btn-primary::after {
+    animation: none;
+  }
+}
+
+/* ─── HEADER NAV CTA — compact, overrides global button height ───────────── */
+.header-nav-cta {
+  height: auto !important;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+  padding-left: 14px !important;
+  padding-right: 14px !important;
+  font-size: 8px !important;
+  letter-spacing: 0.12em !important;
+}
+
+@media (min-width: 768px) {
+  .header-nav-cta {
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+    font-size: 9px !important;
+    letter-spacing: 0.16em !important;
+  }
+}
+
+@keyframes premium-flow-bg-shift {
+  0% {
+    transform: scale(1.06) translate3d(-1.5%, -1.5%, 0);
+  }
+
+  50% {
+    transform: scale(1.1) translate3d(1.5%, 1.2%, 0);
+  }
+
+  100% {
+    transform: scale(1.06) translate3d(-1.5%, -1.5%, 0);
+  }
+}
+
+@keyframes premium-flow-blob-a {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(8%, -6%, 0) scale(1.08);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes premium-flow-blob-b {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(-7%, 6%, 0) scale(1.1);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.premium-flow-bg {
+  background:
+    radial-gradient(circle at 18% 28%, rgba(227, 247, 141, 0.1) 0%, rgba(227, 247, 141, 0) 46%),
+    radial-gradient(circle at 82% 72%, rgba(227, 247, 141, 0.08) 0%, rgba(227, 247, 141, 0) 44%),
+    linear-gradient(125deg, #040404 0%, #0a0a09 46%, #040404 100%);
+  animation: premium-flow-bg-shift 14s ease-in-out infinite;
+  filter: saturate(1.05);
+}
+
+.premium-flow-blob {
+  background: radial-gradient(circle, rgba(227, 247, 141, 0.22) 0%, rgba(227, 247, 141, 0) 70%);
+  filter: blur(48px);
+  opacity: 0.6;
+}
+
+.premium-flow-blob-a {
+  animation: premium-flow-blob-a 11s ease-in-out infinite;
+}
+
+.premium-flow-blob-b {
+  animation: premium-flow-blob-b 13s ease-in-out infinite;
+}
+
+.stats-glow-card {
+  isolation: isolate;
+  overflow: visible;
+}
+
+.stats-glow-card::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  background: conic-gradient(from var(--btn-angle),
+      rgba(227, 247, 141, 0) 0deg,
+      rgba(200, 245, 80, 0.82) 46deg,
+      rgba(220, 255, 100, 0.82) 82deg,
+      rgba(200, 245, 80, 0.82) 122deg,
+      rgba(227, 247, 141, 0) 180deg);
+  border-radius: inherit;
+  z-index: -1;
+  filter: blur(1px) saturate(1.1) brightness(1.05);
+  animation: btn-border-spin 3.5s linear infinite;
+}
+
+.stats-glow-card::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: rgba(4, 4, 4, 0.92);
+  border-radius: calc(inherit - 1px);
+  z-index: -1;
+}
+
+footer a svg,
+footer button svg {
+  color: currentColor;
+  fill: none;
+  stroke: currentColor;
+}
+
+footer .footer-social-link {
+  box-shadow: inset 0 0 0 1px rgba(227, 247, 141, 0.08);
+}
+
+footer a:hover svg,
+footer button:hover svg {
+  color: #F5F5F5;
+}
+
+/* ─── TRANSFORMATION STATEMENT CARDS — interior animations ─────────────── */
+
+@keyframes transformation-card-enter {
+  0% {
+    opacity: 0;
+    transform: scale(0.93) translateY(18px);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.02) translateY(-3px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes transformation-shine-sweep {
+  0% {
+    transform: translateX(-160%) skewX(-22deg);
+  }
+
+  100% {
+    transform: translateX(300%) skewX(-22deg);
+  }
+}
+
+.transformation-card {
+  animation: transformation-card-enter 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.transformation-shine {
+  position: absolute;
+  inset-block: -10%;
+  left: -50%;
+  width: 56%;
+  background: linear-gradient(90deg,
+      rgba(227, 247, 141, 0) 0%,
+      rgba(227, 247, 141, 0.14) 32%,
+      rgba(255, 255, 255, 0.14) 50%,
+      rgba(227, 247, 141, 0.14) 68%,
+      rgba(227, 247, 141, 0) 100%);
+  transform: skewX(-22deg) translateX(-160%);
+  pointer-events: none;
+  z-index: 2;
+  filter: blur(10px);
+}
+
+.group:hover .transformation-shine {
+  animation: transformation-shine-sweep 1.8s linear infinite;
+  filter: blur(16px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .transformation-card {
+    animation: none;
+  }
+
+  .group:hover .transformation-shine {
+    animation: none;
+    opacity: 0;
+  }
+}

@@ -1,0 +1,63 @@
+# SKILLS Y DEPENDENCIAS PARA CLAUDE
+
+## Skills que ya están en tu .claude.zip y conviene adjuntar
+
+Adjuntar estas skills:
+
+1. distinctive-frontend
+2. gsap-core
+3. gsap-frameworks
+4. gsap-performance
+5. gsap-plugins
+6. gsap-react
+7. gsap-scrolltrigger
+8. gsap-timeline
+9. gsap-utils
+
+Estas cubren lo necesario para una landing con GSAP, React, scroll horizontal, performance y una estética visual más distintiva.
+
+## Skills nuevas necesarias
+
+No hace falta agregar una skill nueva obligatoria si Claude va a leer todos estos .txt.
+
+Lo que falta respecto a tus skills actuales queda cubierto por estos documentos:
+
+- Dirección visual premium renacentista.
+- Arquitectura de contenido editable.
+- Integración GHL tracking + calendario.
+- QA de conversión.
+
+## Dependencias npm recomendadas
+
+Instalar:
+
+npm install gsap @gsap/react lenis split-type
+
+Tailwind según instalación Vite/React:
+
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+## Uso de GSAP
+
+Usar:
+
+- gsap
+- ScrollTrigger
+- useGSAP de @gsap/react
+
+## Uso de Lenis
+
+Usar Lenis para smooth scroll y conectarlo con ScrollTrigger.
+
+## Uso de SplitType
+
+Usar SplitType para animar headlines por línea/palabra.
+
+## Importante
+
+No usar demasiadas librerías extra.
+
+No sumar Framer Motion salvo que sea estrictamente necesario. GSAP debe ser el sistema principal de animación.
+
+No usar Three.js ni WebGL en esta primera versión. Podría verse impresionante, pero aumenta riesgo y peso. La prioridad es conversión, performance y una primera versión sólida.

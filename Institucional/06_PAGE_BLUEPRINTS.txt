@@ -1,0 +1,115 @@
+# PAGE BLUEPRINTS — Diseño por página
+
+HOME
+
+Hero:
+- full screen
+- background video/image dark
+- navbar pill or clean transparent header
+- title huge, bottom aligned:
+  "Convertimos experiencia en un sistema comercial medible."
+- subtitle right/below
+- CTA primary + secondary
+- badges line
+
+Manifesto:
+- large centered statement
+- animated words
+- paragraph reveal
+- black/card #101010
+
+Services preview:
+- 4 cards
+- grid 1 col mobile, 2 tablet, 4 desktop
+- lucide icons minimal
+- hover border accent
+
+APEX System:
+- 7 phase grid/cards
+- desktop can use horizontal or mural style
+- mobile simple 2-col or stacked
+- phase numbers visible in Panthera Green
+
+Results preview:
+- testimonial cards
+- no invented metrics
+- use placeholders if missing
+
+CTA final:
+- background image/video subtle
+- centered
+- strong copy
+- button
+
+ABOUT
+
+Hero:
+- editorial text
+- image/collage of founders if available
+
+Story:
+- text block max-width
+- animated reveal
+
+Principles:
+- 4 cards
+- "Sistema antes que campaña"
+- "Datos antes que intuición"
+- "Calidad antes que volumen"
+- "Ejecución con criterio"
+
+Team:
+- founder cards/images placeholders
+- use real assets if available
+
+SERVICES
+
+Hero:
+- direct and strategic
+
+Services list:
+- 8 services
+- cards with number/icon
+- no generic wording
+
+Process:
+- APEX methodology
+
+Fit:
+- Para quién es / Para quién no es
+- two columns
+- strong CTA
+
+RESULTS
+
+Hero:
+- "Resultados que nacen de sistemas, no de casualidad."
+
+Cases:
+- cards/video placeholders
+- no fake data
+
+Insights:
+- optional section with learnings:
+  "Qué se repite en los negocios que escalan"
+
+CONTACT
+
+Hero:
+- centered
+- clear CTA
+
+Contact form:
+- keep simple
+- if no backend, create static UI and comment where integration goes
+- optional calendar embed placeholder
+
+FAQ:
+- 4 questions:
+  1. ¿Trabajan con cualquier tipo de negocio?
+  2. ¿Panthera solo hace anuncios?
+  3. ¿Qué necesito tener antes de trabajar con Panthera?
+  4. ¿Cómo empieza el proceso?
+
+Footer:
+- simple
