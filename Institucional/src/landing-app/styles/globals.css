@@ -963,6 +963,7 @@ footer button:hover svg {
 
   .hero-copy {
     min-height: auto;
+    padding-top: 0;
     gap: clamp(0.8rem, 1.75svh, 1.16rem);
   }
 
@@ -1121,6 +1122,17 @@ footer button:hover svg {
 
   .hero-cta-btn {
     height: 42px !important;
+  }
+}
+
+/* Final mobile override: keep subtitle-to-video spacing tight on all phone heights */
+@media (max-width: 767px) {
+  .landing-hero-content {
+    gap: clamp(0.14rem, 0.45svh, 0.28rem);
+  }
+
+  .hero-media {
+    margin-top: -0.72rem;
   }
 }
 
