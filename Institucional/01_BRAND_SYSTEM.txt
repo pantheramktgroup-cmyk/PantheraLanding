@@ -1,0 +1,131 @@
+# BRAND SYSTEM — Panthera Group
+
+Usar el estilo institucional de Panthera, no el de Prisma.
+
+PALETA
+
+Base:
+- Panthera Black: #000000
+- Panthera Deep: #080808
+- Section Black: #0C0C0B
+- Card Black: #101010
+- Elevated Card: #151515
+
+Texto:
+- White: #F5F5F5
+- Cream: #F3F0DD
+- Ash: rgba(245,245,245,0.60)
+- Muted: rgba(245,245,245,0.42)
+- Disabled/low emphasis: rgba(245,245,245,0.25)
+
+Acento principal:
+- Panthera Green / Yellow: #E3F78D
+- Hover cream: #FFFFFF
+- Text on accent: #050505
+
+Bordes:
+- subtle border: rgba(245,245,245,0.07)
+- accent border: rgba(227,247,141,0.28)
+- strong accent border: rgba(227,247,141,0.55)
+
+Fondos:
+- global background: #000000
+- cards: #101010 / #141414 / #212121 según profundidad
+- overlays: black/40 a black/80 según imagen
+
+NO usar:
+- azules corporativos
+- violetas SaaS
+- gradients multicolor
+- paleta Prisma crema exacta como base principal
+- fondos claros
+
+FUENTES
+
+No usar Google Fonts.
+Todas las fuentes Helvetica deben cargarse desde `src/fonts/`.
+Crear `@font-face` en `src/index.css`.
+
+Como no conocemos el nombre exacto de cada archivo, inspeccionar la carpeta `src/fonts/` y mapear según los archivos disponibles.
+
+Sugerencia de familias:
+
+```css
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: url('/src/fonts/NOMBRE_ARCHIVO_DISPLAY.woff2') format('woff2');
+  font-weight: 300 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Now Text';
+  src: url('/src/fonts/NOMBRE_ARCHIVO_TEXT.woff2') format('woff2');
+  font-weight: 300 900;
+  font-display: swap;
+}
+```
+
+Si hay archivos separados por peso, declarar cada peso individualmente.
+
+USO TIPOGRÁFICO
+
+Global:
+- Helvetica Now Text o Helvetica Now Display.
+- Nada de serif decorativa externa.
+
+Headlines:
+- Helvetica Now Display
+- tracking negativo suave: -0.04em a -0.075em
+- line-height cerrado: 0.85 a 1.05
+- peso 500/600/700 según sección
+
+Body:
+- Helvetica Now Text
+- text-sm / text-base
+- line-height 1.55 a 1.75
+- color panthera-ash
+
+Eyebrows:
+- uppercase
+- text-[10px]
+- tracking-[0.2em]
+- color #E3F78D
+- font-semibold
+
+BOTONES
+
+CTA principal:
+- fondo #E3F78D
+- texto #050505
+- uppercase
+- tracking amplio
+- border #E3F78D
+- hover: fondo blanco, texto negro
+- transición premium
+- borde/glow sutil si se reutiliza el efecto de la landing
+
+CTA secundario:
+- transparente
+- borde rgba(245,245,245,0.16)
+- texto white/80
+- hover white + texto negro o borde accent
+
+ESTÉTICA VISUAL
+
+Usar:
+- imágenes grandes full-bleed
+- overlays negros
+- grain/noise muy sutil
+- viñetas radiales
+- cards con borders finos
+- layout editorial con mucho aire
+- grids de 12 columnas en desktop
+- secciones con ritmo vertical amplio
+
+Evitar:
+- sombras coloridas fuertes
+- blur excesivo
+- glassmorphism barato
+- cards demasiado redondeadas
+- iconos decorativos sin sentido

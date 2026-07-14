@@ -1,0 +1,153 @@
+# ANIMACIONES E INTERACCIONES — GSAP
+
+Usar GSAP como motor principal de animaciones.
+
+Skills relacionadas:
+- gsap-core
+- gsap-react
+- gsap-scrolltrigger
+- gsap-timeline
+- gsap-performance
+- gsap-utils
+- gsap-plugins
+- gsap-frameworks
+- distinctive-frontend
+
+## Librerías recomendadas
+
+- gsap
+- @gsap/react
+- lenis
+- split-type
+
+## Reglas generales
+
+- Animaciones impactantes pero elegantes.
+- Nada de rebotes infantiles.
+- Nada de movimientos caóticos.
+- Priorizar opacidad, clip-path, y, scale sutil, blur suave, parallax y pinning.
+- Respetar prefers-reduced-motion.
+- En mobile reducir pinning y scroll horizontal si afecta usabilidad.
+
+## Animaciones por sección
+
+### Hero
+
+- Split del headline por líneas.
+- Entrada con clip-path vertical y opacidad.
+- Imagen renacentista con scale lento 1.08 -> 1.00.
+- Logo aparece primero, luego headline, luego subheadline, luego CTAs.
+- Badges entran con stagger.
+- CTA principal debe tener microanimación de hover.
+
+### Video / Manifiesto
+
+- Sección entra con reveal desde negro.
+- Video aparece como pieza central con borde fino.
+- Frase lateral se fija parcialmente mientras el video entra.
+- Botón CTA aparece al final del reveal.
+
+### Statement de transformación
+
+- Texto grande dividido en líneas.
+- Cada línea se revela al hacer scroll.
+- Palabras clave como “sistema”, “predecible”, “control” y “sostenibles” pueden tener acento visual.
+
+### Para quién es / no es
+
+- Dos columnas con reveal escalonado.
+- Items entran de a uno.
+- La columna “NO” puede tener menos brillo y tono más sobrio.
+- CTA aparece después de ambos bloques.
+
+### Problema central
+
+- Usar efecto sticky: mientras el título queda fijo, los síntomas aparecen en secuencia.
+- Puede haber una imagen renacentista oscura con parallax.
+
+### Panthera APEX System
+
+Esta es una de las secciones principales.
+
+Implementar horizontal scroll con ScrollTrigger:
+
+- section pin: true
+- track horizontal con cards
+- progress bar inferior o superior
+- cada card ocupa 80vw aprox en desktop
+- al avanzar, actualizar indicador de fase: 01 / 07, 02 / 07, etc.
+
+Última slide:
+- Full screen negra.
+- Texto gigante.
+- CTA centrado.
+- Debe sentirse como un golpe visual antes de pasar a la siguiente sección.
+
+### Lo que se ordena dentro del sistema
+
+Opciones:
+- Grid premium con hover en desktop.
+- Carrusel horizontal suave si hay espacio.
+- Cada card revela explicación al hover o al entrar.
+
+### Panthera vs agencias tradicionales
+
+- Comparativa con dos paneles.
+- Panel agencia tradicional entra primero con opacidad más baja.
+- Panel Panthera entra después con mayor presencia visual.
+- Una línea vertical central puede dibujarse con GSAP.
+
+### Testimonios / casos
+
+Implementar galería horizontal con ScrollTrigger:
+
+- Cards grandes.
+- Estética de galería.
+- Cada caso aparece como una obra/placa.
+- Final con CTA full screen.
+
+### Sobre Panthera
+
+- Fotos de fundadores con parallax muy lento.
+- Copy entra con fade y clip-path.
+- Evitar exceso de efectos.
+
+### FAQ
+
+- Accordion animado con altura automática.
+- Transiciones suaves.
+- CTA final visible.
+
+### Booking
+
+- Reveal lento.
+- Contenedor del calendario entra con scale sutil.
+- No animar el iframe de forma que rompa su altura.
+
+## Smooth scroll
+
+Usar Lenis.
+
+Debe integrarse con ScrollTrigger:
+
+- Lenis raf conectado con requestAnimationFrame.
+- ScrollTrigger.update() cuando Lenis scrollea.
+- gsap.ticker.lagSmoothing(0) si hace falta.
+
+## Performance
+
+- No animar propiedades costosas si se puede evitar.
+- Usar transform y opacity.
+- Evitar animar width/height en loops.
+- Usar will-change con moderación.
+- Destruir timelines en cleanup de useGSAP.
+- Registrar plugins una sola vez.
+
+## Reduced motion
+
+Si window.matchMedia('(prefers-reduced-motion: reduce)').matches:
+
+- Desactivar scroll horizontal complejo.
+- Renderizar secciones como grid vertical.
+- Mantener CTAs y contenido completo.
+- No ocultar contenido por depender de animaciones.
