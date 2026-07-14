@@ -1,0 +1,7 @@
+{
+  "name": "panthera-root",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix Institucional install && npm --prefix Institucional run build"
+  }
+}

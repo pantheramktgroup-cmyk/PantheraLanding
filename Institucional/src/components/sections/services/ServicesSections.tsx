@@ -115,7 +115,7 @@ export function ServicesHeroSection() {
 
 export function ServicesInfrastructureSection() {
   const reduceMotion = useReducedMotion()
-  const [openItem, setOpenItem] = useState(infrastructureItems[0]?.number ?? '01')
+    const [openItem, setOpenItem] = useState<string>(infrastructureItems[0]?.number ?? '01')
   const accordionRootRef = useRef<HTMLDivElement | null>(null)
   const bodyRefs = useRef<Record<string, HTMLDivElement | null>>({})
 

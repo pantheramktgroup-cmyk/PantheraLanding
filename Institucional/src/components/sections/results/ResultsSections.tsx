@@ -224,7 +224,7 @@ export function ResultsTestimonialsSection() {
 }
 
 export function ResultsLearningsSection() {
-  const [activeLearning, setActiveLearning] = useState(learnings[0]?.number ?? '01')
+  const [activeLearning, setActiveLearning] = useState<string>(learnings[0]?.number ?? '01')
 
   return (
     <section className="section-with-spotlight relative border-b border-white/10 bg-black py-16 sm:py-24 lg:py-32" onMouseMove={handleSpotlightMove}>

@@ -163,7 +163,7 @@ export function ContactChannelsSection() {
 }
 
 export function ContactConsultSection() {
-  const [activeConsult, setActiveConsult] = useState(consultItems[0]?.number ?? '01')
+  const [activeConsult, setActiveConsult] = useState<string>(consultItems[0]?.number ?? '01')
 
   return (
     <section className="section-with-spotlight relative border-b border-white/10 bg-black py-16 sm:py-24 lg:py-32" onMouseMove={handleSpotlightMove}>
