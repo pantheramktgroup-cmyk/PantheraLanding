@@ -13,6 +13,7 @@ export default function VslPlayer({ className = '', title = 'Manifiesto Panthera
     ? `https://drive.usercontent.google.com/download?id=${driveFileId}&export=download`
     : null
 
+  const isWistia = video.videoEmbedUrl.includes('wistia')
   const iframeSrc = playing
     ? `${video.videoEmbedUrl}${video.videoEmbedUrl.includes('?') ? '&' : '?'}autoplay=1`
     : video.videoEmbedUrl
@@ -30,7 +31,7 @@ export default function VslPlayer({ className = '', title = 'Manifiesto Panthera
       }}
     >
       <div className="relative h-full w-full overflow-hidden">
-        {!playing ? (
+        {!playing && !isWistia ? (
           <button
             type="button"
             onClick={() => setPlaying(true)}
