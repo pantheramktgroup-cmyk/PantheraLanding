@@ -375,6 +375,9 @@
       position: relative;
       z-index: 1;
       background: #000 !important;
+      margin-top: -72px;
+      min-height: calc(var(--booking-frame-height) + 72px) !important;
+      height: calc(var(--booking-frame-height) + 72px) !important;
     }
 
     .booking-widget-col::before {
@@ -383,7 +386,7 @@
       left: 0;
       right: 0;
       top: 0;
-      height: 60px;
+      height: 72px;
       background: #000;
       pointer-events: none;
       z-index: 2;

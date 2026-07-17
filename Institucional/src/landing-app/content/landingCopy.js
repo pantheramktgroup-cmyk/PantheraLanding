@@ -55,7 +55,7 @@ export const landingCopy = {
     mobileHeadline: 'Si ya vendés,\npero cada mes volvés a empezar\nde cero, esto es para vos.',
     pullQuote: 'Escalar no debería exigirte más esfuerzo. Debería exigirte mejor infraestructura.',
     cta: GLOBAL_CTA,
-    videoEmbedUrl: 'https://www.youtube.com/embed/CqpdQfDuHCc',
+    videoEmbedUrl: 'https://fast.wistia.net/embed/iframe/1h7t2gtf84',
   },
 
   // ─── STATS STRIP ───────────────────────────────────────────────────────────
