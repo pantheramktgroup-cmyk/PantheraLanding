@@ -75,8 +75,16 @@ export default function VslPlayer({ className = '', title = 'Manifiesto Panthera
             title={title}
             allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
             allowFullScreen
-            className="absolute inset-0 z-20 h-full w-full"
-            style={{ border: 'none' }}
+            className="absolute inset-0 z-20"
+            style={{ 
+              border: 'none',
+              width: '100%',
+              height: '100%',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0
+            }}
           />
         )}
       </div>
