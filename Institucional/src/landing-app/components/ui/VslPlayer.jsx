@@ -31,37 +31,22 @@ export default function VslPlayer({ className = '', title = 'Manifiesto Panthera
       }}
     >
       <div className="relative h-full w-full overflow-hidden">
-        {isWistia ? (
-          <iframe
-            src={iframeSrc}
-            title={title}
-            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-            allowFullScreen
-            className="absolute inset-0 z-20"
-            style={{ 
-              border: 'none',
-              width: '100%',
-              height: '100%',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0
-            }}
-          />
-        ) : !playing ? (
+        {!playing ? (
           <button
             type="button"
             onClick={() => setPlaying(true)}
             className="absolute inset-0 z-20 block h-full w-full cursor-pointer appearance-none border-0 bg-transparent p-0 group"
             aria-label="Reproducir video"
           >
-            <img
-              src={vslThumbnail}
-              alt="Miniatura del video Manifiesto Panthera"
-              className="absolute inset-0 h-full w-full object-cover"
-              style={{ filter: 'grayscale(1) brightness(0.62) contrast(1.12)' }}
-              loading="lazy"
-            />
+            {!isWistia && (
+              <img
+                src={vslThumbnail}
+                alt="Miniatura del video Manifiesto Panthera"
+                className="absolute inset-0 h-full w-full object-cover"
+                style={{ filter: 'grayscale(1) brightness(0.62) contrast(1.12)' }}
+                loading="lazy"
+              />
+            )}
 
             <div className="absolute inset-0 bg-panthera-black/50 transition-colors duration-300 group-hover:bg-panthera-black/40" />
 
@@ -88,6 +73,13 @@ export default function VslPlayer({ className = '', title = 'Manifiesto Panthera
           <iframe
             src={iframeSrc}
             title={title}
+            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+            allowFullScreen
+            className="absolute inset-0 z-20 h-full w-full"
+            style={{ border: 'none' }}
+          />
+        )}
+      </div>
             allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
             allowFullScreen
             className="absolute inset-0 z-20 h-full w-full"
