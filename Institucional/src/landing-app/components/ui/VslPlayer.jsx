@@ -14,6 +14,10 @@ export default function VslPlayer({ className = '', title = 'Manifiesto Panthera
     : null
 
   const isWistia = video.videoEmbedUrl.includes('wistia')
+  const wistiaMatch = video.videoEmbedUrl.match(/wistia\.net\/embed\/iframe\/([a-z0-9]+)/)
+  const wistiaMediaId = wistiaMatch?.[1] ?? null
+  const wistiaSwatch = wistiaMediaId ? `https://fast.wistia.net/embed/medias/${wistiaMediaId}/swatch` : null
+
   const iframeSrc = playing
     ? `${video.videoEmbedUrl}${video.videoEmbedUrl.includes('?') ? '&' : '?'}autoplay=1`
     : video.videoEmbedUrl
@@ -44,6 +48,15 @@ export default function VslPlayer({ className = '', title = 'Manifiesto Panthera
                 alt="Miniatura del video Manifiesto Panthera"
                 className="absolute inset-0 h-full w-full object-cover"
                 style={{ filter: 'grayscale(1) brightness(0.62) contrast(1.12)' }}
+                loading="lazy"
+              />
+            )}
+
+            {isWistia && wistiaSwatch && (
+              <img
+                src={wistiaSwatch}
+                alt="Miniatura del video Wistia"
+                className="absolute inset-0 h-full w-full object-cover"
                 loading="lazy"
               />
             )}
