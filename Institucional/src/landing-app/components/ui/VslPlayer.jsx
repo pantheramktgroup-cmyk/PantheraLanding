@@ -31,48 +31,22 @@ export default function VslPlayer({ className = '', title = 'Manifiesto Panthera
       }}
     >
       <div className="relative h-full w-full overflow-hidden">
-        {isWistia ? (
-          <>
-            <iframe
-              src={video.videoEmbedUrl}
-              title={title}
-              allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-              allowFullScreen
-              className="absolute inset-0 z-10 h-full w-full"
-              style={{ border: 'none' }}
-            />
-            {!playing && (
-              <button
-                type="button"
-                onClick={() => setPlaying(true)}
-                className="absolute inset-0 z-20 block h-full w-full cursor-pointer appearance-none border-0 bg-transparent p-0 group"
-                aria-label="Reproducir video"
-              >
-                <div className="absolute inset-0 bg-panthera-black/50 transition-colors duration-300 group-hover:bg-panthera-black/40" />
-                <span className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
-                  <span className="inline-flex h-14 w-14 items-center justify-center border border-panthera-green/65 bg-black/72 text-panthera-green shadow-[0_0_30px_rgba(227,247,141,0.18)] transition-all duration-300 group-hover:scale-[1.03] group-hover:border-panthera-green">
-                    <svg viewBox="0 0 24 24" className="ml-0.5 h-6 w-6 fill-current" aria-hidden="true">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </span>
-                </span>
-              </button>
-            )}
-          </>
-        ) : !playing ? (
+        {!playing ? (
           <button
             type="button"
             onClick={() => setPlaying(true)}
             className="absolute inset-0 z-20 block h-full w-full cursor-pointer appearance-none border-0 bg-transparent p-0 group"
             aria-label="Reproducir video"
           >
-            <img
-              src={vslThumbnail}
-              alt="Miniatura del video Manifiesto Panthera"
-              className="absolute inset-0 h-full w-full object-cover"
-              style={{ filter: 'grayscale(1) brightness(0.62) contrast(1.12)' }}
-              loading="lazy"
-            />
+            {!isWistia && (
+              <img
+                src={vslThumbnail}
+                alt="Miniatura del video Manifiesto Panthera"
+                className="absolute inset-0 h-full w-full object-cover"
+                style={{ filter: 'grayscale(1) brightness(0.62) contrast(1.12)' }}
+                loading="lazy"
+              />
+            )}
 
             <div className="absolute inset-0 bg-panthera-black/50 transition-colors duration-300 group-hover:bg-panthera-black/40" />
 
