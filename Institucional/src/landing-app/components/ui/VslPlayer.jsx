@@ -31,20 +31,22 @@ export default function VslPlayer({ className = '', title = 'Manifiesto Panthera
       }}
     >
       <div className="relative h-full w-full overflow-hidden">
-        {!playing && !isWistia ? (
+        {!playing ? (
           <button
             type="button"
             onClick={() => setPlaying(true)}
             className="absolute inset-0 z-20 block h-full w-full cursor-pointer appearance-none border-0 bg-transparent p-0 group"
             aria-label="Reproducir video"
           >
-            <img
-              src={vslThumbnail}
-              alt="Miniatura del video Manifiesto Panthera"
-              className="absolute inset-0 h-full w-full object-cover"
-              style={{ filter: 'grayscale(1) brightness(0.62) contrast(1.12)' }}
-              loading="lazy"
-            />
+            {!isWistia && (
+              <img
+                src={vslThumbnail}
+                alt="Miniatura del video Manifiesto Panthera"
+                className="absolute inset-0 h-full w-full object-cover"
+                style={{ filter: 'grayscale(1) brightness(0.62) contrast(1.12)' }}
+                loading="lazy"
+              />
+            )}
 
             <div className="absolute inset-0 bg-panthera-black/50 transition-colors duration-300 group-hover:bg-panthera-black/40" />
 
