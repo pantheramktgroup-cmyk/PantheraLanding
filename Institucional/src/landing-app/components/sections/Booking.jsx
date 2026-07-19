@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap, useGSAP } from '../../lib/gsap'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
+import { useGhlLeadCapture } from '../../hooks/useGhlLeadCapture'
 import { landingCopy } from '../../content/landingCopy'
 
 const { booking } = landingCopy
@@ -11,6 +12,9 @@ export default function Booking() {
   const containerRef = useRef(null)
   const calendarRef = useRef(null)
   const prefersReduced = usePrefersReducedMotion()
+
+  // Captura progresiva de leads — solo activo en variante B
+  useGhlLeadCapture()
 
   useEffect(() => {
     if (typeof document === 'undefined') return
