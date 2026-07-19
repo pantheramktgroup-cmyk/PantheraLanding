@@ -61,6 +61,7 @@
   var _debounceTimer = null;
   var _lastPayloadStr = null;
   var _observer = null;
+  var _hasInitiallyCaptured = false;
 
   function getFieldValue(selector) {
     if (!selector) return '';
@@ -90,8 +91,12 @@
     var mainProblem = getFieldValue(SELECTORS.mainProblem);
     var revenue     = getFieldValue(SELECTORS.revenue);
 
+    // Determinar eventType: "initial" si es la primera captura, "update" si es subsecuente
+    var eventType = _hasInitiallyCaptured ? 'update' : 'initial';
+
     return {
       type:        'ghl-form-progress',
+      eventType:   eventType,
       fullName:    fullName,
       email:       email,
       phone:       phone,
@@ -116,7 +121,7 @@
     if (nameParts.length < 2) return;
     if (!isValidEmail(email)) return;
 
-    // Deduplicación: no enviar si el payload no cambió
+    // Deduplicación: incluir eventType y answers en la huella
     var payloadStr = JSON.stringify({
       fullName:    payload.fullName,
       email:       payload.email,
@@ -125,6 +130,8 @@
       role:        payload.role,
       mainProblem: payload.mainProblem,
       revenue:     payload.revenue,
+      eventType:   payload.eventType,
+      answers:     payload.answers,
     });
     if (payloadStr === _lastPayloadStr) return;
 
@@ -132,6 +139,7 @@
     clearTimeout(_debounceTimer);
     _debounceTimer = setTimeout(function () {
       _lastPayloadStr = payloadStr;
+      _hasInitiallyCaptured = true;  // Marcar que ya hizo captura inicial
       try {
         window.parent.postMessage(payload, LANDING_ORIGIN);
       } catch (e) {
@@ -196,6 +204,7 @@ El webhook en n8n recibirá un payload como este:
 
 ```json
 {
+  "eventType": "initial",
   "fullName": "Juan García",
   "email": "juan@example.com",
   "phone": "+5491155667788",
@@ -206,20 +215,33 @@ El webhook en n8n recibirá un payload como este:
   "answers": {},
   "pageUrl": "https://pantheramktgroup.com/landing?variant=B",
   "variant": "B",
-  "receivedAt": "2026-07-18T14:00:00.000Z"
+  "capturedAt": "2026-07-18T14:00:00.000Z"
 }
 ```
 
+### Campos importantes:
+
+- **eventType**: `"initial"` en la primera captura, `"update"` en cambios posteriores
+- **answers**: Objeto vacío o con datos adicionales de respuestas del formulario
+- **capturedAt**: Timestamp en ISO de cuando se capturó el registro
+- **variant**: Siempre `"B"` para esta captura progresiva
+
 ### Lógica recomendada en n8n:
 
-1. **Buscar contacto en GHL** por `email`.
-2. **Si no existe** → crear contacto con `fullName`, `email`, `phone`.
-3. **Si existe** → actualizar con los nuevos campos disponibles (phone, campos personalizados).
-4. **Buscar oportunidad abierta** de ese contacto en el pipeline *Booking*.
-5. **Si no existe oportunidad** → crear una en la etapa _"Formulario iniciado / Pendiente de agendar"_.
-6. **Si ya existe** → no crear duplicado. Actualizar campos si corresponde.
-7. Cuando la persona **reserve la cita** (evento de GHL), mover la oportunidad a _"Cita agendada"_.
-8. Opcionalmente, **esperar 10-15 minutos** sin reserva y avisar al setter.
+1. **Recibir webhook** con los datos: `eventType`, `email`, `fullName`, `phone`, `answers`, etc.
+2. **Buscar contacto en GHL** por `email`.
+3. **Si no existe** → crear contacto con `fullName`, `email`, `phone`.
+4. **Si existe** → actualizar con los nuevos campos disponibles (phone, campos personalizados).
+5. **Buscar oportunidad abierta** de ese contacto en el pipeline *Booking*.
+6. **Si eventType es "initial"** y no existe oportunidad → crear una en la etapa _"Formulario iniciado / Pendiente de agendar"_.
+7. **Si eventType es "update"** y existe oportunidad → actualizar los campos de la oportunidad sin crear duplicados.
+8. Cuando la persona **reserve la cita** (evento de GHL), mover la oportunidad a _"Cita agendada"_.
+9. Opcionalmente, **esperar 10-15 minutos** sin reserva y avisar al setter.
+
+### Manejo de eventType:
+
+- `"initial"`: Primera captura válida del formulario. Crear contacto y oportunidad si no existen.
+- `"update"`: Cambios posteriores en los campos del formulario. Actualizar sin duplicar.
 
 ### Clave de deduplicación:
 Usar **`email`** como clave principal. Si hay `phone`, usarlo como clave secundaria.
@@ -233,4 +255,5 @@ Configurar en el dashboard de Vercel → Settings → Environment Variables:
 | Variable | Descripción |
 |---|---|
 | `N8N_PARTIAL_LEAD_WEBHOOK_URL` | URL completa del webhook de n8n (nunca exponerla en el frontend) |
+| `PARTIAL_LEAD_WEBHOOK_SECRET` | Token/secreto de autenticación para validar requests en n8n |
 | `PARTIAL_LEAD_ALLOWED_ORIGINS` | (Opcional) Dominios permitidos separados por coma. Default: `https://pantheramktgroup.com,https://www.pantheramktgroup.com` |

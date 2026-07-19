@@ -129,7 +129,14 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'Service configuration incomplete' })
   }
 
+  // Preservar eventType tal cual viene; por defecto 'initial'
+  const eventType = body.eventType || 'initial'
+  
+  // Preservar answers tal cual viene; validar estructura
+  const answers = sanitizeAnswers(body.answers)
+
   const payload = {
+    eventType,
     fullName,
     email: email.toLowerCase(),
     phone: sanitize(body.phone, 30),
@@ -137,10 +144,15 @@ module.exports = async function handler(req, res) {
     role: sanitize(body.role, 120),
     mainProblem: sanitize(body.mainProblem, 500),
     revenue: sanitize(body.revenue, 80),
-    answers: sanitizeAnswers(body.answers),
+    answers,
     pageUrl: sanitize(body.pageUrl, 300),
     variant: 'B',
-    receivedAt: new Date().toISOString(),
+    capturedAt: body.capturedAt || new Date().toISOString(),
+  }
+
+  // Debug en desarrollo
+  if (VERCEL_ENV === 'development') {
+    console.debug('[partial-lead] Payload to n8n:', JSON.stringify(payload, null, 2))
   }
 
   try {
