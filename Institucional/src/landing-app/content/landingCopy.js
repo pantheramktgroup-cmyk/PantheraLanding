@@ -411,39 +411,29 @@ export const landingCopy = {
     headline: 'Antes de agendar, resolvamos las dudas más comunes.',
     items: [
       {
-        question: '¿No puedo seguir manejando mi marketing por mi cuenta?',
+        question: '¿Que diferencia a Panthera de una agencia de marketing digital tradicional?',
         answer:
-          'Podés seguir haciéndolo por tu cuenta, pero el costo real suele aparecer en otro lugar: oportunidades que no se convierten, procesos manuales que consumen energía, prospectos mal filtrados y decisiones tomadas sin suficiente información.\n\nLa pregunta no es solo cuánto cuesta construir infraestructura, sino cuánto te cuesta seguir operando sin una.',
+          'A diferencia de una agencia tradicional que solo se enfoca en "conseguir likes" o lanzar campañas sueltas, nosotros nos convertimos en el brazo de marketing y ventas de tu negocio. No solo te gestionamos la publicidad o el contenido, sino que te armamos toda la estructura comercial, metemos métricas claras, te dejamos a punto un CRM y te entrenamos en ventas para que el proceso sea predecible de principio a fin.',
       },
       {
-        question: '¿Qué diferencia a Panthera de otras agencias de marketing?',
+        question: '¿Qué pasa con todo el trabajo si el día de mañana dejamos de trabajar juntos?',
         answer:
-          'Muchas agencias trabajan una parte aislada del problema: tráfico, contenido o automatización parcial. Panthera trabaja la infraestructura comercial completa.\n\nNo nos interesa solo generar formularios. Buscamos conectar captación, filtrado, CRM, seguimiento, agenda y medición para que puedas mejorar el proceso con datos reales.',
+          'Todo te queda a vos. Nosotros no nos llevamos el ecosistema construido para tu negocio. Nuestro trabajo es armar la infraestructura de ventas de tu empresa (tus embudos, tu CRM, tus procesos). Esto es un activo de tu negocio. Si el día de mañana decidís que nuestros caminos se separen, toda esa estructura sigue existiendo y operando bajo tu control total.',
       },
       {
-        question: '¿Cuánto tiempo requiere la implementación del sistema?',
+        question: '¿Me garantizan una facturación exacta o resultados en pocos días?',
         answer:
-          'Depende del punto de partida de cada negocio, la oferta, los activos disponibles y el estado del proceso comercial.\n\nEl trabajo se organiza por etapas: diagnóstico, arquitectura, construcción, activación y optimización. En la llamada revisamos tu caso y te damos una estimación de tiempos para tu situación específica.',
+          'No. Si buscás a alguien que te prometa "facturar 30.000 dólares en 90 días" o una solución mágica sin mover un dedo, no somos para vos y te diría que salgas corriendo. Nuestro enfoque es 100% analítico, basado en métricas y en armar un sistema sólido paso a paso. No existen los botones mágicos, acá hay laburo estratégico y decisiones basadas en datos.',
       },
       {
-        question: '¿Funciona para mi tipo de negocio?',
+        question: '¿Para qué tipo de negocios está pensado este servicio?',
         answer:
-          'Funciona mejor para coaches, consultores, mentores, infoproductores y servicios high-ticket que ya tienen una oferta validada, pero necesitan mejorar captación, filtrado, seguimiento y previsibilidad comercial.\n\nSi ya vendés y querés ordenar la forma en la que generás oportunidades, tiene sentido analizarlo en una llamada.',
+          'Trabajamos con empresas B2C, consultores, coaches y mentores que tienen un buen servicio y clientes contentos, que tienen una oferta validada y facturan al menos $5.000 USD/mes, pero que necesitan un refuerzo potente en la generación de oportunidades. Nuestro objetivo es crear un flujo constante y predecible de nuevas oportunidades de venta.',
       },
       {
-        question: '¿Necesito conocimientos técnicos?',
+        question: '¿Qué es exactamente lo que arman en los primeros meses?',
         answer:
-          'No. La parte técnica la trabajamos nosotros: estructura, CRM, automatizaciones, funnels, formularios, calendario y medición.\n\nTu rol es aportar información estratégica sobre tu negocio, validar decisiones importantes y participar en las reuniones necesarias.',
-      },
-      {
-        question: '¿Es una solución sostenible o solo una solución rápida?',
-        answer:
-          'El enfoque de Panthera no está en atajos ni trucos momentáneos. Está en construir una infraestructura que pueda mejorar con datos y sostener el crecimiento con más orden.\n\nLa idea no es generar un pico aislado, sino ayudarte a construir una base comercial más clara, medible y preparada para crecer.',
-      },
-      {
-        question: '¿Voy a perder el contacto personal con mis clientes?',
-        answer:
-          'La automatización no reemplaza tu autoridad ni tu conexión humana. La ordena.\n\nEl objetivo es reducir tareas repetitivas, mejorar seguimiento y asegurar que las oportunidades lleguen con más contexto. Vos seguís presente en las interacciones de mayor valor: estrategia, venta, entrega y vínculo con el cliente.',
+          'En la primera etapa nos enfocamos en: diseñar tu estrategia comercial y tu oferta, implementar un CRM con todas sus automatizaciones de seguimiento, armar tu embudo de ventas, producir y gestionar tu publicidad digital y el contenido orgánico, y darte un entrenamiento en ventas con el acompañamiento directo nuestro (de los dueños).',
       },
     ],
     cta: GLOBAL_CTA,

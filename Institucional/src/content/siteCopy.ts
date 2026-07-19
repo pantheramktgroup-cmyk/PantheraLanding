@@ -674,29 +674,29 @@ export const siteCopy = {
       subtitle: 'Una lectura clara para entender si este proceso es adecuado para tu etapa actual.',
       items: [
         {
-          question: 'Que diferencia a Panthera de otras agencias de marketing?',
+          question: '¿Que diferencia a Panthera de una agencia de marketing digital tradicional?',
           answer:
-            'Muchas agencias trabajan una parte aislada del problema: trafico, contenido o automatizacion parcial. Panthera trabaja la infraestructura comercial completa.\n\nNo nos interesa solo generar formularios. Buscamos conectar captacion, filtrado, CRM, seguimiento, agenda y medicion para que puedas mejorar el proceso con datos reales.',
+            'A diferencia de una agencia tradicional que solo se enfoca en "conseguir likes" o lanzar campanas sueltas, nosotros nos convertimos en el brazo de marketing y ventas de tu negocio. No solo te gestionamos la publicidad o el contenido, sino que te armamos toda la estructura comercial, metemos metricas claras, te dejamos a punto un CRM y te entrenamos en ventas para que el proceso sea predecible de principio a fin.',
         },
         {
-          question: 'Funciona para mi tipo de negocio?',
+          question: '¿Que pasa con todo el trabajo si el dia de manana dejamos de trabajar juntos?',
           answer:
-            'Funciona mejor para coaches, consultores, mentores, infoproductores y servicios high-ticket que ya tienen una oferta validada, pero necesitan mejorar captacion, filtrado, seguimiento y previsibilidad comercial.\n\nSi ya vendes y quieres ordenar la forma en la que generas oportunidades, tiene sentido analizarlo en una llamada.',
+            'Todo te queda a vos. Nosotros no nos llevamos el ecosistema construido para tu negocio. Nuestro trabajo es armar la infraestructura de ventas de tu empresa (tus embudos, tu CRM, tus procesos). Esto es un activo de tu negocio. Si el dia de manana decidis que nuestros caminos se separen, toda esa estructura sigue existiendo y operando bajo tu control total.',
         },
         {
-          question: 'Necesito conocimientos tecnicos?',
+          question: '¿Me garantizan una facturacion exacta o resultados en pocos dias?',
           answer:
-            'No. La parte tecnica la trabajamos nosotros: estructura, CRM, automatizaciones, funnels, formularios, calendario y medicion.\n\nTu rol es aportar informacion estrategica sobre tu negocio, validar decisiones importantes y participar en las reuniones necesarias.',
+            'No. Si buscas a alguien que te prometa "facturar 30.000 dolares en 90 dias" o una solucion magica sin mover un dedo, no somos para vos y te diria que salgas corriendo. Nuestro enfoque es 100% analitico, basado en metricas y en armar un sistema solido paso a paso. No existen los botones magicos, aca hay laburo estrategico y decisiones basadas en datos.',
         },
         {
-          question: 'Cuanto tiempo requiere la implementacion del sistema?',
+          question: '¿Para que tipo de negocios esta pensado este servicio?',
           answer:
-            'Depende del punto de partida de cada negocio, la oferta, los activos disponibles y el estado del proceso comercial.\n\nEl trabajo se organiza por etapas: diagnostico, arquitectura, construccion, activacion y optimizacion. En la llamada revisamos tu caso y te damos una estimacion de tiempos para tu situacion especifica.',
+            'Trabajamos con empresas B2C, consultores, coaches y mentores que tienen un buen servicio y clientes contentos, que tienen una oferta validada y facturan al menos $5.000 USD/mes, pero que necesitan un refuerzo potente en la generacion de oportunidades. Nuestro objetivo es crear un flujo constante y predecible de nuevas oportunidades de venta.',
         },
         {
-          question: 'Es una solucion sostenible o solo una solucion rapida?',
+          question: '¿Que es exactamente lo que arman en los primeros meses?',
           answer:
-            'El enfoque de Panthera no esta en atajos ni trucos momentaneos. Esta en construir una infraestructura que pueda mejorar con datos y sostener el crecimiento con mas orden.\n\nLa idea no es generar un pico aislado, sino ayudarte a construir una base comercial mas clara, medible y preparada para crecer.',
+            'En la primera etapa nos enfocamos en: disenar tu estrategia comercial y tu oferta, implementar un CRM con todas sus automatizaciones de seguimiento, armar tu embudo de ventas, producir y gestionar tu publicidad digital y el contenido organico, y darte un entrenamiento en ventas con el acompanamiento directo nuestro (de los duenos).',
         },
       ],
     },
