@@ -437,7 +437,7 @@ export default function ThankYouPage() {
       </section>
 
       {/* ── CTA FINAL ─────────────────────────────────────────────────── */}
-      <section className="relative py-24 md:py-32 overflow-hidden text-center" aria-label="Cierre">
+      <section className="relative py-14 md:py-32 overflow-hidden text-center" aria-label="Cierre">
         {/* Background */}
         <div className="absolute inset-0">
           <img
@@ -455,7 +455,7 @@ export default function ThankYouPage() {
           <img
             src={LOGO_SRC}
             alt="Panthera Group"
-            className="h-[14px] md:h-[16px] w-auto brightness-0 invert opacity-30 mb-10"
+            className="h-[14px] md:h-[16px] w-auto brightness-0 invert opacity-30 mb-7 md:mb-10"
             loading="lazy"
             aria-hidden="true"
           />
@@ -467,7 +467,7 @@ export default function ThankYouPage() {
             Nos vemos en la llamada.
           </h2>
 
-          <p className="font-sans text-base text-panthera-white/50 max-w-md leading-relaxed mb-10 mx-auto">
+          <p className="font-sans text-base text-panthera-white/50 max-w-md leading-relaxed mb-7 md:mb-10 mx-auto">
             Mientras tanto, revisá el video y asegurate de aceptar la invitación del calendario para reservar tu lugar.
           </p>
 
@@ -493,7 +493,7 @@ export default function ThankYouPage() {
       </section>
 
       {/* ── FOOTER ────────────────────────────────────────────────────── */}
-      <Footer />
+      <Footer hideBookingLink compactLogoCopy />
     </div>
   )
 }

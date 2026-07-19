@@ -54,17 +54,21 @@ const socialLinks = [
   },
 ]
 
-export default function Footer() {
+export default function Footer({ hideBookingLink = false, compactLogoCopy = false }) {
+  const visibleLinks = hideBookingLink
+    ? footer.links.filter((link) => link.href !== '#booking')
+    : footer.links
+
   return (
     <footer className="bg-panthera-deep border-t border-[rgba(245,245,245,0.06)]">
-      <div className="container-panthera py-20 md:py-20">
+      <div className="container-panthera py-12 md:py-20">
         {/* Top row */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-12">
+        <div className="flex flex-col md:flex-row items-center md:items-center justify-between gap-5 md:gap-8 mb-4 md:mb-12 text-center md:text-left">
           <div>
             <img
               src={footer.logo.src}
               alt={footer.logo.alt}
-              className="h-6 w-auto brightness-0 invert opacity-60 mb-3"
+              className={`h-6 w-auto brightness-0 invert opacity-60 ${compactLogoCopy ? 'mb-1' : 'mb-3'} mx-auto md:mx-0`}
               loading="lazy"
             />
             <p className="text-xs font-sans text-panthera-ash tracking-wide">
@@ -73,8 +77,8 @@ export default function Footer() {
           </div>
 
           <nav aria-label="Footer navigation">
-            <ul className="flex flex-wrap gap-6">
-              {footer.links.map((link) => (
+            <ul className="flex flex-wrap justify-center md:justify-start gap-6">
+              {visibleLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
@@ -97,15 +101,15 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-[rgba(245,245,245,0.06)] mb-8" />
+        <div className="border-t border-[rgba(245,245,245,0.06)] mb-4 md:mb-8" />
 
         {/* Legal + Social */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+        <div className="flex flex-col md:flex-row items-center md:items-center justify-between gap-5 text-center md:text-left">
           <p className="text-xs font-sans text-panthera-ash/40 shrink-0">
             {footer.copyright}
           </p>
 
-          <div className="flex items-center gap-3" aria-label="Redes sociales">
+          <div className="flex items-center justify-center gap-3" aria-label="Redes sociales">
             {socialLinks.map((social) => (
               <a
                 key={social.label}
