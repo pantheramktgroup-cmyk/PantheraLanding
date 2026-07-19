@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { gsap, ScrollTrigger, useGSAP } from '../../lib/gsap'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { landingCopy } from '../../content/landingCopy'
+import { resolveLandingVariant } from '../../lib/landingVariant'
 import Button from '../ui/Button'
 
 const { apexSystem } = landingCopy
@@ -92,7 +93,8 @@ export default function ApexSystem() {
   const progressRef = useRef(null)
   const [currentPhase, setCurrentPhase] = useState(0)
   const prefersReduced = usePrefersReducedMotion()
-  const isVariantB = new URLSearchParams(window.location.search).get('variant') === 'B'
+  const { variant } = resolveLandingVariant()
+  const isVariantB = variant === 'B'
   const apexCardsB = [
     ...apexSystem.phasesB,
     {

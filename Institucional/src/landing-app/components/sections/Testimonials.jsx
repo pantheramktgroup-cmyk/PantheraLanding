@@ -2,6 +2,7 @@ import { useRef, useState, useCallback } from 'react'
 import { gsap, ScrollTrigger, useGSAP } from '../../lib/gsap'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { landingCopy } from '../../content/landingCopy'
+import { resolveLandingVariant } from '../../lib/landingVariant'
 import Button from '../ui/Button'
 
 const testimonialCtaCaseTable = '/images/testimonial_cta_case_table.webp'
@@ -444,6 +445,8 @@ function TestimonialsScrollB({ cases, closingPanel }) {
 // --- Componente principal ---------------------------------------------------
 export default function Testimonials() {
   const headline = testimonials.headline
+  const { variant } = resolveLandingVariant()
+  const isVariantB = variant === 'B'
 
   return (
     <section className="relative overflow-hidden bg-[#0f100f]">
@@ -478,7 +481,7 @@ export default function Testimonials() {
       </div>
 
       <div className="relative z-10 container-panthera pb-0">
-        {new URLSearchParams(window.location.search).get('variant') === 'B' ? (
+        {isVariantB ? (
           <TestimonialsScrollB
             cases={testimonials.cases}
             closingPanel={testimonials.closingPanel}

@@ -3,11 +3,11 @@ import { useEffect, useRef } from 'react'
 /**
  * useGhlLeadCapture
  *
- * Escucha mensajes postMessage provenientes del iframe de GHL (variante B).
+ * Escucha mensajes postMessage provenientes del iframe de GHL.
  * Valida origen, tipo de mensaje y campos mínimos.
  * Aplica debounce y deduplicación antes de enviar a /api/partial-lead.
  *
- * Solo activo cuando ?variant=B está presente en la URL.
+ * Siempre activo — la landing está forzada a variante A.
  */
 
 // ─── Orígenes autorizados ────────────────────────────────────────────────────
@@ -79,7 +79,7 @@ function normalizePayload(data) {
     investment: (data.investment || '').trim(),
     answers,
     pageUrl: window.location.href,
-    variant: 'B',
+    variant: 'A',
     capturedAt: data.capturedAt || new Date().toISOString(),
   }
 }
@@ -102,9 +102,7 @@ export function useGhlLeadCapture() {
   const lastFingerprintRef = useRef(null)
 
   useEffect(() => {
-    // Solo activo para variante B
-    const variant = new URLSearchParams(window.location.search).get('variant')
-    if (variant !== 'B') return
+    // Variante A forzada: la captura permanece siempre activa en la landing.
 
     function sendToApi(payload) {
       fetch('/api/partial-lead', {

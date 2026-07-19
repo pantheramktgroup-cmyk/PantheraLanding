@@ -162,7 +162,7 @@ module.exports = async function handler(req, res) {
     investment: sanitize(body.investment, 120),
     answers,
     pageUrl: sanitize(body.pageUrl, 300),
-    variant: 'B',
+    variant: 'A',
     capturedAt: body.capturedAt || new Date().toISOString(),
   }
 

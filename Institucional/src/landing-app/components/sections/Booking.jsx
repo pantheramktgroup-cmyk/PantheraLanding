@@ -13,7 +13,7 @@ export default function Booking() {
   const calendarRef = useRef(null)
   const prefersReduced = usePrefersReducedMotion()
 
-  // Captura progresiva de leads — solo activo en variante B
+  // Captura progresiva de leads — activo en variante A
   useGhlLeadCapture()
 
   useEffect(() => {
