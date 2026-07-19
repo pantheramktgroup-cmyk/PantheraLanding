@@ -129,8 +129,10 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'Service configuration incomplete' })
   }
 
-  // Preservar eventType tal cual viene; por defecto 'initial'
-  const eventType = body.eventType || 'initial'
+  const eventType =
+    body.eventType === 'update'
+      ? 'update'
+      : 'initial'
   
   // Preservar answers tal cual viene; validar estructura
   const answers = sanitizeAnswers(body.answers)
@@ -144,11 +146,19 @@ module.exports = async function handler(req, res) {
     role: sanitize(body.role, 120),
     mainProblem: sanitize(body.mainProblem, 500),
     revenue: sanitize(body.revenue, 80),
+    urgency: sanitize(body.urgency, 80),
+    investment: sanitize(body.investment, 80),
     answers,
     pageUrl: sanitize(body.pageUrl, 300),
     variant: 'B',
     capturedAt: body.capturedAt || new Date().toISOString(),
   }
+
+  // Log temporal seguro para validar preservación de eventos/respuestas.
+  console.log('[partial-lead]', {
+    eventType,
+    answerCount: Object.keys(answers).length,
+  })
 
   // Debug en desarrollo
   if (VERCEL_ENV === 'development') {

@@ -55,6 +55,8 @@
     role:        'input[name*="rol" i], select[name*="rol" i], input[placeholder*="rol" i]',
     mainProblem: 'textarea[name*="problema" i], input[name*="problema" i]',
     revenue:     'input[name*="facturacion" i], input[name*="revenue" i], select[name*="facturacion" i]',
+    urgency:     'input[name*="urgencia" i], select[name*="urgencia" i], input[name*="urgency" i], select[name*="urgency" i]',
+    investment:  'input[name*="inversion" i], select[name*="inversion" i], input[name*="investment" i], select[name*="investment" i]',
   };
   // ──────────────────────────────────────────────────────────────────────────
 
@@ -77,6 +79,63 @@
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 
+  function normalizeEventType(value) {
+    return value === 'update' ? 'update' : 'initial';
+  }
+
+  function getInternationalPhone() {
+    var input = document.querySelector('input[name="phone"], input[type="tel"]');
+
+    if (!input) return '';
+
+    try {
+      var instance = null;
+
+      if (
+        window.intlTelInputGlobals &&
+        typeof window.intlTelInputGlobals.getInstance === 'function'
+      ) {
+        instance = window.intlTelInputGlobals.getInstance(input);
+      }
+
+      if (
+        !instance &&
+        window.intlTelInput &&
+        typeof window.intlTelInput.getInstance === 'function'
+      ) {
+        instance = window.intlTelInput.getInstance(input);
+      }
+
+      if (instance) {
+        var number = String(instance.getNumber() || '').trim();
+
+        if (number) return number;
+
+        var country =
+          typeof instance.getSelectedCountryData === 'function'
+            ? instance.getSelectedCountryData()
+            : null;
+
+        var nationalNumber = String(input.value || '').replace(/\D/g, '');
+
+        if (country && country.dialCode && nationalNumber) {
+          return '+' + country.dialCode + nationalNumber;
+        }
+      }
+    } catch (e) {
+      // La captura nunca debe interrumpir el calendario.
+    }
+
+    return String(input.value || '').trim();
+  }
+
+  function buildAnswers() {
+    return {
+      urgency: getFieldValue(SELECTORS.urgency),
+      investment: getFieldValue(SELECTORS.investment),
+    };
+  }
+
   function buildPayload() {
     var firstName = getFieldValue(SELECTORS.firstName);
     var lastName  = getFieldValue(SELECTORS.lastName);
@@ -85,14 +144,17 @@
     var fullName = fullNameField || ([firstName, lastName].filter(Boolean).join(' '));
 
     var email       = getFieldValue(SELECTORS.email);
-    var phone       = getFieldValue(SELECTORS.phone);
+    var phone       = getInternationalPhone();
     var instagram   = getFieldValue(SELECTORS.instagram);
     var role        = getFieldValue(SELECTORS.role);
     var mainProblem = getFieldValue(SELECTORS.mainProblem);
     var revenue     = getFieldValue(SELECTORS.revenue);
+    var urgency     = getFieldValue(SELECTORS.urgency);
+    var investment  = getFieldValue(SELECTORS.investment);
+    var answers     = buildAnswers();
 
     // Determinar eventType: "initial" si es la primera captura, "update" si es subsecuente
-    var eventType = _hasInitiallyCaptured ? 'update' : 'initial';
+    var eventType = normalizeEventType(_hasInitiallyCaptured ? 'update' : 'initial');
 
     return {
       type:        'ghl-form-progress',
@@ -104,7 +166,9 @@
       role:        role,
       mainProblem: mainProblem,
       revenue:     revenue,
-      answers:     {},      // Extender con campos adicionales si es necesario
+      urgency:     urgency,
+      investment:  investment,
+      answers:     answers,
       pageUrl:     window.location.href,
       variant:     'B',
       capturedAt:  new Date().toISOString(),
@@ -130,6 +194,8 @@
       role:        payload.role,
       mainProblem: payload.mainProblem,
       revenue:     payload.revenue,
+      urgency:     payload.urgency,
+      investment:  payload.investment,
       eventType:   payload.eventType,
       answers:     payload.answers,
     });
@@ -195,6 +261,8 @@
 | Rol / cargo | `input[name*="rol"]` | ⚠️ Verificar |
 | Problema principal | `textarea[name*="problema"]` | ⚠️ Verificar |
 | Facturación | `input[name*="facturacion"]` | ⚠️ Verificar |
+| Urgencia | `input[name*="urgencia"], select[name*="urgency"]` | ⚠️ Verificar |
+| Inversión | `input[name*="inversion"], select[name*="investment"]` | ⚠️ Verificar |
 
 ---
 
@@ -212,6 +280,8 @@ El webhook en n8n recibirá un payload como este:
   "role": "Coach de negocios",
   "mainProblem": "No tengo un sistema de ventas predecible",
   "revenue": "10K-20K USD/mes",
+  "urgency": "Quiero implementarlo este mes",
+  "investment": "3K-5K USD",
   "answers": {},
   "pageUrl": "https://pantheramktgroup.com/landing?variant=B",
   "variant": "B",
