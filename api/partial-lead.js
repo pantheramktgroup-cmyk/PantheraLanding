@@ -63,6 +63,16 @@ function sanitize(val, maxLen = 200) {
   return val.trim().slice(0, maxLen)
 }
 
+function normalizePhone(value) {
+  const raw = sanitize(value, 40)
+  const hasPlus = raw.startsWith('+')
+  const digits = raw.replace(/\D/g, '')
+
+  if (!digits) return ''
+
+  return hasPlus ? `+${digits}` : digits
+}
+
 function sanitizeAnswers(raw) {
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return {}
   const out = {}
@@ -111,13 +121,17 @@ module.exports = async function handler(req, res) {
   }
 
   const fullName = sanitize(body.fullName, 120)
-  const email = sanitize(body.email, 120)
+  const rawEmail = sanitize(body.email, 120).toLowerCase()
+  const email = isValidEmail(rawEmail) ? rawEmail : ''
+  const phone = normalizePhone(body.phone)
 
-  if (fullName.split(/\s+/).filter(Boolean).length < 2) {
-    return res.status(400).json({ error: 'fullName must include first and last name' })
-  }
-  if (!isValidEmail(email)) {
-    return res.status(400).json({ error: 'Valid email required' })
+  const phoneIsValid =
+    phone.replace(/\D/g, '').length >= 7
+
+  if (!email && !phoneIsValid) {
+    return res.status(400).json({
+      error: 'Valid email or phone required'
+    })
   }
 
   // Validación de configuración requerida
@@ -129,25 +143,23 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'Service configuration incomplete' })
   }
 
-  const eventType =
-    body.eventType === 'update'
-      ? 'update'
-      : 'initial'
-  
   // Preservar answers tal cual viene; validar estructura
   const answers = sanitizeAnswers(body.answers)
 
   const payload = {
-    eventType,
+    eventType:
+      body.eventType === 'update'
+        ? 'update'
+        : 'initial',
     fullName,
-    email: email.toLowerCase(),
-    phone: sanitize(body.phone, 30),
+    email,
+    phone: phoneIsValid ? phone : '',
     instagram: sanitize(body.instagram, 80),
     role: sanitize(body.role, 120),
     mainProblem: sanitize(body.mainProblem, 500),
     revenue: sanitize(body.revenue, 80),
-    urgency: sanitize(body.urgency, 80),
-    investment: sanitize(body.investment, 80),
+    urgency: sanitize(body.urgency, 120),
+    investment: sanitize(body.investment, 120),
     answers,
     pageUrl: sanitize(body.pageUrl, 300),
     variant: 'B',
@@ -156,8 +168,11 @@ module.exports = async function handler(req, res) {
 
   // Log temporal seguro para validar preservación de eventos/respuestas.
   console.log('[partial-lead]', {
-    eventType,
-    answerCount: Object.keys(answers).length,
+    eventType: payload.eventType,
+    hasEmail: Boolean(payload.email),
+    hasPhone: Boolean(payload.phone),
+    hasName: Boolean(payload.fullName),
+    answerCount: Object.keys(payload.answers).length,
   })
 
   // Debug en desarrollo

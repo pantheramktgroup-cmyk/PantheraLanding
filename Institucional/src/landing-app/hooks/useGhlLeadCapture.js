@@ -35,7 +35,9 @@ function isOriginAllowed(origin) {
 }
 
 function isValidEmail(email) {
-  return typeof email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+    String(email || '').trim()
+  )
 }
 
 function normalizePhone(value) {
@@ -48,21 +50,27 @@ function normalizePhone(value) {
   return hasPlus ? `+${digits}` : digits
 }
 
-function normalizeEventType(value) {
-  return value === 'update' ? 'update' : 'initial'
+function isValidPhone(value) {
+  return normalizePhone(value).replace(/\D/g, '').length >= 7
 }
 
 function normalizePayload(data) {
-  const eventType = normalizeEventType(data.eventType)
+  const eventType =
+    data.eventType === 'update'
+      ? 'update'
+      : 'initial'
   const answers = (typeof data.answers === 'object' && !Array.isArray(data.answers))
     ? data.answers
     : {}
+  const rawEmail = String(data.email || '').trim().toLowerCase()
+  const email = isValidEmail(rawEmail) ? rawEmail : ''
+  const phone = normalizePhone(data.phone)
 
   return {
     eventType,
     fullName: (data.fullName || '').trim(),
-    email: (data.email || '').trim().toLowerCase(),
-    phone: normalizePhone(data.phone),
+    email,
+    phone,
     instagram: (data.instagram || '').trim().replace(/^@/, ''),
     role: (data.role || '').trim(),
     mainProblem: (data.mainProblem || '').trim(),
@@ -83,12 +91,6 @@ function fingerprint(payload) {
     fullName: payload.fullName,
     email: payload.email,
     phone: payload.phone,
-    instagram: payload.instagram,
-    role: payload.role,
-    mainProblem: payload.mainProblem,
-    revenue: payload.revenue,
-    urgency: payload.urgency,
-    investment: payload.investment,
     answers: payload.answers,
   })
 }
@@ -124,14 +126,22 @@ export function useGhlLeadCapture() {
       if (data.type !== 'ghl-form-progress') return
 
       // 3. Validar campos mínimos
-      const fullName = (data.fullName || '').trim()
-      const email = (data.email || '').trim()
+      const fullName = String(data.fullName || '').trim()
+      const rawEmail = String(data.email || '').trim().toLowerCase()
+      const email = isValidEmail(rawEmail) ? rawEmail : ''
+      const phone = normalizePhone(data.phone)
 
-      if (fullName.split(/\s+/).filter(Boolean).length < 2) return
-      if (!isValidEmail(email)) return
+      if (!email && !isValidPhone(phone)) {
+        return
+      }
 
       // 4. Normalizar
-      const payload = normalizePayload(data)
+      const payload = normalizePayload({
+        ...data,
+        fullName,
+        email,
+        phone,
+      })
 
       // 5. Deduplicación
       const fp = fingerprint(payload)
