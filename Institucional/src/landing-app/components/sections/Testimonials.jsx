@@ -478,10 +478,17 @@ export default function Testimonials() {
       </div>
 
       <div className="relative z-10 container-panthera pb-0">
-        <TestimonialsGridA
-          cases={testimonials.cases}
-          closingPanel={testimonials.closingPanel}
-        />
+        {new URLSearchParams(window.location.search).get('variant') === 'B' ? (
+          <TestimonialsScrollB
+            cases={testimonials.cases}
+            closingPanel={testimonials.closingPanel}
+          />
+        ) : (
+          <TestimonialsGridA
+            cases={testimonials.cases}
+            closingPanel={testimonials.closingPanel}
+          />
+        )}
       </div>
     </section>
   )

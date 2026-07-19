@@ -92,7 +92,7 @@ export default function ApexSystem() {
   const progressRef = useRef(null)
   const [currentPhase, setCurrentPhase] = useState(0)
   const prefersReduced = usePrefersReducedMotion()
-  const isVariantB = false
+  const isVariantB = new URLSearchParams(window.location.search).get('variant') === 'B'
   const apexCardsB = [
     ...apexSystem.phasesB,
     {
