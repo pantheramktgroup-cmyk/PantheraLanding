@@ -192,14 +192,6 @@ export default function ThankYouPage() {
       delay: 0.15,
     })
 
-    gsap.from(alertRef.current, {
-      opacity: 0,
-      y: 20,
-      duration: 0.8,
-      ease: 'power2.out',
-      delay: 0.5,
-    })
-
     const reveal = (el, extra = {}) =>
       gsap.from(el, {
         opacity: 0,
@@ -218,6 +210,7 @@ export default function ThankYouPage() {
     reveal(cardsRef.current)
     reveal(step2Ref.current)
     reveal(step3Ref.current)
+    reveal(alertRef.current)
     reveal(ctaRef.current)
   }, { dependencies: [prefersReduced] })
 
@@ -225,7 +218,7 @@ export default function ThankYouPage() {
     <div className="bg-panthera-black text-panthera-white min-h-screen selection:bg-panthera-green/30">
       {/* ── HERO / CONFIRMACIÓN ─────────────────────────────────────────── */}
       <section
-        className="relative min-h-[92svh] md:min-h-screen flex flex-col items-center justify-center overflow-hidden text-center"
+        className="relative flex flex-col items-center justify-start overflow-hidden text-center pt-7 md:pt-9"
         aria-label="Confirmación de llamada"
       >
         {/* Background image */}
@@ -243,7 +236,7 @@ export default function ThankYouPage() {
         </div>
 
         {/* Logo */}
-        <div className="relative z-10 pt-10 pb-6">
+        <div className="relative z-10 pb-5 md:pb-6">
           <a
             href="https://pantheramktgroup.com"
             aria-label="Panthera Group"
@@ -259,9 +252,9 @@ export default function ThankYouPage() {
         </div>
 
         {/* Hero content */}
-        <div ref={heroRef} className="relative z-10 flex flex-col items-center text-center px-5 md:px-8 max-w-2xl mx-auto pb-16 md:pb-24">
+        <div ref={heroRef} className="relative z-10 flex flex-col items-center text-center px-5 md:px-8 max-w-[980px] mx-auto pb-1 md:pb-2">
           {/* Confirmation badge */}
-          <div className="inline-flex items-center justify-center gap-2 mb-8">
+          <div className="inline-flex items-center justify-center gap-2 mb-5 md:mb-6">
             <span className="flex items-center justify-center w-5 h-5 rounded-full bg-panthera-green/15 border border-panthera-green/40">
               <svg viewBox="0 0 16 16" fill="none" className="w-3 h-3 text-panthera-green" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="2 8 6 12 14 4" />
@@ -273,44 +266,24 @@ export default function ThankYouPage() {
           </div>
 
           <h1
-            className="font-sans font-bold text-panthera-white leading-tight mb-6"
-            style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
+            className="font-sans font-bold text-panthera-white leading-[1.04] mb-4 md:mb-5 max-w-[940px]"
+            style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)' }}
           >
             Tu diagnóstico está confirmado.
           </h1>
 
-          <p className="font-sans text-base md:text-lg text-panthera-white/60 leading-relaxed mb-10 max-w-lg mx-auto">
+          <p className="font-sans text-base md:text-lg text-panthera-white/60 leading-relaxed max-w-[560px] mx-auto">
             Revisá los pasos a continuación para asegurarte de que todo quede confirmado y tu lugar reservado.
           </p>
 
-          {/* IMPORTANTE alert */}
-          <div ref={alertRef} className="w-full max-w-xl relative mx-auto" role="alert">
-            <div className="relative overflow-hidden rounded-sm border border-[rgba(245,100,80,0.22)] bg-[#100a09]">
-              <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-24 bg-[rgba(200,60,40,0.12)] rounded-full blur-2xl pointer-events-none" aria-hidden="true" />
-              <div className="grain-overlay opacity-40" aria-hidden="true" />
-              <div className="relative z-10 px-6 py-5 md:px-8 md:py-6 text-center">
-                <p className="font-sans text-[9px] uppercase tracking-[0.28em] text-[#e08070] mb-3">
-                  IMPORTANTE
-                </p>
-                <p className="font-sans text-sm md:text-[15px] text-panthera-white/85 leading-relaxed">
-                  Tu llamada fue agendada, te vamos a contactar por WhatsApp para confirmarla.{' '}
-                  <span className="text-panthera-white font-medium">
-                    Si no contestás en las próximas 6&nbsp;horas vamos a cancelar tu llamada para liberar el cupo.
-                  </span>
-                </p>
-              </div>
-            </div>
+          <div className="mt-5 md:mt-6 flex h-8 md:h-9 items-center justify-center" aria-hidden="true">
+            <span className="block h-7 md:h-8 w-px bg-panthera-green/70 shadow-[0_0_16px_rgba(227,247,141,0.38)] animate-pulse" />
           </div>
-        </div>
-
-        {/* Scroll cue */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-40">
-          <div className="w-px h-10 bg-gradient-to-b from-panthera-green/60 to-transparent" />
         </div>
       </section>
 
       {/* ── PASO 1 / VIDEO ─────────────────────────────────────────────── */}
-      <section className="relative py-20 md:py-28 overflow-hidden text-center" aria-label="Paso 1 — Video">
+      <section className="relative py-4 md:py-5 overflow-hidden text-center" aria-label="Paso 1 — Video">
         <div className="container-panthera">
           {/* Step label */}
           <div ref={step1Ref} className="mb-10 md:mb-14 text-center max-w-3xl mx-auto">
@@ -399,6 +372,26 @@ export default function ThankYouPage() {
               />
               <div className="absolute inset-0 bg-panthera-black/10 z-10 pointer-events-none rounded-sm" aria-hidden="true" />
               <div className="grain-overlay opacity-25 z-20" aria-hidden="true" />
+            </div>
+          </div>
+
+          {/* IMPORTANTE alert */}
+          <div ref={alertRef} className="w-full max-w-2xl relative mx-auto mt-10 md:mt-14" role="alert">
+            <div className="relative overflow-hidden rounded-sm border border-[rgba(245,100,80,0.22)] bg-[#100a09]/95 shadow-[0_18px_70px_rgba(0,0,0,0.45)]">
+              <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-56 h-28 bg-[rgba(200,60,40,0.12)] rounded-full blur-2xl pointer-events-none" aria-hidden="true" />
+              <div className="grain-overlay opacity-40" aria-hidden="true" />
+              <div className="relative z-10 px-6 py-5 md:px-8 md:py-6 text-center">
+                <p className="font-sans text-[9px] uppercase tracking-[0.28em] text-[#e08070] mb-3">
+                  IMPORTANTE
+                </p>
+                <p className="font-sans text-sm md:text-[15px] text-panthera-white/85 leading-relaxed">
+                  Tu llamada fue agendada, te vamos a contactar por WhatsApp para confirmarla.
+                  <br />
+                  <span className="text-panthera-white font-medium">
+                    Si no contestás en las próximas 6&nbsp;horas vamos a cancelar tu llamada para liberar el cupo.
+                  </span>
+                </p>
+              </div>
             </div>
           </div>
         </div>
