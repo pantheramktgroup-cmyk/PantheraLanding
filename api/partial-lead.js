@@ -5,16 +5,18 @@
  * (via postMessage), los valida, los sanitiza y los reenvía al webhook de n8n.
  *
  * Variables de entorno requeridas (configurar en Vercel):
- *   N8N_PARTIAL_LEAD_WEBHOOK_URL  — URL privada del webhook de n8n
+ *   N8N_PARTIAL_LEAD_WEBHOOK_URL     — URL privada del webhook de n8n
+ *   PARTIAL_LEAD_WEBHOOK_SECRET      — Token de autenticación para n8n
  *
  * Variables de entorno opcionales:
- *   PARTIAL_LEAD_ALLOWED_ORIGINS  — Lista separada por comas de orígenes permitidos
- *                                   (por defecto usa DEFAULT_ALLOWED_ORIGINS)
+ *   PARTIAL_LEAD_ALLOWED_ORIGINS     — Lista separada por comas de orígenes permitidos
+ *                                      (por defecto usa DEFAULT_ALLOWED_ORIGINS)
  */
 
 // ─── Configuración ────────────────────────────────────────────────────────────
 
 const N8N_WEBHOOK_URL = process.env.N8N_PARTIAL_LEAD_WEBHOOK_URL
+const WEBHOOK_SECRET = process.env.PARTIAL_LEAD_WEBHOOK_SECRET
 const ALLOWED_ORIGINS_ENV = process.env.PARTIAL_LEAD_ALLOWED_ORIGINS
 const VERCEL_ENV = process.env.VERCEL_ENV // 'production' | 'preview' | 'development'
 
@@ -118,10 +120,13 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: 'Valid email required' })
   }
 
-  // Webhook de n8n
-  if (!N8N_WEBHOOK_URL) {
-    console.error('[partial-lead] N8N_PARTIAL_LEAD_WEBHOOK_URL is not configured')
-    return res.status(500).json({ error: 'Service unavailable' })
+  // Validación de configuración requerida
+  if (!N8N_WEBHOOK_URL || !WEBHOOK_SECRET) {
+    const missing = []
+    if (!N8N_WEBHOOK_URL) missing.push('N8N_PARTIAL_LEAD_WEBHOOK_URL')
+    if (!WEBHOOK_SECRET) missing.push('PARTIAL_LEAD_WEBHOOK_SECRET')
+    console.error('[partial-lead] Missing configuration:', missing.join(', '))
+    return res.status(500).json({ error: 'Service configuration incomplete' })
   }
 
   const payload = {
@@ -141,12 +146,15 @@ module.exports = async function handler(req, res) {
   try {
     const webhookRes = await fetch(N8N_WEBHOOK_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Webhook-Secret': WEBHOOK_SECRET,
+      },
       body: JSON.stringify(payload),
     })
 
     if (!webhookRes.ok) {
-      console.error('[partial-lead] Webhook error:', webhookRes.status)
+      console.error('[partial-lead] Webhook error:', webhookRes.status, webhookRes.statusText)
       return res.status(502).json({ error: 'Upstream error' })
     }
 
