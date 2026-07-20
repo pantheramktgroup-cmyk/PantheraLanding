@@ -28,7 +28,7 @@ export default function Footer() {
                 <span className="font-display text-lg font-semibold tracking-[-0.02em] text-panthera-white">Panthera®</span>
               )}
             </div>
-            <p className="text-[11px] leading-6 text-panthera-ash sm:text-[13px] lg:whitespace-nowrap">Infraestructura comercial para expertos y negocios high-ticket.</p>
+            <p className="text-[11px] leading-6 text-panthera-ash sm:text-[13px] lg:whitespace-nowrap">Infraestructura de demanda para expertos y negocios high-ticket.</p>
           </div>
 
           <div>

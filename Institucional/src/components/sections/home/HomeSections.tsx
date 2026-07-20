@@ -61,7 +61,7 @@ export function HomeHeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            Diseñamos sistemas de captación, seguimiento y ventas para convertir
+            Diseñamos sistemas de captación, seguimiento y procesos comerciales para convertir
             <br className="hidden md:block" />
             atención en oportunidades calificadas.
           </motion.p>
@@ -96,15 +96,14 @@ export function HomeManifestoSection() {
               Ordenamos lo que muchas empresas intentan resolver con piezas sueltas.
             </h2>
             <p className="mt-5 max-w-[46ch] text-[14px] leading-6 text-panthera-white/68 sm:mt-6 sm:max-w-[52ch] sm:text-[15px] sm:leading-7">
-              Panthera trabaja sobre el sistema completo: oferta, captación, seguimiento, ventas y medición.
+              Panthera trabaja sobre el sistema completo: captación, comunicación, seguimiento, procesos comerciales y medición.
             </p>
           </motion.div>
 
           <motion.div className="space-y-4" variants={sectionReveal} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-90px' }}>
             <div className="relative overflow-hidden border border-white/12 bg-panthera-deep/70 p-5 sm:p-6 lg:p-7">
               <p className="text-[14px] leading-7 text-panthera-white/76 sm:text-[15px] sm:leading-8">
-                Un negocio experto no necesita únicamente más tráfico. Necesita una estructura que conecte oferta,
-                captación, seguimiento, ventas y medición.
+                Tu oferta funciona. Sabés vender. Lo que falta es la estructura que conecte captación, seguimiento y oportunidades calificadas.
               </p>
             </div>
 
@@ -149,7 +148,7 @@ export function HomeServicesPreviewSection() {
         <SectionHeader
           eyebrow={servicesPreview.eyebrow}
           title="Servicios que funcionan como sistema"
-          subtitle="Arquitectura, captación, operación y optimización alineadas a la misma estrategia."
+          subtitle="Arquitectura de demanda, captación, operación y optimización alineadas a la misma estrategia."
         />
         <motion.div
           className="mt-8 space-y-1 border-y border-white/10 md:hidden"
@@ -237,7 +236,7 @@ export function HomeApexSection() {
     {
       number: '01',
       title: 'Diagnóstico',
-      description: 'Revisamos oferta, proceso de venta, canales y puntos de fuga.',
+      description: 'Revisamos oferta, procesos comerciales, canales y puntos de fuga.',
     },
     {
       number: '02',
@@ -284,8 +283,8 @@ export function HomeApexSection() {
       <div className="container-panthera relative">
         <SectionHeader
           eyebrow={apex.eyebrow}
-          title="La metodología que ordena la captación y la venta."
-          subtitle="Siete fases para construir un sistema comercial que no dependa de improvisación ni esfuerzo manual continuo."
+          title="La metodología que ordena la captación y la generación de oportunidades."
+          subtitle="Siete fases para construir un sistema de demanda que no dependa de improvisación ni esfuerzo manual constante."
         />
 
         <div className="relative mt-4 md:mt-8">

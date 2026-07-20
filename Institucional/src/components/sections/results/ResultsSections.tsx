@@ -34,7 +34,7 @@ const testimonials: TestimonialItem[] = resultsCopy.cases.map((item, index) => (
   name: item.name,
   role: item.role,
   problem: item.problem,
-  system: item.intervention,
+  system: item.sistema,
   result: item.result,
   youtubeId: item.youtubeId,
   cover: testimonialCovers[index] ?? testimonialHildaCover,

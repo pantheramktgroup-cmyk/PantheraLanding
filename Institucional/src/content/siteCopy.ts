@@ -24,7 +24,7 @@ export const siteCopy = {
   brand: {
     name: 'Panthera',
     suffix: 'Group',
-    tagline: 'Infraestructura comercial',
+    tagline: 'Infraestructura de demanda',
     logo: '/logos/01. PNG/Recurso 9.png',
   },
   nav: [
@@ -42,25 +42,25 @@ export const siteCopy = {
     hero: {
       eyebrow: 'Panthera Group',
       brandWord: 'Panthera.',
-      title: 'Infraestructura comercial para expertos y negocios high-ticket.',
+      title: 'Infraestructura de demanda para expertos y negocios high-ticket.',
       subtitle:
-        'Diseñamos sistemas de captación, seguimiento y ventas para convertir atención en oportunidades calificadas.',
+        'Diseñamos sistemas de captación, seguimiento y procesos comerciales para convertir atención en oportunidades calificadas.',
     },
     manifesto: {
       eyebrow: 'Nuestra mirada',
-      title: 'Panthera existe para ordenar lo que muchas empresas intentan resolver con piezas sueltas.',
+      title: 'Ordenamos lo que muchas empresas intentan resolver con piezas sueltas.',
       body:
-        'Un negocio experto no necesita únicamente más tráfico. Necesita una estructura que conecte oferta, captación, seguimiento, ventas y medición. Por eso trabajamos sobre el sistema completo: desde cómo se genera la oportunidad hasta cómo se convierte y se optimiza.',
+        'Panthera trabaja sobre el sistema completo: captación, comunicación, seguimiento, procesos comerciales y medición. Tu oferta funciona. Sabés vender. Lo que falta es la estructura que conecte captación, seguimiento y oportunidades calificadas.',
       principles: ['Sistema antes que campaña', 'Datos antes que intuición', 'Calidad antes que volumen'],
     },
     servicesPreview: {
       eyebrow: 'Qué hacemos',
-      title: 'De la atención a la venta, con una estructura completa.',
+      title: 'Servicios que funcionan como sistema',
       items: [
         {
           number: '01',
-          title: 'Arquitectura Comercial',
-          text: 'Ordenamos oferta, funnel, proceso de venta y puntos de fuga para construir sobre una base clara.',
+          title: 'Arquitectura de Demanda',
+          text: 'Ordenamos oferta, funnel, comunicación y puntos de fuga para construir sobre una base clara.',
         },
         {
           number: '02',
@@ -70,7 +70,7 @@ export const siteCopy = {
         {
           number: '03',
           title: 'CRM & Automatización',
-          text: 'Implementamos seguimiento, pipelines, recordatorios, dashboards y automatizaciones comerciales.',
+          text: 'Implementamos seguimiento, pipelines, recordatorios, dashboards y automatizaciones operativas.',
         },
         {
           number: '04',
@@ -81,11 +81,11 @@ export const siteCopy = {
     },
     apex: {
       eyebrow: 'APEX System',
-      title: 'APEX System: la metodología que ordena la captación y la venta.',
+      title: 'La metodología que ordena la captación y la generación de oportunidades.',
       subtitle:
-        'Un sistema en fases para que el crecimiento no dependa de improvisación ni de esfuerzo manual continuo.',
+        'Siete fases para construir un sistema de demanda que no dependa de improvisación ni esfuerzo manual constante.',
       phases: [
-        { number: '01', title: 'Diagnóstico', text: 'Oferta, proceso de venta, canales y puntos de fuga.' },
+        { number: '01', title: 'Diagnóstico', text: 'Revisamos oferta, procesos comerciales, canales y puntos de fuga.' },
         { number: '02', title: 'Auditoría', text: 'Revisión de cada pieza del ecosistema comercial.' },
         { number: '03', title: 'Arquitectura', text: 'Diseño del sistema para atraer, filtrar y convertir.' },
         { number: '04', title: 'Construcción', text: 'Landing, CRM, automatizaciones, dashboards y activos.' },
@@ -104,37 +104,37 @@ export const siteCopy = {
           name: 'Gastón Hendlin',
           role: 'Coach Financiero y Ejecutivo',
           text:
-            'Tras pasar por varias agencias y seguir cargando con toda la estrategia y ejecución, necesitaba un sistema que dejara de depender de su esfuerzo diario. Panthera reordenó su ecosistema digital para atraer, filtrar y convertir oportunidades con mayor claridad.',
+            'Tenía oferta validada y sabía vender, pero cargaba con toda la estrategia y ejecución solo. Panthera construyó la infraestructura de demanda para que las oportunidades llegaran filtradas y con contexto.',
         },
         {
           name: 'Laura Sanchez',
           role: 'Coach de Alto Rendimiento',
           text:
-            'Dependía principalmente de referidos y no tenía una estructura comercial profesional para sostener su crecimiento. Panthera ayudó a ordenar su sistema para atraer leads fuera de su círculo cercano y posicionar su propuesta con mayor solidez.',
+            'No tenía una estructura profesional para generar demanda más allá de su círculo cercano. Construimos el sistema para atraer oportunidades calificadas de forma consistente.',
         },
         {
           name: 'Lucas Casalins',
           role: 'Coach Fitness',
           text:
-            'Venía de malas experiencias y de sostener demasiadas áreas de su negocio por cuenta propia. Panthera implementó una estructura integral para ordenar captación, seguimiento y operación comercial, permitiéndole recuperar foco en sus alumnos.',
+            'Venía de malas experiencias y sostenía demasiadas áreas solo. Panthera ordenó su captación, seguimiento y generación de demanda.',
         },
         {
           name: 'José Navas',
           role: 'Empresario',
           text:
-            'Llevaba años intentando escalar en digital, con lanzamientos fallidos y mucha carga operativa. Panthera trabajó sobre la captación, prospección y seguimiento para que pudiera recibir oportunidades más calificadas sin perseguir leads manualmente.',
+            'Llevaba años intentando escalar en digital, con lanzamientos fallidos y mucha carga operativa. Se construyó la infraestructura para generar oportunidades sin depender de su esfuerzo diario.',
         },
         {
           name: 'Hilda Arjona',
           role: 'Mentora',
           text:
-            'Estaba agotada de sostener copy, edición, estrategia y ejecución sin resultados consistentes. Panthera corrigió oferta, mensaje y estructura de captación para ordenar su crecimiento y atraer mejores oportunidades.',
+            'Estaba agotada de sostener copy, edición, estrategia y ejecución sin resultados consistentes. Se corrigió oferta, mensaje y estructura de captación.',
         },
       ],
     },
     finalCta: {
       eyebrow: 'Próximo paso',
-      title: 'Conocé cómo Panthera construye sistemas comerciales para expertos.',
+      title: 'Conocé cómo Panthera construye infraestructura de demanda para expertos.',
       text: 'Explorá nuestra metodología y servicios para entender cómo trabajamos antes de iniciar una conversación.',
       cta: 'Conocer servicios',
     },
@@ -142,41 +142,41 @@ export const siteCopy = {
   about: {
     hero: {
       eyebrow: 'Quiénes somos',
-      title: 'No somos una agencia. Somos el equipo que construye tu sistema comercial.',
+      title: 'No somos una agencia. Somos el equipo que construye tu infraestructura de demanda.',
       subtitle:
-        'Panthera combina estrategia, ejecución y operación para transformar negocios expertos en infraestructuras comerciales medibles.',
+        'Panthera combina estrategia, ejecución y operación para transformar negocios expertos en sistemas de generación de oportunidades calificadas.',
       methodologyLink: 'Conocer nuestra metodología',
     },
     story: {
       eyebrow: 'Origen',
       title: 'Panthera nace para resolver un problema que se repite en negocios expertos.',
       manifesto:
-        'Dejar de depender de referidos, rachas o esfuerzo manual no es un problema de motivación. Es un problema de sistema.',
-      indicators: ['Oferta', 'Captación', 'Conversión', 'Medición'],
+        'No tener un sistema de demanda predecible no es un problema de motivación. Es un problema de infraestructura.',
+      indicators: ['Oferta', 'Captación', 'Demanda', 'Medición'],
       body:
-        'Muchos consultores, mentores y negocios high-ticket tienen una oferta valiosa, pero dependen de referidos, esfuerzo manual o acciones aisladas para vender. Panthera existe para convertir ese conocimiento en una infraestructura comercial clara, medible y escalable.',
+        'Muchos consultores, mentores y negocios high-ticket tienen una oferta valiosa, pero no tienen una infraestructura que genere oportunidades calificadas de forma consistente.',
       highlights: [
         {
           number: '01',
           title: 'El problema',
-          text: 'Ventas manuales, seguimiento desordenado y crecimiento difícil de predecir.',
+          text: 'Captación irregular, seguimiento desordenado y crecimiento difícil de predecir.',
         },
         {
           number: '02',
           title: 'La solución',
-          text: 'Sistemas que conectan captación, CRM, automatización, ventas y medición.',
+          text: 'Sistemas que conectan captación, CRM, automatización, procesos comerciales y medición.',
         },
         {
           number: '03',
           title: 'El diferencial',
-          text: 'No ensamblamos piezas sueltas: diseñamos una operación comercial completa.',
+          text: 'No ensamblamos piezas sueltas: diseñamos una infraestructura de demanda completa.',
         },
       ],
     },
     principles: {
       eyebrow: 'Filosofía',
       title: 'Principios que sostienen cada decisión.',
-      subtitle: 'La estrategia no es una capa. Es la lógica que ordena el sistema comercial completo.',
+      subtitle: 'La estrategia no es una capa. Es la lógica que ordena la infraestructura completa.',
       items: [
         { number: '01', title: 'Sistema antes que campaña', text: 'No trabajamos piezas aisladas. Diseñamos la arquitectura completa.' },
         {
@@ -187,7 +187,7 @@ export const siteCopy = {
         {
           number: '03',
           title: 'Calidad antes que volumen',
-          text: 'El foco no es conseguir más leads, sino mejores oportunidades comerciales.',
+          text: 'El foco no es conseguir más leads, sino mejores oportunidades calificadas.',
         },
         {
           number: '04',
@@ -219,7 +219,7 @@ export const siteCopy = {
         {
           number: '02',
           title: 'Implementación',
-          text: 'Construimos o supervisamos activos, funnels, CRM, automatizaciones y procesos comerciales.',
+          text: 'Construimos o supervisamos activos, funnels, CRM, automatizaciones y estructura de demanda.',
         },
         {
           number: '03',
@@ -237,12 +237,12 @@ export const siteCopy = {
       eyebrow: 'Equipo',
       foundersTitle: 'Fundadores',
       foundersText:
-        'La dirección de Panthera combina visión comercial, estrategia de cliente y construcción de sistemas comerciales.',
+        'La dirección de Panthera combina visión comercial, estrategia de cliente y construcción de sistemas.',
       founders: [
         {
           name: 'Martín Muntaner',
-          role: 'Co-Founder / Sales Manager',
-          text: 'Lidera la dirección comercial, el proceso de ventas y la visión de crecimiento de Panthera.',
+          role: 'Co-Founder / Commercial Director',
+          text: 'Lidera la dirección comercial, la estrategia de crecimiento y la visión de Panthera.',
         },
         {
           name: 'Manuel Ojeda',
@@ -377,47 +377,47 @@ export const siteCopy = {
       eyebrow: 'Testimonios',
       title: 'Personas que ya trabajaron con Panthera.',
       subtitle:
-        'Cada caso muestra como cambia un negocio cuando estrategia, captacion, seguimiento y conversion empiezan a funcionar como sistema.',
+        'Cada caso muestra cómo cambia un negocio cuando captación, comunicación, seguimiento y generación de oportunidades empiezan a funcionar como sistema.',
     },
     cases: [
       {
         name: 'Gaston Hendlin',
         role: 'Coach Financiero y Ejecutivo',
-        problem: 'Dependia de agencias sin resultados y seguia cargando con la estrategia y ejecucion.',
-        intervention: 'Reordenamos su ecosistema comercial para filtrar, captar y vender con estructura.',
+        problem: 'Tenía oferta validada y cerraba bien, pero dependía de agencias sin resultados y cargaba con toda la estrategia solo.',
+        sistema: 'Construimos la infraestructura de demanda para filtrar, captar y generar oportunidades calificadas.',
         result: 'Dejo de perder tiempo con curiosos y empezo a escalar con oportunidades calificadas.',
         youtubeId: 'tkq3PO2-yU4',
       },
       {
         name: 'Laura Sanchez',
         role: 'Coach de Alto Rendimiento',
-        problem: 'Dependia de referidos y no tenia una estructura clara para crecer fuera de su circulo.',
-        intervention: 'Construimos una operacion para atraer leads en frio y profesionalizar su proceso comercial.',
+        problem: 'No tenía una estructura de captación profesional más allá de su círculo cercano.',
+        sistema: 'Construimos una operación para atraer leads en frío y profesionalizar su generación de demanda.',
         result: 'Paso de sentirse invisible a posicionarse con un sistema sostenible de captacion.',
         youtubeId: 'iMTN4h5Gr4E',
       },
       {
         name: 'Lucas Casalins',
         role: 'Coach Fitness',
-        problem: 'Vivia frustrado, haciendo todo solo y sin previsibilidad comercial.',
-        intervention: 'Integramos marketing, seguimiento, ventas y operacion en una misma estructura.',
-        result: 'Recupero orden, previsibilidad y foco en sus alumnos mientras el sistema trabaja detras.',
+        problem: 'Vivía frustrado, haciendo todo solo y sin previsibilidad en su captación.',
+        sistema: 'Integramos captación, comunicación, seguimiento y estructura comercial en una misma infraestructura.',
+        result: 'Recuperó orden, previsibilidad y foco en sus alumnos mientras el sistema trabaja detrás.',
         youtubeId: 'A34a5JF5iPQ',
       },
       {
         name: 'Jose Navas',
         role: 'Mentor de Negocios',
-        problem: 'Llevaba anos intentando escalar en digital con lanzamientos fallidos y exceso operativo.',
-        intervention: 'Delego atraccion, prospeccion y seguimiento dentro de un sistema comercial ordenado.',
-        result: 'Recupero libertad y empezo a recibir agendamientos calificados sin perseguir leads.',
+        problem: 'Llevaba años intentando escalar en digital con lanzamientos fallidos y exceso operativo.',
+        sistema: 'Se construyó la infraestructura de demanda para que las oportunidades llegaran sin perseguir leads.',
+        result: 'Recuperó libertad y empezó a recibir agendamientos calificados de forma consistente.',
         youtubeId: 'HKRIU34pW5g',
       },
       {
         name: 'Hilda Arjona',
         role: 'Coach Espiritual',
         problem: 'Estaba agotada de hacerlo todo sola y sin resultados consistentes.',
-        intervention: 'Corregimos oferta, avatar y ejecucion para ordenar su captacion y seguimiento.',
-        result: 'Volvio a enfocarse en entregar valor mientras el sistema atrae alumnas ideales.',
+        sistema: 'Corregimos oferta, avatar y ejecución para ordenar su captación y seguimiento.',
+        result: 'Volvió a enfocarse en entregar valor mientras el sistema atrae alumnas ideales.',
         youtubeId: 'XqDvbuOqQ7Q',
       },
     ],
@@ -425,17 +425,17 @@ export const siteCopy = {
       eyebrow: 'Aprendizajes',
       title: 'Que se repite en los casos que funcionan.',
       subtitle:
-        'Los resultados no aparecen por una sola pieza. Se producen cuando oferta, captacion, seguimiento, venta y medicion trabajan conectados.',
+        'Los resultados no aparecen por una sola pieza. Se producen cuando captación, comunicación, seguimiento, procesos comerciales y medición trabajan juntos.',
       items: [
         {
           number: '01',
           title: 'Claridad de oferta',
-          text: 'Antes de escalar, el negocio necesita saber que vende, a quien se lo vende y por que esa persona deberia avanzar.',
+          text: 'Antes de escalar, el negocio necesita saber que vende, a quien se lo vende y por que esa persona deberia elegirlo.',
         },
         {
           number: '02',
           title: 'Sistema antes que volumen',
-          text: 'Mas trafico no resuelve un proceso desordenado. Primero se ordena el recorrido comercial.',
+          text: 'Más tráfico no resuelve un proceso desordenado. Primero se ordena el recorrido de demanda.',
         },
         {
           number: '03',
@@ -451,8 +451,8 @@ export const siteCopy = {
     },
     finalCta: {
       eyebrow: 'Siguiente paso',
-      title: 'Conoce que parte de tu sistema comercial necesita orden primero.',
-      text: 'Podes revisar nuestros servicios o iniciar una conversacion para entender si Panthera tiene sentido para tu negocio.',
+      title: 'Conocé qué parte de tu infraestructura de demanda necesita orden primero.',
+      text: 'Podés revisar nuestros servicios o iniciar una conversación para entender si Panthera tiene sentido para tu negocio.',
       cta: 'Agendar diagnostico',
       href: '/landing#booking',
     },
@@ -461,32 +461,32 @@ export const siteCopy = {
   servicesPage: {
     hero: {
       eyebrow: 'Servicios',
-      title: 'Servicios disenados para construir infraestructura comercial, no acciones aisladas.',
+      title: 'Servicios diseñados para construir infraestructura de demanda, no acciones aisladas.',
       subtitle:
-        'Trabajamos sobre la estructura completa de captacion y ventas: estrategia, activos, CRM, automatizacion, seguimiento, publicidad, contenido y medicion.',
+        'Trabajamos sobre la estructura completa de captación y generación de oportunidades: estrategia, activos, CRM, automatización, contenido, seguimiento y medición.',
       cta: 'Ver infraestructura',
     },
     infrastructure: {
       eyebrow: 'Infraestructura',
       title: 'Cada pieza conectada a la misma estrategia.',
       subtitle:
-        'Panthera integra estrategia, captacion, activos, CRM, automatizacion, contenido, seguimiento y medicion para que el sistema funcione completo.',
+        'Panthera integra estrategia, captación, activos, CRM, automatización, contenido, seguimiento y medición en un mismo sistema.',
       items: [
-        { number: '01', title: 'Diagnostico comercial', text: 'Analisis de oferta, ticket, avatar, canales actuales, proceso de venta y puntos criticos.' },
-        { number: '02', title: 'Arquitectura de funnel', text: 'Diseno del recorrido desde la atencion inicial hasta la llamada, propuesta o venta.' },
-        { number: '03', title: 'Landing pages', text: 'Activos de conversion alineados a la oferta, audiencia, mensaje y proceso comercial.' },
-        { number: '04', title: 'CRM y automatizacion', text: 'Pipelines, campos, workflows, calendarios, recordatorios y seguimiento operativo.' },
-        { number: '05', title: 'Captacion', text: 'Estrategia, configuracion, optimizacion y escalado de campanas orientadas a oportunidades calificadas.' },
-        { number: '06', title: 'Contenido y mensajes', text: 'Pilares, guiones, piezas organicas, comunicacion y angulos alineados a la estrategia.' },
-        { number: '07', title: 'Flujo comercial', text: 'Scripts, procesos de calificacion, seguimiento, feedback comercial y mejora de llamadas.' },
-        { number: '08', title: 'Reporting y optimizacion', text: 'Dashboards, KPIs, lectura de datos y decisiones de mejora a partir de evidencia real.' },
+        { number: '01', title: 'Diagnóstico de demanda', text: 'Análisis de oferta, ticket, avatar, canales actuales, procesos comerciales y puntos críticos.' },
+        { number: '02', title: 'Arquitectura de demanda', text: 'Diseño del recorrido desde la atención inicial hasta la oportunidad calificada.' },
+        { number: '03', title: 'Landing pages', text: 'Activos de conversión alineados a la oferta, audiencia, mensaje y proceso de captación.' },
+        { number: '04', title: 'CRM y automatización', text: 'Pipelines, campos, workflows, calendarios, recordatorios y seguimiento operativo.' },
+        { number: '05', title: 'Captación', text: 'Estrategia, configuración, optimización y escalado de campañas orientadas a oportunidades calificadas.' },
+        { number: '06', title: 'Comunicación y contenido', text: 'Pilares, guiones, piezas orgánicas, assets comerciales y ángulos alineados a la estrategia.' },
+        { number: '07', title: 'Estructura comercial', text: 'Scripts, procesos de calificación, seguimiento, lineamientos y assets que apoyen al equipo de ventas del cliente.' },
+        { number: '08', title: 'Reporting y optimización', text: 'Dashboards, KPIs, lectura de datos y decisiones de mejora a partir de evidencia real.' },
       ],
     },
     systems: {
-      eyebrow: 'Sistema operativo comercial',
+      eyebrow: 'Sistema operativo de demanda',
       title: 'Lo que construimos es una estructura para atraer, convertir, entregar y medir.',
       subtitle:
-        'Cada sistema cumple una funcion distinta, pero todos trabajan conectados para que el crecimiento no dependa de piezas aisladas.',
+        'Cada sistema cumple una función distinta, pero todos trabajan conectados para que el crecimiento no dependa del esfuerzo individual.',
       items: [
         { number: '01', title: 'Atraccion', text: 'Oferta, mensaje, contenidos, anuncios, landing pages y activos que generan atencion calificada.' },
         { number: '02', title: 'Conversion', text: 'CRM, agenda, calificacion, seguimiento, scripts y proceso comercial para transformar interes en oportunidades.' },
@@ -496,8 +496,8 @@ export const siteCopy = {
     },
     roadmap: {
       eyebrow: 'Como trabajamos',
-      title: 'Roadmap operativo para construir, activar y escalar el sistema comercial.',
-      subtitle: 'Cada etapa tiene foco, entregables y decisiones concretas. No es una lista de tareas: es una implementacion con direccion.',
+      title: 'Roadmap operativo para construir, activar y escalar la infraestructura de demanda.',
+      subtitle: 'Cada etapa tiene foco, entregables y decisiones concretas. No es una lista de tareas: es una implementación estructurada.',
       methodologyLinkLabel: 'Ver metodologia',
       stageLabel: 'Etapa',
       whatWeDoLabel: 'Que hacemos',
@@ -512,10 +512,10 @@ export const siteCopy = {
         },
         {
           number: '02',
-          stage: 'Arquitectura del sistema',
-          work: 'Disenamos el recorrido comercial: captacion, filtrado, agenda, seguimiento y medicion.',
-          outcome: 'Mapa del sistema, estructura de funnel, CRM y criterios de implementacion.',
-          mobile: 'Disenamos el recorrido completo: captacion, filtrado, agenda, seguimiento y medicion.',
+          stage: 'Arquitectura de demanda',
+          work: 'Diseñamos el recorrido: captación, filtrado, agenda, seguimiento y medición.',
+          outcome: 'Mapa del sistema, estructura de funnel, CRM y criterios de implementación.',
+          mobile: 'Diseñamos el recorrido completo: captación, filtrado, agenda, seguimiento y medición.',
         },
         {
           number: '03',
@@ -541,9 +541,9 @@ export const siteCopy = {
         {
           number: '06',
           stage: 'Escalabilidad',
-          work: 'Con el sistema validado, ampliamos inversion, canales, automatizaciones y capacidad comercial.',
-          outcome: 'Una estructura mas predecible, medible y preparada para crecer.',
-          mobile: 'Con el sistema validado, ampliamos inversion, canales y operacion sobre una base medible.',
+          work: 'Con el sistema validado, ampliamos inversión, canales, automatizaciones y capacidad de demanda.',
+          outcome: 'Una estructura más predecible, medible y preparada para crecer.',
+          mobile: 'Con el sistema validado, ampliamos inversión, canales y operación sobre una base medible.',
         },
       ],
     },
@@ -551,27 +551,27 @@ export const siteCopy = {
       eyebrow: 'Para quien es',
       title: 'Cuando tiene sentido trabajar con Panthera.',
       subtitle:
-        'Panthera funciona mejor cuando existe una direccion clara y el objetivo es ordenar como se atraen, filtran, convierten y miden oportunidades.',
+        'Panthera funciona mejor cuando la oferta ya está validada y el objetivo es ordenar cómo se atraen, filtran y convierten oportunidades.',
       goodTitle: 'Tiene sentido si',
       badTitle: 'Probablemente no sea el momento si',
       good: [
-        'Ya existe una oferta o una idea clara que se quiere ordenar.',
-        'El negocio necesita mas previsibilidad comercial.',
-        'Hay intencion real de medir, mejorar y participar del proceso.',
+        'Ya existe una oferta validada que el mercado compra.',
+        'El negocio necesita más previsibilidad en su generación de demanda.',
+        'Hay intención real de medir, mejorar y participar del proceso.',
         'Se busca construir infraestructura, no solo acciones aisladas.',
       ],
       bad: [
         'Se busca una solucion magica o inmediata.',
-        'Solo se quiere publicar anuncios sin ordenar el proceso comercial.',
+        'Solo se quiere publicar anuncios sin ordenar la estructura de captación.',
         'No hay disposicion a revisar oferta, datos o seguimiento.',
         'Se busca delegar todo sin involucrarse en decisiones estrategicas.',
       ],
     },
     cta: {
       eyebrow: 'Siguiente paso',
-      title: 'Entende que parte de tu sistema comercial necesita orden primero.',
+      title: 'Entendé qué parte de tu infraestructura de demanda necesita orden primero.',
       text:
-        'El primer paso es revisar tu situacion actual y detectar si Panthera puede ayudarte a construir una estructura mas clara, medible y predecible.',
+        'El primer paso es revisar tu situación actual y detectar si Panthera puede ayudarte a construir una estructura que funcione.',
       button: 'Ir a contacto',
       href: '/contacto',
     },
@@ -622,7 +622,7 @@ export const siteCopy = {
       eyebrow: 'Contacto',
       title: 'Contanos en que etapa esta tu negocio.',
       subtitle:
-        'Si ya tenes una oferta validada y queres ordenar captacion, seguimiento, ventas y medicion, podemos ayudarte a entender si Panthera tiene sentido para tu caso.',
+        'Si ya tenés una oferta validada y querés ordenar captación, seguimiento, procesos comerciales y medición, podemos revisar si tiene sentido avanzar juntos.',
     },
     channels: {
       eyebrow: 'Canales de contacto',
@@ -676,27 +676,27 @@ export const siteCopy = {
         {
           question: '¿Que diferencia a Panthera de una agencia de marketing digital tradicional?',
           answer:
-            'A diferencia de una agencia tradicional que solo se enfoca en "conseguir likes" o lanzar campanas sueltas, nosotros nos convertimos en el brazo de marketing y ventas de tu negocio. No solo te gestionamos la publicidad o el contenido, sino que te armamos toda la estructura comercial, metemos metricas claras, te dejamos a punto un CRM y te entrenamos en ventas para que el proceso sea predecible de principio a fin.',
+            'A diferencia de una agencia tradicional que solo se enfoca en "conseguir likes" o lanzar campañas sueltas, nosotros nos convertimos en el brazo de marketing y ventas de tu negocio. No solo te gestionamos la publicidad o el contenido, sino que te armamos toda la estructura comercial, metemos métricas claras, te dejamos a punto un CRM y te entrenamos en ventas para que el proceso sea predecible de principio a fin.',
         },
         {
-          question: '¿Que pasa con todo el trabajo si el dia de manana dejamos de trabajar juntos?',
+          question: '¿Qué pasa con todo el trabajo si el día de mañana dejamos de trabajar juntos?',
           answer:
-            'Todo te queda a vos. Nosotros no nos llevamos el ecosistema construido para tu negocio. Nuestro trabajo es armar la infraestructura de ventas de tu empresa (tus embudos, tu CRM, tus procesos). Esto es un activo de tu negocio. Si el dia de manana decidis que nuestros caminos se separen, toda esa estructura sigue existiendo y operando bajo tu control total.',
+            'Todo te queda a vos. Nosotros no nos llevamos el ecosistema construido para tu negocio. Nuestro trabajo es armar la infraestructura de ventas de tu empresa (tus embudos, tu CRM, tus procesos). Esto es un activo de tu negocio. Si el día de mañana decidís que nuestros caminos se separen, toda esa estructura sigue existiendo y operando bajo tu control total.',
         },
         {
-          question: '¿Me garantizan una facturacion exacta o resultados en pocos dias?',
+          question: '¿Me garantizan una facturación exacta o resultados en pocos días?',
           answer:
-            'No. Si buscas a alguien que te prometa "facturar 30.000 dolares en 90 dias" o una solucion magica sin mover un dedo, no somos para vos y te diria que salgas corriendo. Nuestro enfoque es 100% analitico, basado en metricas y en armar un sistema solido paso a paso. No existen los botones magicos, aca hay laburo estrategico y decisiones basadas en datos.',
+            'No. Si buscás a alguien que te prometa "facturar 30.000 dólares en 90 días" o una solución mágica sin mover un dedo, no somos para vos y te diría que salgas corriendo. Nuestro enfoque es 100% analítico, basado en métricas y en armar un sistema sólido paso a paso. No existen los botones mágicos, acá hay laburo estratégico y decisiones basadas en datos.',
         },
         {
-          question: '¿Para que tipo de negocios esta pensado este servicio?',
+          question: '¿Para qué tipo de negocios está pensado este servicio?',
           answer:
-            'Trabajamos con empresas B2C, consultores, coaches y mentores que tienen un buen servicio y clientes contentos, que tienen una oferta validada y facturan al menos $5.000 USD/mes, pero que necesitan un refuerzo potente en la generacion de oportunidades. Nuestro objetivo es crear un flujo constante y predecible de nuevas oportunidades de venta.',
+            'Trabajamos con empresas B2C, consultores, coaches y mentores que tienen un buen servicio y clientes contentos, que tienen una oferta validada y facturan al menos $5.000 USD/mes, pero que necesitan un refuerzo potente en la generación de oportunidades. Nuestro objetivo es crear un flujo constante y predecible de nuevas oportunidades de venta.',
         },
         {
-          question: '¿Que es exactamente lo que arman en los primeros meses?',
+          question: '¿Qué es exactamente lo que arman en los primeros meses?',
           answer:
-            'En la primera etapa nos enfocamos en: disenar tu estrategia comercial y tu oferta, implementar un CRM con todas sus automatizaciones de seguimiento, armar tu embudo de ventas, producir y gestionar tu publicidad digital y el contenido organico, y darte un entrenamiento en ventas con el acompanamiento directo nuestro (de los duenos).',
+            'En la primera etapa nos enfocamos en: diseñar tu estrategia comercial y tu oferta, implementar un CRM con todas sus automatizaciones de seguimiento, armar tu embudo de ventas, producir y gestionar tu publicidad digital y el contenido orgánico, y darte un entrenamiento en ventas con el acompañamiento directo nuestro (de los dueños).',
         },
       ],
     },
@@ -708,7 +708,7 @@ export const siteCopy = {
   },
   footer: {
     description:
-      'Sistemas comerciales para expertos y negocios high-ticket. Estrategia, captación, CRM, automatización y reporting en una sola infraestructura.',
+      'Infraestructura de demanda para expertos y negocios high-ticket.',
     columns: {
       navigation: {
         title: 'Navegación',
@@ -723,7 +723,7 @@ export const siteCopy = {
       services: {
         title: 'Servicios',
         links: [
-          { label: 'Arquitectura comercial', href: '/servicios' },
+          { label: 'Arquitectura de demanda', href: '/servicios' },
           { label: 'Captación & performance', href: '/servicios' },
           { label: 'CRM & automatización', href: '/servicios' },
           { label: 'Reporting & optimización', href: '/servicios' },
@@ -738,6 +738,6 @@ export const siteCopy = {
         ],
       },
     },
-    text: 'Panthera Group — Sistemas comerciales para expertos y negocios high-ticket.',
+    text: 'Panthera Group — Infraestructura de demanda para expertos y negocios high-ticket.',
   },
 } as const
