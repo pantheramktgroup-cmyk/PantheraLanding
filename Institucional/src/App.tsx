@@ -10,6 +10,7 @@ import Results from './pages/Results'
 import Contact from './pages/Contact'
 import LandingPage from './landing-app/App.jsx'
 import ThankYouPage from './landing-app/pages/ThankYouPage.jsx'
+import SecondValidationPage from './landing-app/pages/SecondValidationPage.jsx'
 import { useEffect, useLayoutEffect } from 'react'
 
 function ScrollToTop() {
@@ -72,6 +73,8 @@ function AppShell() {
   const location = useLocation()
   const isLandingRoute =
     location.pathname === '/thank-you-page' ||
+    location.pathname === '/segunda-validacion' ||
+    location.pathname.startsWith('/segunda-validacion/') ||
     location.pathname === '/landing' ||
     location.pathname.startsWith('/landing/')
 
@@ -96,6 +99,7 @@ function AppShell() {
             <Route path="/contacto" element={<Contact />} />
             <Route path="/landing" element={<LandingPage />} />
             <Route path="/thank-you-page" element={<ThankYouPage />} />
+            <Route path="/segunda-validacion" element={<SecondValidationPage />} />
           </Routes>
         </motion.main>
       </AnimatePresence>
