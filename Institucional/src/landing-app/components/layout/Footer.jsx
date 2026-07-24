@@ -1,5 +1,5 @@
 import { landingCopy } from '../../content/landingCopy'
-import { scrollToBooking } from '../../lib/scrollToBooking'
+import Button from '../ui/Button'
 
 const { footer } = landingCopy
 
@@ -80,20 +80,18 @@ export default function Footer({ hideBookingLink = false, compactLogoCopy = fals
             <ul className="flex flex-wrap justify-center md:justify-start gap-6">
               {visibleLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-xs font-sans text-panthera-ash hover:text-panthera-white transition-colors duration-200 tracking-wide uppercase"
-                    onClick={
-                      link.href === '#booking'
-                        ? (e) => {
-                            e.preventDefault()
-                            scrollToBooking()
-                          }
-                        : undefined
-                    }
-                  >
-                    {link.label}
-                  </a>
+                  {link.href === '#booking' ? (
+                    <Button href="#booking" variant="primary" className="header-nav-cta">
+                      {link.label}
+                    </Button>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-xs font-sans text-panthera-ash hover:text-panthera-white transition-colors duration-200 tracking-wide uppercase"
+                    >
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>

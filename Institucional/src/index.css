@@ -243,7 +243,7 @@
     --mouse-y: -999px;
     position: relative;
     display: inline-block;
-    color: rgba(255, 255, 255, 0.22);
+    color: rgba(255, 255, 255, 0.44);
     background: radial-gradient(
       circle 115px at var(--mouse-x) var(--mouse-y),
       rgba(227, 247, 141, 1) 0%,
@@ -251,7 +251,7 @@
       rgba(227, 247, 141, 0.35) 45%,
       transparent 68%
     ),
-    linear-gradient(rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.22));
+    linear-gradient(rgba(242, 242, 242, 0.46), rgba(242, 242, 242, 0.46));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -299,7 +299,7 @@
 
 @media (hover: none) {
   .interactive-title {
-    background: linear-gradient(rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.22));
+    background: linear-gradient(rgba(242, 242, 242, 0.46), rgba(242, 242, 242, 0.46));
     -webkit-background-clip: text;
     background-clip: text;
   }

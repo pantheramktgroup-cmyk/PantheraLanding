@@ -254,8 +254,6 @@ export const siteCopy = {
       title: 'Equipo operativo',
       subtitle:
         'Cada rol existe para que la estrategia se transforme en implementación, seguimiento y mejora real.',
-      note:
-        'Además, Panthera trabaja con un equipo de edición y producción audiovisual según las necesidades de cada proyecto.',
       roles: [
         {
           number: '01',
@@ -277,9 +275,9 @@ export const siteCopy = {
         },
         {
           number: '04',
-          title: 'Automation Specialist',
-          text: 'Construye y mantiene CRM, workflows, automatizaciones, integraciones y sistemas técnicos.',
-          member: 'René Mendoza',
+          title: 'EDICIÓN AUDIOVISUAL',
+          text: 'Produce, edita y adapta piezas audiovisuales para que cada contenido salga con calidad, ritmo y coherencia visual.',
+          member: 'Equipo de edición',
         },
       ],
     },

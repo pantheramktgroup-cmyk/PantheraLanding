@@ -361,7 +361,6 @@ export function AboutTeamSection() {
               </motion.article>
             ))}
           </motion.div>
-          <p className="mt-5 border-l border-white/12 pl-4 text-[12.5px] leading-6 text-panthera-white/58 sm:mt-6 sm:text-[13px]">{team.note}</p>
         </div>
       </div>
     </section>
