@@ -449,7 +449,7 @@ export default function Testimonials() {
   const isVariantB = variant === 'B'
 
   return (
-    <section className="relative overflow-hidden bg-[#0f100f]">
+    <section id="testimonials" className="relative overflow-hidden bg-[#0f100f]">
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute inset-0 premium-flow-bg" />
         <div className="absolute -left-[18%] top-[6%] h-[320px] w-[320px] rounded-full premium-flow-blob premium-flow-blob-a" />
