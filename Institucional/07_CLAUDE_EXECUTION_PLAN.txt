@@ -1,0 +1,101 @@
+# CLAUDE EXECUTION PLAN — Crear proyecto paso a paso
+
+Usar este plan para construir sin romper.
+
+PASO 1 — Setup
+
+Crear proyecto:
+```bash
+npm create vite@latest panthera-institucional -- --template react-ts
+cd panthera-institucional
+npm install
+npm install tailwindcss postcss autoprefixer framer-motion lucide-react react-router-dom @vercel/analytics @vercel/speed-insights
+npx tailwindcss init -p
+```
+
+Configurar Tailwind.
+Configurar `src/index.css`.
+Cargar fuentes Helvetica locales desde `src/fonts`.
+
+PASO 2 — Base visual
+
+Crear:
+- colors Tailwind Panthera
+- container-panthera
+- section-pad
+- noise-overlay
+- bg-noise
+- Button
+- Header
+- Footer
+
+PASO 3 — Routing
+
+Crear rutas:
+- /
+- /quienes-somos
+- /servicios
+- /resultados
+- /contacto
+
+Agregar Analytics y SpeedInsights en App.
+
+PASO 4 — Content
+
+Crear `src/content/siteCopy.ts` usando el starter copy.
+No hardcodear contenido principal dentro de componentes.
+
+PASO 5 — Animaciones
+
+Crear:
+- `src/lib/animations.ts`
+- `AnimatedWords.tsx`
+- `AnimatedMultiStyleWords.tsx`
+- `SectionReveal.tsx`
+- `AnimatedTextReveal.tsx`
+
+PASO 6 — Home
+
+Construir:
+- Hero
+- Manifesto
+- ServicesPreview
+- ApexPreview
+- ResultsPreview
+- FinalCTA
+
+PASO 7 — Páginas internas
+
+Construir:
+- About
+- Services
+- Results
+- Contact
+
+PASO 8 — Responsive QA
+
+Probar:
+- 390px mobile
+- 768px tablet
+- 1440px desktop
+- 1920px desktop
+
+PASO 9 — Performance QA
+
+- Videos lazy si no son hero
+- Imágenes webp
+- No animar miles de caracteres
+- Lighthouse básico
+- Vercel Speed Insights
+
+PASO 10 — Build
+
+```bash
+npm run build
+npm run preview
+```
+
+CRITERIO FINAL
+
+La web debe verse como una marca premium high-ticket, no como landing genérica.
+Cada sección debe tener intención comercial y estética Panthera.

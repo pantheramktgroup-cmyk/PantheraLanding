@@ -4,6 +4,7 @@ import { Play, X } from 'lucide-react'
 import Button from '../../ui/Button'
 import { cardReveal, sectionReveal, staggerChildren } from '../../../lib/animations'
 import InteractiveBackground from '../home/InteractiveBackground'
+import testimonialOscarCover from '../../../assets/images/testimonial_oscar_cover.webp'
 import testimonialGastonCover from '../../../assets/images/testimonial_gaston_cover.webp'
 import testimonialLauraCover from '../../../assets/images/testimonial_laura_cover.webp'
 import testimonialLucasCover from '../../../assets/images/testimonial_lucas_cover.webp'
@@ -23,6 +24,7 @@ type TestimonialItem = {
 
 const resultsCopy = siteCopy.results
 const testimonialCovers = [
+  testimonialOscarCover,
   testimonialGastonCover,
   testimonialLauraCover,
   testimonialLucasCover,
@@ -207,16 +209,11 @@ export function ResultsTestimonialsSection() {
           whileInView="show"
           viewport={{ once: true, margin: '-100px' }}
         >
-          {testimonials.map((testimonial, index) => {
-            const desktopPositionClass =
-              index < 3 ? 'lg:col-span-2' : index === 3 ? 'lg:col-span-2 lg:col-start-2' : 'lg:col-span-2 lg:col-start-4'
-
-            return (
-              <div key={testimonial.name} className={`h-full ${desktopPositionClass}`}>
-                <TestimonialCard testimonial={testimonial} />
-              </div>
-            )
-          })}
+          {testimonials.map((testimonial) => (
+            <div key={testimonial.name} className="h-full lg:col-span-2">
+              <TestimonialCard testimonial={testimonial} />
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>

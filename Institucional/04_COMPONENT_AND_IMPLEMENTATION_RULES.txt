@@ -1,0 +1,179 @@
+# REGLAS DE IMPLEMENTACIÓN — React + Vite + TypeScript + Tailwind
+
+DEPENDENCIAS
+
+Instalar:
+```bash
+npm install framer-motion lucide-react @vercel/analytics @vercel/speed-insights
+```
+
+Si se usa React Router:
+```bash
+npm install react-router-dom
+```
+
+TAILWIND CONFIG
+
+Extender colores:
+
+```ts
+colors: {
+  panthera: {
+    black: '#000000',
+    deep: '#080808',
+    card: '#101010',
+    elevated: '#151515',
+    white: '#F5F5F5',
+    cream: '#F3F0DD',
+    green: '#E3F78D',
+    ash: 'rgba(245,245,245,0.60)',
+    muted: 'rgba(245,245,245,0.42)',
+  }
+}
+```
+
+Fuentes:
+
+```ts
+fontFamily: {
+  sans: ['"Helvetica Now Text"', 'Helvetica', 'Arial', 'sans-serif'],
+  display: ['"Helvetica Now Display"', 'Helvetica', 'Arial', 'sans-serif'],
+}
+```
+
+INDEX.CSS
+
+Incluir:
+- @font-face desde src/fonts
+- reset suave
+- background negro global
+- selección con Panthera Green
+- utilities de noise
+
+Ejemplo noise:
+
+```css
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg ... %3E");
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+}
+```
+
+Crear también:
+- `.bg-noise`
+- `.container-panthera`
+- `.section-pad`
+- `.text-balance` si no está disponible
+
+COMPONENTES
+
+Button:
+Props:
+- variant: primary | secondary | ghost
+- href
+- children
+- className
+
+Debe integrar Vercel Analytics:
+- track('button_click', { label, href, page })
+- si href/contacto/booking: track('contact_cta_click', ...)
+
+Header:
+- responsive
+- nav links
+- mobile menu
+- scroll state
+
+Footer:
+- logo
+- links
+- copyright
+
+MediaHero:
+- acepta video o imagen
+- overlay
+- noise
+- content slots
+
+SectionHeader:
+Props:
+- eyebrow
+- title
+- subtitle
+- align
+
+AnimatedWords:
+- usar Framer Motion
+
+ServiceCard:
+- icon lucide opcional
+- title
+- text
+- index for stagger
+
+CaseCard:
+- name
+- role
+- description
+- video/image optional
+- placeholder if missing
+
+ROUTING
+
+Usar React Router.
+Rutas:
+- `/`
+- `/quienes-somos`
+- `/servicios`
+- `/resultados`
+- `/contacto`
+
+Analytics:
+En App:
+```tsx
+<Analytics />
+<SpeedInsights />
+```
+
+Para vistas por página ya basta con Vercel Analytics.
+Para eventos custom:
+```ts
+import { track } from '@vercel/analytics'
+track('contact_cta_click', { page: 'home' })
+```
+
+ACCESIBILIDAD
+
+- Imágenes decorativas con alt=""
+- Logo con alt="Panthera Group"
+- Botones con texto claro
+- Contraste alto
+- Navegación keyboard friendly
+- Menú mobile accesible
+- No bloquear scroll
+
+PERFORMANCE
+
+- Usar lazy loading en imágenes no críticas
+- Video hero con poster si existe
+- Videos muted playsInline loop
+- Evitar animación por carácter en textos demasiado largos
+- Optimizar imágenes a webp
+- No cargar assets pesados en todas las páginas si no se usan
+
+NO INVENTAR
+
+No inventar:
+- métricas
+- premios
+- clientes
+- resultados
+- testimonios
+- nombres de miembros del equipo si no están confirmados
+
+Usar placeholders donde falte:
+`Lorem ipsum pendiente de reemplazo.`

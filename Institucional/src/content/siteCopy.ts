@@ -379,6 +379,14 @@ export const siteCopy = {
     },
     cases: [
       {
+        name: 'Óscar Contreras',
+        role: 'Consultor Estratégico y Fundador de Empodera',
+        problem: 'El crecimiento de su empresa generó desorden, estaba "acogotado" por la alta carga operativa diaria y operaba como un autoempleado en lugar de liderar una empresa.',
+        sistema: 'Implementamos una sistematización de procesos basada en datos (sistema Apex) para profesionalizar su gestión y estructurar completamente su área comercial.',
+        result: 'Logró estructurar su negocio obteniendo "paz" operativa, recuperó el tiempo perdido y logramos una escalabilidad con un ROAS de x62, muy por encima de la facturación que tenían pronosticada.',
+        youtubeId: 'ZM4-jyBQ_B8',
+      },
+      {
         name: 'Gaston Hendlin',
         role: 'Coach Financiero y Ejecutivo',
         problem: 'Tenía oferta validada y cerraba bien, pero dependía de agencias sin resultados y cargaba con toda la estrategia solo.',

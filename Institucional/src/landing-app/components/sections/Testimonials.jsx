@@ -18,7 +18,7 @@ function GridCard({ c }) {
   }, [])
 
   return (
-    <div className="group relative flex flex-col h-[420px] md:h-[450px] bg-[#0c0c0b] border border-[rgba(245,245,245,0.07)] overflow-hidden">
+    <div className="group relative flex flex-col h-[440px] md:h-[470px] bg-[#0c0c0b] border border-[rgba(245,245,245,0.07)] overflow-hidden">
       <div className="relative w-full aspect-video overflow-hidden">
         {!playing ? (
           <button
@@ -65,7 +65,7 @@ function GridCard({ c }) {
           style={{
             display: '-webkit-box',
             WebkitBoxOrient: 'vertical',
-            WebkitLineClamp: 4,
+            WebkitLineClamp: 5,
           }}
         >
           {c.description}

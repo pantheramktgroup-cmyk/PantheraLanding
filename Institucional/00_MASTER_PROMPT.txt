@@ -1,0 +1,124 @@
+# MASTER PROMPT — Sitio institucional Panthera Group
+
+Quiero crear desde cero un sitio institucional para Panthera Group usando:
+
+- React 18
+- Vite
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Lucide React
+- Vercel Analytics y Speed Insights
+- Fuentes Helvetica instaladas manualmente en `src/fonts/`
+
+El objetivo es crear una web institucional premium, oscura, cinematográfica y minimalista para Panthera Group, inspirada en el prompt visual de Prisma, pero NO copiar textos, nombre, colores ni fuentes de Prisma.
+
+La web debe sentirse:
+- high-ticket
+- sofisticada
+- editorial
+- oscura
+- estratégica
+- precisa
+- cinematográfica
+- con autoridad
+- orientada a negocios digitales, captación, ventas y sistemas comerciales
+
+No debe sentirse:
+- SaaS genérico
+- plantilla común
+- agencia tradicional
+- startup colorida
+- demasiado tech
+- infantil
+- sobrecargada
+- con gradients exagerados
+- con animaciones baratas
+
+PÁGINAS PRINCIPALES
+
+Crear una estructura multipágina con routing:
+
+1. Inicio `/`
+2. Quiénes somos `/quienes-somos`
+3. Servicios `/servicios`
+4. Resultados `/resultados`
+5. Contacto `/contacto`
+
+Si hace falta empezar más simple, construir primero las 4 páginas base: Inicio, Quiénes somos, Servicios y Contacto. La página Resultados puede quedar preparada con lorem ipsum o placeholders si todavía faltan assets/testimonios.
+
+BRAND ADAPTATION
+
+Tomar como referencia de estilo la landing actual de Panthera:
+- fondo negro profundo
+- textos blancos/crema
+- acento amarillo/verde Panthera
+- estética premium, editorial y cinematográfica
+- botones con presencia, borde fino y microinteracciones
+- imágenes/video con overlays oscuros, grain, viñetas y contraste controlado
+- navegación limpia y minimalista
+
+Usar contenido real disponible sobre Panthera cuando exista:
+- Panthera Group ayuda a expertos, coaches, consultores y negocios high-ticket a dejar de depender de referidos, rachas o esfuerzo manual.
+- Construye sistemas comerciales completos: captación, landing, CRM, automatizaciones, seguimiento, dashboards y optimización.
+- Su enfoque no es solo anuncios ni diseño: es arquitectura comercial, estrategia, ejecución y optimización.
+- El sistema Panthera APEX ordena diagnóstico, auditoría, arquitectura, construcción, activación, optimización y escalabilidad.
+- El objetivo es convertir atención en oportunidades calificadas y oportunidades en ventas medibles.
+
+Donde falte información concreta, usar lorem ipsum profesional o placeholders claros. No inventar cifras, clientes, premios, logos ni testimonios falsos.
+
+IMPORTANTE
+
+- No usar Google Fonts.
+- No usar Almarai ni Instrument Serif.
+- Usar únicamente fuentes Helvetica locales desde `src/fonts/`.
+- Crear componentes limpios, reutilizables y bien organizados.
+- Toda la web debe ser responsive.
+- Priorizar mobile y desktop por igual.
+- Mantener una arquitectura escalable.
+- No hardcodear contenido dentro de componentes si puede ir en archivos de contenido.
+- Crear `src/content/siteCopy.ts` para centralizar textos.
+- Crear `src/lib/animations.ts` para configuraciones comunes de Framer Motion.
+- Crear `src/components/ui/Button.tsx`, `SectionHeader.tsx`, `AnimatedWords.tsx`, `AnimatedTextReveal.tsx`, etc.
+
+ESTRUCTURA ESPERADA
+
+src/
+  assets/
+  fonts/
+  components/
+    layout/
+      Header.tsx
+      Footer.tsx
+    ui/
+      Button.tsx
+      SectionHeader.tsx
+      AnimatedWords.tsx
+      AnimatedTextReveal.tsx
+      NoiseOverlay.tsx
+      MediaCard.tsx
+    sections/
+      home/
+      about/
+      services/
+      results/
+      contact/
+  content/
+    siteCopy.ts
+  lib/
+    animations.ts
+    tracking.ts
+  pages/
+    Home.tsx
+    About.tsx
+    Services.tsx
+    Results.tsx
+    Contact.tsx
+  App.tsx
+  main.tsx
+  index.css
+
+OUTPUT
+
+Entregar el proyecto completo funcionando.
+Incluir instrucciones claras para instalar dependencias, correr en local y desplegar en Vercel.

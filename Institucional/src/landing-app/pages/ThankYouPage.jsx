@@ -28,6 +28,15 @@ const STEPS = [
 
 const CASES = [
   {
+    name: 'Óscar Contreras',
+    role: 'Consultor Estratégico y Fundador de Empodera',
+    cover: '/images/testimonial_oscar_cover.webp',
+    youtubeEmbedUrl: 'https://www.youtube.com/embed/ZM4-jyBQ_B8',
+    videoTitle: 'Testimonio de Óscar Contreras',
+    description:
+      'Frustrado por la altísima carga operativa y el desorden que implicaba escalar su negocio, Óscar había probado con otras agencias sin obtener soluciones a su medida y se encontraba "acogotado" por el día a día. Se dio cuenta de que estaba actuando como un autoempleado. Al implementar nuestro sistema, logró profesionalizar y sistematizar sus procesos basándose en datos concretos. Hoy ha estructurado su parte comercial, recuperó tiempo valioso, consiguió "paz" operativa y logramos una escalabilidad con un ROAS de x62, muy por encima de la facturación que tenían pronosticada.',
+  },
+  {
     name: 'Gastón Hendlin',
     role: 'Coach Financiero y Ejecutivo',
     cover: '/images/testimonial_gaston_cover.webp',

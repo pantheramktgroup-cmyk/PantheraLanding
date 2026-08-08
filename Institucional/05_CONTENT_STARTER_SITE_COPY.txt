@@ -1,0 +1,161 @@
+# STARTER COPY — Panthera Group Institutional
+
+Crear `src/content/siteCopy.ts` con esta estructura inicial.
+Puede ajustarse luego.
+
+```ts
+export const siteCopy = {
+  nav: [
+    { label: 'Inicio', href: '/' },
+    { label: 'Quiénes somos', href: '/quienes-somos' },
+    { label: 'Servicios', href: '/servicios' },
+    { label: 'Resultados', href: '/resultados' },
+    { label: 'Contacto', href: '/contacto' },
+  ],
+
+  home: {
+    hero: {
+      eyebrow: 'Panthera Group',
+      title: 'Convertimos experiencia en un sistema comercial medible.',
+      subtitle:
+        'Diseñamos, implementamos y optimizamos ecosistemas de captación y ventas para expertos, coaches, consultores y negocios high-ticket.',
+      ctaPrimary: 'Agendar diagnóstico',
+      ctaSecondary: 'Ver servicios',
+      badges: ['Estrategia', 'Captación', 'CRM', 'Automatización', 'Ventas'],
+    },
+
+    manifesto: {
+      eyebrow: 'Nuestra mirada',
+      title: 'No hacemos campañas sueltas. Construimos sistemas.',
+      body:
+        'Un negocio high-ticket no necesita más ruido. Necesita una arquitectura comercial capaz de atraer al perfil correcto, filtrar oportunidades, ordenar el seguimiento y convertir con datos.',
+    },
+
+    servicesPreview: {
+      eyebrow: 'Qué hacemos',
+      title: 'De la atención a la venta, con una estructura completa.',
+      items: [
+        { title: 'Arquitectura comercial', text: 'Ordenamos oferta, funnel, proceso de venta y puntos de fuga para construir sobre una base clara.' },
+        { title: 'Captación y performance', text: 'Diseñamos y activamos canales de adquisición orientados a oportunidades calificadas.' },
+        { title: 'CRM y automatizaciones', text: 'Implementamos seguimiento, pipelines, recordatorios, dashboards y automatizaciones comerciales.' },
+        { title: 'Optimización continua', text: 'Medimos, corregimos y escalamos a partir de datos reales, no de intuiciones.' },
+      ],
+    },
+
+    apex: {
+      eyebrow: 'APEX System',
+      title: 'Una metodología para construir previsibilidad.',
+      phases: [
+        { number: '01', title: 'Diagnóstico', text: 'Oferta, proceso de venta, canales y puntos de fuga.' },
+        { number: '02', title: 'Auditoría', text: 'Revisión de cada pieza del ecosistema comercial.' },
+        { number: '03', title: 'Arquitectura', text: 'Diseño del sistema para atraer, filtrar y convertir.' },
+        { number: '04', title: 'Construcción', text: 'Landing, CRM, automatizaciones, dashboards y activos.' },
+        { number: '05', title: 'Activación', text: 'Lanzamiento del sistema y captura de datos reales.' },
+        { number: '06', title: 'Optimización', text: 'Ajustes por evidencia, no por intuición.' },
+        { number: '07', title: 'Escalabilidad', text: 'Ampliación del sistema una vez validado.' },
+      ],
+    },
+
+    finalCta: {
+      title: 'Si tu negocio ya vende, pero todavía depende demasiado de vos, hablemos.',
+      text: 'Evaluamos tu situación actual y detectamos si Panthera puede ayudarte a construir un sistema comercial más predecible.',
+      cta: 'Agendar diagnóstico',
+    },
+  },
+
+  about: {
+    hero: {
+      eyebrow: 'Quiénes somos',
+      title: 'No somos una agencia. Somos el equipo que construye tu sistema comercial.',
+      subtitle:
+        'Panthera Group combina estrategia, ejecución y operación para transformar negocios expertos en ecosistemas comerciales medibles.',
+    },
+
+    story: {
+      title: 'Panthera nace para resolver un problema concreto.',
+      body:
+        'Muchos expertos tienen una oferta valiosa, resultados reales y capacidad de entrega, pero dependen de referidos, rachas o esfuerzo manual para vender. Panthera existe para convertir ese conocimiento en una estructura comercial clara, medible y escalable.',
+    },
+
+    principles: [
+      { title: 'Sistema antes que campaña', text: 'No trabajamos piezas aisladas. Diseñamos la arquitectura completa.' },
+      { title: 'Datos antes que intuición', text: 'Las decisiones se toman a partir de comportamiento real.' },
+      { title: 'Calidad antes que volumen', text: 'El foco no es conseguir más leads, sino mejores oportunidades.' },
+      { title: 'Ejecución con criterio', text: 'Unimos estrategia, implementación y mejora continua.' },
+    ],
+
+    team: {
+      title: 'El equipo detrás del sistema.',
+      text: 'Lorem ipsum pendiente de reemplazo con información real sobre fundadores, equipo y roles.',
+    },
+  },
+
+  services: {
+    hero: {
+      eyebrow: 'Servicios',
+      title: 'Servicios diseñados para crear un sistema, no solo una campaña.',
+      subtitle:
+        'Trabajamos sobre la estructura completa de captación y ventas: estrategia, activos, automatización, seguimiento y optimización.',
+    },
+
+    items: [
+      { title: 'Diagnóstico comercial', text: 'Análisis de oferta, funnel, proceso de venta y puntos críticos.' },
+      { title: 'Arquitectura de funnel', text: 'Diseño del recorrido desde la atención inicial hasta la llamada o venta.' },
+      { title: 'Landing pages', text: 'Activos de conversión alineados a la oferta, audiencia y proceso comercial.' },
+      { title: 'CRM y automatización', text: 'Pipelines, campos, workflows, recordatorios y seguimiento operativo.' },
+      { title: 'Captación', text: 'Campañas y canales orientados a atraer oportunidades calificadas.' },
+      { title: 'Dashboards', text: 'Reportes y visibilidad sobre leads, agendas, shows, ventas y facturación.' },
+      { title: 'Optimización', text: 'Mejora continua del sistema según datos reales.' },
+      { title: 'Consultoría estratégica', text: 'Acompañamiento para decisiones de oferta, operación y crecimiento.' },
+    ],
+
+    fit: {
+      title: 'Para quién es Panthera',
+      good: [
+        'Expertos, coaches, consultores y mentores con oferta validada.',
+        'Negocios high-ticket que ya venden, pero necesitan previsibilidad.',
+        'Equipos que quieren ordenar captación, ventas y seguimiento.',
+      ],
+      bad: [
+        'Negocios sin oferta clara.',
+        'Personas que buscan una solución mágica.',
+        'Empresas que solo quieren anuncios sin sistema comercial.',
+      ],
+    },
+  },
+
+  results: {
+    hero: {
+      eyebrow: 'Resultados',
+      title: 'Resultados que nacen de sistemas, no de casualidad.',
+      subtitle:
+        'Casos, testimonios y aprendizajes de negocios que dejaron de depender solo del esfuerzo manual.',
+    },
+
+    cases: [
+      { name: 'Gastón Hendlin', role: 'Coach Financiero y Ejecutivo', text: 'Placeholder basado en caso real. Reemplazar por copy final validado.' },
+      { name: 'Laura Sanchez', role: 'Coach de Alto Rendimiento', text: 'Placeholder basado en caso real. Reemplazar por copy final validado.' },
+      { name: 'Lucas Casalins', role: 'Coach Fitness', text: 'Placeholder basado en caso real. Reemplazar por copy final validado.' },
+    ],
+  },
+
+  contact: {
+    hero: {
+      eyebrow: 'Contacto',
+      title: 'Contanos en qué etapa está tu negocio.',
+      subtitle:
+        'Evaluamos si Panthera puede ayudarte a construir un sistema comercial más predecible, medible y escalable.',
+    },
+
+    form: {
+      title: 'Solicitar diagnóstico',
+      fields: ['Nombre', 'Email', 'WhatsApp', 'Sitio o Instagram', 'Mensaje'],
+      cta: 'Enviar solicitud',
+    },
+  },
+
+  footer: {
+    text: 'Panthera Group — Sistemas comerciales para expertos y negocios high-ticket.',
+  },
+}
+```

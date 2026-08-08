@@ -334,6 +334,16 @@ export const landingCopy = {
       'Coaches, consultores y mentores que ordenaron captación,\nseguimiento y proceso comercial con Panthera.',
     cases: [
       {
+        name: 'Óscar Contreras',
+        role: 'Consultor Estratégico y Fundador de Empodera',
+        description:
+          'Tenía una alta carga operativa, desorden al intentar escalar y operaba más como un autoempleado. Sistematizamos sus procesos comerciales basándonos en datos y estructuramos su negocio de forma profesional. Hoy ganó paz operativa y logramos un ROAS de x62.',
+        youtubeUrl: 'https://www.youtube.com/watch?v=ZM4-jyBQ_B8',
+        youtubeEmbedUrl: 'https://www.youtube.com/embed/ZM4-jyBQ_B8',
+        videoTitle: 'Testimonio de Óscar Contreras',
+        coverImage: '/images/testimonial_oscar_cover.webp',
+      },
+      {
         name: 'Gastón Hendlin',
         role: 'Coach Financiero y Ejecutivo',
         description:
