@@ -6,7 +6,7 @@ import founderOne from '../assets/images/fundador_1.webp'
 import founderTwo from '../assets/images/fundador_2.webp'
 import creationHand from '../assets/images/creation_panthera_hand.webp'
 import aboutHeroImage from '../assets/images/fundadores.webp'
-import aboutFoundersImage from '../assets/images/IMG_7661.jpg'
+import aboutFoundersImage from '../assets/images/IMG_7661.webp'
 
 export const mediaAssets = {
   heroVideo,
@@ -100,6 +100,12 @@ export const siteCopy = {
       subtitle: 'Casos reales de expertos que dejaron de depender solo del esfuerzo manual.',
       cta: 'Ver resultados',
       cases: [
+        {
+          name: 'Óscar Contreras',
+          role: 'CONSULTOR ESTRATÉGICO Y FUNDADOR DE EMPODERA',
+          text:
+            'Tenía alta carga operativa, procesos comerciales desordenados y una estructura difícil de escalar. Panthera sistematizó su operación con datos, procesos y seguimiento profesional. Hoy ganó paz operativa y alcanzó un ROAS x62.',
+        },
         {
           name: 'Gastón Hendlin',
           role: 'Coach Financiero y Ejecutivo',
