@@ -7,7 +7,17 @@ import { cn } from '../../lib/utils'
 
 function Wordmark({ className }: { className?: string }) {
   if (siteCopy.brand.logo) {
-    return <img src={siteCopy.brand.logo} alt="Panthera Group" className={cn('h-5 w-auto object-contain md:h-5', className)} />
+    return (
+      <img
+        src={siteCopy.brand.logo}
+        alt="Panthera Group"
+        loading="eager"
+        decoding="async"
+        width={120}
+        height={24}
+        className={cn('h-5 w-auto object-contain md:h-5', className)}
+      />
+    )
   }
 
   return (

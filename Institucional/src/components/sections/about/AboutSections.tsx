@@ -55,6 +55,10 @@ export function AboutHeroSection() {
             <img
               src={mediaAssets.aboutHeroImage}
               alt="Fundadores Panthera Group"
+              loading="eager"
+              decoding="async"
+              width={2100}
+              height={1400}
               className="h-full w-full object-cover"
               style={{ filter: 'grayscale(1) brightness(0.68) contrast(1.14)', objectPosition: 'center 32%' }}
             />
@@ -330,6 +334,10 @@ export function AboutTeamSection() {
             <img
               src={mediaAssets.aboutFoundersImage}
               alt="Fundadores de Panthera"
+              loading="lazy"
+              decoding="async"
+              width={2100}
+              height={1400}
               className="h-full w-full object-cover"
               style={{ filter: 'grayscale(1) brightness(0.68) contrast(1.14)', objectPosition: 'center 22%' }}
             />

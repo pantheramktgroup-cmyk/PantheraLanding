@@ -109,6 +109,7 @@ function TestimonialCard({ testimonial }: { testimonial: TestimonialItem }) {
               className="h-full w-full"
               src={embedUrl}
               title={`Testimonio de ${testimonial.name}`}
+              loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
               referrerPolicy="strict-origin-when-cross-origin"
@@ -129,7 +130,15 @@ function TestimonialCard({ testimonial }: { testimonial: TestimonialItem }) {
             className="relative h-full w-full"
             aria-label={`Reproducir testimonio de ${testimonial.name}`}
           >
-            <img src={testimonial.cover} alt={`testimonial_${testimonial.name.toLowerCase().replace(/\s+/g, '_')}_cover.webp`} className="h-full w-full object-cover" />
+            <img
+              src={testimonial.cover}
+              alt={`testimonial_${testimonial.name.toLowerCase().replace(/\s+/g, '_')}_cover.webp`}
+              loading="lazy"
+              decoding="async"
+              width={640}
+              height={360}
+              className="h-full w-full object-cover"
+            />
             <span className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/66" aria-hidden="true" />
             <span className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
               <span className="inline-flex h-14 w-14 items-center justify-center border border-panthera-green/65 bg-black/72 text-panthera-green shadow-[0_0_30px_rgba(227,247,141,0.18)] transition-all duration-300 group-hover:scale-[1.03] group-hover:border-panthera-green">

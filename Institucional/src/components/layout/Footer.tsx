@@ -73,7 +73,15 @@ export default function Footer() {
             <div className="mb-2 flex items-center">
               {siteCopy.brand.logo ? (
                 <NavLink to="/#inicio" aria-label="Panthera Group — Ir al inicio">
-                  <img src={siteCopy.brand.logo} alt="Panthera Group" className="h-6 w-auto object-contain" />
+                  <img
+                    src={siteCopy.brand.logo}
+                    alt="Panthera Group"
+                    loading="eager"
+                    decoding="async"
+                    width={120}
+                    height={24}
+                    className="h-6 w-auto object-contain"
+                  />
                 </NavLink>
               ) : (
                 <span className="font-display text-lg font-semibold tracking-[-0.02em] text-panthera-white">Panthera®</span>
