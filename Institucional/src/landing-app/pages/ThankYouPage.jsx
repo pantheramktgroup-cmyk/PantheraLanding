@@ -9,7 +9,7 @@ const LOGO_SRC = '/logos/01.%20PNG/Recurso%209.png'
 const BG_HERO = '/images/hero_panthera_strategy_room.webp'
 const BG_CTA = '/images/testimonial_cta_case_table.webp'
 
-const TY_VIDEO_EMBED = 'https://www.youtube.com/embed/ITn7P1rUI3o?rel=0&modestbranding=1'
+const TY_VIDEO_EMBED = 'https://fast.wistia.net/embed/iframe/l4h8suxpkn?seo=true&videoFoam=true&playerColor=e3f78d'
 
 const STEPS = [
   {
