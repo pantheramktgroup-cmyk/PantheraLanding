@@ -13,6 +13,66 @@ import ThankYouPage from './landing-app/pages/ThankYouPage.jsx'
 import SecondValidationPage from './landing-app/pages/SecondValidationPage.jsx'
 import { useEffect, useLayoutEffect } from 'react'
 
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void
+  }
+}
+
+const META_SCHEDULE_SESSION_KEY = 'meta_schedule_tracked_thank_you'
+let hasTrackedMetaSchedule = false
+
+function MetaScheduleTracking() {
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.pathname !== '/thank-you-page' || hasTrackedMetaSchedule) return
+
+    try {
+      if (sessionStorage.getItem(META_SCHEDULE_SESSION_KEY) === 'true') {
+        hasTrackedMetaSchedule = true
+        return
+      }
+    } catch {
+      // Continue with the in-memory guard when sessionStorage is unavailable.
+    }
+
+    let attempts = 0
+    const maxAttempts = 20
+    let retryId: number | undefined
+
+    const trackSchedule = () => {
+      if (hasTrackedMetaSchedule) return
+
+      if (typeof window.fbq === 'function') {
+        hasTrackedMetaSchedule = true
+
+        try {
+          sessionStorage.setItem(META_SCHEDULE_SESSION_KEY, 'true')
+        } catch {
+          // The in-memory guard still prevents duplicates during this page load.
+        }
+
+        window.fbq('track', 'Schedule')
+        return
+      }
+
+      attempts += 1
+      if (attempts < maxAttempts) {
+        retryId = window.setTimeout(trackSchedule, 100)
+      }
+    }
+
+    trackSchedule()
+
+    return () => {
+      if (retryId !== undefined) window.clearTimeout(retryId)
+    }
+  }, [location.pathname])
+
+  return null
+}
+
 function ScrollToTop() {
   const location = useLocation()
 
@@ -81,6 +141,7 @@ function AppShell() {
   return (
     <div className="relative min-h-screen overflow-x-clip bg-panthera-black">
       <ScrollToTop />
+      <MetaScheduleTracking />
       {!isLandingRoute ? <Header /> : null}
       <AnimatePresence mode="wait">
         <motion.main
